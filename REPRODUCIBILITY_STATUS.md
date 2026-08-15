@@ -10,7 +10,17 @@ VERIFIED without a corresponding, checkable artifact in this repository.
 | Original code recovered                 | NO           |
 | Exact reproduction                      | NOT_POSSIBLE |
 | Independent reimplementation            | REQUIRED     |
-| Method specification                    | IN_PROGRESS  |
+| Method specification                    | COMPLETE (base-model scope only) |
+| Base-model implementation (code)        | COMPLETE    |
+| Numerical solver verification           | VERIFIED    |
+| Numerical convergence (h selection)     | VERIFIED    |
+| Population exogenous series (leakage-safe) | COMPLETE |
+| Model constants (mu, Lambda)            | COMPLETE    |
+| Optimization contract (DE hyperparameters) | PARTIAL — seeds undefined |
+| Fractional model calibration            | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
+| Integer model calibration               | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
+| Multi-seed robustness diagnostics       | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
+| Alpha-bound sensitivity                 | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
 | Fractional model reproduction           | NOT_STARTED  |
 | Integer model reproduction              | NOT_STARTED  |
 | Predictive validation                   | NOT_STARTED  |
@@ -39,3 +49,17 @@ INDEPENDENT_REIMPLEMENTATION, governed by `docs/REIMPLEMENTATION_PROTOCOL.md`, a
 until the outstanding methodological assumptions in `docs/ASSUMPTIONS_REGISTER.md` are resolved
 (status PENDING_METHOD_SELECTION or UNKNOWN) via independent, documented, and auditable
 methodological choices — never by reverse-engineering the manuscript's reported values.
+
+## Base-model implementation stage (2026-08-15)
+
+See `BASE_MODEL_REIMPLEMENTATION_REPORT.md` for the full account. Summary: the base-model
+codebase (`src/tb_seit/`), canonical data split, leakage-safe population exogenous series,
+fixed demographic constants, the Diethelm-Ford-Freed fractional solver, the flow-based
+observation model, and the numerical convergence check are all implemented, executed, and
+tested (`tests/test_seit_model.py`, `tests/test_optimization_contract.py`). Calibration,
+multi-seed robustness, validation, alpha-bound sensitivity, and the kill-condition audit are
+implemented as code but **not executed**: `docs/MODEL_CONTRACT.md` documents the Differential
+Evolution hyperparameter policy but never fixes literal seed values (one canonical + four
+diagnostic), and this implementation stage's own instructions require stopping rather than
+inventing them (`OPTIMIZATION_CONTRACT_INCOMPLETE`). No AIC, R0, stability, sensitivity-index,
+or optimal-control work was attempted, per scope.

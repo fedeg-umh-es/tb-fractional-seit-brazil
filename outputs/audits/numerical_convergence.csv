@@ -1,0 +1,7 @@
+model,step,calibration_rmse,max_absolute_prediction_difference,relative_prediction_difference,solver_status
+fractional_alpha_0.75_reference,1.0,637087.9052956002,0.0,0.0,ok
+fractional_alpha_0.75_reference,0.5,637013.1961299201,5181.175300125033,0.0039030136800061723,ok
+fractional_alpha_0.75_reference,0.25,636991.3286473702,6732.081364676356,0.005071321493525294,ok
+integer_alpha_1.0_reference,1.0,1418967.4213373747,0.0,0.0,ok
+integer_alpha_1.0_reference,0.5,1418416.8007385866,14173.67820212245,0.003052944462854186,ok
+integer_alpha_1.0_reference,0.25,1418281.6585385506,17828.48774209991,0.0038401734650048056,ok

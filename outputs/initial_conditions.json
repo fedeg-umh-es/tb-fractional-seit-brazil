@@ -1,0 +1,27 @@
+{
+  "t0_date": "2001-01-01",
+  "N0": 175885229.0,
+  "flow0_observed_cases": 8088.0,
+  "construction": {
+    "E0": "flow0 / sigma",
+    "I0": "sigma * E0 / (gamma + mu + d)",
+    "T0": "0 (fixed; T decoupled from S/E/I)",
+    "S0": "N0 - E0 - I0 - T0",
+    "C0": "0 (accumulator origin)"
+  },
+  "reference_parameter_vector_note": "S0/E0/I0/T0 values below use the bounds-midpoint reference parameter vector for illustration only; during calibration these are recomputed per DE-candidate (sigma, gamma, d), never treated as free parameters.",
+  "reference_parameters": {
+    "beta": 0.505,
+    "sigma": 0.255,
+    "gamma": 0.175,
+    "d": 0.025050000000000003,
+    "alpha": 0.75
+  },
+  "reference_initial_state": {
+    "S0": 175813307.77533114,
+    "E0": 31717.647058823528,
+    "I0": 40203.57761004543,
+    "T0": 0.0,
+    "C0": 0.0
+  }
+}

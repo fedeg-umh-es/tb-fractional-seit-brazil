@@ -93,3 +93,41 @@ current version of this file. As of this register's creation (2026-08-15):
   A29, A31, A32, A33, A34, A39, A41, A42, A43, A44, A45 (28).
 - PENDING_METHOD_SELECTION (status column): all 45 entries except A17 and A25, which are fully
   RESOLVED_FROM_MANUSCRIPT with no further method selection required (43).
+
+## Resolution status update — Model Contract review (2026-08-15)
+
+The table above records the manuscript inventory as originally produced and is left unedited.
+`docs/MODEL_CONTRACT.md` (methodological review, no code/execution) has since made an explicit
+decision for a bounded subset of these items, superseding their `PENDING_METHOD_SELECTION`
+status. This section is the pointer; `docs/MODEL_CONTRACT.md` and `docs/METHOD_DECISION_LOG.md`
+(D008-D013) hold the actual decisions and their justification.
+
+| ID range | New status | Where resolved |
+|---|---|---|
+| A01-A16 | RESOLVED_BY_MODEL_CONTRACT | `docs/MODEL_CONTRACT.md`, Sections 3-7 |
+| A18-A24 | RESOLVED_BY_MODEL_CONTRACT | `docs/MODEL_CONTRACT.md`, Section 8 |
+| A25 | RESOLVED_BY_MODEL_CONTRACT (reinterpreted) | `docs/MODEL_CONTRACT.md`, Section 6 — same RMSE functional form, now compared against the corrected flow-based observation model instead of raw I(t) |
+| A26 | RESOLVED_BY_MODEL_CONTRACT (partially — beta/sigma/alpha decided; gamma/d bounds retained provisionally, PENDING an external literature check) | `docs/MODEL_CONTRACT.md`, "Parameter bounds rationale" |
+| A27 | RESOLVED_BY_MODEL_CONTRACT | `docs/MODEL_CONTRACT.md`, Section 9 |
+| A28-A32 | RESOLVED_BY_MODEL_CONTRACT | `docs/MODEL_CONTRACT.md`, Sections 5, 10 |
+
+Still `PENDING_METHOD_SELECTION` (unchanged, explicitly deferred by `docs/MODEL_CONTRACT.md`
+Section 13): A33, A34, A36 (Jacobian derivation still required), A38-A45. A17, A35, A37 remain
+`RESOLVED_FROM_MANUSCRIPT` as before.
+
+## External-evidence resolution — Parameter Contract review (2026-08-15)
+
+`docs/EXTERNAL_PARAMETER_CONTRACT.md` (methodological review with cited external sources; no
+code/execution) closed the remaining external-evidence sub-decisions within A02-A04, A11-A13,
+and finalized A26's alpha rationale. Superseding note only; the original inventory table above
+remains unedited.
+
+| ID | New status | Where resolved |
+|---|---|---|
+| A02 (N/N(t)) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT, with `PROVENANCE_REQUIRED` flagged for the 2021-2022 portion and a conservative extrapolation substitute defined | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, Sections 2-3; `METHOD_DECISION_LOG.md` D016 |
+| A03 (Lambda) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, Section 2; D010 (unchanged) |
+| A04 (mu) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, Section 2; D015 |
+| A11 (sigma) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (bound unchanged; STRUCTURAL_LIMITATION_TO_DECLARE recorded) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, "sigma" detail; D019 |
+| A12 (gamma) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (bound revised; manuscript bound kept as sensitivity arm) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, "gamma" detail; D017 |
+| A13 (d) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (bound confirmed acceptable) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, "d" detail; D018 |
+| A26 (alpha portion) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (widened bound confirmed as an operational choice, no epidemiological justification claimed) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, Section 2 (alpha row) |

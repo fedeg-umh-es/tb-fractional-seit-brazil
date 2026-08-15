@@ -42,7 +42,7 @@ def test_reproducibility_status_reflects_reimplementation_state():
     assert "VERIFIED" in text  # dataset integrity
     assert "NOT_POSSIBLE" in text  # exact reproduction
     assert "REQUIRED" in text  # independent reimplementation
-    assert "IN_PROGRESS" in text  # method specification
+    assert "OPTIMIZATION_CONTRACT_INCOMPLETE" in text  # base-model calibration gate (2026-08-15)
     for row in [
         "Fractional model reproduction",
         "Integer model reproduction",
@@ -89,12 +89,29 @@ def test_decision_log_exists_with_initial_entries():
         assert entry in text
 
 
-def test_no_scientific_result_artifacts_generated_yet():
-    if not OUTPUTS_DIR.is_dir():
-        return
-    all_files = [p for p in OUTPUTS_DIR.rglob("*") if p.is_file()]
-    for path in all_files:
-        rel = path.relative_to(REPO_ROOT).as_posix()
-        assert rel.startswith("outputs/audits/"), (
-            f"unexpected non-audit artifact present at this stage: {rel}"
-        )
+def test_no_fitted_optimization_results_generated_yet():
+    """Superseded gate (2026-08-15): the project has moved from specification into base-model
+    implementation (BASE_MODEL_REIMPLEMENTATION_REPORT.md), so deterministic, non-fitted
+    data-preparation artifacts (outputs/audits/*, outputs/model_constants.json,
+    outputs/initial_conditions.json) are now expected and permitted. What must still be absent
+    is anything that depends on an actual Differential Evolution run, which remains blocked on
+    the undefined canonical/diagnostic seed set (OPTIMIZATION_CONTRACT_INCOMPLETE): calibrated
+    parameters, predictions, validation metrics, alpha-bound sensitivity results, parameter
+    robustness diagnostics, and the kill-condition audit.
+    """
+    forbidden_dirs = [
+        REPO_ROOT / "outputs" / "calibration",
+        REPO_ROOT / "outputs" / "validation",
+        REPO_ROOT / "outputs" / "sensitivity",
+    ]
+    for d in forbidden_dirs:
+        if d.is_dir():
+            files = [p for p in d.rglob("*") if p.is_file()]
+            assert not files, f"unexpected fitted-result artifacts present: {files}"
+
+    forbidden_files = [
+        REPO_ROOT / "outputs" / "audits" / "parameter_robustness.csv",
+        REPO_ROOT / "outputs" / "audits" / "fractional_memory_kill_test.md",
+    ]
+    for f in forbidden_files:
+        assert not f.exists(), f"unexpected fitted-result artifact present: {f}"
