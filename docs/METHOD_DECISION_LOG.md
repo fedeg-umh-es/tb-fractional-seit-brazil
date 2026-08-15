@@ -686,3 +686,28 @@ script and source artifact (`results_canonical/00_manifest/CANONICAL_EVIDENCE_MA
 Reopening is restricted to numerical inconsistency, reproducibility failure, a central
 manuscript-claim need, an authorized future inferential analysis, or an explicit author decision
 to change the scientific question (`results_canonical/RESULT_SET_FREEZE.md`).
+
+---
+
+## D031
+
+Date: 2026-08-15
+
+Decision:
+Corrected a documentation-only tally error in `results_canonical/RESULT_SET_FREEZE.md`: the
+prose claim-status summary stated "4 NOT_SUPPORTED" while enumerating 5 claims (C02, C03, C05,
+C06, C09) in the console report of D030's task, and `results_canonical/07_claim_support/
+claim_support_table.csv` itself has always correctly recorded 5 NOT_SUPPORTED rows (11 claims
+total: 1 SUPPORTED_WITHIN_MODEL_FAMILY, 2 SUPPORTED, 1 SUPPORTED_ONLY_VS_SEASONAL_NAIVE, 5
+NOT_SUPPORTED, 1 NOT_VERIFIED, 1 NOT_TESTED). Only the prose count in RESULT_SET_FREEZE.md was
+wrong; fixed to "5 NOT_SUPPORTED (C02, C03, C05, C06, C09)". Added
+`tests/test_canonical_freeze.py::test_result_set_freeze_claim_status_counts_match_claim_support_table`
+as a regression guard so this tally can never silently drift from the underlying table again.
+
+Reason:
+No result, claim status, table, or figure was recomputed or reinterpreted -- this is a
+documentation-fidelity fix only, per the reviewer's correct observation that the underlying
+evidence and claim_support_table.csv were already right and only the RESULT_SET_FREEZE.md prose
+summary needed correcting. Consistent with the freeze's own reopening policy: this is a
+"numerical inconsistency" in a documentation artifact, not a reopening of any frozen scientific
+result.

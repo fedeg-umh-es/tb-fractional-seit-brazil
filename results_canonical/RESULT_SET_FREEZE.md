@@ -36,8 +36,8 @@ Both re-verified unchanged immediately before this freeze.
 ## Canonical claims
 
 See `results_canonical/07_claim_support/claim_support_table.csv` (C01-C11): 1
-SUPPORTED_WITHIN_MODEL_FAMILY, 2 SUPPORTED, 1 SUPPORTED_ONLY_VS_SEASONAL_NAIVE, 4 NOT_SUPPORTED,
-1 NOT_VERIFIED, 1 NOT_TESTED.
+SUPPORTED_WITHIN_MODEL_FAMILY, 2 SUPPORTED, 1 SUPPORTED_ONLY_VS_SEASONAL_NAIVE, 5 NOT_SUPPORTED
+(C02, C03, C05, C06, C09), 1 NOT_VERIFIED, 1 NOT_TESTED.
 
 ## Known limitations
 

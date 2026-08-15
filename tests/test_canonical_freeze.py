@@ -152,6 +152,25 @@ SUMMARY_DOCS = [
 ]
 
 
+def test_result_set_freeze_claim_status_counts_match_claim_support_table():
+    """Regression guard: RESULT_SET_FREEZE.md's prose claim-status tally must sum to 11 and
+    match the actual per-claim status counts in claim_support_table.csv (caught a documentation
+    drift where NOT_SUPPORTED was mistyped as 4 instead of 5)."""
+    rows = _rows(CANON / "07_claim_support/claim_support_table.csv")
+    assert len(rows) == 11
+    from collections import Counter
+
+    counts = Counter(r["status"] for r in rows)
+    assert counts["NOT_SUPPORTED"] == 5
+    assert sum(counts.values()) == 11
+
+    text = (CANON / "RESULT_SET_FREEZE.md").read_text()
+    assert f"{counts['NOT_SUPPORTED']} NOT_SUPPORTED" in text
+    assert f"{counts['SUPPORTED']} SUPPORTED," in text
+    assert f"{counts['NOT_VERIFIED']} NOT_VERIFIED" in text
+    assert f"{counts['NOT_TESTED']} NOT_TESTED" in text
+
+
 def test_no_precise_beta_gamma_d_values_in_canonical_summaries():
     for path in SUMMARY_DOCS:
         text = path.read_text()
