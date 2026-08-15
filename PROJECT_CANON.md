@@ -71,7 +71,14 @@ without independent reproduction.
 
 # Current stage
 
-REPOSITORY_INITIALIZATION
+INDEPENDENT_REIMPLEMENTATION_SPECIFICATION
+
+EXACT_REPRODUCTION = NOT_POSSIBLE
+INDEPENDENT_REIMPLEMENTATION = REQUIRED
+
+Reason: original computational code and complete numerical specification are unavailable.
+Amaury de Souza has confirmed no original source code, scripts, or computational configuration
+remain. Only the manuscript and the observational dataset are available.
 
 Permitted:
 - source preservation
@@ -79,21 +86,49 @@ Permitted:
 - environment setup
 - non-destructive dataset integrity inspection
 - methodological inventory
+- assumption/decision documentation
+- methodological specification (this document set)
 
 Not yet permitted:
 - model calibration
 - parameter estimation
+- Differential Evolution execution
 - optimal-control simulation
+- computing alpha, R0, RMSE, MAE, AIC, stability, sensitivity, or optimal-control results
 - manuscript rewriting
 - LaTeX preparation
-- new scientific claims
+- attempting to reproduce the old numerical values as a target
+
+# Collaborator-confirmed constraints (2026-08-15)
+
+- No original source code remains.
+- No scripts remain.
+- No original computational configuration remains.
+- Only the manuscript and observational dataset are available.
+- Definitive observational period: 2001-01 through 2022-12.
+- Calibration must use 2001-01 through 2020-12.
+- Independent validation must use 2021-01 through 2022-12.
+- All analyses affected by the previous incorrect 2001-2027 period (as it appears in the
+  manuscript source) must be recalculated.
+- Old manuscript values must be retained only if independently regenerated.
+- The approximately 48% optimal-control reduction must be discarded if not independently
+  supported by regenerated evidence.
+
+# Evidence policy
+
+- All numerical results currently appearing in the manuscript remain NOT_VERIFIED.
+- No old numerical result is a target value.
+- Old results may be used only for post-hoc comparison after independent computation.
+- Implementation choices must be selected for methodological defensibility, not for numerical
+  agreement with the manuscript.
 
 # Next scientific gate
 
-Recover original code or a sufficiently complete computational specification from Amaury de
-Souza.
+Perform a focused methodological review to select and justify the Caputo solver, state
+initialization, observational mapping, parameter treatment, and Differential Evolution
+configuration (see `docs/ASSUMPTIONS_REGISTER.md`) before writing any model code.
 
-If unavailable, all subsequent modeling work must be labelled:
+All modeling work proceeds under:
 **INDEPENDENT_REIMPLEMENTATION**
 
 not:
