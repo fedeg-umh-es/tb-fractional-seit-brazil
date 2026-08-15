@@ -76,3 +76,18 @@ limitation is weak individual identifiability of beta/gamma/d (see table above a
 optimal-control work was attempted, per scope; R0/stability work, when it begins, must carry the
 identifiability caveat forward rather than treat the primary-seed beta/gamma point estimates as
 precise.
+
+## Practical-identifiability audit (2026-08-15, continuation)
+
+See `IDENTIFIABILITY_AUDIT_REPORT.md` for the full account. Focused audit distinguishing
+parameter, predictive, and R0-functional identifiability, using the existing 5-seed multiseed
+ensemble plus a new profile-objective analysis (28 additional calibration-only re-optimizations,
+grid documented in `scripts/profile_objective.py` before execution). Findings: parameter
+identifiability = WEAK (beta/gamma/d flat over wide ranges); predictive identifiability = ROBUST
+(mean monthly prediction CV 0.19% calibration / 0.58% validation across the 5 solutions); R0
+diagnostic functional identifiability = ROBUST (CV 0.65% across seeds; stays within a ~3% band
+even where beta/gamma/d range 6x-210x under a 1% RMSE-degradation allowance); alpha
+identifiability = ROBUST (sharply peaked profile, CV 0.08%). Verdict:
+`IDENTIFIABILITY_AUDIT_SUPPORTS_DERIVED_R0` -- a formal R0/stability derivation may proceed, but
+must report R0 as a range over near-equivalent solutions (not a single point estimate) and must
+not individually cite beta/gamma/d as precise rates.

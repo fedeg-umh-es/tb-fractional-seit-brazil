@@ -504,3 +504,37 @@ weakest-identified parameters (beta, gamma) and must carry this caveat forward r
 present a single point estimate as precise. See `BASE_MODEL_REIMPLEMENTATION_REPORT.md` for full
 detail and `outputs/EVIDENCE_MANIFEST.csv` for artifact-level traceability of every number
 reported.
+
+---
+
+## D026
+
+Date: 2026-08-15
+
+Decision:
+A focused practical-identifiability audit was executed (`IDENTIFIABILITY_AUDIT_REPORT.md`),
+extending the 5-seed fractional multiseed ensemble with a documented, deterministic
+profile-objective analysis (28 calibration-only re-optimizations: beta, gamma, d, and alpha as
+a negative control, each on a 7-point grid, PRIMARY_SEED=20260815, calibration data only). No
+bounds, seeds, solver, observation model, or split were changed. Findings, classified across
+four separate dimensions (never collapsed into one statement): parameter_identifiability=WEAK
+(beta/gamma/d flat over wide RMSE-equivalent ranges: 6x-210x at <=1% RMSE degradation);
+predictive_identifiability=ROBUST (mean monthly prediction CV 0.19%/0.58%, calibration/
+validation, across the 5 multiseed solutions); R0_functional_identifiability=ROBUST (R0
+diagnostic functional CV 0.65% across seeds; stays within ~3% even where beta/gamma/d range
+widely, confirmed by both the multiseed ensemble and the independent profile-based pool);
+alpha_identifiability=ROBUST (sharply peaked profile objective, qualitatively distinct from
+beta/gamma/d's flatness). Also confirmed by direct residual inspection: the integer comparator's
+2021-2022 validation residuals are negative in all 24 months (explaining MAE==|bias| exactly),
+vs. 20/24 for the fractional model. Overall gate verdict:
+IDENTIFIABILITY_AUDIT_SUPPORTS_DERIVED_R0.
+
+Reason:
+Resolves the "investigate identifiability failure" next-action item from D025/
+BASE_MODEL_REIMPLEMENTATION_REPORT.md Section 16. R0's stability, evidenced two independent ways
+(not merely "5 seeds agreeing," the explicit pitfall this task warned against), is a sufficient
+and properly qualified basis to permit a future formal R0/stability derivation -- on the explicit
+condition that R0 is reported as a range/distribution over near-equivalent solutions and that
+beta/gamma/d are never individually cited as precise, epidemiologically meaningful rates. See
+`IDENTIFIABILITY_AUDIT_REPORT.md` Section 11-12 for the full reasoning and the carried-forward
+constraints on the next stage.

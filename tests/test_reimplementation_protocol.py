@@ -90,18 +90,22 @@ def test_decision_log_exists_with_initial_entries():
 
 
 def test_no_out_of_scope_analyses_generated():
-    """Superseded gate (2026-08-15, D024): the seed contract is now frozen and the base-model
-    calibration/validation/sensitivity/robustness pipeline has been executed
-    (BASE_MODEL_REIMPLEMENTATION_REPORT.md), so outputs/calibration/*, outputs/validation/*,
-    outputs/sensitivity/*, and the identifiability/kill-test audits are now expected and
-    permitted. What must still be absent is anything from the explicitly out-of-scope analyses
-    for this stage: AIC, final R0/stability, sensitivity-index (dR0/dp), and optimal control.
+    """Superseded gate (2026-08-15, D024 and the identifiability-audit stage): the seed
+    contract is frozen and both the base-model pipeline and the practical-identifiability audit
+    (IDENTIFIABILITY_AUDIT_REPORT.md) have been executed, so outputs/calibration/*,
+    outputs/validation/*, outputs/sensitivity/*, outputs/identifiability/* (including the R0
+    DIAGNOSTIC functional artifacts -- explicitly not a final R0 estimate, per that report's
+    Section 1/7) and the kill-test audits are now expected and permitted. What must still be
+    absent is anything from the explicitly out-of-scope analyses for this stage: AIC, a final
+    R0 point estimate/stability analysis, R0 sensitivity-index (dR0/dp), and optimal control.
     """
     forbidden_name_fragments = [
         "aic",
         "optimal_control",
         "optimal-control",
-        "r0_",
+        "r0_estimate",
+        "r0estimate",
+        "final_r0",
         "reproduction_number",
         "stability_analysis",
         "sensitivity_index",
