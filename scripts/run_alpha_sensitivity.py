@@ -15,7 +15,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from tb_seit import calibration, constants, data, metrics, model, population  # noqa: E402
+from tb_seit import calibration, constants, data, metrics, model, population, seeds  # noqa: E402
 
 PRIMARY_H = 1.0
 TOTAL_MONTHS = 264
@@ -87,6 +87,6 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--canonical-seed", type=int, required=True)
+    parser.add_argument("--canonical-seed", type=int, default=seeds.PRIMARY_SEED)
     args = parser.parse_args()
     main(args.canonical_seed)

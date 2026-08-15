@@ -131,3 +131,9 @@ remains unedited.
 | A12 (gamma) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (bound revised; manuscript bound kept as sensitivity arm) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, "gamma" detail; D017 |
 | A13 (d) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (bound confirmed acceptable) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, "d" detail; D018 |
 | A26 (alpha portion) | RESOLVED_BY_EXTERNAL_PARAMETER_CONTRACT (widened bound confirmed as an operational choice, no epidemiological justification claimed) | `docs/EXTERNAL_PARAMETER_CONTRACT.md`, Section 2 (alpha row) |
+
+## Seed contract resolution — base-model evidence run (2026-08-15)
+
+| ID | New status | Where resolved |
+|---|---|---|
+| A24 (random seed) | RESOLVED: PRIMARY_SEED = 20260815, DIAGNOSTIC_SEEDS = [20260816, 20260817, 20260818, 20260819], frozen before any DE result was observed under them | `docs/METHOD_DECISION_LOG.md` D024 |

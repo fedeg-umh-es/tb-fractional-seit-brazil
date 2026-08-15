@@ -89,29 +89,29 @@ def test_decision_log_exists_with_initial_entries():
         assert entry in text
 
 
-def test_no_fitted_optimization_results_generated_yet():
-    """Superseded gate (2026-08-15): the project has moved from specification into base-model
-    implementation (BASE_MODEL_REIMPLEMENTATION_REPORT.md), so deterministic, non-fitted
-    data-preparation artifacts (outputs/audits/*, outputs/model_constants.json,
-    outputs/initial_conditions.json) are now expected and permitted. What must still be absent
-    is anything that depends on an actual Differential Evolution run, which remains blocked on
-    the undefined canonical/diagnostic seed set (OPTIMIZATION_CONTRACT_INCOMPLETE): calibrated
-    parameters, predictions, validation metrics, alpha-bound sensitivity results, parameter
-    robustness diagnostics, and the kill-condition audit.
+def test_no_out_of_scope_analyses_generated():
+    """Superseded gate (2026-08-15, D024): the seed contract is now frozen and the base-model
+    calibration/validation/sensitivity/robustness pipeline has been executed
+    (BASE_MODEL_REIMPLEMENTATION_REPORT.md), so outputs/calibration/*, outputs/validation/*,
+    outputs/sensitivity/*, and the identifiability/kill-test audits are now expected and
+    permitted. What must still be absent is anything from the explicitly out-of-scope analyses
+    for this stage: AIC, final R0/stability, sensitivity-index (dR0/dp), and optimal control.
     """
-    forbidden_dirs = [
-        REPO_ROOT / "outputs" / "calibration",
-        REPO_ROOT / "outputs" / "validation",
-        REPO_ROOT / "outputs" / "sensitivity",
+    forbidden_name_fragments = [
+        "aic",
+        "optimal_control",
+        "optimal-control",
+        "r0_",
+        "reproduction_number",
+        "stability_analysis",
+        "sensitivity_index",
     ]
-    for d in forbidden_dirs:
-        if d.is_dir():
-            files = [p for p in d.rglob("*") if p.is_file()]
-            assert not files, f"unexpected fitted-result artifacts present: {files}"
-
-    forbidden_files = [
-        REPO_ROOT / "outputs" / "audits" / "parameter_robustness.csv",
-        REPO_ROOT / "outputs" / "audits" / "fractional_memory_kill_test.md",
-    ]
-    for f in forbidden_files:
-        assert not f.exists(), f"unexpected fitted-result artifact present: {f}"
+    if not OUTPUTS_DIR.is_dir():
+        return
+    all_files = [p for p in OUTPUTS_DIR.rglob("*") if p.is_file()]
+    for path in all_files:
+        lowered = path.name.lower()
+        for fragment in forbidden_name_fragments:
+            assert fragment not in lowered, (
+                f"unexpected out-of-scope artifact present at this stage: {path}"
+            )

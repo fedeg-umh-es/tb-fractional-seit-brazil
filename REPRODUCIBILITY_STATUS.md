@@ -16,15 +16,17 @@ VERIFIED without a corresponding, checkable artifact in this repository.
 | Numerical convergence (h selection)     | VERIFIED    |
 | Population exogenous series (leakage-safe) | COMPLETE |
 | Model constants (mu, Lambda)            | COMPLETE    |
-| Optimization contract (DE hyperparameters) | PARTIAL — seeds undefined |
-| Fractional model calibration            | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
-| Integer model calibration               | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
-| Multi-seed robustness diagnostics       | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
-| Alpha-bound sensitivity                 | BLOCKED — OPTIMIZATION_CONTRACT_INCOMPLETE |
-| Fractional model reproduction           | NOT_STARTED  |
-| Integer model reproduction              | NOT_STARTED  |
-| Predictive validation                   | NOT_STARTED  |
-| R0                                      | NOT_STARTED  |
+| Optimization contract (DE hyperparameters + seeds) | COMPLETE — seeds frozen D024 |
+| Fractional model calibration (primary seed 20260815) | COMPLETE  |
+| Integer model calibration (primary seed 20260815) | COMPLETE  |
+| Multi-seed robustness diagnostics       | COMPLETE — see identifiability caveat below |
+| Alpha-bound sensitivity ([0.70,1.00] vs [0.50,1.00]) | COMPLETE — alpha materially unchanged |
+| Strict 2021-2022 validation             | COMPLETE — fractional RMSE 1117.96 < integer RMSE 1759.54 |
+| Individual-parameter identifiability (beta, gamma, d) | WEAKENS — CV 58-82% across seeds despite stable objective (CV 0.35%); see BASE_MODEL_REIMPLEMENTATION_REPORT.md Sec 12 |
+| Fractional model reproduction           | NOT_STARTED (exact reproduction of manuscript values is NOT_POSSIBLE; independent values above are the reimplementation result) |
+| Integer model reproduction              | NOT_STARTED (same) |
+| Predictive validation                   | COMPLETE (see strict validation row above) |
+| R0                                      | NOT_STARTED — see next-gate note (identifiability caveat applies) |
 | Stability                               | NOT_STARTED  |
 | Sensitivity                             | NOT_STARTED  |
 | Optimal control                         | NOT_STARTED  |
@@ -52,14 +54,25 @@ methodological choices — never by reverse-engineering the manuscript's reporte
 
 ## Base-model implementation stage (2026-08-15)
 
-See `BASE_MODEL_REIMPLEMENTATION_REPORT.md` for the full account. Summary: the base-model
-codebase (`src/tb_seit/`), canonical data split, leakage-safe population exogenous series,
-fixed demographic constants, the Diethelm-Ford-Freed fractional solver, the flow-based
-observation model, and the numerical convergence check are all implemented, executed, and
-tested (`tests/test_seit_model.py`, `tests/test_optimization_contract.py`). Calibration,
-multi-seed robustness, validation, alpha-bound sensitivity, and the kill-condition audit are
-implemented as code but **not executed**: `docs/MODEL_CONTRACT.md` documents the Differential
-Evolution hyperparameter policy but never fixes literal seed values (one canonical + four
-diagnostic), and this implementation stage's own instructions require stopping rather than
-inventing them (`OPTIMIZATION_CONTRACT_INCOMPLETE`). No AIC, R0, stability, sensitivity-index,
-or optimal-control work was attempted, per scope.
+See `BASE_MODEL_REIMPLEMENTATION_REPORT.md` for the full account. The base-model codebase
+(`src/tb_seit/`), canonical data split, leakage-safe population exogenous series, fixed
+demographic constants, the Diethelm-Ford-Freed fractional solver, the flow-based observation
+model, and the numerical convergence check were implemented and tested first
+(`tests/test_seit_model.py`, `tests/test_optimization_contract.py`), while calibration was
+blocked on an undefined seed contract (`OPTIMIZATION_CONTRACT_INCOMPLETE`).
+
+## Base-model evidence pipeline execution (2026-08-15, continuation)
+
+The seed contract was frozen (`docs/METHOD_DECISION_LOG.md` D024: `PRIMARY_SEED=20260815`,
+`DIAGNOSTIC_SEEDS=[20260816..20260819]`) before any DE result existed under it, resolving the
+blocker. The full pipeline was then executed: 5-seed x 2-model calibration, primary-seed
+integer comparator (independently re-estimated, never reusing fractional parameters), strict
+open-loop 2021-2022 validation, alpha-bound sensitivity ([0.70,1.00] vs. primary [0.50,1.00]),
+multi-seed identifiability diagnostics, and the fractional-memory kill-condition audit. All 48
+tests pass (`tests/test_seed_contract.py` added). Overall verdict:
+`BASE_MODEL_REIMPLEMENTATION_VALID_WITH_LIMITATIONS` -- valid, reproducible pipeline; material
+limitation is weak individual identifiability of beta/gamma/d (see table above and
+`BASE_MODEL_REIMPLEMENTATION_REPORT.md` Sec 12-13). No AIC, R0, stability, sensitivity-index, or
+optimal-control work was attempted, per scope; R0/stability work, when it begins, must carry the
+identifiability caveat forward rather than treat the primary-seed beta/gamma point estimates as
+precise.

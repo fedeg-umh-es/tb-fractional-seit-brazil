@@ -22,7 +22,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from tb_seit import calibration, constants, data, model, population  # noqa: E402
+from tb_seit import calibration, constants, data, model, population, seeds  # noqa: E402
 
 PRIMARY_H = 1.0  # months; frozen by outputs/audits/numerical_convergence.csv (<1% relative diff)
 
@@ -119,8 +119,15 @@ def run_all_seeds(canonical_seed: int, diagnostic_seeds: list[int]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--canonical-seed", type=int, required=True)
-    parser.add_argument("--diagnostic-seeds", type=int, nargs=4, required=True)
+    parser.add_argument(
+        "--canonical-seed", type=int, default=seeds.PRIMARY_SEED,
+        help=f"Defaults to the frozen canonical seed ({seeds.PRIMARY_SEED}, D024). "
+             "Overriding this is not a normal operation.",
+    )
+    parser.add_argument(
+        "--diagnostic-seeds", type=int, nargs=4, default=seeds.DIAGNOSTIC_SEEDS,
+        help=f"Defaults to the frozen diagnostic seeds ({seeds.DIAGNOSTIC_SEEDS}, D024).",
+    )
     args = parser.parse_args()
     run_all_seeds(args.canonical_seed, args.diagnostic_seeds)
 

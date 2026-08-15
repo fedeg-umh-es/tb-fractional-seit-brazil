@@ -435,3 +435,72 @@ given the content was already vetted. The HEAD mismatch is recorded here rather 
 ignored. A hunk-level split was considered and rejected as an unnecessary manual-editing risk
 for no material benefit, since this entry already discloses the pre-existing dirty state in
 full.
+
+---
+
+## D024
+
+Date: 2026-08-15
+
+Decision:
+The canonical Differential Evolution seed contract (`docs/MODEL_CONTRACT.md` A24,
+`docs/EXTERNAL_PARAMETER_CONTRACT.md`) is frozen as:
+
+    PRIMARY_SEED     = 20260815
+    DIAGNOSTIC_SEEDS = [20260816, 20260817, 20260818, 20260819]
+
+This decision is recorded BEFORE any Differential Evolution calibration result exists under it
+-- no run had been executed with any of these seeds prior to this entry. The seeds carry no
+scientific or epidemiological meaning; they are literal integers chosen only to satisfy the
+reproducibility requirement that one documented primary seed and four documented diagnostic
+seeds be fixed in advance (`docs/MODEL_CONTRACT.md` A24, D008; `docs/EXTERNAL_PARAMETER_CONTRACT.md`
+D014-D019 established every other value this seed set was blocking).
+
+The run with seed 20260815 is, by this decision, PERMANENTLY the primary scientific estimate for
+both the fractional model and the integer comparator. It may never be replaced by a result from
+20260816-20260819 for any reason -- not lower calibration RMSE, not a more "convenient" alpha,
+not closer agreement with the manuscript's historical (REFERENCE_ONLY_NOT_EVIDENCE) values, not
+better validation performance. The four diagnostic seeds exist solely to produce the
+identifiability/robustness diagnostics in `docs/MODEL_CONTRACT.md` Section 12.2 and the
+kill-condition audit in Section 15; they are never eligible for primary-result selection.
+
+Reason:
+Resolves the sole remaining blocker identified in `BASE_MODEL_REIMPLEMENTATION_REPORT.md`
+(`OPTIMIZATION_CONTRACT_INCOMPLETE`). Per that report and the task's own repeated instruction,
+"any fixed, documented integers satisfy reproducibility; the requirement is that they be chosen
+deliberately and recorded, not selected post hoc for a favorable result" -- this entry is that
+deliberate, pre-registered choice. `docs/ASSUMPTIONS_REGISTER.md` A24 is updated to point here.
+
+---
+
+## D025
+
+Date: 2026-08-15
+
+Decision:
+The base-model evidence pipeline was executed under the D024 seed contract: 5-seed x 2-model
+calibration (`outputs/calibration/{fractional,integer}_multiseed.csv`), primary-seed (20260815)
+parameters and predictions, `outputs/calibration/calibration_metrics.csv`, strict open-loop
+2021-2022 validation (`outputs/validation/validation_metrics.csv`), alpha-bound sensitivity
+([0.70,1.00] vs. primary [0.50,1.00], `outputs/sensitivity/alpha_bound_sensitivity.csv`), and
+the identifiability/kill-condition audit (`outputs/audits/parameter_robustness.csv`,
+`outputs/audits/fractional_memory_kill_test.md`). All primary results were taken from the
+seed==20260815 row in every case, never from the minimum-objective seed (verified for the
+integer model specifically, where seed 20260817 had a strictly lower calibration objective and
+was NOT substituted). Findings: fractional calibration RMSE=605.05 (integer 776.06); fractional
+validation RMSE=1117.96 vs. integer 1759.54 (Delta_RMSE=-641.58, favors fractional); alpha
+stable across all 5 seeds and both bound configurations (0.962-0.964, CV 0.08%, no boundary
+sticking); beta/gamma/d weakly identified across seeds (CV 58-82%) despite a stable calibration
+objective (CV 0.35%). Kill-test classification: parameter_identifiability=WEAKENS,
+alpha_behavior=SURVIVES, integer_comparator=SURVIVES. Overall verdict:
+BASE_MODEL_REIMPLEMENTATION_VALID_WITH_LIMITATIONS.
+
+Reason:
+Completes the first reproducible computational stage per the task's own required output
+structure and evidence-traceability rules. The WEAKENS classification for beta/gamma/d
+identifiability is recorded here as a load-bearing fact for the next stage: any future R0
+derivation (R0 = beta*sigma/[(sigma+mu)(gamma+mu+d)]) is a direct function of exactly the two
+weakest-identified parameters (beta, gamma) and must carry this caveat forward rather than
+present a single point estimate as precise. See `BASE_MODEL_REIMPLEMENTATION_REPORT.md` for full
+detail and `outputs/EVIDENCE_MANIFEST.csv` for artifact-level traceability of every number
+reported.
