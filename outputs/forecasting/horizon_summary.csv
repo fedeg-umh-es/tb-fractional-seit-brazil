@@ -1,0 +1,7 @@
+baseline,metric,H_relax_last_horizon_positive_skill,H_strict_from_h1_longest_contiguous_run,n_horizons_evaluated
+persistence,RMSE,0,0,12
+persistence,MAE,0,0,12
+seasonal_naive_12,RMSE,7,7,12
+seasonal_naive_12,MAE,7,7,12
+SARIMA,RMSE,0,0,12
+SARIMA,MAE,0,0,12

@@ -119,3 +119,13 @@ contains 2 solutions with R0<1 (poor-fit profile probes) and must never be descr
 uniformly R0>1; only the `NEAR_EQUIVALENT_ADMISSIBLE_SET` (delta calibration RMSE<=1%, n=25) has
 R0>1 in all 25 solutions. Formal stability result over that admissible set (each solution's own
 fitted alpha, commensurate Matignon criterion): 0 stable, 25 unstable, 0 ambiguous.
+
+## Rolling-origin forecasting evaluation (2026-08-15, continuation)
+
+See `FORECASTING_EVALUATION_REPORT.md` and `docs/METHOD_DECISION_LOG.md` D029. 13-origin
+expanding-window rolling evaluation (h=1..12, 780 leakage-audited forecasts) against 3
+baselines (persistence, seasonal_naive_12, SARIMA frozen order per
+`docs/SARIMA_BASELINE_CONTRACT.md`). Fractional model beats the integer comparator at every
+horizon; underperforms persistence and SARIMA at every horizon; beats seasonal_naive_12 only for
+h=1-7 of 12. Verdict: `FRACTIONAL_ADVANTAGE_ONLY_VS_INTEGER`. Dimensional consistency, R0,
+stability, and identifiability findings were not reopened.

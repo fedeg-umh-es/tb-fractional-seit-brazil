@@ -621,3 +621,38 @@ recalibration was not mathematically required) and without changing bounds, seed
 observations, or the forecasting model. The evidence-set correction is recorded here because it
 is a factual correction to previously-committed, previously-reported project evidence, not
 merely a stylistic change.
+
+---
+
+## D029
+
+Date: 2026-08-15
+
+Decision:
+Executed the primary rolling-origin forecasting evaluation (`FORECASTING_EVALUATION_REPORT.md`),
+the main predictive-evidence stage. 13 expanding-window origins (2020-12..2021-12), h=1..12,
+fully-crossed grid (780 = 13x12x5 rows), leakage-audited (0 violations). Fractional and integer
+SEIT each fit exactly once per origin (Differential Evolution, PRIMARY_SEED=20260815, frozen
+bounds/policy, unchanged) and forecast all 12 horizons from that single fit -- confirmed
+structurally, not just by row count. SARIMA baseline order frozen BEFORE evaluation
+(`docs/SARIMA_BASELINE_CONTRACT.md`: grid search on 2001-2020 only, AIC-minimizing, resulting
+order SARIMA(0,1,2)(1,1,1,12) never revisited after seeing 2021-2022 performance). statsmodels
+added as a dependency for this (user-approved after an explicit choice between installing it,
+hand-implementing SARIMA, or substituting a simpler baseline).
+
+Findings: fractional model has a clear, consistent horizon-wide advantage over the integer
+comparator (lower RMSE/MAE at all 12 horizons). It underperforms persistence and SARIMA at
+every one of the 12 horizons (negative skill throughout). It outperforms seasonal_naive_12 only
+for h=1-7 of 12. All models show growing negative bias (underprediction) with horizon; the
+fractional model's residuals become 100% one-directional (bias==-MAE exactly) from h=6 onward.
+Verdict: FRACTIONAL_ADVANTAGE_ONLY_VS_INTEGER.
+
+Reason:
+This is the first direct test of the fractional model's forecasting skill against baselines
+other than the integer comparator and a single-origin stress test. The result materially
+qualifies the earlier long-open-loop finding (fractional beats integer, RMSE=1117.96): under
+genuine multi-origin rolling evaluation, that advantage does not extend to persistence or
+SARIMA, and only partially extends to seasonal-naive. This is reported plainly, without
+softening, per this project's standing evidence-integrity practice; no configuration was
+changed in response to the unfavorable result. Dimensional consistency, R0, stability, and the
+identifiability audit were not reopened.
