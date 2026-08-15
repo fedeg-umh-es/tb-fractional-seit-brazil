@@ -91,3 +91,17 @@ identifiability = ROBUST (sharply peaked profile, CV 0.08%). Verdict:
 `IDENTIFIABILITY_AUDIT_SUPPORTS_DERIVED_R0` -- a formal R0/stability derivation may proceed, but
 must report R0 as a range over near-equivalent solutions (not a single point estimate) and must
 not individually cite beta/gamma/d as precise rates.
+
+## R0 / stability continuation (2026-08-15) -- STOPPED, not completed
+
+See `R0_STABILITY_ANALYSIS_NOTE.md`. Completed: the R0 near-equivalent solution envelope over
+the full 33-solution pool (median 1.1735, IQR [1.1662,1.1816], explicitly not a confidence
+interval); ACF/Ljung-Box residual diagnostics (all four residual series show significant
+autocorrelation, p<0.001); an independent next-generation-matrix re-derivation of R0 from the
+model's own Jacobian, proving the R0=1 threshold is alpha-independent for alpha in (0,1].
+**Not completed**: a genuine dimensional-consistency question was found (mu is a true month^-1
+constant while sigma/gamma/d carry no alpha-dependent rescaling despite alpha!=1, and R0's
+formula sums them) and the task halted with `FRACTIONAL_R0_PARAMETERIZATION_CONFLICT` per
+explicit instruction, rather than resolving it silently. No R0 value is certified as a final,
+manuscript-ready epidemiological result. `docs/METHOD_DECISION_LOG.md` D027 has the full
+account and both candidate resolution paths, pending a decision.

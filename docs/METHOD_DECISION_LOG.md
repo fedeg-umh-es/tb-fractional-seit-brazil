@@ -538,3 +538,42 @@ condition that R0 is reported as a range/distribution over near-equivalent solut
 beta/gamma/d are never individually cited as precise, epidemiologically meaningful rates. See
 `IDENTIFIABILITY_AUDIT_REPORT.md` Section 11-12 for the full reasoning and the carried-forward
 constraints on the next stage.
+
+---
+
+## D027
+
+Date: 2026-08-15
+
+Decision:
+The formal R0/stability continuation (`R0_STABILITY_ANALYSIS_NOTE.md`) completed Part A (R0
+near-equivalent solution envelope over the full 33-solution pool, explicitly NOT labeled a
+confidence interval or sampling uncertainty: median 1.1735, IQR [1.1662,1.1816], full range
+[0.6393,1.6149] dominated by deliberately poor-fit profile probe points) and Part B (ACF +
+Ljung-Box residual-dependence diagnostics, hand-implemented without adding statsmodels as a
+dependency -- installation was declined -- and validated against synthetic white-noise/AR(1)
+series; found highly significant positive autocorrelation, p<0.001, in all four residual series:
+fractional/integer x calibration/validation). Part C (next-generation-matrix derivation of R0
+under the Caputo formulation) independently re-derived R0 = beta*sigma/[(sigma+mu)(gamma+mu+d)]
+from the model's own Jacobian at the DFE, and proved algebraically that this threshold is
+alpha-independent for alpha in (0,1] (R0<1 <=> both J_EI eigenvalues have negative real part
+<=> Matignon-stable for any alpha<=1; R0>1 <=> a real positive eigenvalue <=> Matignon-unstable
+for any alpha>0) -- confirmed by `tests/test_r0_stability.py`. However, Part C also surfaced a
+genuine, previously-unaddressed-at-this-level-of-scrutiny dimensional-consistency question: mu
+is fixed externally as a true month^-1 constant, while sigma/gamma/d are DE-estimated without
+any k^(1-alpha) rescaling despite alpha!=1, and R0's additive terms (sigma+mu, gamma+mu+d) mix
+these. Per the task's own explicit instruction, this halted the task with
+FRACTIONAL_R0_PARAMETERIZATION_CONFLICT rather than resolving it silently by picking a
+convention. No final numeric R0 value or stability classification is certified as a
+manuscript-ready result; the qualitative finding (R0>1 throughout the near-equivalent envelope,
+hence unstable DFE, for every alpha used in this project) is reported as a hedged read of the
+evidence, not a formally verified conclusion.
+
+Reason:
+The reviewer role for this task explicitly required treating any conflict as a stop-and-flag
+condition rather than a silent resolution, and the task itself named the exact STOP code to use
+for this specific failure mode. Resolving the units question requires a genuine scientific
+decision (accept the existing shared naive convention with a disclosed caveat, vs. retrofit a
+uniform fractional reparameterization including re-deriving mu) that is not this review's to
+make unilaterally. See `R0_STABILITY_ANALYSIS_NOTE.md` for the full derivation and both
+candidate resolution paths.
