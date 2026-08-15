@@ -28,12 +28,12 @@ FORECASTING_MECHANISTIC_CONFLATION = NO
 ### S1 — Problem Formulation (Sentence 1)
 
 * **SENTENCE_ID**: S1
-* **RHETORICAL_ROLE**: Background / Problem: Establish the methodological evaluation problem (evaluating fractional models requires testing beyond internal/nested ablations).
+* **RHETORICAL_ROLE**: Background / Problem: Establish the methodological evaluation problem (assessing forecasting utility requires distinguishing within-family improvement from external baseline performance).
 * **SOURCE_SECTION**: Introduction (§1 / I1–I2)
 * **CLAIM_IDS**: M04
 * **CANONICAL_EVIDENCE**: `manuscript_architecture/MANUSCRIPT_EVIDENCE_ARCHITECTURE.md` (Dominant Question Tier 1)
 * **NUMBERS_USED**: None
-* **PERMITTED_INTERPRETATION**: Problem framing motivating external benchmark evaluation.
+* **PERMITTED_INTERPRETATION**: Problem framing motivating external benchmark evaluation without asserting universal rules.
 * **FORBIDDEN_INTERPRETATION**: Do not claim fractional models are universally flawed or that past literature failed.
 * **GENERALIZATION_BOUNDARY**: General methodological principle.
 
@@ -42,12 +42,12 @@ FORECASTING_MECHANISTIC_CONFLATION = NO
 ### S2 — Study Design and Scope (Sentence 2)
 
 * **SENTENCE_ID**: S2
-* **RHETORICAL_ROLE**: Methods / Study Scope: Define the independent reimplementation, data source (Brazil 2001–2022), Caputo derivative formulation, and corrected incidence-flow observation mapping.
+* **RHETORICAL_ROLE**: Methods / Study Scope: Define the independent reimplementation, data source (Brazil 2001–2022), Caputo derivative formulation, and observation mapping (incidence flow rather than infectious stock prevalence).
 * **SOURCE_SECTION**: Introduction (§1 / I5), Methods (§2.1–2.4)
 * **CLAIM_IDS**: M01, M02
 * **CANONICAL_EVIDENCE**: `data/brazil_tb_monthly.csv`, `docs/MODEL_CONTRACT.md`
 * **NUMBERS_USED**: 2001–2022 (surveillance period)
-* **PERMITTED_INTERPRETATION**: Procedural description of the independent reimplementation and observation mapping correction.
+* **PERMITTED_INTERPRETATION**: Procedural description of the independent reimplementation and incidence-flow observation mapping.
 * **FORBIDDEN_INTERPRETATION**: No novelty or priority claims.
 * **GENERALIZATION_BOUNDARY**: Bounded to the evaluated dataset and model formulation.
 
@@ -58,7 +58,7 @@ FORECASTING_MECHANISTIC_CONFLATION = NO
 * **SENTENCE_ID**: S3
 * **RHETORICAL_ROLE**: Results (Forecasting): Report within-family error reduction alongside the central turning point (negative skill vs persistence/SARIMA at all horizons, positive skill vs seasonal naive bounded to $h=1\dots 7$).
 * **SOURCE_SECTION**: Results (§3.1–3.2 / P2–P4), Discussion (§4 / D1–D3)
-* **CLAIM_IDS**: C01 (`SUPPORTED_WITHIN_MODEL_FAMILY`), C02 (`NOT_SUPPORTED`), C03 (`NOT_SUPPORTED`), C04 (`SUPPORTED_ONLY_VS_SEASONAL_NAIVE`), C05 (`NOT_SUPPORTED`)
+* **CLAIM_IDS**: C01 (`SUPPORTED_WITHIN_MODEL_FAMILY`), C02 (`NOT_SUPPORTED`), C03 (`NOT_FORWARD_SKILL`), C04 (`SUPPORTED_ONLY_VS_SEASONAL_NAIVE`), C05 (`NOT_SUPPORTED`)
 * **CANONICAL_EVIDENCE**: `results_canonical/04_long_open_loop/table_long_open_loop.csv`, `results_canonical/05_rolling_origin/table_forecasting_by_horizon.csv`, `table_skill_by_horizon.csv`, `table_horizon_summary.csv`
 * **NUMBERS_USED**: 24-month long open-loop, 13 rolling origins, 12 monthly horizons, $H_{\text{relax}} = 0$ (persistence/SARIMA), $H_{\text{relax}} = 7$ ($h=1\dots 7$, seasonal naive).
 * **PERMITTED_INTERPRETATION**: Fractional SEIT outperforms integer SEIT within-family under independent re-estimation, but trails persistence and SARIMA across all evaluated horizons; positive skill vs seasonal naive is bounded to $h \le 7$ as a baseline-specific empirical descriptor.
@@ -84,11 +84,11 @@ FORECASTING_MECHANISTIC_CONFLATION = NO
 ### S5 — Bounded Scientific Contribution (Sentence 8)
 
 * **SENTENCE_ID**: S5
-* **RHETORICAL_ROLE**: Conclusion / Implication: Synthesize the study-level takeaway (within-family structural gain, external forecasting boundaries, parameter non-identifiability coexisting with robust derived quantities).
+* **RHETORICAL_ROLE**: Conclusion / Implication: Synthesize the study-level takeaway (within-family structural gain, external forecasting boundaries, parameter non-identifiability coexisting with robust derived threshold and stability properties).
 * **SOURCE_SECTION**: Conclusion (§5 / P2), Discussion (§4 / D7)
 * **CLAIM_IDS**: C01, C02, C03, C04, C07, C08, C09
 * **CANONICAL_EVIDENCE**: `manuscript_architecture/MANUSCRIPT_EVIDENCE_ARCHITECTURE.md`, `results_canonical/KNOWN_LIMITATIONS.md`
 * **NUMBERS_USED**: None
-* **PERMITTED_INTERPRETATION**: Fractional differentiation improves compartmental flexibility within-family, external baselines delineate forecasting utility, and parameter indeterminacy coexists with robust derived functional properties.
-* **FORBIDDEN_INTERPRETATION**: No universal claims about all fractional epidemic models; no unverified optimal-control claims.
+* **PERMITTED_INTERPRETATION**: In this evaluation, fractional differentiation provided a consistent within-family improvement, external statistical baselines exposed the limits of interpreting that as forecasting skill, and parameter non-identifiability coexisted with robust derived threshold and stability properties across the predefined admissible set.
+* **FORBIDDEN_INTERPRETATION**: No universal claims about all fractional epidemic models; no causal claims attributing robustness to non-identifiability; no unverified optimal-control claims.
 * **GENERALIZATION_BOUNDARY**: Bounded strictly to this study, dataset, and model family.
