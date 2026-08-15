@@ -104,4 +104,9 @@ template), plus the canonical artifacts and claim IDs it draws on.
   mechanistic findings (R4/R5) from forecasting findings (R1-R3).
 - **Canonical artifacts**: `table_R0_stability_summary.csv`, `table_full_profile_diagnostic.csv`
   (negative-space citation).
+- **Drafting caution**: the permitted phrase "persistent transmission is dynamically consistent
+  with R0>1" must stay a statement about the model (an interpretation of the fitted dynamical
+  system), not drift into an empirical epidemiological claim about tuberculosis transmission in
+  Brazil. No independent, out-of-model evidence for real-world persistence is part of this
+  finding.
 - **Claim IDs**: C08.

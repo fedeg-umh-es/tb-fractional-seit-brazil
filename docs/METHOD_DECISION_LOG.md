@@ -711,3 +711,34 @@ evidence and claim_support_table.csv were already right and only the RESULT_SET_
 summary needed correcting. Consistent with the freeze's own reopening policy: this is a
 "numerical inconsistency" in a documentation artifact, not a reopening of any frozen scientific
 result.
+
+---
+
+## D032
+
+Date: 2026-08-15
+
+Decision:
+Reviewer approved `manuscript_architecture/` with verdict `ARCHITECTURE_GATE =
+PASS_WITH_MINOR_REVISION`: the Results sequence (R1-R5), the R4/R5 separation, the turning
+point's placement (R1->R2), and the mechanistic/forecasting interpretation boundaries were all
+approved unchanged. One wording revision was requested and applied: `MANUSCRIPT_EVIDENCE_
+ARCHITECTURE.md` Sec 1 ("Dominant scientific question") was rewritten from three
+equally-weighted coordinated questions into a two-tier question (within-family-improvement-vs-
+external-forecasting-skill as the paper's spine; mechanistic interpretability under
+non-identifiability as a delimiting second axis), matching the hierarchy the Results section
+already enforces. The original three-question framing is retained, unchanged, as the precise
+study sub-questions in `INTRODUCTION_REQUIREMENTS.md`. Also added a drafting-caution note to
+`RESULTS_PARAGRAPH_PLAN.md` P7, flagging that "persistent transmission is dynamically consistent
+with R0>1" must remain a model-interpretation statement, never drift into an empirical claim
+about real-world Brazilian TB transmission. No evidence, claim status, canonical artifact, or
+section mapping changed.
+
+Reason:
+The reviewer's observation was correct: a three-way-coordinated dominant question understated
+the hierarchy already implicit in the Results ordering and in `DISCUSSION_ARGUMENT_MAP.md`'s D0
+(leading objection). Encoding that hierarchy explicitly in the dominant question reduces the
+risk that a future drafting pass gives the identifiability/R0 axis equal narrative weight to the
+forecasting-skill turning point, which the frozen evidence does not support doing. Architecture
+is now considered re-frozen (`READY_FOR_INSIDE_OUT_DRAFTING = YES`, unchanged verdict); next
+permitted step is Methods, then Results, per the reviewer's explicit ordering instruction.

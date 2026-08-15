@@ -8,12 +8,19 @@ methodological/descriptive with its supporting artifact.
 
 ## 1. Dominant scientific question
 
-Does fractional-order dynamics provide a scientifically and predictively meaningful improvement
-over the corresponding integer-order SEIT formulation, does that improvement translate into
-forecasting skill against competitive external baselines, and which mechanistic quantities
-remain scientifically interpretable given individual-parameter-identifiability limitations? These
-are three distinct questions (Sec 3 of the task) and must not be conflated anywhere in the
-manuscript.
+Does the improvement obtained by fractionalising the SEIT formulation translate into forecasting
+skill beyond the model family, and what mechanistic interpretation remains defensible under
+calibration non-identifiability?
+
+This is a two-tier question, not three coordinated ones: the first tier (within-family
+improvement vs. external forecasting skill) is the paper's spine and supplies the turning point
+(R1->R2->R3); the second tier (what remains mechanistically interpretable given
+non-identifiability) is a delimiting axis that constrains which of the first tier's mechanistic
+by-products (R0, DFE stability) can be asserted at all. The original three-question framing
+(Sec 3 of the task) remains valid and unchanged as the set of precise study sub-questions -- see
+`INTRODUCTION_REQUIREMENTS.md`, "Precise study questions" -- but is not the paper-level framing;
+promoting all three to equal top-level weight obscured the hierarchy the Results section already
+enforces. No evidence, claim, or section mapping changes as a result of this rewording.
 
 ## 2. Paper-level promise (one sentence)
 
