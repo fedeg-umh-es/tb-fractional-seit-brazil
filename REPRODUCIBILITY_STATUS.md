@@ -99,9 +99,23 @@ the full 33-solution pool (median 1.1735, IQR [1.1662,1.1816], explicitly not a 
 interval); ACF/Ljung-Box residual diagnostics (all four residual series show significant
 autocorrelation, p<0.001); an independent next-generation-matrix re-derivation of R0 from the
 model's own Jacobian, proving the R0=1 threshold is alpha-independent for alpha in (0,1].
-**Not completed**: a genuine dimensional-consistency question was found (mu is a true month^-1
-constant while sigma/gamma/d carry no alpha-dependent rescaling despite alpha!=1, and R0's
-formula sums them) and the task halted with `FRACTIONAL_R0_PARAMETERIZATION_CONFLICT` per
-explicit instruction, rather than resolving it silently. No R0 value is certified as a final,
-manuscript-ready epidemiological result. `docs/METHOD_DECISION_LOG.md` D027 has the full
-account and both candidate resolution paths, pending a decision.
+**Not completed at that point**: a genuine dimensional-consistency question was found (mu is a
+true month^-1 constant while sigma/gamma/d carry no alpha-dependent rescaling despite alpha!=1,
+and R0's formula sums them) and the task halted with `FRACTIONAL_R0_PARAMETERIZATION_CONFLICT`
+per explicit instruction, rather than resolving it silently. `docs/METHOD_DECISION_LOG.md` D027
+has the full account.
+
+## Dimensional consistency audit and conflict resolution (2026-08-15, continuation)
+
+See `docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md` and `docs/METHOD_DECISION_LOG.md` D028.
+`FRACTIONAL_R0_PARAMETERIZATION_CONFLICT` is **RESOLVED**: an explicit common reference-time
+scaling (`tau0=1 month`, applied uniformly to the whole vector field) resolves the dimensional
+mismatch exactly for any alpha in (0,1], leaves every existing trajectory numerically unchanged
+(difference = 0.0 exactly; no recalibration performed or required), and leaves R0 and the
+Matignon stability classification exactly invariant (proved algebraically and confirmed
+numerically for non-trivial scaling factors). D028 also corrects a factual error in the prior
+version of `R0_STABILITY_ANALYSIS_NOTE.md`: the full 33-solution `FULL_PROFILE_DIAGNOSTIC_POOL`
+contains 2 solutions with R0<1 (poor-fit profile probes) and must never be described as
+uniformly R0>1; only the `NEAR_EQUIVALENT_ADMISSIBLE_SET` (delta calibration RMSE<=1%, n=25) has
+R0>1 in all 25 solutions. Formal stability result over that admissible set (each solution's own
+fitted alpha, commensurate Matignon criterion): 0 stable, 25 unstable, 0 ambiguous.

@@ -1,11 +1,24 @@
 # R0 / Stability Analysis Note
 
-Status: **PARTIAL — STOPPED at Part C with `FRACTIONAL_R0_PARAMETERIZATION_CONFLICT`.**
-Parts A and B (below) are complete, executed, and tested. Part C's algebraic derivation is
-complete and verified, but surfaces a genuine, previously-undisclosed-at-this-level of
-scrutiny dimensional-consistency question that this note flags rather than resolves — per
-this task's own explicit instruction and the reviewer role's "STOP and flag the conflict
-rather than resolving it silently."
+Status: **RESOLVED.** `FRACTIONAL_R0_PARAMETERIZATION_CONFLICT` (raised in the original version
+of this note) is resolved by `docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md`, which audits an
+explicit common reference-time scaling (`tau0 = 1 month`) and shows it (a) resolves the
+dimensional mismatch exactly, for every mechanism, for any `alpha in (0,1]`; (b) leaves every
+existing trajectory numerically unchanged (max absolute/relative/RMSE difference = 0.0 exactly,
+tested); and (c) leaves R0 and the Matignon stability classification exactly invariant (proved
+algebraically and confirmed numerically for non-trivial scaling factors, not just the trivial
+`c=1` case relevant here). See `docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md` for the full audit
+and Steps 5-7 below for the resulting formal stability result.
+
+**CORRECTION (superseding an earlier error in this note):** an earlier version of this note's
+closing paragraph stated the qualitative finding using looser language that could be read as
+"R0 stayed above 1 throughout the full 33-solution pool." **That reading is false.** The full
+`FULL_PROFILE_DIAGNOSTIC_POOL` (n=33) contains **2 solutions with R0<1** (deliberately poor-fit
+profile probes, `R0_min=0.6393`) — see Step 6 below. Only the pre-registered
+`NEAR_EQUIVALENT_ADMISSIBLE_SET` (delta calibration RMSE `<=1%`, n=25, the same tolerance already
+established descriptively in `IDENTIFIABILITY_AUDIT_REPORT.md` Sec 5) has R0>1 in every one of
+its 25 solutions. These two sets are now named and reported separately everywhere in this note
+and must never be conflated.
 
 No single-point R0 is reported anywhere in this note. Beta, gamma, and d are never named
 individually as precise rates outside of their role as inputs to the R0 functional or as raw,
@@ -194,72 +207,105 @@ borrowed analogy, and it is exactly the logic the manuscript's own Section 2.7 a
 (R0<1 stable / R0>1 unstable, alongside a separately-stated Matignon criterion) — this
 derivation independently verifies that usage is legitimate for this model structure.
 
-### Parameter units under the Caputo formulation — the conflict
+### Parameter units under the Caputo formulation — RESOLVED
 
-This is where a genuine, unresolved issue surfaces, per the explicit instruction to verify
-this and STOP if inconsistent.
+The original version of this note flagged a genuine dimensional question: `beta, sigma, gamma,
+d` are DE-estimated with no `alpha`-dependent rescaling despite `alpha != 1`, while `mu` is
+fixed externally as a genuine `month^-1` constant, and the R0 formula sums them directly
+(`sigma+mu`, `gamma+mu+d`).
 
-For `C D_t^alpha S(t)` to be dimensionally well-posed, the right-hand side must carry units of
-`[S]/[time]^alpha`. Written as `Lambda - beta*S*I/N - mu*S` with `beta`, `mu` treated as plain
-`[time]^-1` rate constants (the convention this entire project has used throughout — no
-`k^{1-alpha}` rescaling is applied anywhere in `src/tb_seit/model.py` or
-`src/tb_seit/solver.py`; confirmed by reading the implementation, not assumed), the right-hand
-side actually carries units of `[S]/[time]`, not `[S]/[time]^alpha`, whenever `alpha != 1`. This
-is a well-known, frequently-unaddressed ambiguity in the applied Caputo-fractional-epidemiology
-literature (the manuscript itself gives no unit for beta/sigma/gamma/d anywhere, per
-`docs/ASSUMPTIONS_REGISTER.md` A10-A13, `PARTIALLY_SPECIFIED`) — this project's implementation
-follows that same, already-disclosed convention, not a new one invented for R0.
+`docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md` resolves this by making the implicit convention
+explicit rather than choosing a new one: introduce a reference timescale `tau0 = 1 month` and
+write `C D_t^alpha X = tau0^(1-alpha) * F(X;theta)`, where `F` is built entirely from ordinary,
+uniformly-`month^-1` rate constants (`beta, sigma, gamma, d, mu` — none individually rescaled).
+This is shown (Phase 1 of that document) to resolve the dimensional mismatch **exactly**, for
+every one of the six mechanisms (recruitment, transmission, progression, treatment, natural
+mortality, TB mortality), for any `alpha in (0,1]` — so `sigma+mu` and `gamma+mu+d` are, under
+this formulation, always sums of two genuinely same-dimensioned `month^-1` quantities; the
+mixing concern is resolved, not merely bounded.
 
-**Why this specifically threatens the R0 formula (not just the ODE solver, which was already
-accepted with this caveat in prior stages)**: R0 is a *ratio* of products of rate constants, and
-is provably invariant under any *uniform* rescaling applied to all of beta, sigma, gamma, d, and
-mu together (multiplying every rate by the same constant `c` scales both numerator and
-denominator by `c^2`, leaving R0 unchanged) — so if a rigorous `k^{1-alpha}` correction were
-applied uniformly, R0's *value* would be unaffected. **The actual problem is `mu`**: `mu` is
-fixed *externally* from Brazilian life-expectancy data as a genuine `month^-1` constant
-(`docs/EXTERNAL_PARAMETER_CONTRACT.md`, D015) — it is not, and cannot self-consistently be,
-subject to whatever implicit `alpha`-dependent rescaling the DE-estimated `sigma`, `gamma` might
-carry if a rigorous fractional reparameterization were later applied to them alone. `sigma` and
-`mu` are summed directly (`sigma + mu`), and `gamma`, `mu`, `d` are summed directly
-(`gamma + mu + d`), inside the R0 formula itself. If `sigma`/`gamma`/`d` are secretly
-`month^-alpha` quantities (fitted with `alpha=0.964`, i.e. very close to but not exactly 1) while
-`mu` is unambiguously `month^-1`, these additive terms mix two different physical dimensions —
-and because `alpha` is close to 1 here, the numerical impact would likely be small, but "likely
-small" is not the same as "verified," and this project's own standard (flag disclosed
-uncertainty rather than average it away) requires surfacing this rather than asserting it away.
+**Numerically** (Phase 2 of that document), since this project's entire time axis is already in
+months, `tau0=1 month` makes the conversion factor `tau0^(1-alpha)` equal to exactly `1.0` for
+any `alpha` — so every existing trajectory (fractional and integer, calibration and validation,
+primary-seed parameters) is **numerically identical, not merely close**, under the corrected
+formulation: max absolute difference, max relative difference, and RMSE difference are all
+exactly `0.0` (`outputs/audits/dimensional_scaling_numerical_equivalence.csv`,
+`tests/test_dimensional_audit.py::test_numerical_equivalence_report_shows_zero_difference`). No
+recalibration is required or was performed.
 
-**FRACTIONAL_R0_PARAMETERIZATION_CONFLICT.** This is not resolved in this note. Two
-possible resolution paths exist and require an explicit decision (not one this review should
-make unilaterally): (a) accept the naive/shared convention used throughout this entire project
-and the manuscript, documenting the resulting R0 with this caveat attached; or (b) apply a
-uniform `k^{1-alpha}` reparameterization to all rate constants *including* re-deriving `mu` under
-that convention (not merely relabeling the already-fitted `sigma`/`gamma`/`d`), and recalibrate
-before recomputing R0. Neither path is chosen here.
+**R0 and the Matignon classification** (Phases 4-5 of that document) are proved algebraically to
+be exactly invariant under ANY common positive scaling factor `c` applied to the whole vector
+field (not just the trivial `c=1` relevant here): `F_alpha = c*F`, `V_alpha = c*V` implies
+`F_alpha * V_alpha^{-1} = F*V^{-1}` exactly (the scalar cancels through the matrix inverse), so
+R0 is unchanged; and `J_alpha = c*J` implies `arg(c*lambda) = arg(lambda)` for `c>0` (scaling a
+complex number by a positive real does not change its argument), so the Matignon angular
+classification is unchanged. Both confirmed numerically in `tests/test_dimensional_audit.py` for
+several non-trivial `c` values (0.3, 2.5, 3.0, 7.7, 10.0), not just `c=1`.
 
-### What remains true regardless of this conflict
+**Conclusion: `FRACTIONAL_R0_PARAMETERIZATION_CONFLICT` is resolved. The R0 formula, its already-
+reported values (Step 2/Part A), and the alpha-independence proof above all stand exactly as
+previously computed — nothing numeric changes. What changed is that the dimensional legitimacy
+of using this formula for `alpha != 1` is now proved explicitly, rather than left as an open
+question.**
 
-The threshold-alpha-independence proof above (R0=1 is the fractional stability boundary for
-alpha in (0,1], regardless of dimensional convention) is a statement about the *algebraic
-structure* of the model and holds under either resolution path. Separately: **every R0 value in
-the near-equivalent envelope (Step 2/Part A) that falls within any RMSE-degradation band up to
-5% is greater than 1** (band minima: 1.176, 1.168, 1.154, 1.154, 1.123 respectively, for the
-0.1%-5% bands) — R0 does not approach the threshold of 1 anywhere within the range of solutions
-that fit the calibration data reasonably well; only the most extreme, poorly-fitting profile
-probe points (RMSE degraded by >100%) produce R0 values near or below 1. Given R0's provable
-invariance to *uniform* rescaling (shown above), and given `mu` is small relative to `sigma`/
-`gamma` across the entire near-equivalent pool (bounding how much the `mu`-mixing issue could
-plausibly move R0), the qualitative conclusion **"the disease-free equilibrium is unstable
-(R0>1, persistent transmission) across the entire near-equivalent solution envelope, for every
-alpha value used in this project"** is very likely robust to the unresolved dimensional
-question — but this is stated as a qualitative, hedged read of the evidence, not as the
-formally verified, ready-for-manuscript numeric result the task requested, which remains
-blocked on resolving the conflict above.
+## Step 6 — R0 evidence sets (corrected, mandatory separation)
 
-## What was NOT completed in this task
+`scripts/r0_evidence_set_and_stability.py` -> `outputs/identifiability/R0_evidence_set_classification.csv`.
+Two sets, never to be conflated:
 
-Per the STOP: no R0 confidence interval or bootstrap was constructed (also explicitly
-out-of-scope per the user's Part B instruction); no final numeric R0 range was certified as the
-formally verified fractional-consistent threshold; no final stability classification was issued
-as a manuscript-ready result. Parts A, B, and the NGM/Matignon algebraic derivation in Part C are
-complete, tested, and usable as-is; only the units-conflict resolution and the resulting final
-numeric certification are pending a decision.
+```
+R0_EVIDENCE_SETS
+  FULL_PROFILE_DIAGNOSTIC_POOL         (all 33 profile+multiseed solutions, unfiltered)
+    n=33   R0 in [0.6393, 1.6149]   median=1.1735   IQR=[1.1662,1.1816]
+    n(R0<1) = 2      n(R0>1) = 31
+
+  NEAR_EQUIVALENT_ADMISSIBLE_SET        (delta calibration RMSE <= 1%, pre-registered
+                                          tolerance, IDENTIFIABILITY_AUDIT_REPORT.md Sec 5)
+    n=25   R0 in [1.1542, 1.1892]   median=1.1735   IQR=[1.1682,1.1770]
+    n(R0<1) = 0      n(R0>1) = 25
+```
+
+Across the predefined near-equivalent solution set (delta calibration RMSE <=1%), the R0
+functional ranged from 1.1542 to 1.1892 (all 25 solutions R0>1); this is a
+**practical-identifiability envelope / near-equivalent solution range, not a confidence
+interval**. The full diagnostic pool additionally contains 2 solutions (of 33) with R0<1 — both
+are deliberately poor-fit profile probes (RMSE degraded far beyond the admissible tolerance) and
+are reported for completeness (Step 7), not as evidence bearing on the primary conclusion.
+
+## Step 7 — Formal stability result
+
+`scripts/r0_evidence_set_and_stability.py` -> `outputs/audits/dfe_stability_by_evidence_set.csv`.
+For every solution, using its own fitted `alpha` (not a fixed value), the commensurate
+Caputo/Matignon criterion `|arg(lambda_i)| > alpha*pi/2` is applied to `J_EI` at the DFE:
+
+```
+DFE_STABILITY -- NEAR_EQUIVALENT_ADMISSIBLE_SET (n=25, the primary evidence set)
+  n_stable = 0    n_unstable = 25    n_ambiguous = 0
+  angular margin (|arg(lambda)| - alpha*pi/2): min=-1.5199 rad, max=-1.5093 rad
+  (all margins negative and of comparable magnitude -- every admissible solution is unstable,
+   with an angular margin around -1.51 rad, i.e. roughly -alpha*pi/2, since the binding
+   eigenvalue is real and positive, arg=0, in every one of these R0>1 solutions)
+
+DFE_STABILITY -- FULL_PROFILE_DIAGNOSTIC_POOL (n=33, PROFILE_DIAGNOSTIC_ONLY)
+  n_stable = 2    n_unstable = 31    n_ambiguous = 0
+  angular margin: min=-1.5482 rad, max=+1.5710 rad
+  (the 2 stable points are exactly the 2 R0<1 deliberately-poor-fit profile probes from Step 6;
+   PROFILE_DIAGNOSTIC_ONLY -- these do not inform the primary mechanistic conclusion)
+```
+
+**Formal result (near-equivalent admissible set, the primary evidence set): the disease-free
+equilibrium is locally asymptotically unstable under the commensurate Caputo/Matignon criterion
+in all 25 of 25 near-equivalent solutions**, using each solution's own fitted alpha. This
+mirrors the R0>1 classification exactly (as proved in Step 4/5: for this model, with alpha in
+(0,1], the two criteria are mathematically equivalent, not merely correlated). Zero ambiguous
+cases.
+
+## What was completed / not completed
+
+Completed and tested: the reference-time dimensional audit (all 4 phases of
+`docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md`), the corrected evidence-set separation, and the
+formal per-solution stability classification over the near-equivalent admissible set. Per
+instruction, still explicitly out of scope: any R0 confidence interval / bootstrap (a future,
+separate, time-dependence-aware resampling experiment would be required, not attempted here);
+recalibration (not required — the numerical-equivalence check found zero difference); optimal
+control; manuscript edits.

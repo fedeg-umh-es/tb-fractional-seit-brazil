@@ -577,3 +577,47 @@ decision (accept the existing shared naive convention with a disclosed caveat, v
 uniform fractional reparameterization including re-deriving mu) that is not this review's to
 make unilaterally. See `R0_STABILITY_ANALYSIS_NOTE.md` for the full derivation and both
 candidate resolution paths.
+
+---
+
+## D028
+
+Date: 2026-08-15
+
+Decision:
+`FRACTIONAL_R0_PARAMETERIZATION_CONFLICT` (D027) is RESOLVED via
+`docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md`: an explicit common reference-time scaling
+`C D_t^alpha X = tau0^(1-alpha) * F(X;theta)`, `tau0 = 1 month`, applied uniformly to the ENTIRE
+epidemiological vector field (never to individual parameters). Proved (Phase 1) to resolve the
+dimensional mismatch exactly for all six mechanisms (recruitment, transmission, progression,
+treatment, natural mortality, TB mortality), for any alpha in (0,1]. Verified numerically
+(Phase 2) that this leaves every existing fractional/integer, calibration/validation trajectory
+exactly unchanged (max abs/relative/RMSE difference = 0.0, not merely small -- since
+tau0^(1-alpha)=1.0^(1-alpha)=1.0 exactly, this project's whole time axis already being in
+months). No recalibration performed or required. Proved (Phases 4-5) that R0 and the Matignon
+angular classification are exactly invariant under ANY common positive scaling factor, not only
+the trivial c=1 relevant here (F_alpha*V_alpha^-1 = F*V^-1 exactly; arg(c*lambda)=arg(lambda)
+for c>0) -- confirmed numerically for several non-trivial c values.
+
+Also corrects a factual error introduced in D027/the prior version of
+`R0_STABILITY_ANALYSIS_NOTE.md`: that note's closing paragraph could be read as claiming R0
+stayed above 1 across the full 33-solution profile+multiseed pool. This is false -- the full
+pool (`FULL_PROFILE_DIAGNOSTIC_POOL`, n=33) contains 2 solutions with R0<1 (deliberately
+poor-fit profile probes). Only the pre-registered `NEAR_EQUIVALENT_ADMISSIBLE_SET` (delta
+calibration RMSE <=1%, n=25, unchanged tolerance from `IDENTIFIABILITY_AUDIT_REPORT.md` Sec 5)
+has R0>1 in all 25 solutions; these two sets are now named and reported separately, permanently,
+and must never be conflated again.
+
+Formal stability result over the near-equivalent admissible set (the primary evidence set, using
+each solution's own fitted alpha): 0 stable, 25 unstable, 0 ambiguous
+(`outputs/audits/dfe_stability_by_evidence_set.csv`). The full diagnostic pool's stability
+result (2 stable, 31 unstable) is labeled PROFILE_DIAGNOSTIC_ONLY and does not inform the
+primary conclusion.
+
+Reason:
+Completes the resolution requested for D027's open conflict via the specific reference-time
+audit method specified, without recalibrating (the numerical-equivalence test confirmed
+recalibration was not mathematically required) and without changing bounds, seeds,
+observations, or the forecasting model. The evidence-set correction is recorded here because it
+is a factual correction to previously-committed, previously-reported project evidence, not
+merely a stylistic change.
