@@ -4,9 +4,7 @@
 
 This study is an independent, reproducible reimplementation and methodological audit of a fractional-order Susceptible–Exposed–Infectious–Treated (SEIT) compartmental model applied to monthly tuberculosis surveillance data in Brazil. The original numerical scripts and exact computational configurations associated with earlier historical publications on this model are unrecoverable and unavailable. Consequently, the historical manuscript is treated as a conceptual reference rather than an empirical source of truth (`REPRODUCTION_MODE = INDEPENDENT_REIMPLEMENTATION`). Methodological specifications, parameter bounds, calibration routines, identifiability protocols, and forecasting evaluations are established from explicit, auditable procedures.
 
-The methodological investigation addresses a two-tier scientific structure:
-1. **Primary forecasting spine**: Does the empirical improvement achieved by the fractional-order SEIT formulation over its independently re-estimated integer-order counterpart translate into positive forecasting skill when evaluated against standard forecasting baselines outside the SEIT model family?
-2. **Delimiting mechanistic axis**: Which mechanistic and dynamical quantities remain identifiable and scientifically interpretable given potential non-uniqueness and weak identifiability in individual parameter estimates?
+The study is designed to assess whether within-family improvements over an independently re-estimated integer-order SEIT comparator extend to external forecasting skill against standard baselines, and to identify which derived mechanistic properties remain robust when individual rate parameters are weakly identified.
 
 Optimal-control interventions and associated historical burden-reduction estimates are outside the scope of this study and were not reimplemented.
 
@@ -18,9 +16,9 @@ The dataset is partitioned into two distinct periods:
 * **Calibration window**: January 2001 to December 2020 ($N_{\text{cal}} = 240$ months).
 * **Validation window**: January 2021 to December 2022 ($N_{\text{val}} = 24$ months).
 
-The total population series $N(t)$ serves as the denominator in the standard incidence force-of-infection term. For the calibration window (2001–2020), $N(t)$ is obtained directly from the surveillance dataset. For out-of-sample simulation across 2021–2022, to prevent potential retrospective information leakage arising from post-2022 census recalibrations, $N(t)$ is projected forward using a log-linear trend estimated strictly on 2001–2020 demographic data:
-$$\ln N(t) = a_0 + a_1 t, \quad t \le t_{\text{cal}}$$
-No demographic data from 2021 onward are utilized during calibration or parameter selection.
+The total population series $N(t)$ serves as the denominator in the standard incidence force-of-infection term. For the calibration window (2001–2020), $N(t)$ is obtained directly from the surveillance dataset. For out-of-sample simulation, population values beyond each training endpoint were generated using a log-linear trend fitted exclusively to population observations available within the corresponding training window:
+$$\ln N(t) = a_0 + a_1 t, \quad t \le t_{\text{train}}$$
+No population observations beyond the relevant training endpoint were used.
 
 Surveillance records from Brazil's National System for Notifiable Diseases (SINAN) report newly diagnosed active tuberculosis cases aggregated over monthly intervals. These records represent an incidence flow rather than the standing stock of infectious individuals $I(t)$. Equating monthly case reports directly to $I(t)$ constitutes a stock-flow mis-specification. To accurately represent the data-generating mechanism, monthly reported cases are mapped to the transition flow from the exposed compartment $E$ to the infectious compartment $I$. An auxiliary fractional state accumulator $C(t)$ tracks cumulative incidence:
 $$^C D_t^\alpha C(t) = \tau_0^{1-\alpha} \sigma E(t), \quad C(0) = 0$$
@@ -46,20 +44,20 @@ $$\begin{aligned}
 \end{aligned}$$
 
 The parameters and their structural roles are defined as follows:
-* $\mu$: Natural all-cause mortality rate, fixed externally as a demographic constant across the entire 2001–2022 span: $\mu = \frac{1}{74 \times 12} \approx 0.001126\text{ month}^{-1}$, corresponding to an average Brazilian life expectancy of 74 years during the calibration period (excluding COVID-19 pandemic mortality anomalies).
+* $\mu$: Natural all-cause mortality rate, fixed externally according to the frozen demographic contract: $\mu = \frac{1}{74 \times 12} \approx 0.001126\text{ month}^{-1}$.
 * $\Lambda$: Demographic recruitment into the susceptible population, fixed by demographic closure as $\Lambda = \mu \bar{N}_{\text{cal}}$, where $\bar{N}_{\text{cal}}$ is the mean population over the calibration window (2001–2020).
 * $\beta$: Transmission rate coefficient, representing effective contacts per infectious individual per month. Search bounds: $\beta \in [0.01, 1.00]\text{ month}^{-1}$.
-* $\sigma$: Rate of progression from latent infection $E$ to active infectious disease $I$. Search bounds: $\sigma \in [0.01, 0.50]\text{ month}^{-1}$. The single-exponential compartment structure is recognized as an epidemiological simplification that cannot simultaneously capture fast initial progression and slow lifetime reactivation.
-* $\gamma$: Removal rate from active disease $I$ into the treated compartment $T$. Search bounds: $\gamma \in [0.05, 0.30]\text{ month}^{-1}$ (primary range anchored to the standard 6-month WHO treatment regimen plus Brazilian median diagnostic delays; $[0.01, 0.50]\text{ month}^{-1}$ retained as a sensitivity arm).
-* $d$: Tuberculosis-attributable excess mortality hazard rate. Search bounds: $d \in [0.0001, 0.05]\text{ month}^{-1}$, consistent with documented cohort case-fatality rates under competing hazards.
-* $\alpha$: Fractional derivative order. Search bounds: $\alpha \in [0.50, 1.00]$ (primary range; $[0.70, 1.00]$ evaluated as a sensitivity arm).
+* $\sigma$: Rate of progression from latent infection $E$ to active infectious disease $I$. Search bounds: $\sigma \in [0.01, 0.50]\text{ month}^{-1}$. The single-exponential compartment structure is recognized as an epidemiological simplification.
+* $\gamma$: Removal rate from active disease $I$ into the treated compartment $T$. Search bounds: $\gamma \in [0.05, 0.30]\text{ month}^{-1}$ (frozen primary calibration range; $[0.01, 0.50]\text{ month}^{-1}$ retained as a sensitivity arm).
+* $d$: Tuberculosis-attributable excess mortality hazard rate. Search bounds: $d \in [0.0001, 0.05]\text{ month}^{-1}$ (frozen primary calibration range).
+* $\alpha$: Fractional derivative order. Search bounds: $\alpha \in [0.50, 1.00]$ (frozen primary calibration range; $[0.70, 1.00]$ evaluated as a sensitivity arm).
 
 Initial conditions at $t = 0$ are determined analytically from the initial observed incidence flow $y_0 = y(t_0)$ and initial population $N(t_0)$, introducing zero free optimization dimensions:
 $$E(0) = \frac{y_0}{\sigma}, \quad I(0) = \frac{y_0}{\gamma + \mu + d}, \quad T(0) = 0, \quad S(0) = N(t_0) - E(0) - I(0), \quad C(0) = 0$$
 
 ### 2.4 Numerical solution and calibration
 
-The system of fractional differential equations is solved using the Diethelm–Ford–Freed predictor-corrector algorithm (Adams–Bashforth–Moulton PECE scheme for Caputo fractional initial-value problems). Numerical integration is conducted with a fixed step size of $h = 1.0\text{ month}$, verified prior to calibration to achieve numerical convergence within 0.5% relative tolerance compared to sub-monthly refinements ($h = 0.25$).
+The system of fractional differential equations is solved using the Diethelm–Ford–Freed predictor-corrector algorithm (Adams–Bashforth–Moulton PECE scheme for Caputo fractional initial-value problems). Numerical integration used a fixed step size of $h = 1.0\text{ month}$, selected following the pre-calibration numerical-convergence audit documented in the repository.
 
 Model calibration is performed by optimizing the free parameter vector $\theta = (\beta, \sigma, \gamma, d, \alpha)$ using Differential Evolution (`scipy.optimize.differential_evolution`). The algorithm configuration is pre-registered as:
 * Strategy: `best1bin`
@@ -78,7 +76,7 @@ To guarantee determinism and reproducibility, pseudorandom number generators are
 * Canonical primary seed: `20260815`
 * Diagnostic seeds: `20260816`, `20260817`, `20260818`, `20260819`
 
-The primary scientific parameter estimates are permanently tied to the canonical primary seed; diagnostic seeds serve strictly for identifiability and robustness verification.
+The canonical primary calibration run was tied to seed `20260815`; the diagnostic seeds were used exclusively for identifiability and robustness analyses.
 
 ### 2.5 Integer-order comparator
 
@@ -173,7 +171,7 @@ where $y_{i,h}$ is the observed tuberculosis notification count at origin $i$ pl
 Relative forecasting skill of model $M$ with respect to benchmark baseline $B$ at horizon $h$ is defined as:
 $$\text{Skill}_{\text{RMSE}}(M, B, h) = 1 - \frac{\text{RMSE}_M(h)}{\text{RMSE}_B(h)}$$
 $$\text{Skill}_{\text{MAE}}(M, B, h) = 1 - \frac{\text{MAE}_M(h)}{\text{MAE}_B(h)}$$
-Positive skill ($\text{Skill} > 0$) denotes that model $M$ achieves lower error than baseline $B$, whereas negative skill ($\text{Skill} < 0$) indicates that the baseline achieves superior forecast accuracy.
+Positive skill ($\text{Skill} > 0$) denotes that model $M$ achieves lower error than baseline $B$, whereas negative skill ($\text{Skill} < 0$) indicates that the baseline has lower error for that metric and horizon.
 
 To summarize performance horizons without implying universal predictability limits, two descriptive horizon indices are defined:
 * $H_{\text{relax}}$: The maximum horizon $h \in \{1, \dots, 12\}$ at which model $M$ achieves positive skill ($\text{Skill} > 0$) relative to baseline $B$.
@@ -185,6 +183,6 @@ These indices function strictly as empirical summary descriptors of this specifi
 
 The comparative forecasting evaluations reported in this study are descriptive sample metrics across the 13 evaluated rolling origins. 
 
-Formal hypothesis testing for superior predictive ability (such as Diebold–Mariano or Giacomini–White tests with heteroskedasticity- and autocorrelation-consistent covariance estimation) requires a pre-registered statistical framework accounting for the complex serial dependence structure of multi-step rolling-origin forecast error differentials. Such formal inferential testing was not pre-registered and is deferred to future work. 
+The dependence structure of the rolling-origin forecast errors and horizon-specific loss differentials was not formally characterised in the prespecified evaluation protocol. Accordingly, no post-hoc predictive-accuracy tests were added to the present analysis. Any future inferential assessment would require an explicit horizon-specific, dependence-aware protocol defined before testing.
 
 Accordingly, forecasting comparisons are presented without claims of formal statistical significance or inferential superiority. Methodological findings strictly distinguish between empirical sample performance across the evaluated origins and generalizable claims regarding forecasting efficacy.

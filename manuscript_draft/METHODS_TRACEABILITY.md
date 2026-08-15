@@ -18,8 +18,8 @@ docs/EXTERNAL_PARAMETER_CONTRACT.md
 + results_canonical/01_model_contract/table_model_contract_status.csv
 
 Specifically:
-- mu = 1 / (74 * 12) ≈ 0.001126 month^-1 (IBGE life expectancy anchor ~74 years)
-- gamma bounds = [0.05, 0.30] month^-1 (primary search range anchored to WHO 6-month regimen + Brazilian diagnostic delays)
+- mu = 1 / (74 * 12) ≈ 0.001126 month^-1 (frozen demographic contract)
+- gamma bounds = [0.05, 0.30] month^-1 (frozen primary calibration range; [0.01, 0.50] sensitivity arm)
 
 This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTATION) and does not represent an inconsistency in the frozen evidence or scientific code.
 ```
@@ -31,7 +31,7 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
 ### 2.1 Study design and independent-reimplementation scope
 
 * **SUBSECTION**: 2.1 Study design and independent-reimplementation scope
-* **PURPOSE**: State study objectives, define the scope as an independent reimplementation and methodological audit, declare unrecoverability of historical code, articulate the two-tier dominant research question, and establish boundaries regarding optimal control.
+* **PURPOSE**: State study objectives, define the scope as an independent reimplementation and methodological audit, declare unrecoverability of historical code, articulate the core design assessment (within-family vs external baselines; robust mechanistic properties under weak identifiability), and establish boundaries regarding optimal control.
 * **SOURCE FILES**:
   * `PROJECT_CANON.md` (Sections 1–3)
   * `REPRODUCIBILITY_STATUS.md` (Stage summary)
@@ -59,7 +59,7 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
 ### 2.2 Data and observation mapping
 
 * **SUBSECTION**: 2.2 Data and observation mapping
-* **PURPOSE**: Document the empirical data series, temporal partitioning, population denominator handling, and the critical flow-based observation model mapping.
+* **PURPOSE**: Document the empirical data series, temporal partitioning, train-only population extrapolation, and the critical flow-based observation model mapping.
 * **SOURCE FILES**:
   * `DATA_PROVENANCE.md`
   * `docs/MODEL_CONTRACT.md` (Sections 1, 2, 6)
@@ -75,11 +75,11 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
   * $N = 264$ monthly observations (2001-01 to 2022-12)
   * Calibration window: 2001-01 to 2020-12 ($N_{\text{cal}} = 240$)
   * Validation window: 2021-01 to 2022-12 ($N_{\text{val}} = 24$)
-  * Population $N(t)$: Observed for 2001–2020; log-linear extrapolation for 2021–2022.
+  * Population $N(t)$: Observed for 2001–2020; log-linear extrapolation fitted strictly on train-only data for out-of-sample periods.
   * Observation equation: $\hat{y}_k = C(t_{k+1}) - C(t_k)$ with $^C D_t^\alpha C = \tau_0^{1-\alpha} \sigma E(t)$.
 * **ASSUMPTIONS**:
   * Monthly SINAN notifications represent incidence flow ($E \to I$), not the standing stock $I(t)$.
-  * Validation population extrapolation eliminates post-2022 census retrospective leakage risk.
+  * Train-only log-linear population extrapolation eliminates lookahead leakage without requiring unverified causal assumptions about census revisions.
 * **DOCUMENTATION GAPS**:
   * BLOCKING: None.
   * NON_BLOCKING: Exact IBGE table provenance of the original `populacao` column is unrecorded in `DATA_PROVENANCE.md`, but fully neutralized by the log-linear train-only extrapolation rule (`PROVENANCE_REQUIRED` fallback).
@@ -93,7 +93,7 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
 ### 2.3 Fractional SEIT formulation
 
 * **SUBSECTION**: 2.3 Fractional SEIT formulation
-* **PURPOSE**: State the complete mathematical system of fractional differential equations, Caputo derivative operator, reference-time scaling, state definitions, non-free initial condition derivations, and parameter bounds.
+* **PURPOSE**: State the complete mathematical system of fractional differential equations, Caputo derivative operator, reference-time scaling, state definitions, non-free initial condition derivations, and frozen parameter bounds.
 * **SOURCE FILES**:
   * `docs/MODEL_CONTRACT.md` (Sections 3–5)
   * `docs/EXTERNAL_PARAMETER_CONTRACT.md` (Sections 2, 4)
@@ -107,14 +107,14 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
   * `tests/test_seit_model.py`
 * **KEY CONFIGURATION VALUES USED**:
   * Reference timescale: $\tau_0 = 1.0\text{ month}$ ($\tau_0^{1-\alpha} = 1.0$)
-  * Demographic mortality: $\mu = 1/(74 \times 12) \approx 0.001126\text{ month}^{-1}$
+  * Demographic mortality: $\mu = 1/(74 \times 12) \approx 0.001126\text{ month}^{-1}$ (frozen demographic contract)
   * Demographic recruitment: $\Lambda = \mu \bar{N}_{\text{cal}}$
   * Parameter search bounds:
     * $\beta \in [0.01, 1.00]\text{ month}^{-1}$
     * $\sigma \in [0.01, 0.50]\text{ month}^{-1}$
-    * $\gamma \in [0.05, 0.30]\text{ month}^{-1}$ (primary; $[0.01, 0.50]$ sensitivity)
-    * $d \in [0.0001, 0.05]\text{ month}^{-1}$
-    * $\alpha \in [0.50, 1.00]$ (primary; $[0.70, 1.00]$ sensitivity)
+    * $\gamma \in [0.05, 0.30]\text{ month}^{-1}$ (frozen primary range; $[0.01, 0.50]$ sensitivity)
+    * $d \in [0.0001, 0.05]\text{ month}^{-1}$ (frozen primary range)
+    * $\alpha \in [0.50, 1.00]$ (frozen primary range; $[0.70, 1.00]$ sensitivity)
   * Initial conditions: $E(0) = y_0/\sigma$, $I(0) = y_0/(\gamma+\mu+d)$, $T(0) = 0$, $S(0) = N(t_0) - E(0) - I(0)$, $C(0) = 0$.
 * **ASSUMPTIONS**:
   * Exponential residence times within compartments; single-compartment $E$ represents a simplified average progression.
@@ -125,6 +125,7 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
 * **CLAIM-BOUNDARY RISKS**:
   * Reference-time scaling must be presented as mathematical dimensional consistency, not a post-hoc tuning factor.
   * $\alpha < 1$ must not be equated to proof of biological memory.
+  * Unverified external literature justifications for bounds are omitted from Methods.
 * **PRECEDENCE NOTES**:
   * `DOCUMENTARY_PRECEDENCE_NOTE`: $\mu = 1/(74 \times 12)$ and $\gamma \in [0.05, 0.30]$ supersede `docs/MODEL_CONTRACT.md` placeholders per `docs/EXTERNAL_PARAMETER_CONTRACT.md`.
 
@@ -146,18 +147,19 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
   * `tests/test_seed_contract.py`
 * **KEY CONFIGURATION VALUES USED**:
   * Solver: Diethelm–Ford–Freed fractional Adams–Bashforth–Moulton PECE
-  * Step size: $h = 1.0\text{ month}$
+  * Step size: $h = 1.0\text{ month}$, selected following pre-calibration numerical convergence audit
   * DE strategy: `best1bin`, popsize=15, mutation=(0.5, 1.0), recombination=0.7, tol=0.01, maxiter=1000, polish=False
   * Calibration objective: Calibration-window flow RMSE
-  * Primary seed: `20260815`
+  * Primary canonical run seed: `20260815`
   * Diagnostic seeds: `20260816`, `20260817`, `20260818`, `20260819`
 * **ASSUMPTIONS**:
-  * Step size $h=1.0$ provides sufficient accuracy based on pre-calibration convergence audit (<0.51% relative error vs $h=0.25$).
+  * Step size $h=1.0$ selected based on pre-calibration convergence audit in repository.
 * **DOCUMENTATION GAPS**:
   * BLOCKING: None.
   * NON_BLOCKING: None.
 * **CLAIM-BOUNDARY RISKS**:
-  * No calibration outcome numbers (e.g. fitted RMSE or parameters) in Methods.
+  * No numerical audit outcomes or calibration result numbers in Methods.
+  * Canonical seed designates the primary calibration run, not a privileged scientific estimate of individual rate parameters.
 * **PRECEDENCE NOTES**: None.
 
 ---
@@ -360,7 +362,7 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
 ### 2.12 Statistical interpretation boundary
 
 * **SUBSECTION**: 2.12 Statistical interpretation boundary
-* **PURPOSE**: State clearly the descriptive nature of rolling-origin metrics, explain why formal inferential tests (e.g. Diebold–Mariano) are deferred, and establish strict language boundaries prohibiting claims of statistical significance.
+* **PURPOSE**: State clearly the descriptive nature of rolling-origin metrics, explain why post-hoc inferential tests were omitted, and establish strict language boundaries prohibiting claims of statistical significance.
 * **SOURCE FILES**:
   * `manuscript_architecture/MANUSCRIPT_EVIDENCE_ARCHITECTURE.md` (Sections 4.1, 7)
   * `results_canonical/KNOWN_LIMITATIONS.md` (L10, L11)
@@ -373,10 +375,10 @@ This discrepancy is a documented superseded-document issue (SUPERSEDED_DOCUMENTA
   * `DM_TESTS = DEFERRED_NOT_PREREGISTERED`
   * `INFERENCE_STATUS = DESCRIPTIVE_ONLY`
 * **ASSUMPTIONS**:
-  * Multi-step rolling forecast error differentials exhibit serial and cross-origin dependence requiring pre-registered HAC modeling.
+  * Multi-step rolling forecast error differentials exhibit serial and cross-origin dependence requiring a pre-specified, dependence-aware testing protocol.
 * **DOCUMENTATION GAPS**:
   * BLOCKING: None.
-  * NON_BLOCKING: Formal HAC / DM inferential testing deferred to future work.
+  * NON_BLOCKING: Formal dependence-aware predictive-accuracy testing deferred to future work.
 * **CLAIM-BOUNDARY RISKS**:
   * Strictly forbid terms like "statistically significant", "significantly outperforms", or "confirmed superiority".
 * **PRECEDENCE NOTES**: None.
