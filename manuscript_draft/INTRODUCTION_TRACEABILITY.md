@@ -21,22 +21,30 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 
 ---
 
+## Consolidated Literature Verification Markers (4 Total)
+
+1. `[LITERATURE VERIFICATION REQUIRED: tuberculosis epidemiology and surveillance in Brazil]` (Paragraph 1)
+2. `[LITERATURE VERIFICATION REQUIRED: external-baseline evaluation of mechanistic epidemic forecasting models]` (Paragraph 1)
+3. `[LITERATURE VERIFICATION REQUIRED: fractional-order compartmental models in infectious-disease modelling]` (Paragraph 2)
+4. `[LITERATURE VERIFICATION REQUIRED: parameter and functional identifiability in epidemiological compartmental models]` (Paragraph 3)
+
+---
+
 ## Paragraph-by-Paragraph Traceability Matrix
 
 ### I1 — Scientific stakes and compartmental epidemic models (Paragraph 1)
 
 * **PARAGRAPH_ID**: I1
-* **RHETORICAL_ROLE**: Funnel top: Introduce the role of mechanistic compartmental models in epidemiology, establish the dual goals of mechanistic interpretation and forward projection, and introduce the distinction between historical goodness-of-fit and out-of-sample forecast accuracy.
+* **RHETORICAL_ROLE**: Funnel top: Introduce the role of mechanistic compartmental models in representing transmission and latent processes, establish the application context of tuberculosis in Brazil, and introduce the distinction between historical goodness-of-fit and out-of-sample forecast accuracy.
 * **STUDY_FACTS_USED**: Application context of Brazilian tuberculosis monthly surveillance records (2001–2022).
-* **GENERAL_SCIENTIFIC_CLAIMS**: Compartmental models are used for transmission analysis; TB is a public health burden in Brazil; historical calibration fit does not guarantee forward forecast accuracy.
+* **GENERAL_SCIENTIFIC_CLAIMS**: Compartmental models represent transmission and latent dynamics; TB is a public health challenge in Brazil; calibration fit does not guarantee forward forecast accuracy.
 * **LITERATURE_VERIFICATION_MARKERS**:
-  * `[LITERATURE VERIFICATION REQUIRED: role of compartmental epidemic modeling in public health]`
   * `[LITERATURE VERIFICATION REQUIRED: tuberculosis epidemiology and surveillance in Brazil]`
-  * `[LITERATURE VERIFICATION REQUIRED: evaluation of mechanistic vs phenomenological forecasting in epidemiology]`
+  * `[LITERATURE VERIFICATION REQUIRED: external-baseline evaluation of mechanistic epidemic forecasting models]`
 * **STUDY_QUESTION_SUPPORTED**: Motivates questions 1 and 2 (forecasting evaluation).
 * **PROMISE_TO_RESULTS**: Promises a rigorous out-of-sample forecast evaluation distinguishing fit from forward projection.
 * **OVERCLAIM_RISK**: None; no claims of model superiority or performance outcomes.
-* **NOVELTY_RISK**: None; standard foundational framing.
+* **NOVELTY_RISK**: None; functional framing without encylopedic generalizations.
 * **GENERALIZATION_RISK**: Kept to general mathematical epidemiological principles.
 
 ---
@@ -44,16 +52,15 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 ### I2 — Fractional-order extensions and the evaluation problem (Paragraph 2)
 
 * **PARAGRAPH_ID**: I2
-* **RHETORICAL_ROLE**: Funnel step 2: Introduce fractional-order differential equations as compartmental extensions, and identify the methodological problem of evaluating models solely against internal/nested integer-order ablations rather than external baselines.
+* **RHETORICAL_ROLE**: Funnel step 2: Introduce fractional-order operators as extensions introducing power-law temporal dependence, and identify the methodological problem of evaluating models solely against internal/nested integer-order ablations rather than external baselines.
 * **STUDY_FACTS_USED**: SEIT model family includes both fractional-order and integer-order formulations.
-* **GENERAL_SCIENTIFIC_CLAIMS**: Fractional derivatives provide power-law memory/residence-time kernels; internal ablations demonstrate within-family flexibility but do not evaluate external predictive utility.
+* **GENERAL_SCIENTIFIC_CLAIMS**: Fractional operators introduce power-law dependence; internal ablations demonstrate within-family flexibility but do not evaluate external predictive utility.
 * **LITERATURE_VERIFICATION_MARKERS**:
-  * `[LITERATURE VERIFICATION REQUIRED: fractional-order compartmental models in infectious disease dynamics]`
-  * `[LITERATURE VERIFICATION REQUIRED: benchmark selection and internal model comparisons in epidemiological forecasting]`
+  * `[LITERATURE VERIFICATION REQUIRED: fractional-order compartmental models in infectious-disease modelling]`
 * **STUDY_QUESTION_SUPPORTED**: Sets up Sub-question 1 (fractional vs. integer) and Sub-question 2 (external baselines).
 * **PROMISE_TO_RESULTS**: Promises comparative evaluation against both integer-order SEIT and external baselines.
 * **OVERCLAIM_RISK**: None; does not promise that fractional models are superior.
-* **NOVELTY_RISK**: Avoids asserting an unverified universal gap in the field ("few studies have..."); framed as a logical evaluation requirement.
+* **NOVELTY_RISK**: Avoids asserting an unverified universal gap in the field; framed as a logical evaluation requirement.
 * **GENERALIZATION_RISK**: Bounded to the evaluation logic of mathematical models.
 
 ---
@@ -61,31 +68,30 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 ### I3 — The parameter identifiability problem in calibration (Paragraph 3)
 
 * **PARAGRAPH_ID**: I3
-* **RHETORICAL_ROLE**: Funnel step 3: Establish the mechanistic challenge: aggregate incidence data frequently lead to practical non-identifiability of individual kinetic rate parameters despite low calibration errors and stable trajectory fits.
+* **RHETORICAL_ROLE**: Funnel step 3: Establish the mechanistic challenge: aggregate incidence data frequently lead to practical non-identifiability of individual kinetic rate parameters despite low calibration errors and stable trajectory fits, motivating our analytical separation of evidence levels.
 * **STUDY_FACTS_USED**: Calibration against aggregate monthly incidence series; estimation of kinetic parameters and derived $R_0$.
-* **GENERAL_SCIENTIFIC_CLAIMS**: Practical non-identifiability is common when calibrating compartmental models from single aggregate streams; trajectory stability can coexist with parameter indeterminacy; parameter identifiability, predictive identifiability, and functional identifiability are distinct.
+* **GENERAL_SCIENTIFIC_CLAIMS**: Practical non-identifiability is common when calibrating compartmental models from single aggregate streams; trajectory stability can coexist with parameter indeterminacy.
 * **LITERATURE_VERIFICATION_MARKERS**:
-  * `[LITERATURE VERIFICATION REQUIRED: parameter identifiability and unidentifiability in epidemiological models]`
-  * `[LITERATURE VERIFICATION REQUIRED: functional identifiability of composite epidemiological quantities]`
+  * `[LITERATURE VERIFICATION REQUIRED: parameter and functional identifiability in epidemiological compartmental models]`
 * **STUDY_QUESTION_SUPPORTED**: Sets up Sub-question 3 (mechanistic interpretability under non-identifiability).
 * **PROMISE_TO_RESULTS**: Promises an identifiability audit distinguishing parameter, predictive, and functional stability.
 * **OVERCLAIM_RISK**: None; does not report specific parameter or $R_0$ numerical ranges.
 * **NOVELTY_RISK**: Does not claim this is the first study to document non-identifiability.
-* **GENERALIZATION_RISK**: Framed as general identifiability theory in mathematical modeling.
+* **GENERALIZATION_RISK**: Framed as study analytical framework.
 
 ---
 
 ### I4 — Specific methodological framework (Paragraph 4)
 
 * **PARAGRAPH_ID**: I4
-* **RHETORICAL_ROLE**: Funnel narrow: Synthesize the dual-axis requirements (predictive vs. mechanistic) into an integrated evaluation framework.
+* **RHETORICAL_ROLE**: Funnel narrow: Articulate the study's specific evaluation framework that explicitly separates within-family flexibility from external forecasting competitiveness, and individual parameter recovery from derived functional stability.
 * **STUDY_FACTS_USED**: Study evaluates (i) integer vs fractional comparison, (ii) external multi-horizon baselines, and (iii) parameter vs functional identifiability.
-* **GENERAL_SCIENTIFIC_CLAIMS**: A comprehensive evaluation must formally separate within-family flexibility from external forecasting skill, and parameter recovery from derived functional stability.
+* **GENERAL_SCIENTIFIC_CLAIMS**: Stated as study evaluation requirements.
 * **LITERATURE_VERIFICATION_MARKERS**: None (analytical synthesis).
 * **STUDY_QUESTION_SUPPORTED**: Integrates all three study sub-questions.
 * **PROMISE_TO_RESULTS**: Establishes the exact dual-axis evaluation structure reported in Results.
 * **OVERCLAIM_RISK**: None.
-* **NOVELTY_RISK**: None; states study objectives analytically.
+* **NOVELTY_RISK**: None; states study objectives analytically without normative claims.
 * **GENERALIZATION_RISK**: None.
 
 ---
