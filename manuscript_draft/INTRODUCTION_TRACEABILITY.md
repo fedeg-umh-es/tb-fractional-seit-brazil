@@ -1,6 +1,6 @@
 # Introduction Traceability and Audit
 
-This document provides complete paragraph-by-paragraph audit traceability for `manuscript_draft/INTRODUCTION_DRAFT.md`, mapping rhetorical roles, study facts, literature markers, and guardrails directly to the approved manuscript architecture in `manuscript_architecture/INTRODUCTION_REQUIREMENTS.md` and `manuscript_architecture/MANUSCRIPT_EVIDENCE_ARCHITECTURE.md`.
+This document provides complete paragraph-by-paragraph audit traceability for `manuscript_draft/INTRODUCTION_DRAFT.md`, mapping rhetorical roles, study facts, verified literature citations, and guardrails directly to the approved manuscript architecture in `manuscript_architecture/INTRODUCTION_REQUIREMENTS.md` and `manuscript_architecture/MANUSCRIPT_EVIDENCE_ARCHITECTURE.md`.
 
 ---
 
@@ -11,6 +11,7 @@ INTRODUCTION_FUNNEL_COHERENT = YES
 DOMINANT_QUESTION_PRESERVED = YES
 MECHANISTIC_AXIS_SUBORDINATE = YES
 RESULTS_PREEMPTED = NO
+ALL_LITERATURE_MARKERS_RESOLVED = YES
 UNVERIFIED_GAP_ASSERTED_AS_FACT = NO
 NOVELTY_CLAIM_INVENTED = NO
 LITERATURE_REFERENCE_INVENTED = NO
@@ -21,12 +22,40 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 
 ---
 
-## Consolidated Literature Verification Markers (4 Total)
+## Resolved Literature Verification Markers
 
-1. `[LITERATURE VERIFICATION REQUIRED: tuberculosis epidemiology and surveillance in Brazil]` (Paragraph 1)
-2. `[LITERATURE VERIFICATION REQUIRED: external-baseline evaluation of mechanistic epidemic forecasting models]` (Paragraph 1)
-3. `[LITERATURE VERIFICATION REQUIRED: fractional-order compartmental models in infectious-disease modelling]` (Paragraph 2)
-4. `[LITERATURE VERIFICATION REQUIRED: parameter and functional identifiability in epidemiological compartmental models]` (Paragraph 3)
+1. `[LITERATURE VERIFICATION REQUIRED: tuberculosis epidemiology and surveillance in Brazil]`
+   * **STATUS**: RESOLVED
+   * **SOURCES**: REF-01 (World Health Organization, 2022), REF-02 (Pelissari et al., 2020)
+   * **CITATION_INSERTED**: `(World Health Organization, 2022; Pelissari et al., 2020)`
+   * **CLAIM_SUPPORTED**: Tuberculosis is a persistent public health challenge in Brazil, monitored via standardized national surveillance notifications.
+   * **WORDING_CHANGED**: NO
+   * **NOVELTY_IMPLICATION**: NONE
+
+2. `[LITERATURE VERIFICATION REQUIRED: external-baseline evaluation of mechanistic epidemic forecasting models]`
+   * **STATUS**: RESOLVED
+   * **SOURCES**: REF-03 (Moran et al., 2016), REF-04 (Bracher et al., 2021)
+   * **CITATION_INSERTED**: `(Moran et al., 2016; Bracher et al., 2021)`
+   * **CLAIM_SUPPORTED**: Calibration fit does not guarantee forward forecast accuracy; out-of-sample evaluations against reference baselines are essential to measure predictive skill.
+   * **WORDING_CHANGED**: NO
+   * **NOVELTY_IMPLICATION**: NONE
+
+3. `[LITERATURE VERIFICATION REQUIRED: fractional-order compartmental models in infectious-disease modelling]`
+   * **STATUS**: RESOLVED
+   * **SOURCES**: REF-06 (Diethelm, 2013), REF-07 (Area et al., 2015)
+   * **CITATION_INSERTED**: `(Diethelm, 2013; Area et al., 2015)`
+   * **CLAIM_SUPPORTED**: Fractional-order derivatives replace integer rates with non-local operators that introduce power-law temporal dependence in compartmental epidemic models.
+   * **WORDING_CHANGED**: NO
+   * **NOVELTY_IMPLICATION**: NONE
+
+4. `[LITERATURE VERIFICATION REQUIRED: parameter and functional identifiability in epidemiological compartmental models]`
+   * **STATUS**: RESOLVED
+   * **SOURCES**: REF-08 (Tuncer & Le, 2018), REF-09 (Roosa & Chowell, 2019), REF-10 (Meshkat et al., 2014)
+   * **CITATION_INSERTED**: `(Tuncer & Le, 2018; Roosa & Chowell, 2019; Meshkat et al., 2014)`
+   * **CLAIM_SUPPORTED**: Fitting compartmental models to aggregate notifications frequently leads to practical non-identifiability, where disparate parameter combinations yield near-equivalent fits, while specific composite parameter combinations can remain identifiable.
+   * **WORDING_CHANGED**: NO
+   * **TERMINOLOGY_BOUNDARY**: Aligned with standard literature terms ("identifiable parameter combinations" and "practical robustness of derived quantities").
+   * **NOVELTY_IMPLICATION**: NONE
 
 ---
 
@@ -38,13 +67,11 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 * **RHETORICAL_ROLE**: Funnel top: Introduce the role of mechanistic compartmental models in representing transmission and latent processes, establish the application context of tuberculosis in Brazil, and introduce the distinction between historical goodness-of-fit and out-of-sample forecast accuracy.
 * **STUDY_FACTS_USED**: Application context of Brazilian tuberculosis monthly surveillance records (2001–2022).
 * **GENERAL_SCIENTIFIC_CLAIMS**: Compartmental models represent transmission and latent dynamics; TB is a public health challenge in Brazil; calibration fit does not guarantee forward forecast accuracy.
-* **LITERATURE_VERIFICATION_MARKERS**:
-  * `[LITERATURE VERIFICATION REQUIRED: tuberculosis epidemiology and surveillance in Brazil]`
-  * `[LITERATURE VERIFICATION REQUIRED: external-baseline evaluation of mechanistic epidemic forecasting models]`
+* **VERIFIED_CITATIONS**: (World Health Organization, 2022; Pelissari et al., 2020), (Moran et al., 2016; Bracher et al., 2021).
 * **STUDY_QUESTION_SUPPORTED**: Motivates questions 1 and 2 (forecasting evaluation).
 * **PROMISE_TO_RESULTS**: Promises a rigorous out-of-sample forecast evaluation distinguishing fit from forward projection.
 * **OVERCLAIM_RISK**: None; no claims of model superiority or performance outcomes.
-* **NOVELTY_RISK**: None; functional framing without encylopedic generalizations.
+* **NOVELTY_RISK**: None; functional framing without encyclopedic generalizations.
 * **GENERALIZATION_RISK**: Kept to general mathematical epidemiological principles.
 
 ---
@@ -55,8 +82,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 * **RHETORICAL_ROLE**: Funnel step 2: Introduce fractional-order operators as extensions introducing power-law temporal dependence, and identify the methodological problem of evaluating models solely against internal/nested integer-order ablations rather than external baselines.
 * **STUDY_FACTS_USED**: SEIT model family includes both fractional-order and integer-order formulations.
 * **GENERAL_SCIENTIFIC_CLAIMS**: Fractional operators introduce power-law dependence; internal ablations demonstrate within-family flexibility but do not evaluate external predictive utility.
-* **LITERATURE_VERIFICATION_MARKERS**:
-  * `[LITERATURE VERIFICATION REQUIRED: fractional-order compartmental models in infectious-disease modelling]`
+* **VERIFIED_CITATIONS**: (Diethelm, 2013; Area et al., 2015).
 * **STUDY_QUESTION_SUPPORTED**: Sets up Sub-question 1 (fractional vs. integer) and Sub-question 2 (external baselines).
 * **PROMISE_TO_RESULTS**: Promises comparative evaluation against both integer-order SEIT and external baselines.
 * **OVERCLAIM_RISK**: None; does not promise that fractional models are superior.
@@ -71,8 +97,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 * **RHETORICAL_ROLE**: Funnel step 3: Establish the mechanistic challenge: aggregate incidence data frequently lead to practical non-identifiability of individual kinetic rate parameters despite low calibration errors and stable trajectory fits, motivating our analytical separation of evidence levels.
 * **STUDY_FACTS_USED**: Calibration against aggregate monthly incidence series; estimation of kinetic parameters and derived $R_0$.
 * **GENERAL_SCIENTIFIC_CLAIMS**: Practical non-identifiability is common when calibrating compartmental models from single aggregate streams; trajectory stability can coexist with parameter indeterminacy.
-* **LITERATURE_VERIFICATION_MARKERS**:
-  * `[LITERATURE VERIFICATION REQUIRED: parameter and functional identifiability in epidemiological compartmental models]`
+* **VERIFIED_CITATIONS**: (Tuncer & Le, 2018; Roosa & Chowell, 2019; Meshkat et al., 2014).
 * **STUDY_QUESTION_SUPPORTED**: Sets up Sub-question 3 (mechanistic interpretability under non-identifiability).
 * **PROMISE_TO_RESULTS**: Promises an identifiability audit distinguishing parameter, predictive, and functional stability.
 * **OVERCLAIM_RISK**: None; does not report specific parameter or $R_0$ numerical ranges.
@@ -87,7 +112,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 * **RHETORICAL_ROLE**: Funnel narrow: Articulate the study's specific evaluation framework that explicitly separates within-family flexibility from external forecasting competitiveness, and individual parameter recovery from derived functional stability.
 * **STUDY_FACTS_USED**: Study evaluates (i) integer vs fractional comparison, (ii) external multi-horizon baselines, and (iii) parameter vs functional identifiability.
 * **GENERAL_SCIENTIFIC_CLAIMS**: Stated as study evaluation requirements.
-* **LITERATURE_VERIFICATION_MARKERS**: None (analytical synthesis).
+* **VERIFIED_CITATIONS**: None (analytical synthesis).
 * **STUDY_QUESTION_SUPPORTED**: Integrates all three study sub-questions.
 * **PROMISE_TO_RESULTS**: Establishes the exact dual-axis evaluation structure reported in Results.
 * **OVERCLAIM_RISK**: None.
@@ -109,7 +134,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
   * External baselines: persistence, seasonal naive ($\text{lag } 12$), SARIMA.
   * Mechanistic audits: multiseed optimization, profile-objective identifiability, $R_0$ practical-identifiability envelope, Matignon DFE local stability analysis.
 * **GENERAL_SCIENTIFIC_CLAIMS**: None (strictly study design facts).
-* **LITERATURE_VERIFICATION_MARKERS**: None.
+* **VERIFIED_CITATIONS**: None.
 * **STUDY_QUESTION_SUPPORTED**: Directly articulates all three sub-questions.
 * **PROMISE_TO_RESULTS**: Sets up Methods (§2) and Results (§3) precisely without pre-empting numerical outcomes or announcing the turning point.
 * **OVERCLAIM_RISK**: Zero; no outcome results or performance claims mentioned.
