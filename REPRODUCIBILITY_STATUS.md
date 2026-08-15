@@ -129,3 +129,13 @@ baselines (persistence, seasonal_naive_12, SARIMA frozen order per
 horizon; underperforms persistence and SARIMA at every horizon; beats seasonal_naive_12 only for
 h=1-7 of 12. Verdict: `FRACTIONAL_ADVANTAGE_ONLY_VS_INTEGER`. Dimensional consistency, R0,
 stability, and identifiability findings were not reopened.
+
+## Canonical evidence freeze (2026-08-15, continuation)
+
+See `results_canonical/EVIDENCE_FREEZE_REPORT.md`, `results_canonical/RESULT_SET_FREEZE.md`, and
+`docs/METHOD_DECISION_LOG.md` D030. RESULT_SET_STATUS = `FROZEN_WITH_DOCUMENTED_LIMITATIONS`.
+Evidence-packaging only, no new experiments. Canonical tables/figures/claim-support audit
+(`results_canonical/07_claim_support/claim_support_table.csv`, 11 claims) built deterministically
+from already-frozen artifacts, cross-checked with no conflicts. Reopening restricted per
+`results_canonical/RESULT_SET_FREEZE.md`'s reopening policy. Next stage: evidence-first
+manuscript architecture from this frozen result set.

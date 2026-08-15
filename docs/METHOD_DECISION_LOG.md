@@ -656,3 +656,33 @@ SARIMA, and only partially extends to seasonal-naive. This is reported plainly, 
 softening, per this project's standing evidence-integrity practice; no configuration was
 changed in response to the unfavorable result. Dimensional consistency, R0, stability, and the
 identifiability audit were not reopened.
+
+---
+
+## D030
+
+Date: 2026-08-15
+
+Decision:
+Froze the canonical evidence set in `results_canonical/` (RESULT_SET_STATUS =
+FROZEN_WITH_DOCUMENTED_LIMITATIONS). Packaged, cross-checked (every number re-derived
+deterministically from existing frozen artifacts and asserted against the values stated in the
+freeze task -- no conflicts found), and documented: model-contract status, identifiability
+evidence, R0/DFE-stability evidence (near-equivalent admissible set only, n=25, kept explicitly
+separate from the 33-solution full profile diagnostic pool), long-open-loop evidence (kept
+separate from rolling-origin evidence), rolling-origin forecasting evidence and baseline-relative
+skill, an 11-claim claim-support audit (`results_canonical/07_claim_support/claim_support_table.csv`)
+gating allowed/forbidden wording for the future manuscript, and known limitations (L01-L12,
+including the not-yet-characterized serial dependence of rolling-origin loss differentials and
+the still-unverified historical ~48% optimal-control claim). No new experiments were run; no
+bounds/seeds/model-selection were touched.
+
+Reason:
+Completes the evidence-freeze task: prevents unsupported claims (general forecasting
+superiority, statistical significance without testing, precise beta/gamma/d rates, biological
+memory from alpha<1, R0>1 generalized beyond the admissible set) from entering the manuscript
+stage, while preserving full traceability from every canonical table back to its generating
+script and source artifact (`results_canonical/00_manifest/CANONICAL_EVIDENCE_MANIFEST.csv`).
+Reopening is restricted to numerical inconsistency, reproducibility failure, a central
+manuscript-claim need, an authorized future inferential analysis, or an explicit author decision
+to change the scientific question (`results_canonical/RESULT_SET_FREEZE.md`).

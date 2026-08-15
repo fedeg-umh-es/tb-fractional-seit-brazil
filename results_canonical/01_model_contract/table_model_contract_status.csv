@@ -1,0 +1,13 @@
+item,value,source_artifact
+reproduction_mode,INDEPENDENT_REIMPLEMENTATION,PROJECT_CANON.md
+dataset_total_observations,264,outputs/audits/dataset_integrity.json
+dataset_duplicate_dates,0,outputs/audits/dataset_integrity.json
+dataset_missing_months,0,outputs/audits/dataset_integrity.json
+dataset_missing_values,0,outputs/audits/dataset_integrity.json
+calibration_period,2001-01 to 2020-12 (N=240),PROJECT_CANON.md
+validation_period,2021-01 to 2022-12 (N=24),PROJECT_CANON.md
+observation_model,"Observed monthly cases modeled as an incidence FLOW associated with the E->I transition (auxiliary Caputo accumulator), NOT the infectious stock I(t)",docs/MODEL_CONTRACT.md Sec 6
+free_parameters,"beta, sigma, gamma, d, alpha",docs/MODEL_CONTRACT.md
+identifiability_constraint,"beta, gamma, d are NOT individually identifiable with sufficient precision to be reported as precise epidemiological rate estimates; alpha is practically identifiable",IDENTIFIABILITY_AUDIT_REPORT.md
+dimensional_status,REFERENCE_TIME_SCALING_RESOLVES_CONFLICT (tau0=1 month),docs/FRACTIONAL_DIMENSIONAL_CONSISTENCY.md
+primary_seed,20260815,docs/METHOD_DECISION_LOG.md D024
