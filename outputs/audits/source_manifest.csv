@@ -1,0 +1,3 @@
+artifact,original_filename,repository_path,size_bytes,sha256,role,status
+tb_mes.xlsx,tb_mes (1).xlsx,data/raw/tb_mes.xlsx,23028,93e75138827704af22389c38eddc04eda5efd44389f10cffbabfd0a4e1ea662b,canonical_observational_dataset,PRESERVED_RAW_SOURCE
+BIOMATEMATICA_UNICAMP.docx,BIOMATEMATICA UNICAMP.docx,manuscript/source/BIOMATEMATICA_UNICAMP.docx,6511822,10e652628a7786460243fd47201bbfef498356fcee9766ce3fab48f64fa4ac88,source_manuscript,PRESERVED_RAW_SOURCE

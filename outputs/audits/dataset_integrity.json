@@ -1,0 +1,44 @@
+{
+  "source_file": "data/raw/tb_mes.xlsx",
+  "sheet_names": [
+    "dados"
+  ],
+  "active_sheet": "dados",
+  "max_row": 265,
+  "max_column": 22,
+  "column_names": [
+    "data",
+    "ano",
+    "monthes",
+    "casos",
+    "populacao",
+    "TI"
+  ],
+  "data_row_count": 264,
+  "parsed_date_min": "2001-01-01",
+  "parsed_date_max": "2022-12-01",
+  "null_dates_count": 0,
+  "duplicate_dates": [],
+  "duplicate_date_count": 0,
+  "missing_months": [],
+  "missing_month_count": 0,
+  "missing_value_cells": [],
+  "missing_value_count": 0,
+  "non_numeric_problems": [],
+  "non_numeric_problem_count": 0,
+  "canonical_total_expected": 264,
+  "canonical_calibration_expected": 240,
+  "canonical_validation_expected": 24,
+  "total_observations_found": 264,
+  "calibration_interval": {
+    "start": "2001-01-01",
+    "end": "2020-12-01",
+    "observations_found": 240
+  },
+  "validation_interval": {
+    "start": "2021-01-01",
+    "end": "2022-12-01",
+    "observations_found": 24
+  },
+  "matches_canonical_expectation": true
+}
