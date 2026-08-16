@@ -34,9 +34,9 @@ OPTIMAL_CONTROL_USED_AS_EVIDENCE = NO
 
 2. `[LITERATURE VERIFICATION REQUIRED: comparison of mechanistic and phenomenological epidemiological models]` (Paragraph 2)
    * **STATUS**: RESOLVED
-   * **SOURCES**: REF-03 (Moran et al., 2016), REF-05 (Cramer et al., 2022)
-   * **CITATION_INSERTED**: `(Moran et al., 2016; Cramer et al., 2022)`
-   * **CLAIM_SUPPORTED**: Mechanistic representation and phenomenological/statistical forecasting answer distinct questions; lower within-family error does not establish operational forecasting superiority.
+   * **SOURCES**: REF-03 (Moran et al., 2016), REF-05 (Cramer et al., 2022), REF-12 (Chen et al., 2021), REF-13 (Kharazmi et al., 2021)
+   * **CITATION_INSERTED**: `(Moran et al., 2016; Cramer et al., 2022)`, `(Chen et al., 2021; Kharazmi et al., 2021)`
+   * **CLAIM_SUPPORTED**: Mechanistic representation and phenomenological/statistical forecasting answer distinct questions; lower within-family error does not establish operational forecasting superiority. Most fractional epidemic models have relied on internal or in-sample comparisons.
    * **WORDING_CHANGED**: NO
 
 3. `[LITERATURE VERIFICATION REQUIRED: structural and practical identifiability in epidemiological models]` (Paragraph 4)
@@ -51,6 +51,13 @@ OPTIMAL_CONTROL_USED_AS_EVIDENCE = NO
    * **SOURCES**: REF-10 (Meshkat et al., 2014), REF-11 (Raue et al., 2009)
    * **CITATION_INSERTED**: `(Meshkat et al., 2014; Raue et al., 2009)`
    * **CLAIM_SUPPORTED**: Specific algebraic combinations of individually unidentifiable parameters (e.g. composite ratios defining $R_0$) can remain identifiable and robust.
+   * **WORDING_CHANGED**: NO
+
+5. `[LITERATURE VERIFICATION REQUIRED: prediction under non-identifiability and literature boundary]` (Paragraph 6)
+   * **STATUS**: RESOLVED
+   * **SOURCES**: REF-14 (Simpson & Maclaren, 2024), REF-15 (Gutenkunst et al., 2007), REF-10 (Meshkat et al., 2014), REF-16 (Kao & Eisenberg, 2018)
+   * **CITATION_INSERTED**: `(Simpson & Maclaren, 2024; Gutenkunst et al., 2007)`, `(Meshkat et al., 2014; Kao & Eisenberg, 2018)`
+   * **CLAIM_SUPPORTED**: Prediction under non-identifiability and composite functional robustness are established principles in mathematical biology; findings represent an empirical demonstration rather than methodological invention.
    * **WORDING_CHANGED**: NO
 
 ---
@@ -76,11 +83,11 @@ OPTIMAL_CONTROL_USED_AS_EVIDENCE = NO
 ### D2 — Methodological role of external baselines (Paragraph 2)
 
 * **PARAGRAPH_ID**: D2
-* **ARGUMENTATIVE_ROLE**: Explain why external baselines (persistence, SARIMA) are necessary to distinguish mathematical flexibility from genuine operational forecasting utility.
+* **ARGUMENTATIVE_ROLE**: Explain why external baselines (persistence, SARIMA) are necessary to distinguish mathematical flexibility from genuine operational forecasting utility, contextualized within the broader fractional modeling literature.
 * **RESULTS_FINDINGS_USED**: R1 vs. R2 contrast.
 * **CLAIM_IDS**: C01, C02, C03, C05.
 * **CANONICAL_EVIDENCE**: `table_skill_by_horizon.csv`, `table_horizon_summary.csv`.
-* **VERIFIED_CITATIONS**: (Moran et al., 2016; Cramer et al., 2022).
+* **VERIFIED_CITATIONS**: (Moran et al., 2016; Cramer et al., 2022; Chen et al., 2021; Kharazmi et al., 2021).
 * **INTERPRETATION_ALLOWED**: Outperforming an integer comparator is a structural ablation test; outperforming statistical baselines is an external forecasting test. Lower error relative to the integer-order SEIT comparator is not sufficient evidence of competitive out-of-sample forecasting performance.
 * **INTERPRETATION_FORBIDDEN**: No invented causal explanations for why SARIMA/persistence performed better (e.g. asserting internal mathematical flexibility or specific unproven COVID regime shifts as demonstrated facts).
 * **LIMITATION_USED**: One purpose-built statistical model (frozen SARIMA order) and simple naive benchmarks.
@@ -137,9 +144,25 @@ OPTIMAL_CONTROL_USED_AS_EVIDENCE = NO
 
 ---
 
-### D6 — DFE stability result and mechanistic/forecasting separation (Paragraph 6)
+### D6 — Literature boundary: Established principles of non-identifiability (Paragraph 6)
 
 * **PARAGRAPH_ID**: D6
+* **ARGUMENTATIVE_ROLE**: Anchor identifiability and functional robustness findings explicitly to established literature in mathematical biology, precluding claims of methodological novelty.
+* **RESULTS_FINDINGS_USED**: Synthesis of D4 and D5 findings in relation to broader theory.
+* **CLAIM_IDS**: M03 (`METHODOLOGICAL/DESCRIPTIVE`).
+* **CANONICAL_EVIDENCE**: `docs/NOVELTY_AUDIT_DECISION.md`.
+* **VERIFIED_CITATIONS**: (Simpson & Maclaren, 2024; Gutenkunst et al., 2007; Meshkat et al., 2014; Kao & Eisenberg, 2018).
+* **INTERPRETATION_ALLOWED**: Coexistence of non-identifiability with prediction/functional robustness is an established mathematical principle. The present findings are an applied empirical demonstration, not methodological inventions.
+* **INTERPRETATION_FORBIDDEN**: Do NOT claim methodological novelty for prediction under non-identifiability or $R_0$ identifiability.
+* **LIMITATION_USED**: Demonstration bounded to the SEIT TB model on Brazilian surveillance data.
+* **FORECASTING_MECHANISTIC_BOUNDARY_RISK**: Explicit demarcation of literature boundaries.
+* **INFERENCE_BOUNDARY**: Contextualization within established mathematical biology literature.
+
+---
+
+### D7 — DFE stability result and mechanistic/forecasting separation (Paragraph 7)
+
+* **PARAGRAPH_ID**: D7
 * **ARGUMENTATIVE_ROLE**: Interpret the $25/25$ DFE local instability finding under the fractional Matignon criterion as mathematical self-consistency with $R_0 > 1$, while enforcing the separation between mechanistic coherence and forecasting capability.
 * **RESULTS_FINDINGS_USED**: R5 ($25/25$ DFE unstable across admissible set).
 * **CLAIM_IDS**: C08 (`SUPPORTED`).
@@ -153,9 +176,9 @@ OPTIMAL_CONTROL_USED_AS_EVIDENCE = NO
 
 ---
 
-### D7 — Limitations and bounded contribution (Paragraph 7)
+### D8 — Limitations and bounded contribution (Paragraph 8)
 
-* **PARAGRAPH_ID**: D7
+* **PARAGRAPH_ID**: D8
 * **ARGUMENTATIVE_ROLE**: Synthesize all study limitations into a coherent scientific boundary and summarize the exact bounded contribution of the research.
 * **RESULTS_FINDINGS_USED**: R1–R5 collectively, plus project scope constraints.
 * **CLAIM_IDS**: C01, C02, C03, C04, C05, C07, C08, C09, C10 (`NOT_VERIFIED`), C11 (`NOT_TESTED`).
