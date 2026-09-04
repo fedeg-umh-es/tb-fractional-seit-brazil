@@ -7,7 +7,7 @@ This document provides formal, transparent statements regarding the provenance, 
 ## 1. Data Availability Statement
 
 ### Formal Statement for Manuscript
-The empirical epidemiological data analyzed in this study comprise aggregate monthly tuberculosis notification records for Brazil covering the period January 2001 through December 2022 ($N = 264$ consecutive monthly counts). The raw surveillance records originate from Brazil's National System for Notifiable Diseases (Sistema de Informação de Agravos de Notificação, SINAN), maintained by the Ministry of Health of Brazil and accessible via the DATASUS portal (https://datasus.saude.gov.br/). The curated, quality-controlled monthly time-series file utilized for all calibration and validation runs is provided within the project repository (`data/monthly_cases.csv`). All processed numerical artifacts generated during the analysis are stored in the canonical results repository directory (`results_canonical/`).
+The empirical epidemiological data analyzed in this study comprise aggregate monthly tuberculosis notification records for Brazil covering the period January 2001 through December 2022 ($N = 264$ consecutive monthly counts). The raw surveillance records originate from Brazil's National System for Notifiable Diseases (Sistema de Informação de Agravos de Notificação, SINAN), maintained by the Ministry of Health of Brazil and publicly accessible via the DATASUS portal (https://datasus.saude.gov.br/). The curated monthly time series and processing scripts are hosted in the project GitHub repository, which will be made public prior to submission [FEDEG_INPUT_REQUIRED: insert repository URL once public].
 
 ### Provenance Details
 * **Source Agency**: Ministry of Health of Brazil / DATASUS / SINAN
@@ -23,7 +23,7 @@ The empirical epidemiological data analyzed in this study comprise aggregate mon
 ### Formal Statement for Manuscript
 The computational code implementing the Caputo fractional-order numerical integrator, Differential Evolution calibration routines, profile-likelihood practical-identifiability analysis, equilibrium stability evaluations under Matignon's criterion, and expanding-window rolling-origin forecasting benchmarks was developed by **fedeg** in Python (utilizing NumPy, SciPy, Pandas, Statsmodels, and Pytest). 
 
-The complete codebase, configuration files, and automated test suite are maintained in a version-controlled repository (Git commit `13015847a6f364505391d4f6e24d9c4c994669ff`). The repository is structured for deterministic reproduction of all reported tables, figures, and numerical envelopes. Upon manuscript acceptance, a permanent, citable digital object identifier (DOI) will be minted via Zenodo. During peer review, the complete reproducible repository bundle or private repository access will be made available to editors and reviewers upon request.
+The complete codebase, configuration files, and automated test suite are hosted in a Git repository that will be made public on GitHub prior to submission [FEDEG_INPUT_REQUIRED: insert repository URL once public]. The repository is structured for deterministic reproduction of all reported tables, figures, and numerical envelopes. Upon manuscript acceptance, a permanent, citable digital object identifier (DOI) will be minted via Zenodo.
 
 ---
 
@@ -31,10 +31,10 @@ The complete codebase, configuration files, and automated test suite are maintai
 
 ```text
 REPOSITORY_AUTHOR = fedeg
-REPOSITORY_CURRENT_STATUS = LOCAL_REPRODUCIBLE_GIT_REPOSITORY
-CANONICAL_COMMIT_HASH = 13015847a6f364505391d4f6e24d9c4c994669ff
+GITHUB_VISIBILITY = PUBLIC (to be made public)
+REPO_VISIBILITY_ACTION = NOT_EXECUTED_AWAITING_EXPLICIT_GO
 DATA_RESTRICTIONS = NONE (Public aggregate surveillance data)
-PUBLIC_ARCHIVAL_DOI_EXISTS_NOW = NO (Will be minted upon acceptance)
+PUBLIC_ARCHIVAL_DOI_EXISTS_NOW = NO (Deferred to post-acceptance)
 ZENODO_ARCHIVE_RECOMMENDED = YES (Prior to final publication)
-CODE_ARCHIVE_REQUIRED_BEFORE_SUBMISSION = NO (Reviewer package / Git bundle sufficient for initial submission)
+CODE_ARCHIVE_REQUIRED_BEFORE_SUBMISSION = NO (Public GitHub repository sufficient for submission)
 ```
