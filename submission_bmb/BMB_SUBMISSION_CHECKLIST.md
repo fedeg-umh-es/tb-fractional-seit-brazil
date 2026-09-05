@@ -1,6 +1,6 @@
 # Bulletin of Mathematical Biology — Submission Checklist
 
-This checklist is the current pre-submission status for the BMB package. It distinguishes frozen scientific evidence, completed controlled manuscript repairs, and unresolved human metadata or provenance confirmations.
+This checklist is the current pre-submission status for the BMB package after documentary repair, structural revision, claim audit, controlled prose pass, and current official BMB requirement verification.
 
 ---
 
@@ -8,36 +8,60 @@ This checklist is the current pre-submission status for the BMB package. It dist
 
 | Item | Status | Notes |
 |---|:---:|---|
-| Article type | VERIFIED | Original Research; manuscript identity unchanged. |
-| Title | PROVISIONAL_VERIFIED | Current title avoids generic fractional-superiority claims; final title pass remains intentionally deferred until prose/abstract closure. |
-| Abstract | PROVISIONAL_VERIFIED | 243 words and within BMB guidance; final Abstract pass remains intentionally deferred until manuscript prose closure. |
-| Keywords | VERIFIED | 6 keywords. |
+| Article type | VERIFIED | Original Research; do not reclassify as Methods because no new general mathematical method is introduced. |
+| Title | VERIFIED_FOR_AUTHOR_REVIEW | Avoids generic fractional-superiority claims; final human approval pending. |
+| Abstract | VERIFIED | Approximately 208 words; current BMB requirement is 150–250 words. |
+| Keywords | VERIFIED | 6 keywords; current BMB requirement is 4–6. |
 | Dominant scientific question | VERIFIED | Within-family fractional improvement -> forecasting skill beyond the model family. |
 | Identifiability hierarchy | VERIFIED | Explicitly secondary interpretive axis; not a co-equal novelty claim. |
 | Methods forecasting protocol | VERIFIED | 13 expanding-window origins x 12 horizons; persistence, seasonal naive, SARIMA. |
-| Methods prespecification terminology | REPAIRED | Manuscript uses `prespecified/documented before execution`, not external-preregistration language. |
-| Data provenance wording | REPAIRED_WITH_AUTHOR_CONFIRMATION_PENDING | Canonical file is `data/raw/tb_mes.xlsx`; repository does not independently document the original external acquisition URL/path. |
-| Gate 2 / novelty language | VERIFIED | Historical-absence language removed; Discussion cites direct neighboring precedents. |
-| Results architecture | REPAIRED | Finding-first; within-family result precedes external-baseline turning point; identifiability explicitly secondary. |
-| Discussion architecture | REPAIRED | Turning point leads; literature positioning separated; mechanistic axis compressed and bounded; methodological implication closes section. |
-| Conclusion hierarchy | REPAIRED | Returns to dominant forecasting question; mechanistic findings remain qualifiers. |
-| Canonical manuscript sync | COMPLETE | `submission_bmb/BMB_MANUSCRIPT.md` synchronized with repaired Introduction, Methods, Results, Discussion, Conclusion and declarations. |
-| References | VERIFIED | 19 cited / 19 listed; Roosa & Chowell DOI corrected to `10.1186/s12976-018-0097-6`. |
-| Data availability text | DRAFT_COMPLETE / AUTHOR_CONFIRMATION_PENDING | Statement is repository-truthful; original external acquisition route remains for human confirmation if authors wish to state it. |
-| Code availability text | DRAFT_COMPLETE | Computational freeze commit: `13015847a6f364505391d4f6e24d9c4c994669ff`; repository private; no archival DOI currently exists. |
-| AI/LLM disclosure | VERIFIED_AS_DRAFT | Methods §2.13 documents use; final authors retain responsibility. |
-| Cover letter framing | VERIFIED_AS_DRAFT | Scientific framing previously repaired; final consistency pass will follow manuscript claim audit. |
-| Claim-precision audit | IN_PROGRESS | Must verify manuscript wording against frozen C01-C11 claim boundaries before prose humanization. |
-| Authorship and order | BLOCKED | Final human author list/order not yet confirmed in package. |
-| Affiliations | BLOCKED | Final affiliations not yet inserted. |
-| Corresponding author/email | BLOCKED | Final contact not yet inserted. |
+| Methods prespecification terminology | REPAIRED | Uses `prespecified/documented before execution`, not external-preregistration language. |
+| Data provenance wording | REPAIRED / HUMAN CONFIRMATION PENDING | Canonical file is `data/raw/tb_mes.xlsx`; repository does not independently document the original external acquisition URL/path. |
+| Gate 2 / novelty language | VERIFIED | No first/never/unprecedented claim; adjacent precedents acknowledged. |
+| Results architecture | VERIFIED | Finding-first; within-family result precedes external-baseline turning point; identifiability secondary. |
+| Discussion architecture | VERIFIED | Turning point leads; literature positioning separated; mechanistic axis bounded; methodological implication closes section. |
+| Conclusion hierarchy | VERIFIED | Returns to dominant forecasting question; seasonal-naive exception retained explicitly. |
+| Canonical manuscript sync | COMPLETE | `submission_bmb/BMB_MANUSCRIPT.md` is synchronized with the repaired source sections. |
+| Claim-precision audit | PASS | C01–C11 and M01–M04 audited in `submission_bmb/PRE_SUBMISSION_CLAIM_AUDIT.md`. |
+| Controlled prose pass | COMPLETE | Prose revised selectively; Methods/Results not stylistically rewritten where no scientific communication gain justified it. |
+| References | VERIFIED_CONTENT | 19 cited / 19 listed; DOI audit passed. Final BMB style conversion remains a production task. |
+| Figure/table package | CLAIM_AUDITED | Captions distinguish within-family/external, descriptive/inferential, envelope/CI, and profile-objective terminology. |
+| Data availability text | DRAFT_COMPLETE / BLOCKED_FOR_AUTHOR_ACCESS_CONFIRMATION | Must state a verified access/provenance route before submission. |
+| Code availability text | DRAFT_COMPLETE | Frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`; private repository; no archival DOI currently exists. |
+| AI/LLM disclosure | VERIFIED_AS_DRAFT | Methods §2.13 satisfies current BMB instruction to document generative LLM use; human accountability retained. |
+| Cover letter framing | CLAIM_AUDITED | Contribution bounded to case-study evidence; no universal fractional-model claim. |
+| Current BMB scope/requirements | VERIFIED_2026-09-05 | Official Springer aims/scope and submission guidelines rechecked. |
+| Authorship and order | BLOCKED | Final human author list/order required before submission. |
+| Affiliations | BLOCKED | Final affiliations required. |
+| Corresponding author/email | BLOCKED | Active corresponding-author email required. |
 | ORCID | OPTIONAL/PENDING | Add if available. |
-| Author contributions | BLOCKED | Must be confirmed for all final authors; CRediT may be used. |
+| Author contributions | BLOCKED | Final contribution statement required/strongly expected for transparency. |
 | Funding | BLOCKED | Final funding/no-funding statement required. |
-| Competing interests | BLOCKED | Final author confirmation required. |
-| Ethics applicability statement | BLOCKED_FOR_CONFIRMATION | Confirm aggregate/non-identifiable data status and applicable institutional/journal wording; do not assume public-acquisition provenance from the repository. |
-| Cover letter sign-off | BLOCKED_BY_METADATA | Scientific body revised; signature metadata pending. |
-| Line/page numbering and final source-file packaging | FINAL_PRODUCTION_STEP | Apply at compiled submission stage. |
+| Competing interests | BLOCKED | Financial and non-financial interests confirmation required. |
+| Ethics applicability statement | BLOCKED_FOR_CONFIRMATION | Human/institutional confirmation required for aggregate/non-identifiable data and applicable wording. |
+| Data provenance/access | BLOCKED_FOR_CONFIRMATION | Verify original acquisition route/redistribution if available, or confirm controlled reviewer-access statement. |
+| Cover letter sign-off | BLOCKED_BY_METADATA | Corresponding-author metadata pending. |
+| Editable LaTeX/Word source | FINAL_PRODUCTION_STEP | BMB requires complete editable source files; LaTeX recommended. |
+| Compiled PDF | FINAL_PRODUCTION_STEP | Required with LaTeX source. |
+| Continuous line numbering | FINAL_PRODUCTION_STEP | Required by current BMB guidelines. |
+| Sequential page numbering | FINAL_PRODUCTION_STEP | Required by current BMB guidelines. |
+| Figure accessibility/placement | FINAL_PRODUCTION_STEP | Descriptive captions complete; final pattern/contrast/placement QA pending. |
+| Supplementary package | FINAL_PRODUCTION_STEP | Inventory complete; final file naming, citations, and packaging pending. |
+
+---
+
+## Editorial Gate
+
+```text
+BMB_PUBLISHING_MODEL = HYBRID
+SCOPE_GATE = PASS_PLAUSIBLE
+CONTRIBUTION_THRESHOLD_RISK = MEDIUM
+ARTICLE_TYPE = ORIGINAL_RESEARCH
+SCIENTIFIC_EXPANSION_RECOMMENDED = NO
+JOURNAL_REROUTING_RECOMMENDED = NO
+```
+
+The remaining desk-reject risk is principally contribution threshold/editorial priority, not a missing experiment or obvious scope mismatch. Do not broaden the claims or reopen the evidence set merely to reduce this risk.
 
 ---
 
@@ -52,11 +76,14 @@ COMPUTATIONAL_FREEZE_COMMIT = 13015847a6f364505391d4f6e24d9c4c994669ff
 NEW_EXPERIMENT_REQUIRED = NO
 DOCUMENTARY_TRUTH_REPAIR = COMPLETE
 STRUCTURAL_REPAIR = COMPLETE
+CLAIM_PRECISION_AUDIT = PASS
+CONTROLLED_PROSE_PASS = COMPLETE
 CANONICAL_MANUSCRIPT_SYNC = COMPLETE
-CLAIM_PRECISION_AUDIT = IN_PROGRESS
+CURRENT_BMB_REQUIREMENTS_VERIFIED = 2026-09-05
+READY_FOR_AUTHOR_SCIENTIFIC_REVIEW = YES
 FORMAL_HUMAN_BLOCKERS_REMAIN = YES
-READY_FOR_AUTHOR_SCIENTIFIC_REVIEW = NOT_YET_REISSUED_AFTER_REPAIR
+FINAL_PRODUCTION_QA = PENDING
 READY_FOR_SUBMISSION = NO
 ```
 
-Do not mark the package `READY_FOR_AUTHOR_SCIENTIFIC_REVIEW` again until the post-repair claim-precision audit is complete. Do not mark `READY_FOR_SUBMISSION = YES` until human metadata/declaration confirmations, current BMB requirement verification, and final compiled source/PDF checks are complete.
+The package is now ready for human scientific/author review. It must not be marked `READY_FOR_SUBMISSION = YES` until authorship, affiliations, corresponding-author metadata, contributions, funding, competing interests, ethics/data-access confirmations, and final compiled source/PDF QA are complete.
