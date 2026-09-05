@@ -1,6 +1,6 @@
 # Literature Verification Matrix
 
-This matrix documents the candidate literature sources evaluated to support the framing, methodology, and interpretation of the TB SEIT manuscript, mapped across topics L1–L4.
+This matrix documents the candidate literature sources evaluated to support the framing, methodology, and interpretation of the TB SEIT manuscript, mapped across topics L1–L5.
 
 ---
 
@@ -165,7 +165,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **TOPIC**: L4 — Computational parameter identifiability and profile likelihood
 * **FULL_CITATION**: Roosa, S., & Chowell, G. (2019). Assessing parameter identifiability in compartmental dynamic models using a computational approach: application to infectious disease transmission. *Theoretical Biology and Medical Modelling*, 16, 1.
 * **YEAR**: 2019
-* **DOI_OR_IDENTIFIER**: DOI: 10.1186/s12976-018-0094-2
+* **DOI_OR_IDENTIFIER**: DOI: 10.1186/s12976-018-0097-6
 * **SOURCE_TYPE**: Peer-reviewed Methodological Research
 * **CLAIM_SUPPORTED**: Computational audits (multiseed optimization and profile sweeps) reveal parameter indeterminacy and correlations in compartmental transmission models.
 * **CLAIM_NOT_SUPPORTED**: Universal solvability of all identifiability issues.
@@ -204,8 +204,110 @@ This matrix documents the candidate literature sources evaluated to support the 
 
 ---
 
+### L5 — Gate 2: Adversarial Direct-Precedent Test
+
+**Search close date**: 2026-09-05  
+**Purpose**: Attempt to falsify the manuscript's distinctive methodological contribution before any novelty language is frozen.
+
+A source counts as a **direct precedent** only if the same study jointly includes:
+
+1. a fractional-order mechanistic epidemic model;
+2. a comparable integer-order counterpart;
+3. external statistical and/or naive forecasting baselines;
+4. genuine out-of-sample temporal evaluation; and
+5. evaluation across multiple forecast horizons and/or origins under a common protocol.
+
+The conclusion of this gate is deliberately bounded: **no direct precedent was located in the searched corpus satisfying all five conditions simultaneously**. This is not evidence that no such study exists and does not support a `first study`, `never`, or universal absence claim.
+
+#### L5-01 — Chishtie et al. (2026)
+* **TOPIC**: Closest direct methodological neighbor: fractional vs integer under rolling-origin OOS evaluation.
+* **FULL_CITATION**: Chishtie, F., Drozd, J., Li, X., Benterki, A., & Valluri, S. (2026). A robust compartmental modeling framework for infectious disease monitoring and analysis via fractional differential equations. *Epidemics*, 54, 100887.
+* **DOI_OR_IDENTIFIER**: DOI: 10.1016/j.epidem.2026.100887
+* **WHAT_IT_HAS**: Fractional and classical integer-order compartmental models; out-of-sample rolling-origin cross-validation; 7-, 14-, and 21-day horizons.
+* **WHAT_IT_LACKS_FOR_GATE_2**: No external statistical/naive forecasting baseline in the same benchmark protocol.
+* **NOVELTY_EFFECT**: Kills any claim that rolling-origin or multi-horizon OOS validation of fractional epidemic models is itself new. Does not answer whether within-family fractional improvement survives comparison with external baselines.
+* **STATUS**: ABSORB — high-priority direct neighbor.
+
+#### L5-02 — Alzahrani et al. (2024)
+* **TOPIC**: Fractional epidemic model compared with ARIMA.
+* **FULL_CITATION**: Alzahrani, S. M., Saadeh, R., Abdoon, M. A., Qazza, A., El Guma, F., & Berir, M. (2024). Numerical Simulation of an Influenza Epidemic: Prediction with Fractional SEIR and the ARIMA Model. *Applied Mathematics & Information Sciences*, 18(1), 1–12.
+* **DOI_OR_IDENTIFIER**: DOI: 10.18576/amis/180101
+* **WHAT_IT_HAS**: Fractional SEIR; ARIMA comparison; empirical influenza data.
+* **WHAT_IT_LACKS_FOR_GATE_2**: No common rolling-origin design, no multiple forecast origins/horizons under an equivalent protocol, and no persistence/seasonal-naive baseline.
+* **NOVELTY_EFFECT**: Kills any claim that fractional epidemic models have never been compared with ARIMA. Does not provide the same external-skill test as the present design.
+* **STATUS**: ABSORB — high-priority neighbor.
+
+#### L5-03 — Rajagopal et al. (2020)
+* **TOPIC**: Fractional vs integer prediction on held-out epidemic data.
+* **FULL_CITATION**: Rajagopal, K., Hasanzadeh, N., Parastesh, F., Hamarash, I., Jafari, S., & Hussain, I. (2020). A fractional-order model for the novel coronavirus (COVID-19) outbreak. *Nonlinear Dynamics*, 101, 711–718.
+* **DOI_OR_IDENTIFIER**: DOI: 10.1007/s11071-020-05757-6
+* **WHAT_IT_HAS**: Integer and fractional models; real-data parameter estimation; prediction evaluated on test data.
+* **WHAT_IT_LACKS_FOR_GATE_2**: No external statistical/naive forecasting baseline and no rolling-origin multi-horizon benchmark.
+* **NOVELTY_EFFECT**: Kills any claim that fractional-vs-integer out-of-sample prediction is itself new.
+* **STATUS**: ABSORB — direct conceptual neighbor.
+
+#### L5-04 — Kharazmi et al. (2021)
+* **TOPIC**: Integer/fractional epidemiological models, identifiability, uncertainty, and predictability.
+* **FULL_CITATION**: Kharazmi, E., Cai, M., Zheng, X., Zhang, Z., Lin, G., & Karniadakis, G. E. (2021). Identifiability and predictability of integer- and fractional-order epidemiological models using physics-informed neural networks. *Nature Computational Science*, 1, 744–753.
+* **DOI_OR_IDENTIFIER**: DOI: 10.1038/s43588-021-00158-0
+* **WHAT_IT_HAS**: Integer and fractional epidemic formulations; structural/practical identifiability; forecasting and uncertainty analysis.
+* **WHAT_IT_LACKS_FOR_GATE_2**: No external persistence/SARIMA/seasonal-naive benchmark answering whether within-family fractional improvement survives outside the model family.
+* **NOVELTY_EFFECT**: Kills novelty claims based on merely combining fractional modeling, identifiability, and forecasting.
+* **STATUS**: KEEP / already cited in manuscript.
+
+#### L5-05 — Kalizhanova et al. (2024)
+* **TOPIC**: Tuberculosis mechanistic-vs-statistical forecasting friction.
+* **FULL_CITATION**: Kalizhanova, A., Yerdessov, S., Sakko, Y., Tursynbayeva, A., Kadyrov, S., Gaipov, A., et al. (2024). Modeling tuberculosis transmission dynamics in Kazakhstan using SARIMA and SIR models. *Scientific Reports*, 14, 24824.
+* **DOI_OR_IDENTIFIER**: DOI: 10.1038/s41598-024-76721-2
+* **WHAT_IT_HAS**: TB surveillance data; SARIMA and mechanistic SIR comparison; temporally separated training/testing; SARIMA shows superior predictive accuracy in that empirical setting.
+* **WHAT_IT_LACKS_FOR_GATE_2**: No fractional-order model and no fractional-vs-integer within-family contrast.
+* **NOVELTY_EFFECT**: Establishes that, in TB, mechanistic interpretation and statistical forecasting performance can diverge. Strengthens the scientific friction but is not a direct precedent for the full present design.
+* **STATUS**: ABSORB — high-priority TB neighbor.
+
+#### L5-06 — Jiru & Kumaravel (2026)
+* **TOPIC**: Fractional/integer epidemic model with an external OLS comparator.
+* **FULL_CITATION**: Jiru, M., & Kumaravel, S. K. (2026). A memory-driven pneumonia dynamics model validated against Ethiopian mortality data: a fractional-order differential equation framework. *Scientific Reports*, 16.
+* **DOI_OR_IDENTIFIER**: DOI: 10.1038/s41598-026-56464-y
+* **WHAT_IT_HAS**: Fractional and integer SEIHR formulations; external OLS comparator; nominal train/validation framing.
+* **WHAT_IT_LACKS_FOR_GATE_2**: Only three annual observations (2018–2020), no rolling-origin design, no genuine multi-horizon benchmark comparable to the present monthly evaluation, and no strong statistical/naive baseline suite.
+* **NOVELTY_EFFECT**: Prevents broad absence claims about fractional + integer + external comparator, but does not close the present forecasting-evaluation friction.
+* **STATUS**: ABSORB — bounded neighbor.
+
+#### L5-07 — Muhafzan et al. (2024)
+* **TOPIC**: Structural TB neighbor: fractional SEIT.
+* **FULL_CITATION**: Muhafzan, Baqi, A. I., Narwen, Rudianto, B., Yulianti, L., Zulakmal, Hanan, H. A., & Ayu, L. T. (2024). Dynamical analysis of a fractional order SEIT epidemic model for TB spread under influence of vaccination. *Communications in Mathematical Biology and Neuroscience*, 2024, Article 102.
+* **DOI_OR_IDENTIFIER**: DOI: 10.28919/cmbn/8853
+* **WHAT_IT_HAS**: Fractional SEIT model for tuberculosis; equilibrium/stability analysis; vaccination effects on $R_0$ and infected population.
+* **WHAT_IT_LACKS_FOR_GATE_2**: No out-of-sample forecasting, no external forecasting baseline, no practical-identifiability analysis of the present type.
+* **NOVELTY_EFFECT**: Kills any structural novelty claim based on fractional SEIT + TB alone; useful as a close structural contrast.
+* **STATUS**: ABSORB — structural neighbor.
+
+---
+
+## Gate 2 Closure Record
+
+```text
+GATE_2_EXTERNAL_VERIFICATION = CLOSED
+DATE                         = 2026-09-05
+SEARCH_OUTCOME               = NO_DIRECT_PRECEDENT_LOCATED_IN_SEARCHED_CORPUS
+UNIVERSAL_ABSENCE_CLAIM      = PROHIBITED
+FIRST_STUDY_CLAIM            = PROHIBITED
+NOVELTY_BASIS                = SCIENTIFIC_FRICTION_NOT_EXACT_COMBINATION
+PORTFOLIO_DECISION           = ABSORB
+NEW_EXPERIMENT_REQUIRED      = NO
+```
+
+**Scientific friction retained**: the literature separately shows that fractional epidemic formulations can outperform integer-order counterparts and that mechanistic epidemic models can fail against statistical forecasting references. The unresolved manuscript-relevant question is whether a favorable fractional-vs-integer conclusion survives when the same model is subjected to external statistical/naive baselines under a common temporal multi-horizon evaluation protocol.
+
+**Bounded conclusion**: the searched corpus did not reveal a direct precedent satisfying all five Gate 2 conditions simultaneously. This finding is used only to delimit the contribution; it is not converted into a historical-priority claim.
+
+---
+
 ## Summary of Matrix Review
 
-* **Total Sources Screened**: 11
-* **Total Sources Kept**: 11 (all peer-reviewed primary/methodological papers, official WHO report, or standard methodological reference).
-* **Novelty / Gap Claims Invented**: 0 (all sources provide general methodological or epidemiological grounding without asserting artificial literature gaps).
+* **Core support sources documented (L1–L4)**: 11.
+* **Gate 2 adversarial neighbors documented (L5)**: 7.
+* **Gate 2 direct precedents satisfying all five conditions**: 0 located in the searched corpus.
+* **Novelty / Gap Claims Invented**: 0.
+* **Permitted contribution framing**: scientific friction and change in inference when the benchmark set is expanded beyond the fractional/integer model family.
+* **Forbidden framing**: `first study`, `never evaluated`, universal absence, generic fractional superiority, or novelty based only on the exact combination of model + disease + dataset + baselines.
