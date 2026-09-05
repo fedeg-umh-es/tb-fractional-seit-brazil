@@ -20,7 +20,7 @@ This document tracks declaration text that still requires final human confirmati
 ---
 
 ## 4. Ethics Approval and Consent to Participate
-[AUTHOR CONFIRMATION REQUIRED: Confirm that the analysis uses only publicly accessible, aggregate national notification counts with no individual-level or identifiable patient data. If confirmed, the study does not involve human participants or identifiable personal data and no study-specific ethics approval or informed consent is applicable.]
+[AUTHOR CONFIRMATION REQUIRED: Confirm that the analysis uses only aggregate national monthly notification counts with no individual-level or identifiable patient data. If confirmed, state the applicable ethics/consent position in wording consistent with institutional and journal requirements. The repository does not independently establish the original public acquisition route for the supplied observational file.]
 
 ---
 
@@ -30,16 +30,18 @@ Not applicable unless the final manuscript includes identifiable individual mate
 ---
 
 ## 6. Data Availability
-The monthly tuberculosis surveillance notification data analyzed in this study are derived from the Brazilian National System for Notifiable Diseases (SINAN / DATASUS). The processed monthly time-series dataset and calibration partitions spanning 2001 through 2022 are maintained in the project repository (`data/monthly_cases.csv`).
+The canonical observational dataset analyzed in this study is the aggregate monthly Brazil tuberculosis series stored as `data/raw/tb_mes.xlsx`, covering January 2001 through December 2022 ($N=264$). The file is preserved unchanged as supplied by Amaury de Souza for this collaboration and is used directly by the computational pipeline. Repository provenance, including the source-file hash and structural audit, is recorded in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
+
+The supplied repository materials do not independently record the original governmental download URL or acquisition path; these must not be represented as independently verified unless the authors subsequently document them. During peer review, the canonical observational file and reproducible repository bundle or private repository access can be provided to editors and reviewers.
 
 See `submission_bmb/BMB_DATA_CODE_AVAILABILITY.md` for full provenance and release planning.
 
 ---
 
 ## 7. Code Availability
-The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, practical-identifiability pipeline, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`.
+The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, profile-objective practical-identifiability analysis, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`.
 
-Editorial/documentation commits after this freeze do not modify canonical numerical evidence.
+Editorial/documentation commits after this freeze do not modify canonical numerical evidence. The repository is private; a reproducible repository bundle or private access can be supplied during peer review. No public archival DOI currently exists.
 
 ---
 
