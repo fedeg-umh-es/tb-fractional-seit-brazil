@@ -1,66 +1,45 @@
 # Bulletin of Mathematical Biology — Desk-Reject Simulation Audit
 
-This document reports a simulated 3-minute editorial desk-review audit evaluating the packaging and structure of the manuscript against the seven standard editorial screening gates of the *Bulletin of Mathematical Biology* (BMB).
+This document records a bounded editorial-risk assessment after Gate 2 closure and manuscript repair. It is not a prediction of editorial outcome.
 
 ---
 
-## 1. Simulated 3-Minute Editorial Scan
+## Seven-Gate Assessment
 
-* **Scanned Artifacts**: Primary Title, Compressed Abstract (243 words), First Two Introduction Paragraphs, Figures 1–3, and Tables 1–2.
-* **Reviewing Persona**: Handling Editor in Mathematical Epidemiology / Theoretical Population Biology.
-
----
-
-## 2. Seven Editorial Gates Evaluation
-
-### Gate 1: FORMAL
-* **STATUS**: PASS
-* **EVALUATION**: The manuscript strictly respects all structural and length constraints, including an abstract under 250 words (243 words), structured declarations (Ethics, Data, Code, AI, Competing Interests), and standard research article formatting.
-
-### Gate 2: POLICY
-* **STATUS**: PASS
-* **EVALUATION**: Ethical standards for aggregate public data are met. The AI disclosure complies with current Springer Nature policy by preserving exclusive human author accountability (fedeg) and explicitly disclaiming AI authorship.
-
-### Gate 3: SCOPE
-* **STATUS**: PASS
-* **EVALUATION**: The manuscript fits BMB's core scope: mathematical modeling of biological processes, Caputo fractional differential equations, parameter identifiability, stability analysis via Matignon's criterion, and rigorous out-of-sample prediction.
-
-### Gate 4: CONTRIBUTION THRESHOLD
-* **STATUS**: PASS
-* **EVALUATION**: Provides a rigorous methodological demonstration of the divergence between within-family model flexibility and external forecast skill, alongside the coexistence of parameter non-identifiability with derived $R_0$ stability.
-
-### Gate 5: EVIDENCE
-* **STATUS**: PASS
-* **EVALUATION**: Supported by complete canonical evidence: 13-origin rolling forecasts ($h=1\dots 12$), independently refitted integer comparator, 3 external baselines, 25-member near-equivalent admissible set, and complete automated verification.
-
-### Gate 6: PROBLEM / FRAMING
-* **STATUS**: PASS
-* **EVALUATION**: Avoids generic public-health rhetoric and novelty hype. Clearly frames the mathematical-biology problem of model evaluation, identifiability vs. trajectory stability, and baseline benchmarking.
-
-### Gate 7: EXECUTION / CONTEXT
-* **STATUS**: PASS
-* **EVALUATION**: The text clearly acknowledges all empirical and mathematical boundaries (single national series, unrecoverable historical code, descriptive sample comparisons, operational admissibility envelope, no unverified control claims).
+| Gate | Status | Current reading |
+|---|:---:|---|
+| Formal | HOLD | Scientific package is assembled, but final author metadata, declarations, and compiled submission formatting remain incomplete. |
+| Policy | HOLD | AI disclosure is now documented in Methods; final authorship, funding, competing-interest and ethics-applicability confirmations remain pending. |
+| Scope | PLAUSIBLE | Mathematical epidemiology, fractional differential equations, identifiability and forecast evaluation are within BMB's broad mathematical-biology remit. Scope match alone is not sufficient for acceptance. |
+| Contribution threshold | MODERATE RISK | The work does not introduce new fractional theory or a new forecasting algorithm. Its contribution is the empirical change in inference when a favorable fractional-vs-integer result is tested against external baselines under a common temporal protocol. |
+| Evidence | PASS FOR BOUNDED CLAIM | 13 rolling origins, 12 horizons, independently refitted integer comparator, three external baselines, frozen canonical evidence, and bounded identifiability analysis support the manuscript's stated claims. |
+| Problem/framing | PASS AFTER REPAIR | Historical-absence language has been removed. Discussion now cites partial precedents and frames the contribution as a scientific friction rather than a `first study` claim. |
+| Execution/context | PASS WITH HUMAN QA PENDING | Main numerical and methodological boundaries are explicit; final bibliographic, author and production review remains required. |
 
 ---
 
-## 3. Critical Editorial Desk-Review Risk Audit
+## Principal Desk-Reject Risk
 
-### Critical Question:
-> *Could the editor mistakenly classify this manuscript as "another paper claiming fractional models outperform integer models"?*
+The main editorial risk is **contribution threshold / problem framing**, not raw scope and not a missing experiment.
 
-* **VERDICT**: **NO (PACKAGING INTEGRITY VERIFIED)**
-* **ANALYSIS**:
-  1. The title explicitly pairs within-family error reduction with external forecasting skill.
-  2. The abstract foregrounds the verbatim control sentence: *"Although the fractional formulation consistently reduced forecast error relative to the independently refitted integer-order SEIT model, this within-family improvement did not translate into positive observed forecast skill against persistence or SARIMA at any evaluated horizon ($H_{\text{relax}} = 0$)."*
-  3. Figure 1 and Figure 2 prominently display the performance of persistence and SARIMA, with Figure 2 anchoring performance below the zero-skill line for all 12 horizons.
-  4. The manuscript explicitly frames within-family improvement as a structural comparison that must not be confused with external forecasting skill.
+An editor could read the manuscript as a careful single-case benchmark unless the title, abstract and opening Discussion make clear what is learned beyond the specific TB series:
+
+> within-family fractional improvement and external forecasting skill are distinct evidential questions, and the scientific interpretation can change when the benchmark set expands beyond the mechanistic family.
+
+This is a bounded methodological-empirical contribution. It is not presented as a universal principle, a new fractional method, or historical priority.
 
 ---
 
-## 4. Overall Desk-Reject Audit Verdict
+## Current Risk Classification
 
 ```text
-DESK_REJECT_RISK = MINIMAL
-EDITORIAL_PACKAGING_VERDICT = PASS_ALL_GATES
-RECOMMENDATION = READY_FOR_SUBMISSION_REVIEW
+DESK_REJECT_RISK = MODERATE
+PRIMARY_RISK_GATE = CONTRIBUTION_THRESHOLD_AND_FRAMING
+SCOPE_RISK = LOW_TO_MODERATE
+EVIDENCE_RISK_FOR_CURRENT_CLAIMS = LOW
+NOVELTY_OVERCLAIM_RISK_AFTER_GATE_2_REPAIR = LOW
+FORMAL_POLICY_RISK_BEFORE_METADATA_COMPLETION = ACTIVE
+NEW_EXPERIMENT_REQUIRED = NO
 ```
+
+The previous `MINIMAL` risk classification is superseded.
