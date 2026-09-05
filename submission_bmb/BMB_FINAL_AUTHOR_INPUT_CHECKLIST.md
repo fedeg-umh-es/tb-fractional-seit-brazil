@@ -24,7 +24,7 @@ This document tracks all human author decisions and metadata inputs required fro
 ### ORCID
 * **STATUS**: `AUTHOR_CONFIRMATION_REQUIRED`
 * **MISSING INPUT**: 16-digit ORCID identifier(s) (`AUTHOR_1_ORCID`, `ADDITIONAL_AUTHOR_ORCIDS`).
-* **ACTION REQUIRED**: fedeg to provide ORCID identifier (e.g., `0000-000X-XXXX-XXXX`) or confirm omitted/not available.
+* **ACTION REQUIRED**: fedeg to provide ORCID identifier or confirm omitted/not available.
 
 ### CRediT AUTHOR CONTRIBUTIONS
 * **STATUS**: `AUTHOR_CONFIRMATION_REQUIRED`
@@ -34,47 +34,47 @@ This document tracks all human author decisions and metadata inputs required fro
 ### FUNDING
 * **STATUS**: `AUTHOR_INPUT_REQUIRED`
 * **MISSING INPUT**: Explicit funding declaration (`FUNDING`).
-* **ACTION REQUIRED**: fedeg to provide funder name, grant numbers, and recipients, or confirm explicit text: *"The author(s) received no specific funding for this work."*
+* **ACTION REQUIRED**: fedeg to provide funder name, grant numbers, and recipients, or confirm an explicit no-specific-funding statement consistent with the journal requirements.
 
 ### ETHICS
 * **STATUS**: `AUTHOR_OR_INSTITUTIONAL_CONFIRMATION_REQUIRED`
-* **MISSING INPUT**: Formal confirmation of aggregate public surveillance data exemption (`ETHICS_CONFIRMATION`).
-* **ACTION REQUIRED**: fedeg to confirm factual statement: study analyzed strictly publicly accessible, aggregated national notification counts (SINAN/DATASUS) with zero individual-level or identifiable patient data.
+* **MISSING INPUT**: Formal confirmation of the ethics position appropriate to the actual aggregate observational dataset and institutional requirements.
+* **ACTION REQUIRED**: fedeg to confirm that the analyzed canonical file contains only aggregate national monthly observations and no individual-level or identifiable patient data, and to confirm the appropriate ethics/consent wording. The repository does not independently establish the original governmental acquisition route for the supplied file.
 
 ### COMPETING INTERESTS
 * **STATUS**: `AUTHOR_CONFIRMATION_REQUIRED`
 * **MISSING INPUT**: Formal conflict-of-interest declaration (`COMPETING_INTERESTS`).
-* **ACTION REQUIRED**: fedeg to confirm *"The authors declare no competing interests."* or provide specific disclosures.
+* **ACTION REQUIRED**: fedeg to confirm no competing interests or provide specific disclosures.
 
 ### DATA AVAILABILITY
-* **STATUS**: `RESOLVED`
-* **MISSING INPUT**: None.
-* **ACTION REQUIRED**: Maintained as verified (SINAN/DATASUS aggregate monthly notification data 2001–2022, $N=264$).
+* **STATUS**: `DOCUMENTARY_REPAIR_COMPLETE_AUTHOR_PROVENANCE_CONFIRMATION_OPTIONAL`
+* **MISSING INPUT**: No missing computational artifact. Optional author input remains if a verified original public acquisition URL/source record exists outside the repository.
+* **ACTION REQUIRED**: Current statement is restricted to repository-verifiable facts: canonical file `data/raw/tb_mes.xlsx`, 264 monthly observations, supplied by Amaury de Souza, preserved hash/provenance, and peer-review access through the private reproducible repository/bundle. Do not restore a SINAN/DATASUS acquisition claim unless independently documented by the authors.
 
 ### CODE AVAILABILITY
-* **STATUS**: `RESOLVED`
-* **MISSING INPUT**: None.
-* **ACTION REQUIRED**: Publication-safe statement maintained for local reproducible Git repository (commit `13015847a6f364505391d4f6e24d9c4c994669ff`), with Zenodo archival release scheduled upon acceptance.
+* **STATUS**: `RESOLVED_FOR_PRE_SUBMISSION`
+* **MISSING INPUT**: None for peer-review availability wording.
+* **ACTION REQUIRED**: Maintain frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`, private-review access wording, and `profile-objective` terminology. No public DOI currently exists.
 
 ### AI DISCLOSURE
-* **STATUS**: `RESOLVED`
-* **MISSING INPUT**: None.
-* **ACTION REQUIRED**: Springer Nature LLM policy compliant statement maintained (human author sole responsibility, AI assistance disclosed).
+* **STATUS**: `RESOLVED_FOR_PRE_SUBMISSION`
+* **MISSING INPUT**: None pending final author review.
+* **ACTION REQUIRED**: Maintain human-author responsibility and disclosed AI assistance in Methods.
 
 ### TITLE
-* **STATUS**: `RESOLVED`
+* **STATUS**: `PROVISIONALLY_FROZEN_PENDING_FINAL_MANUSCRIPT_PASS`
 * **MISSING INPUT**: None.
-* **ACTION REQUIRED**: Title approved: *"Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics"*.
+* **ACTION REQUIRED**: Reassess only after structural/prose repair; do not alter scientific identity for journal fit.
 
 ### ABSTRACT
-* **STATUS**: `RESOLVED`
-* **MISSING INPUT**: None.
-* **ACTION REQUIRED**: Abstract approved (243 words, turning-point sentence locked).
+* **STATUS**: `PENDING_FINAL_INSIDE_OUT_SYNC`
+* **MISSING INPUT**: None scientific.
+* **ACTION REQUIRED**: Rewrite/polish only after Results, Discussion, Conclusion, and Introduction are structurally closed; retain BMB word-limit compliance and the turning-point result.
 
 ### COVER LETTER
 * **STATUS**: `AUTHOR_INPUT_REQUIRED`
-* **MISSING INPUT**: Sign-off metadata (author name, affiliation, institutional email in signature block).
-* **ACTION REQUIRED**: Insert confirmed author contact details into `submission_bmb/BMB_COVER_LETTER.md` upon receipt of metadata.
+* **MISSING INPUT**: Sign-off metadata plus final manuscript wording.
+* **ACTION REQUIRED**: Insert confirmed author contact details only after the manuscript pre-submission draft passes scientific and editorial QA.
 
 ---
 
@@ -82,23 +82,27 @@ This document tracks all human author decisions and metadata inputs required fro
 
 The following human decisions remain pending before the package can be marked `READY_FOR_BMB_SUBMISSION = YES`:
 
-1. **Author Identities and Order** (`FINAL_AUTHOR_LIST`)
-2. **Institutional Affiliations** (`AUTHOR_1_AFFILIATION`, etc.)
-3. **Corresponding Author Contact** (`AUTHOR_1_EMAIL`)
-4. **Funding Declaration** (`FUNDING`)
-5. **Ethics & Competing Interest Confirmations** (`ETHICS_CONFIRMATION`, `COMPETING_INTERESTS`)
+1. **Author identities and order**
+2. **Institutional affiliations**
+3. **Corresponding-author contact**
+4. **Funding declaration**
+5. **Ethics position**
+6. **Competing-interest declaration**
+7. **Final human scientific review of the repaired manuscript**
+
+A verified original public-source acquisition record for the canonical dataset may also be supplied if available, but its absence must not be filled by assumption.
 
 ---
 
 ## 3. Package Gate Status
 
 ```text
-REPOSITORY_AUTHOR = fedeg
+REPOSITORY_OWNER = fedeg
 SCIENTIFIC_EVIDENCE_STATUS = FROZEN_AND_LOCKED
-BMB_EDITORIAL_PACKAGING = COMPLETE
-CODE_PUBLIC = NO (Local reproducible Git repository)
-ARCHIVAL_DOI = ABSENT (To be minted upon acceptance)
-ZENODO_ARCHIVE_RECOMMENDED = YES
-READY_FOR_BMB_SUBMISSION = NO (Awaiting explicit human author metadata above)
-FINAL_GATE_STATUS = BMB_PACKAGE_STILL_AWAITING_AUTHOR_INPUT
+DOCUMENTARY_TRUTH_REPAIR = IN_PROGRESS
+MANUSCRIPT_STRUCTURAL_REPAIR = NEXT
+CODE_PUBLIC = NO
+ARCHIVAL_DOI = ABSENT
+READY_FOR_BMB_SUBMISSION = NO
+FINAL_GATE_STATUS = CONTROLLED_PRE_SUBMISSION_REPAIR
 ```
