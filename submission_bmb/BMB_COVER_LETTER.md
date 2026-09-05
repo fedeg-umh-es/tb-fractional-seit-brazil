@@ -2,28 +2,27 @@
 
 **Target Journal**: *Bulletin of Mathematical Biology*  
 **Article Type**: Original Research  
-**Author**: fedeg  
-**Word Count**: ~298 words  
+**Authors**: [AUTHOR INPUT REQUIRED: final human author list]  
 
 ---
 
 Dear Editor-in-Chief,
 
-Please find enclosed our manuscript entitled **"Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics"** for consideration as an Original Research article in the *Bulletin of Mathematical Biology*.
+Please consider our manuscript, **"Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics,"** for publication as an **Original Research** article in the *Bulletin of Mathematical Biology*.
 
-This study presents an independent reimplementation and methodological investigation of a Caputo fractional-order SEIT (Susceptible–Exposed–Infectious–Treated) compartmental model applied to national monthly tuberculosis surveillance data from Brazil (2001–2022). This work separates two distinct methodological questions: (i) whether fractional differentiation improves model fidelity relative to an independently refitted integer-order counterpart, and (ii) whether that internal improvement yields positive out-of-sample forecast skill when evaluated against standard statistical baselines.
+The manuscript addresses a methodological question that extends beyond the specific tuberculosis application: when a fractional-order epidemic model reduces error relative to its integer-order counterpart, does that within-family improvement constitute evidence of forecasting skill when the model is evaluated against external statistical and naive references under a genuine temporal out-of-sample protocol?
 
-Using a 13-origin expanding rolling-origin evaluation across 12 monthly lead horizons, we find that the fractional SEIT model consistently achieves lower forecast error than an independently refitted integer-order SEIT comparator across all lead times. However, this within-family error reduction does not translate into positive observed forecast skill against simple external benchmarks: both persistence (random walk) and SARIMA achieve lower forecast errors across all twelve evaluated lead horizons. Positive skill relative to seasonal naive is confined to short lead times ($h = 1 \dots 7\text{ months}$) as a baseline-specific empirical descriptor.
+We examine this question through an independent reimplementation of a Caputo fractional-order SEIT model using national monthly tuberculosis surveillance data from Brazil (2001–2022). The fractional and integer-order SEIT models are fitted independently and evaluated using 13 expanding-window forecast origins across 12 monthly lead horizons, together with persistence, seasonal naive, and SARIMA benchmarks. The fractional formulation consistently reduces forecast error relative to the independently refitted integer-order comparator. However, that favorable within-family conclusion changes when the benchmark set is expanded: the fractional SEIT model shows no positive observed forecast skill relative to persistence or SARIMA at any evaluated horizon, while positive skill relative to seasonal naive is confined to horizons 1–7. Practical-identifiability analysis is included as a secondary interpretive axis, showing weak identification of several individual rate parameters despite comparatively stable predictions and a narrow practical-identifiability envelope for the derived basic reproduction number.
 
-In parallel, we conduct a systematic practical-identifiability and equilibrium analysis. Calibration reveals that practical non-identifiability of individual kinetic rate parameters coexists with high trajectory stability, a tightly bounded practical-identifiability envelope for the basic reproduction number ($R_0 \in [1.1542, 1.1892]$), and uniform local instability of the Disease-Free Equilibrium under Matignon's criterion across the admissible solution set.
+The practical implication is deliberately bounded but general to the evaluation problem: **within-family error reduction should not, by itself, be interpreted as evidence of predictive utility. Claims of forecasting advantage for a fractional epidemic formulation should be tested against appropriate external baselines under an explicit temporal out-of-sample protocol before its additional flexibility is interpreted as operationally useful.**
 
-This manuscript aligns directly with the scope of the *Bulletin of Mathematical Biology* by addressing the foundational relationship between mechanistic model structure, practical identifiability, and rigorous out-of-sample prediction in mathematical epidemiology.
+We believe this question is well aligned with the *Bulletin*'s methodological tradition. The journal has previously published work scrutinizing ad hoc use of fractional derivatives in epidemiological models (Angstmann, Henry, and McGann, 2016, *A Fractional Order Recovery SIR Model from a Stochastic Process*) and, more recently, work on prediction under poor parameter identification (Simpson and Maclaren, 2024, *Making Predictions Using Poorly Identified Mathematical Models*). Our manuscript engages that tradition empirically: it does not claim generic fractional superiority or theoretical novelty, but tests how the scientific interpretation of a favorable fractional-vs-integer result changes under a stronger forecasting benchmark.
 
-Thank you for your time and consideration of our work.
+Thank you for considering the manuscript.
 
 Sincerely,
 
-**fedeg**  
-[AUTHOR INPUT REQUIRED: Affiliation / Department / Institution]  
-[AUTHOR INPUT REQUIRED: Corresponding Email Address]  
-[AUTHOR INPUT REQUIRED: ORCID ID if available]  
+[AUTHOR INPUT REQUIRED: corresponding author name]  
+[AUTHOR INPUT REQUIRED: affiliation / department / institution]  
+[AUTHOR INPUT REQUIRED: corresponding email address]  
+[AUTHOR INPUT OPTIONAL: ORCID]
