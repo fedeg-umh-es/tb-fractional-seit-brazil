@@ -22,7 +22,7 @@ FORMAL_FORECAST_SIGNIFICANCE_CLAIM = NO
 FIRST_STUDY_OR_HISTORICAL_ABSENCE_CLAIM = NO
 ```
 
-**Verdict**: PASS after structural repair.
+**Verdict**: PASS.
 
 ---
 
@@ -34,11 +34,11 @@ FIRST_STUDY_OR_HISTORICAL_ABSENCE_CLAIM = NO
 | C02 | Observed skill versus persistence is negative at $h=1,\dots,12$ | Persistence has lower descriptive sample error than fractional SEIT at every evaluated horizon | PASS |
 | C03 | Observed skill versus SARIMA is negative at $h=1,\dots,12$ | SARIMA has lower descriptive sample error than fractional SEIT at every evaluated horizon | PASS |
 | C04 | Observed skill versus seasonal naive is positive only at $h=1,\dots,7$ | Baseline-specific positive-skill window; $H=7$ is an empirical descriptor, not a predictability limit | PASS |
-| C05 | General operational fractional forecasting advantage is not supported | Within-family improvement is insufficient to establish general forecasting advantage beyond the model family | PASS after final Conclusion wording repair in source draft |
+| C05 | General operational fractional forecasting advantage is not supported | Within-family improvement is insufficient to establish general forecasting advantage beyond the model family; persistence/SARIMA remain unfavorable and the seasonal-naive exception is explicit | PASS |
 | C06 | $\alpha<1$ does not demonstrate biological memory | Fitted fractional order is not interpreted as evidence of biological/epidemiological memory | PASS |
 | C07 | $R_0>1$ for all 25 near-equivalent admissible solutions; $R_0=1.1542$–$1.1892$ | Report as practical-identifiability envelope over the predefined admissible set, never as confidence/credible interval; broader 33-member pool explicitly excluded | PASS |
 | C08 | DFE locally unstable for 25/25 admissible solutions under Matignon | Model property restricted to the predefined admissible set; no real-world persistence or forecasting claim | PASS |
-| C09 | $\beta,\gamma,d$ are weakly identifiable | Do not interpret them as precisely estimated epidemiological rates | PASS after Abstract source wording repair |
+| C09 | $\beta,\gamma,d$ are weakly identifiable | Do not interpret them as precisely estimated epidemiological rates | PASS |
 | C10 | Historical ~48% optimal-control claim not verified | Optimal-control/historical burden-reduction claims remain outside current evidence base | PASS |
 | C11 | Formal predictive superiority/inferiority not tested | Rolling-origin comparisons are descriptive; no formal significance or inferential superiority claim | PASS |
 
@@ -71,19 +71,17 @@ H7_PREDICTABILITY_LIMIT = FORBIDDEN
 CANONICAL_TERM = baseline-specific empirical horizon descriptor
 
 ALPHA_MEMORY_EVIDENCE = FORBIDDEN
-
 GENERIC_FRACTIONAL_SUPERIORITY = FORBIDDEN
-
 FORECAST_SIGNIFICANCE = NOT_TESTED
 ```
 
-**Verdict**: PASS in repaired source sections and submission package. Historical/internal frozen artifacts may retain older repository terminology; they are not to be rewritten if doing so would modify the frozen evidence package. Submission-facing text must use the canonical terminology above.
+**Verdict**: PASS in the canonical manuscript and submission-facing package. Historical/internal frozen artifacts may retain older repository terminology; they are not rewritten merely for cosmetic consistency when doing so would alter the frozen evidence package.
 
 ---
 
 ## 5. Figure/table claim audit
 
-`submission_bmb/BMB_FIGURE_TABLE_PACKAGE.md` was repaired so that:
+`submission_bmb/BMB_FIGURE_TABLE_PACKAGE.md` now ensures that:
 
 - Figure 1 explicitly separates the within-family comparator from the three external baselines.
 - Figure 2 explicitly labels skill as descriptive and states that no prespecified predictive-accuracy significance test was applied.
@@ -96,14 +94,14 @@ FORECAST_SIGNIFICANCE = NOT_TESTED
 
 ---
 
-## 6. Residual synchronization item
+## 6. Canonical synchronization verification
 
-Two source-level wording repairs were made during this audit:
+The two claim-boundary repairs identified during the audit are now present in `submission_bmb/BMB_MANUSCRIPT.md`:
 
-1. `manuscript_draft/ABSTRACT_DRAFT.md`: changed the parameter-identifiability implication from an absolute prohibition on interpreting parameters as biological rates to the evidence-supported boundary that they cannot be treated as **precisely estimated epidemiological rates**; the secondary status of the mechanistic axis is also explicit.
-2. `manuscript_draft/CONCLUSION_DRAFT.md`: replaced the unqualified phrase that the external test "failed" with a benchmark-specific statement: persistence and SARIMA remain unfavorable at all horizons, while seasonal-naive skill is positive only through $h=7$.
+1. The Abstract states that weakly identifiable $\beta$, $\gamma$, and $d$ cannot be interpreted as **precisely estimated epidemiological rates**, rather than excluding all biological interpretation categorically.
+2. The Conclusion states the external-benchmark result specifically: persistence and SARIMA remain unfavorable at all evaluated horizons, while positive observed skill is confined to seasonal naive through $h=7$.
 
-These two source repairs must be synchronized into `submission_bmb/BMB_MANUSCRIPT.md` before `CLAIM_PRECISION_AUDIT` can be marked fully complete for the canonical assembled manuscript.
+The final assembled Abstract is within the BMB 150–250 word limit and preserves the dominant forecasting hierarchy.
 
 ---
 
@@ -116,8 +114,10 @@ FROZEN_NUMBERS_CHANGED = NO
 FROZEN_EVIDENCE_CHANGED = NO
 FIGURE_REGENERATION_REQUIRED = NO
 CLAIM_REGISTRY_CONSISTENCY = PASS
-SOURCE_DRAFT_CLAIMS = PASS
-CANONICAL_ASSEMBLY_SYNC = PENDING_TWO_BOUNDED_TEXT_REPAIRS
-PHASE_3_STATUS = PASS_PENDING_CANONICAL_SYNC
-NEXT_ALLOWED_STAGE = canonical sync -> controlled prose pass
+CANONICAL_ASSEMBLY_SYNC = COMPLETE
+CLAIM_PRECISION_AUDIT = PASS
+CONTROLLED_PROSE_PASS = COMPLETE
+PHASE_3_STATUS = COMPLETE
+PHASE_4_STATUS = COMPLETE
+NEXT_ALLOWED_STAGE = BMB editorial/formal pre-submission audit
 ```
