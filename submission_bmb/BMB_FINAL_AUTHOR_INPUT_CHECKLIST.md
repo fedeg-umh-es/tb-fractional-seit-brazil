@@ -1,108 +1,145 @@
 # Bulletin of Mathematical Biology — Final Author Input Checklist
 
-This document tracks all human author decisions and metadata inputs required from **fedeg** prior to final submission to the *Bulletin of Mathematical Biology* (Springer Nature).
+This document tracks the human decisions and metadata that cannot be inferred by the repository or AI before final submission to the *Bulletin of Mathematical Biology*.
+
+The project canon records an external collaboration between **Amaury de Souza** and **Federico García Crespo**. This is collaboration metadata only: it does **not** establish the final author list, author order, corresponding author, or contribution roles.
 
 ---
 
-## 1. Item-by-Item Status & Action Required
-
-### AUTHORSHIP
-* **STATUS**: `BLOCKED`
-* **MISSING INPUT**: Complete human-confirmed author list (`FINAL_AUTHOR_LIST`, `AUTHOR_ORDER`, `AUTHOR_1_FULL_NAME`, `ADDITIONAL_AUTHORS`).
-* **ACTION REQUIRED**: fedeg to supply the exact author list and author order. Sole authorship cannot be assumed automatically without explicit confirmation.
-
-### AFFILIATIONS
-* **STATUS**: `BLOCKED`
-* **MISSING INPUT**: Institutional affiliations (`AUTHOR_1_AFFILIATION`, `ADDITIONAL_AUTHOR_AFFILIATIONS`).
-* **ACTION REQUIRED**: fedeg to provide department, institution/university, city, and country for each author.
-
-### CORRESPONDING AUTHOR
-* **STATUS**: `BLOCKED`
-* **MISSING INPUT**: Designated corresponding author and official institutional email (`CORRESPONDING_AUTHOR`, `AUTHOR_1_EMAIL`).
-* **ACTION REQUIRED**: fedeg to specify corresponding author name and active institutional contact email.
-
-### ORCID
-* **STATUS**: `AUTHOR_CONFIRMATION_REQUIRED`
-* **MISSING INPUT**: 16-digit ORCID identifier(s) (`AUTHOR_1_ORCID`, `ADDITIONAL_AUTHOR_ORCIDS`).
-* **ACTION REQUIRED**: fedeg to provide ORCID identifier or confirm omitted/not available.
-
-### CRediT AUTHOR CONTRIBUTIONS
-* **STATUS**: `AUTHOR_CONFIRMATION_REQUIRED`
-* **MISSING INPUT**: Formal contributor role taxonomy mapping for all confirmed authors.
-* **ACTION REQUIRED**: fedeg to confirm or adjust formal CRediT roles once author list is finalized.
-
-### FUNDING
-* **STATUS**: `AUTHOR_INPUT_REQUIRED`
-* **MISSING INPUT**: Explicit funding declaration (`FUNDING`).
-* **ACTION REQUIRED**: fedeg to provide funder name, grant numbers, and recipients, or confirm an explicit no-specific-funding statement consistent with the journal requirements.
-
-### ETHICS
-* **STATUS**: `AUTHOR_OR_INSTITUTIONAL_CONFIRMATION_REQUIRED`
-* **MISSING INPUT**: Formal confirmation of the ethics position appropriate to the actual aggregate observational dataset and institutional requirements.
-* **ACTION REQUIRED**: fedeg to confirm that the analyzed canonical file contains only aggregate national monthly observations and no individual-level or identifiable patient data, and to confirm the appropriate ethics/consent wording. The repository does not independently establish the original governmental acquisition route for the supplied file.
-
-### COMPETING INTERESTS
-* **STATUS**: `AUTHOR_CONFIRMATION_REQUIRED`
-* **MISSING INPUT**: Formal conflict-of-interest declaration (`COMPETING_INTERESTS`).
-* **ACTION REQUIRED**: fedeg to confirm no competing interests or provide specific disclosures.
-
-### DATA AVAILABILITY
-* **STATUS**: `DOCUMENTARY_REPAIR_COMPLETE_AUTHOR_PROVENANCE_CONFIRMATION_OPTIONAL`
-* **MISSING INPUT**: No missing computational artifact. Optional author input remains if a verified original public acquisition URL/source record exists outside the repository.
-* **ACTION REQUIRED**: Current statement is restricted to repository-verifiable facts: canonical file `data/raw/tb_mes.xlsx`, 264 monthly observations, supplied by Amaury de Souza, preserved hash/provenance, and peer-review access through the private reproducible repository/bundle. Do not restore a SINAN/DATASUS acquisition claim unless independently documented by the authors.
-
-### CODE AVAILABILITY
-* **STATUS**: `RESOLVED_FOR_PRE_SUBMISSION`
-* **MISSING INPUT**: None for peer-review availability wording.
-* **ACTION REQUIRED**: Maintain frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`, private-review access wording, and `profile-objective` terminology. No public DOI currently exists.
-
-### AI DISCLOSURE
-* **STATUS**: `RESOLVED_FOR_PRE_SUBMISSION`
-* **MISSING INPUT**: None pending final author review.
-* **ACTION REQUIRED**: Maintain human-author responsibility and disclosed AI assistance in Methods.
-
-### TITLE
-* **STATUS**: `PROVISIONALLY_FROZEN_PENDING_FINAL_MANUSCRIPT_PASS`
-* **MISSING INPUT**: None.
-* **ACTION REQUIRED**: Reassess only after structural/prose repair; do not alter scientific identity for journal fit.
-
-### ABSTRACT
-* **STATUS**: `PENDING_FINAL_INSIDE_OUT_SYNC`
-* **MISSING INPUT**: None scientific.
-* **ACTION REQUIRED**: Rewrite/polish only after Results, Discussion, Conclusion, and Introduction are structurally closed; retain BMB word-limit compliance and the turning-point result.
-
-### COVER LETTER
-* **STATUS**: `AUTHOR_INPUT_REQUIRED`
-* **MISSING INPUT**: Sign-off metadata plus final manuscript wording.
-* **ACTION REQUIRED**: Insert confirmed author contact details only after the manuscript pre-submission draft passes scientific and editorial QA.
-
----
-
-## 2. Hard Human Blockers Summary
-
-The following human decisions remain pending before the package can be marked `READY_FOR_BMB_SUBMISSION = YES`:
-
-1. **Author identities and order**
-2. **Institutional affiliations**
-3. **Corresponding-author contact**
-4. **Funding declaration**
-5. **Ethics position**
-6. **Competing-interest declaration**
-7. **Final human scientific review of the repaired manuscript**
-
-A verified original public-source acquisition record for the canonical dataset may also be supplied if available, but its absence must not be filled by assumption.
-
----
-
-## 3. Package Gate Status
+## 1. Scientific/Editorial State Before Human Input
 
 ```text
-REPOSITORY_OWNER = fedeg
-SCIENTIFIC_EVIDENCE_STATUS = FROZEN_AND_LOCKED
-DOCUMENTARY_TRUTH_REPAIR = IN_PROGRESS
-MANUSCRIPT_STRUCTURAL_REPAIR = NEXT
-CODE_PUBLIC = NO
-ARCHIVAL_DOI = ABSENT
-READY_FOR_BMB_SUBMISSION = NO
-FINAL_GATE_STATUS = CONTROLLED_PRE_SUBMISSION_REPAIR
+SCIENTIFIC_EVIDENCE = FROZEN
+DOCUMENTARY_TRUTH_REPAIR = COMPLETE
+STRUCTURAL_REPAIR = COMPLETE
+CLAIM_PRECISION_AUDIT = PASS
+CONTROLLED_PROSE_PASS = COMPLETE
+CANONICAL_MANUSCRIPT_SYNC = COMPLETE
+BMB_REQUIREMENTS_VERIFIED = 2026-09-05
+READY_FOR_AUTHOR_SCIENTIFIC_REVIEW = YES
+READY_FOR_SUBMISSION = NO
 ```
+
+No new experiment is required or authorized by the remaining items below.
+
+---
+
+## 2. Required Human Decisions
+
+### AUTHORSHIP AND ORDER
+* **STATUS**: `BLOCKED_HUMAN_DECISION`
+* **KNOWN REPOSITORY FACT**: The project collaboration is Amaury de Souza / Federico García Crespo.
+* **NOT ESTABLISHED**: whether both are final authors, whether additional authors exist, and final order.
+* **REQUIRED INPUT**: exact final author list and order.
+
+### AFFILIATIONS
+* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
+* **REQUIRED INPUT**: department/unit, institution, city, and country for each final author, using the affiliation applicable to this work.
+* **RULE**: public-profile information may be used as a candidate for checking but must not replace author confirmation.
+
+### CORRESPONDING AUTHOR
+* **STATUS**: `BLOCKED_HUMAN_DECISION`
+* **REQUIRED INPUT**: corresponding-author identity and active email address.
+
+### ORCID
+* **STATUS**: `OPTIONAL_CONFIRMATION`
+* **REQUIRED INPUT**: ORCID for each author if available, or explicit omission.
+
+### AUTHOR CONTRIBUTIONS
+* **STATUS**: `BLOCKED_HUMAN_DECISION`
+* **REQUIRED INPUT**: contribution statement for every final author; CRediT may be used.
+* **RULE**: AI must not infer contribution roles from repository commits or conversation history.
+
+### FUNDING
+* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
+* **REQUIRED INPUT**: funding body/grant/recipient details or confirmation that no funding/support applies, using wording consistent with BMB requirements.
+
+### COMPETING INTERESTS
+* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
+* **REQUIRED INPUT**: financial and non-financial competing-interest disclosure for all final authors, or confirmation that none apply.
+
+### ETHICS / CONSENT
+* **STATUS**: `BLOCKED_HUMAN_OR_INSTITUTIONAL_CONFIRMATION`
+* **REPOSITORY FACT**: the canonical observational file contains aggregate monthly national observations and no individual-level or directly identifiable patient fields.
+* **REQUIRED INPUT**: confirm the appropriate ethics/consent statement under the authors' institutional requirements and the journal policy.
+* **RULE**: the absence of individual-level data does not authorize AI to declare an institutional ethics exemption on the authors' behalf.
+
+### DATA PROVENANCE AND ACCESS
+* **STATUS**: `BLOCKED_FOR_FINAL_AUTHOR_ACCESS_DECISION`
+* **REPOSITORY FACTS**:
+  - canonical file: `data/raw/tb_mes.xlsx`;
+  - 264 monthly observations, January 2001–December 2022;
+  - supplied by Amaury de Souza for this collaboration;
+  - hash/provenance recorded;
+  - original governmental acquisition URL/path is not independently recorded in the supplied repository materials;
+  - project repository is private.
+* **REQUIRED INPUT**: choose and confirm the truthful submission route:
+  1. provide a verified original public source/acquisition record and confirm redistribution/access conditions; or
+  2. retain controlled peer-review access through the private reproducible repository/bundle, stating reuse/access conditions accurately.
+* **RULE**: do not restore a SINAN/DATASUS acquisition claim without a verified source record.
+
+---
+
+## 3. Items Already Closed
+
+### CODE AVAILABILITY
+* **STATUS**: `DRAFT_COMPLETE`
+* Frozen computational commit: `13015847a6f364505391d4f6e24d9c4c994669ff`.
+* Repository private; reviewer bundle/private access is the current route.
+* No public archival DOI currently exists.
+* Use `profile-objective`, not `profile-likelihood`.
+
+### AI DISCLOSURE
+* **STATUS**: `DRAFT_COMPLETE`
+* Methods §2.13 records generative AI/LLM assistance and preserves human accountability.
+
+### TITLE
+* **STATUS**: `READY_FOR_HUMAN_APPROVAL`
+* Current title is claim-safe; no scientific reframe is recommended.
+
+### ABSTRACT
+* **STATUS**: `READY_FOR_HUMAN_APPROVAL`
+* Approximately 208 words; BMB requirement verified as 150–250 words.
+
+### COVER LETTER
+* **STATUS**: `SCIENTIFIC_TEXT_COMPLETE_METADATA_PENDING`
+* Contribution is bounded to the case-study evidence; corresponding-author sign-off remains pending.
+
+---
+
+## 4. Minimal Human Input Block
+
+To unlock final production, the authors need to return one consolidated block containing:
+
+```text
+FINAL_AUTHOR_LIST_AND_ORDER =
+AFFILIATION_EACH_AUTHOR =
+CORRESPONDING_AUTHOR =
+CORRESPONDING_EMAIL =
+ORCID_EACH_AUTHOR =
+AUTHOR_CONTRIBUTIONS =
+FUNDING =
+COMPETING_INTERESTS =
+ETHICS_CONSENT_POSITION =
+DATA_PROVENANCE_ACCESS_DECISION =
+FINAL_SCIENTIFIC_REVIEW = APPROVE / CHANGES_REQUIRED
+```
+
+---
+
+## 5. Gate After Human Input
+
+Once the block above is confirmed, the remaining workflow is production-only:
+
+```text
+insert metadata/declarations
+-> generate Springer Nature LaTeX package
+-> insert figures/tables/SI
+-> final reference-style conversion
+-> continuous line + page numbering
+-> compile PDF
+-> visual/scientific production QA
+-> PRE_SUBMISSION_PACKAGE_COMPLETE
+```
+
+No numerical result should be recalculated during this gate unless a genuine reproducibility error is discovered.
