@@ -1,13 +1,14 @@
 # Novelty Audit Decision Record
 
-Date: 2026-08-16
+Date: 2026-08-16  
+Last external-verification update: 2026-09-05  
 Author: fedeg
 
 ---
 
 ## Decision parameters
 
-```
+```text
 GAP_STRENGTH                      = MODERATE
 PORTFOLIO_DECISION                = ABSORB
 DOMINANT_QUESTION                 = KEEP
@@ -15,6 +16,10 @@ IDENTIFIABILITY_AXIS              = INTEGRATED_SECONDARY_AXIS
 CURRENT_EVIDENCE_SUFFICIENT       = YES
 NEW_EXPERIMENT_REQUIRED           = NO
 ARFIMA_BLOCKER                    = REJECTED_DIFFERENT_QUESTION
+GATE_2_EXTERNAL_VERIFICATION      = CLOSED
+DIRECT_PRECEDENT_IN_SEARCHED_SET  = NOT_LOCATED
+FIRST_STUDY_CLAIM                 = PROHIBITED
+UNIVERSAL_ABSENCE_CLAIM           = PROHIBITED
 ```
 
 ---
@@ -45,8 +50,48 @@ The central empirical contribution is:
 
 > WITHIN-FAMILY IMPROVEMENT ≠ EXTERNAL FORECAST SKILL
 
-This is not claimed as a universally new principle. It is an empirical demonstration in a
-model class (fractional epidemic models) where this evaluation was previously absent.
+This is not claimed as a universally new principle and is not supported by a historical-priority
+claim. The distinctive contribution lies in testing whether a favorable fractional-vs-integer
+conclusion survives a common temporal multi-horizon evaluation against external statistical and
+naive forecasting baselines, and in documenting that the inference changes in this TB/Brazil
+case.
+
+---
+
+## Gate 2 external verification closure
+
+The adversarial literature search was closed on 2026-09-05 after repeated targeted searches for
+studies jointly satisfying all of the following:
+
+1. fractional-order mechanistic epidemic model;
+2. comparable integer-order counterpart;
+3. external statistical and/or naive forecasting baselines;
+4. genuine out-of-sample temporal evaluation; and
+5. multiple forecast horizons and/or origins under a common protocol.
+
+**Result**: no direct precedent satisfying all five conditions simultaneously was located in the
+searched corpus.
+
+This result is deliberately bounded. It does **not** establish that no such study exists and does
+**not** justify `first study`, `never evaluated`, `unprecedented`, or equivalent wording.
+
+Closest adversarial neighbors and their limiting differences are documented in
+`literature_verification/LITERATURE_VERIFICATION_MATRIX.md` under L5.
+
+### Scientific friction retained
+
+The literature separately establishes that:
+
+- fractional epidemic formulations can outperform their integer-order counterparts, including in
+  some held-out or rolling-origin evaluations;
+- fractional epidemic models have been compared with ARIMA-type models;
+- identifiability and predictability of integer/fractional epidemiological models have already
+  been studied; and
+- mechanistic TB models can underperform statistical forecasting approaches such as SARIMA.
+
+The manuscript-relevant unresolved question is therefore not an exact-combination absence claim.
+It is whether a favorable fractional-vs-integer result retains its interpretation when the
+benchmark set is expanded beyond the model family under a common temporal forecasting protocol.
 
 ---
 
@@ -57,7 +102,8 @@ model class (fractional epidemic models) where this evaluation was previously ab
 Identifiability functions as a secondary interpretive axis:
 
 - Forecasting establishes what the model *cannot* do (beat external baselines).
-- Identifiability establishes what it *can* do (bounded $R_0$, consistent Matignon stability).
+- Identifiability establishes what remains bounded or robust despite weak individual-parameter
+  recovery.
 
 Established literature already supports:
 
@@ -74,7 +120,7 @@ fractional SEIT evaluation.
 
 ## ARFIMA experiment — rejection rationale
 
-```
+```text
 ARFIMA_EXPERIMENT = NOT_REQUIRED
 ```
 
@@ -98,6 +144,7 @@ experiment.
 - novel framework
 - unprecedented
 - previous studies have never
+- never evaluated
 - fractional models are superior
 - $R_0$ is identifiable (without qualification)
 - forecasting superiority
@@ -105,55 +152,71 @@ experiment.
 ### Preferred bounded formulations
 
 - "the literature examined..."
+- "no direct precedent was located in the searched corpus..."
 - "we evaluate..."
 - "in this empirical setting..."
 - "the results show..."
 - "the analysis distinguishes..."
 - "the distinctive contribution of this study lies in..."
+- "the inference changes when the benchmark set is expanded beyond the model family..."
 
 ---
 
 ## Literature anchors (priority)
 
+### Existing manuscript anchors
+
 1. **Chen et al. (2021)** — Review of fractional epidemic models. DOI: 10.1016/j.apm.2021.03.044
 2. **Kharazmi et al. (2021)** — Identifiability and predictability of integer- and fractional-order
    epidemiological models. DOI: 10.1038/s43588-021-00158-0
 3. **Roosa & Chowell (2019)** — Assessing parameter identifiability in compartmental dynamic
-   models. DOI: 10.1186/s12976-018-0097-6 [already cited]
+   models. DOI: 10.1186/s12976-018-0097-6
 4. **Simpson & Maclaren (2024)** — Making Predictions Using Poorly Identified Mathematical
    Models. DOI: 10.1007/s11538-024-01294-0
 
-These anchors were verified in the adversarial novelty audit (2026-08-16). Only verified and
-scientifically relevant sources are included.
+### Gate 2 adversarial neighbors to be considered during manuscript citation review
+
+- **Chishtie et al. (2026)** — fractional vs integer with rolling-origin OOS, 7/14/21-day horizons;
+  no external statistical/naive benchmark in the same protocol. DOI: 10.1016/j.epidem.2026.100887
+- **Alzahrani et al. (2024)** — fractional SEIR vs ARIMA; no equivalent rolling-origin
+  multi-horizon benchmark. DOI: 10.18576/amis/180101
+- **Rajagopal et al. (2020)** — fractional vs integer prediction on held-out data; no external
+  benchmark suite. DOI: 10.1007/s11071-020-05757-6
+- **Kalizhanova et al. (2024)** — TB SIR vs SARIMA with temporally separated evaluation; no
+  fractional model. DOI: 10.1038/s41598-024-76721-2
+- **Jiru & Kumaravel (2026)** — fractional/integer SEIHR with OLS comparator but only three annual
+  observations and no comparable multi-origin/multi-horizon evaluation. DOI: 10.1038/s41598-026-56464-y
+- **Muhafzan et al. (2024)** — fractional SEIT for TB focused on stability/vaccination rather than
+  OOS forecasting. DOI: 10.28919/cmbn/8853
+
+These sources delimit the contribution. They are not used to manufacture an absence claim.
 
 ---
 
 ## Claim audit result
 
-Search conducted across `manuscript_draft/` and `submission_bmb/BMB_MANUSCRIPT.md` for:
-`first`, `novel`, `novelty`, `unprecedented`, `superior`, `superiority`, `demonstrate`,
-`prove`, `generalize`.
+The previous claim audit found zero unsupported novelty claims in manuscript prose. After Gate 2
+closure, one internal novelty-record sentence was narrowed: the prior wording that external
+baseline evaluation was "previously absent" from the model class is no longer retained.
 
-**Finding**: Zero instances of unsupported novelty claims in manuscript prose. All occurrences
-of `superiority` and `generalize` appear in negation context (e.g., "without claims of...
-superiority", "does not generalize"). These are legitimate defensive qualifications.
-
-**Action**: No claims required narrowing. The manuscript's language discipline is already
-consistent with the novelty audit.
+**Current rule**: manuscript prose must not assert historical absence. Any novelty framing must be
+based on the scientific friction and on the empirical change in inference when the comparison set
+is expanded beyond the fractional/integer family.
 
 ---
 
-## Changes applied
+## Changes applied in this update
 
-- Introduction: No changes required. Already establishes criteria A–D.
-- Discussion: Added one literature-boundary paragraph anchoring identifiability findings to
-  established principles (Simpson & Maclaren 2024, Kharazmi et al. 2021).
-- Discussion: Added Chen et al. (2021) as anchor for fractional epidemic model evaluation gap.
-- References: Added Chen et al. (2021), Kharazmi et al. (2021), Simpson & Maclaren (2024).
-- Conclusion: No changes required. Already uses bounded language.
-- Abstract: No changes required.
-- Methods: No changes required.
-- Results: No changes required.
+- `literature_verification/LITERATURE_VERIFICATION_MATRIX.md`: added L5 adversarial direct-precedent
+  section and formal Gate 2 closure.
+- Corrected Roosa & Chowell (2019) DOI in the literature matrix to
+  `10.1186/s12976-018-0097-6`.
+- This file: removed the obsolete wording that the evaluation was "previously absent" from
+  fractional epidemic models.
+- Added bounded Gate 2 language and explicit prohibition of historical-priority claims.
+- Canonical numerical results: unchanged.
+- Methods and model implementation: unchanged.
+- No new scientific calculation performed.
 
 ---
 
@@ -164,4 +227,6 @@ consistent with the novelty audit.
 - Model implementation: UNCHANGED
 - Figures/data: UNCHANGED
 - BMB submission metadata: UNCHANGED
-- No new scientific calculation performed.
+- No new experiment required by Gate 2
+- Identifiability remains secondary
+- Portfolio decision remains `ABSORB`
