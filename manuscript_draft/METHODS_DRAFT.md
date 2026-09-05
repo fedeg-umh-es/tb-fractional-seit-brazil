@@ -10,7 +10,7 @@ Optimal-control interventions and associated historical burden-reduction estimat
 
 ### 2.2 Data and observation mapping
 
-The empirical series consists of monthly tuberculosis notification counts for Brazil spanning January 2001 through December 2022 ($N = 264$ consecutive monthly observations). The dataset exhibits complete temporal continuity with zero missing months, zero duplicated dates, and zero missing values. 
+The empirical series consists of monthly tuberculosis notification counts for Brazil spanning January 2001 through December 2022 ($N = 264$ consecutive monthly observations). The canonical observational file is preserved in the repository as `data/raw/tb_mes.xlsx`, exactly as supplied by Amaury de Souza for this collaboration; its hash, structure, and ingestion history are recorded in `DATA_PROVENANCE.md` and the machine-readable source manifest. The repository materials do not independently document the original external download URL or acquisition route, so no specific governmental acquisition path is treated here as verified provenance. The dataset exhibits complete temporal continuity with zero missing months, zero duplicated dates, and zero missing values.
 
 The dataset is partitioned into two distinct periods:
 * **Calibration window**: January 2001 to December 2020 ($N_{\text{cal}} = 240$ months).
@@ -20,7 +20,7 @@ The total population series $N(t)$ serves as the denominator in the standard inc
 $$\ln N(t) = a_0 + a_1 t, \quad t \le t_{\text{train}}$$
 No population observations beyond the relevant training endpoint were used.
 
-Surveillance records from Brazil's National System for Notifiable Diseases (SINAN) report newly diagnosed active tuberculosis cases aggregated over monthly intervals. These records represent an incidence flow rather than the standing stock of infectious individuals $I(t)$. Equating monthly case reports directly to $I(t)$ constitutes a stock-flow mis-specification. To accurately represent the data-generating mechanism, monthly reported cases are mapped to the transition flow from the exposed compartment $E$ to the infectious compartment $I$. An auxiliary fractional state accumulator $C(t)$ tracks cumulative incidence:
+The observed monthly case counts represent an incidence flow rather than the standing stock of infectious individuals $I(t)$. Equating monthly case reports directly to $I(t)$ would therefore constitute a stock-flow mis-specification. To represent the observation process, monthly reported cases are mapped to the transition flow from the exposed compartment $E$ to the infectious compartment $I$. An auxiliary fractional state accumulator $C(t)$ tracks cumulative incidence:
 $$^C D_t^\alpha C(t) = \tau_0^{1-\alpha} \sigma E(t), \quad C(0) = 0$$
 The model-predicted monthly reported case count for calendar month $k$ (spanning $[t_k, t_{k+1}]$ with $\Delta t = 1\text{ month}$) is given by the discrete increment of the accumulator:
 $$\hat{y}_k = C(t_{k+1}) - C(t_k)$$
@@ -59,7 +59,7 @@ $$E(0) = \frac{y_0}{\sigma}, \quad I(0) = \frac{y_0}{\gamma + \mu + d}, \quad T(
 
 The system of fractional differential equations is solved using the Diethelm–Ford–Freed predictor-corrector algorithm (Adams–Bashforth–Moulton PECE scheme for Caputo fractional initial-value problems). Numerical integration used a fixed step size of $h = 1.0\text{ month}$, selected following the pre-calibration numerical-convergence audit documented in the repository.
 
-Model calibration is performed by optimizing the free parameter vector $\theta = (\beta, \sigma, \gamma, d, \alpha)$ using Differential Evolution (`scipy.optimize.differential_evolution`). The algorithm configuration is pre-registered as:
+Model calibration is performed by optimizing the free parameter vector $\theta = (\beta, \sigma, \gamma, d, \alpha)$ using Differential Evolution (`scipy.optimize.differential_evolution`). The algorithm configuration was prespecified and documented before execution:
 * Strategy: `best1bin`
 * Population size: `popsize = 15`
 * Mutation constant: `mutation = (0.5, 1.0)`
@@ -72,7 +72,7 @@ The calibration objective minimizes the Root Mean Squared Error (RMSE) between o
 $$J(\theta) = \text{RMSE}(y_{\text{obs}}, \hat{y}(\theta)) = \sqrt{\frac{1}{N_{\text{cal}}} \sum_{k=1}^{N_{\text{cal}}} (y_k - \hat{y}_k(\theta))^2}$$
 Any simulation yielding non-finite numerical outputs or negative state values is assigned an objective penalty ($10^{12}$).
 
-To guarantee determinism and reproducibility, pseudorandom number generators are seeded with explicit pre-registered values:
+To guarantee determinism and reproducibility, pseudorandom number generators were assigned explicit values that were prespecified and documented before execution:
 * Canonical primary seed: `20260815`
 * Diagnostic seeds: `20260816`, `20260817`, `20260818`, `20260819`
 
@@ -87,7 +87,7 @@ Under the fair-comparison principle, the integer comparator's remaining paramete
 ### 2.6 Practical-identifiability analysis
 
 Practical parameter identifiability is evaluated across the calibration dataset using a two-stage protocol:
-1. **Multiseed optimization ensemble**: Optimization across the five pre-registered seeds to detect stochastic solution dispersion under identical hyperparameter settings.
+1. **Multiseed optimization ensemble**: Optimization across the five prespecified seeds to detect stochastic solution dispersion under identical hyperparameter settings.
 2. **Profile-objective exploration**: One-dimensional profile objective sweeps for $\beta$, $\gamma$, $d$, and $\alpha$ over fixed grids, re-optimizing the remaining parameters at each grid point under the canonical primary seed.
 
 To distinguish between parameter identifiability, predictive identifiability, and functional identifiability, an admissible near-equivalent solution set is constructed:
@@ -181,8 +181,12 @@ These indices function strictly as empirical summary descriptors of this specifi
 
 ### 2.12 Statistical interpretation boundary
 
-The comparative forecasting evaluations reported in this study are descriptive sample metrics across the 13 evaluated rolling origins. 
+The comparative forecasting evaluations reported in this study are descriptive sample metrics across the 13 evaluated rolling origins.
 
 The dependence structure of the rolling-origin forecast errors and horizon-specific loss differentials was not formally characterised in the prespecified evaluation protocol. Accordingly, no post-hoc predictive-accuracy tests were added to the present analysis. Any future inferential assessment would require an explicit horizon-specific, dependence-aware protocol defined before testing.
 
 Accordingly, forecasting comparisons are presented without claims of formal statistical significance or inferential superiority. Methodological findings strictly distinguish between empirical sample performance across the evaluated origins and generalizable claims regarding forecasting efficacy.
+
+### 2.13 Use of large language models and AI-assisted tools
+
+Large Language Model (LLM) and related AI tools were used under direct human oversight for drafting assistance, language editing, reference-format checks, structural review, and code-execution scripting. They were not treated as authors or scientific decision-makers and were not used as a source of empirical data or canonical numerical results. All AI-assisted text and code suggestions were reviewed against repository evidence and accepted, modified, or rejected by the human researchers, who retain full responsibility for the scientific content and final manuscript.
