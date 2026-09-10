@@ -1,0 +1,332 @@
+name: C1 DATASUS provenance capture
+
+on:
+  push:
+    branches:
+      - tmp/c1-datasus-exec-20260910
+
+permissions:
+  contents: write
+
+jobs:
+  capture-c1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out canonical main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Install capture dependencies
+        run: python -m pip install --quiet requests beautifulsoup4 lxml
+
+      - name: Execute pre-registered C1 only
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import re
+          import unicodedata
+          from datetime import datetime
+          from pathlib import Path
+          from urllib.parse import urlencode, urljoin
+          from zoneinfo import ZoneInfo
+
+          import requests
+          from bs4 import BeautifulSoup
+
+          OUT_DIR = Path('provenance/datasus')
+          RAW_PATH = OUT_DIR / 'C1_datasus_tb_brazil_2001_2022_raw.csv'
+          LOG_PATH = OUT_DIR / 'C1_ACCESS_LOG.md'
+          FORM_URLS = [
+              'https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sinannet/cnv/tubercbr.def',
+              'http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sinannet/cnv/tubercbr.def',
+          ]
+          TARGET_YEARS = list(range(2001, 2023))
+
+          class C1Unavailable(RuntimeError):
+              pass
+
+          def norm(text: str | None) -> str:
+              text = unicodedata.normalize('NFKD', text or '')
+              text = ''.join(c for c in text if not unicodedata.combining(c))
+              text = re.sub(r'[^a-zA-Z0-9]+', ' ', text).strip().casefold()
+              return re.sub(r'\s+', ' ', text)
+
+          def get_form(session: requests.Session):
+              errors = []
+              for url in FORM_URLS:
+                  try:
+                      r = session.get(url, timeout=60)
+                      r.raise_for_status()
+                      soup = BeautifulSoup(r.content, 'lxml')
+                      form = soup.find('form')
+                      if form is None:
+                          raise RuntimeError('no TABNET form found')
+                      action = urljoin(r.url, form.get('action') or r.url)
+                      return r, soup, form, action
+                  except Exception as exc:
+                      errors.append(f'{url}: {exc}')
+              raise RuntimeError('Could not load TABNET form: ' + ' | '.join(errors))
+
+          def find_select(form, name: str):
+              wanted = norm(name)
+              matches = [s for s in form.find_all('select') if norm(s.get('name')) == wanted]
+              if len(matches) != 1:
+                  raise C1Unavailable(f'expected one select named {name!r}, found {len(matches)}')
+              return matches[0]
+
+          def options(select):
+              return [
+                  {
+                      'label': o.get_text(' ', strip=True),
+                      'value': o.get('value', o.get_text(' ', strip=True)),
+                      'selected': o.has_attr('selected'),
+                  }
+                  for o in select.find_all('option')
+              ]
+
+          def choose_unique(select, predicate, description: str):
+              hits = [o for o in options(select) if predicate(norm(o['label']))]
+              if len(hits) != 1:
+                  labels = [o['label'] for o in hits]
+                  raise C1Unavailable(f'{description}: expected exactly one semantic match, found {len(hits)}: {labels}')
+              return hits[0]
+
+          def browser_defaults(form):
+              pairs = []
+              for inp in form.find_all('input'):
+                  name = inp.get('name')
+                  typ = norm(inp.get('type') or 'text')
+                  if not name or typ in {'submit', 'reset', 'button', 'image', 'file'}:
+                      continue
+                  classes = {norm(x) for x in inp.get('class', [])}
+                  if 'achefacil' in classes:
+                      continue
+                  if typ in {'checkbox', 'radio'} and not inp.has_attr('checked'):
+                      continue
+                  pairs.append((name, inp.get('value', '')))
+
+              for sel in form.find_all('select'):
+                  name = sel.get('name')
+                  if not name:
+                      continue
+                  opts = sel.find_all('option')
+                  selected = [o for o in opts if o.has_attr('selected')]
+                  if not selected and not sel.has_attr('multiple') and opts:
+                      selected = [opts[0]]
+                  for o in selected:
+                      pairs.append((name, o.get('value', o.get_text(' ', strip=True))))
+              return pairs
+
+          def replace_field(pairs, name, values):
+              return [(k, v) for k, v in pairs if k != name] + [(name, v) for v in values]
+
+          session = requests.Session()
+          session.headers.update({
+              'User-Agent': 'Mozilla/5.0 (compatible; provenance-audit/1.0)',
+              'Accept-Language': 'pt-BR,pt;q=0.9',
+          })
+
+          form_response, form_soup, form, action_url = get_form(session)
+
+          linha = find_select(form, 'Linha')
+          coluna = find_select(form, 'Coluna')
+          incremento = find_select(form, 'Incremento')
+          arquivos = find_select(form, 'Arquivos')
+
+          row = choose_unique(
+              linha,
+              lambda s: 'ano' in s and 'diagnost' in s,
+              'C1 row dimension (diagnosis year)',
+          )
+          col = choose_unique(
+              coluna,
+              lambda s: 'mes' in s and 'diagnost' in s,
+              'C1 column dimension (diagnosis month)',
+          )
+          measure = choose_unique(
+              incremento,
+              lambda s: 'casos' in s and 'confirm' in s,
+              'C1 measure (confirmed cases)',
+          )
+
+          period_options = options(arquivos)
+          selected_periods = []
+          missing_years = []
+          for year in TARGET_YEARS:
+              hits = [o for o in period_options if re.search(rf'(?<!\d){year}(?!\d)', o['label'])]
+              if len(hits) == 1:
+                  selected_periods.append(hits[0])
+              elif len(hits) == 0:
+                  missing_years.append(year)
+              else:
+                  raise C1Unavailable(f'period {year}: ambiguous interface options {[o["label"] for o in hits]}')
+          if missing_years:
+              raise C1Unavailable(f'periods unavailable in interface: {missing_years}')
+
+          pairs = browser_defaults(form)
+          pairs = replace_field(pairs, linha.get('name'), [row['value']])
+          pairs = replace_field(pairs, coluna.get('name'), [col['value']])
+          pairs = replace_field(pairs, incremento.get('name'), [measure['value']])
+          pairs = replace_field(pairs, arquivos.get('name'), [o['value'] for o in selected_periods])
+
+          unrestricted_filters = []
+          for sel in form.find_all('select'):
+              name = sel.get('name') or ''
+              if not name.startswith('S'):
+                  continue
+              all_hits = [o for o in options(sel) if o['value'] == 'TODAS_AS_CATEGORIAS__' or norm(o['label']) in {'todas as categorias', 'todas'}]
+              if len(all_hits) == 1:
+                  pairs = replace_field(pairs, name, [all_hits[0]['value']])
+                  unrestricted_filters.append((name, all_hits[0]['label']))
+              elif len(all_hits) > 1:
+                  raise C1Unavailable(f'filter {name}: ambiguous unrestricted option')
+              else:
+                  raise C1Unavailable(f'filter {name}: no unambiguous unrestricted option')
+
+          submit_pair = None
+          for button in form.find_all('input'):
+              if norm(button.get('type')) != 'submit':
+                  continue
+              if 'mostra' in norm(button.get('value')):
+                  if button.get('name'):
+                      submit_pair = (button.get('name'), button.get('value', ''))
+                      break
+          if submit_pair:
+              pairs = [(k, v) for k, v in pairs if k != submit_pair[0]] + [submit_pair]
+
+          payload_ascii = urlencode(pairs, doseq=True, encoding='latin-1').encode('ascii')
+          result = session.post(
+              action_url,
+              data=payload_ascii,
+              headers={
+                  'Referer': form_response.url,
+                  'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              timeout=120,
+          )
+          result.raise_for_status()
+          result_soup = BeautifulSoup(result.content, 'lxml')
+
+          table = result_soup.find('table', class_=lambda x: x and 'tabdados' in str(x).casefold())
+          if table is None:
+              raise RuntimeError('TABNET response did not contain a tabdados result table')
+
+          csv_links = []
+          for a in result_soup.find_all('a', href=True):
+              text = a.get_text(' ', strip=True)
+              href = a['href']
+              if 'csv' in norm(text) or 'csv' in href.casefold():
+                  csv_links.append((text, urljoin(result.url, href)))
+          exact_csv = [x for x in csv_links if 'csv' in norm(x[0])]
+          candidates = exact_csv or csv_links
+          if len(candidates) != 1:
+              raise RuntimeError(f'could not identify unique TABNET CSV export link; candidates={candidates}')
+          csv_label, csv_url = candidates[0]
+
+          csv_response = session.get(csv_url, headers={'Referer': result.url}, timeout=120)
+          csv_response.raise_for_status()
+          raw_bytes = csv_response.content
+          if not raw_bytes:
+              raise RuntimeError('TABNET CSV export was empty')
+
+          exposed_urls = []
+          for tag in result_soup.find_all(href=True):
+              u = urljoin(result.url, tag.get('href'))
+              decoded = u.casefold()
+              if 'tabcgi.exe' in decoded and ('linha=' in decoded or 'incremento=' in decoded or 'arquivos=' in decoded):
+                  exposed_urls.append(u)
+          for tag in result_soup.find_all(attrs={'value': True}):
+              v = str(tag.get('value'))
+              if 'tabcgi.exe' in v.casefold() and ('linha=' in v.casefold() or 'incremento=' in v.casefold()):
+                  exposed_urls.append(urljoin(result.url, v))
+          exposed_urls = list(dict.fromkeys(exposed_urls))
+
+          footer_update_lines = []
+          all_text_lines = [s.strip() for s in result_soup.stripped_strings if s and s.strip()]
+          for line in all_text_lines:
+              if 'atualiz' in norm(line):
+                  footer_update_lines.append(line)
+          footer_update_lines = list(dict.fromkeys(footer_update_lines))
+
+          OUT_DIR.mkdir(parents=True, exist_ok=True)
+          RAW_PATH.write_bytes(raw_bytes)
+          sha256 = hashlib.sha256(raw_bytes).hexdigest()
+          access_dt = datetime.now(ZoneInfo('Europe/Madrid'))
+
+          log_lines = [
+              '# C1 DATASUS access log',
+              '',
+              'C1_EXECUTION_STATUS = CAPTURED',
+              'PROVENANCE_AUDIT = tb_mes.xlsx / casos',
+              'SCOPE = CASOS_PROVENANCE_ONLY',
+              f'ACCESS_DATE = {access_dt.date().isoformat()}',
+              f'ACCESS_TIMESTAMP_EUROPE_MADRID = {access_dt.isoformat()}',
+              f'FORM_URL = {form_response.url}',
+              f'POST_ENDPOINT = {action_url}',
+              f'POST_RESPONSE_URL = {result.url}',
+              f'CSV_EXPORT_LABEL = {csv_label}',
+              f'CSV_EXPORT_URL = {csv_url}',
+              f'RAW_CSV_SHA256 = {sha256}',
+              f'RAW_CSV_BYTES = {len(raw_bytes)}',
+              '',
+              '## Real interface labels observed',
+              f'LINE = {row["label"]}',
+              f'COLUMN = {col["label"]}',
+              f'CONTENT = {measure["label"]}',
+              'PERIODS = ' + ' | '.join(o['label'] for o in selected_periods),
+              'PERIOD_CONTROL_IS_DISTINCT_FROM_LINE_DIMENSION = YES',
+              '',
+              '## Filters left unrestricted',
+          ]
+          log_lines.extend(f'{name} = {label}' for name, label in unrestricted_filters)
+          log_lines += [
+              '',
+              '## Base update note(s), copied literally from the TABNET result',
+          ]
+          if footer_update_lines:
+              log_lines.extend(footer_update_lines)
+          else:
+              log_lines.append('NOT_FOUND_IN_RESULT_HTML')
+          log_lines += [
+              '',
+              '## Full result URL exposed by TABNET',
+          ]
+          if exposed_urls:
+              log_lines.extend(exposed_urls)
+          else:
+              log_lines.append('NOT_FOUND_IN_RESULT_HTML')
+          log_lines += [
+              '',
+              '## Scope guard',
+              'No reshape, comparison against canonical `casos`, imputation, rounding,',
+              'manual reordering, dataset modification, model change, or frozen-result change',
+              'was performed in this capture.',
+              '',
+          ]
+          LOG_PATH.write_text('\n'.join(log_lines), encoding='utf-8')
+
+          print('C1_CAPTURED')
+          print('ROW_LABEL=', row['label'])
+          print('COLUMN_LABEL=', col['label'])
+          print('CONTENT_LABEL=', measure['label'])
+          print('PERIOD_COUNT=', len(selected_periods))
+          print('RAW_CSV_SHA256=', sha256)
+          print('RAW_CSV_BYTES=', len(raw_bytes))
+          print('UPDATE_LINES=', footer_update_lines)
+          print('EXPOSED_RESULT_URLS=', exposed_urls)
+          print('CSV_EXPORT_URL=', csv_url)
+          PY
+
+      - name: Commit only the C1 source capture to main
+        shell: bash
+        run: |
+          git config user.name "C1 provenance capture"
+          git config user.email "actions@users.noreply.github.com"
+          git add provenance/datasus/C1_datasus_tb_brazil_2001_2022_raw.csv provenance/datasus/C1_ACCESS_LOG.md
+          git commit -m "Capture pre-registered C1 DATASUS source export"
+          git push origin HEAD:main
