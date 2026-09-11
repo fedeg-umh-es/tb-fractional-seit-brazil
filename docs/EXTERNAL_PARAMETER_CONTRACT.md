@@ -17,20 +17,28 @@ All web sources below were retrieved 2026-08-15.
 
 **EXTERNAL_PARAMETER_CONTRACT_READY_WITH_LIMITATIONS**
 
-Two items keep this from unqualified `READY`: (a) the exact provenance of the `populacao`
-column is undocumented, so a `PROVENANCE_REQUIRED` classification and a conservative,
-leakage-free substitute are specified below rather than a directly-verified answer; (b) the μ
-constant is given from a small number of verified anchor points (not the full annual IBGE
-series), with an explicit instruction to pull the precise series before finalizing — but since
-the model's sensitivity to μ is negligible (`docs/MODEL_CONTRACT.md`, A04: `sensitivity_required
-= NO`), this does not block implementation. Neither issue requires a new scientific decision;
-both have a fully specified, conservative fallback.
+The exact provenance of the calibration-period `populacao` series was originally classified as
+`PROVENANCE_REQUIRED`. That issue is now resolved for the population denominator actually used
+in calibration: the annual 2001-2020 values match the IBGE 2013 population projection series,
+with the canonical source record and resolution rationale maintained in `DATA_PROVENANCE.md`.
+The separate limitation on the μ constant remains: it is based on a small number of verified
+anchor points rather than the full annual IBGE life-expectancy series. Since model sensitivity
+to μ is negligible (`docs/MODEL_CONTRACT.md`, A04: `sensitivity_required = NO`), this does not
+block implementation.
+
+```yaml
+population_series:
+  status: PROVENANCE_RESOLVED        # was PROVENANCE_REQUIRED
+  source: see DATA_PROVENANCE.md (canonical record)
+  resolved_in: ffaadc1
+  change_class: documentation_only
+```
 
 ## 2. Tabla final
 
 | quantity | role | fixed_or_estimated | value_or_bounds | units | source | source_type | temporal_availability | leakage_risk | decision | limitations |
 |---|---|---|---|---|---|---|---|---|---|---|
-| N(t) | exogenous force-of-infection denominator | fixed (data-driven) | calibration (2001-2020): dataset `populacao` column, used as-is. Validation (2021-2022): **do not** use the dataset's 2021-2022 values; extrapolate forward from a trend fit on 2001-2020 `populacao` only (Section 3). | individuals | Dataset `data/raw/tb_mes.xlsx`, `populacao` column; provenance of this column is undocumented (`DATA_PROVENANCE.md` records no source URL). IBGE publishes two distinct real-world series that could underlie it: annual "Estimativas da População" (trend-based, available ~mid-year, every year, without needing a not-yet-existing census) vs. Census-calibrated retrospective series (2022 Census, ref. date 2022-07-31, first results published 2023-06-28, with further variables released through 2023-2025). | **PROVENANCE_REQUIRED** for 2021-2022 portion; calibration-period portion (2001-2020) is lower risk since it predates the 2022 Census entirely. | HIGH for 2021-2022 if used as-supplied; NONE if the Section 3 extrapolation rule is used instead. | Use dataset values for 2001-2020 (calibration). For 2021-2022 (validation), use the trend-extrapolation substitute in Section 3, not the dataset's own 2021-2022 values, regardless of their true provenance. | If the collaborator later confirms the 2021-2022 `populacao` values came from real-time-available "Estimativas da População" (not census-calibrated retrospective revisions), this restriction could be relaxed — but only after that confirmation, not by assumption. |
+| N(t) | exogenous force-of-infection denominator | fixed (data-driven) | calibration (2001-2020): dataset `populacao` column, used as-is. Validation (2021-2022): **do not** use the dataset's 2021-2022 values; extrapolate forward from a trend fit on 2001-2020 `populacao` only (Section 3). | individuals | `DATA_PROVENANCE.md` (canonical record for the verified calibration-period population series). | **PROVENANCE_RESOLVED** for the population denominator used in calibration; historical status was `PROVENANCE_REQUIRED` and was resolved in commit `ffaadc1`. | Calibration source covers the full 2001-2020 window. Validation denominators remain generated from train-only extrapolation, so no future observed population values are required. | NONE under the Section 3 train-only extrapolation rule. | Retain the supplied 2001-2020 denominator series and the existing validation extrapolation rule. | The supplied workbook's 2021-2022 `populacao` values remain unused by the model; their independent provenance is therefore documentary only and does not affect the frozen scientific results. |
 | mu | background all-cause mortality (natural exit from every compartment) | fixed (not estimated) | mu ≈ 1/(74×12) ≈ 0.001126/month, from an approximate 2001-2020 average life expectancy at birth of ~74 years (anchors: ~71.1 years in 2000, ~76.2 years in 2019, both pre-pandemic IBGE figures; the 2020-2021 COVID-era dip (74.8, 72.8 years) and 2022 rebound (75.5 years) are single-year shocks from an unrelated cause and are deliberately excluded from this demographic-closure constant). | month⁻¹ | IBGE, Tábuas Completas de Mortalidade / série "Esperança de vida ao nascer" (SIDRA Tabela 3825; historical série 1940-2000 "POP210"); Agência Brasil/Agência IBGE news releases reporting the 2019-2023 figures. | HECHO VERIFICADO (individual anchor years) / INFERENCIA (the ~74-year calibration-window average interpolated from those anchors, not from the full annual series) | Fully available in real time; life-table methodology is retrospective demographic accounting, not a forecast — no leakage concern. | Fix as a single constant for the whole 2001-2022 span (do not time-vary). | Exact annual IBGE series (SIDRA Tabela 3825, or the annual Tábua Completa de Mortalidade publications) was not pulled point-by-point in this review; refining the constant with the full series is a low-priority polish given negligible model sensitivity to mu (`docs/MODEL_CONTRACT.md`, A04). |
 | Lambda | recruitment into S | fixed (closure) | Lambda = mu × N̄, N̄ = mean of the calibration-period N(t) series (2001-2020, as defined above) | individuals·month⁻¹ | Derived; not itself an external empirical quantity | RECOMENDACIÓN (demographic-closure convention; see `docs/MODEL_CONTRACT.md` D010) | N/A (fully determined by mu and N̄, both already resolved) | NONE (uses only calibration-window N̄) | Option A confirmed: Lambda = mu·N, no separate estimation, no reformulation into proportions. | None material; S≈N throughout given TB's small population share, so Lambda's precise value has little leverage on I(t) (see `docs/MODEL_CONTRACT.md` §3/A03). |
 | sigma | E→I progression rate | estimated via DE | bounds retained: [0.01, 0.50]/month (unchanged from manuscript / `docs/MODEL_CONTRACT.md`) | month⁻¹ | CDC, "Latent Tuberculosis Infection: A Guide for Primary Health Care Providers" / CDC Clinical Overview of Tuberculosis: ~5% of infected persons progress to active disease within 2 years, another ~5% over the remaining lifetime (non-HIV), i.e. lifetime risk ~10%, strongly front-loaded but with a long tail. | HECHO VERIFICADO | Fully available (general clinical/epidemiological fact, not time-indexed to this dataset). | NONE | **STRUCTURAL_LIMITATION_TO_DECLARE** (see Section "sigma" below) — bounds are not respecified, but the single-exponential-compartment structure is flagged as unable to represent the documented fast/slow bimodal progression simultaneously. | Do not redesign the SEIT structure in this pass, per task scope; the limitation must be stated wherever sigma or R0 is later interpreted. |
@@ -112,13 +120,11 @@ demographic information, all derivable from data available by 2020-12:
    the force-of-infection denominator during the open-loop validation simulation
    (`docs/MODEL_CONTRACT.md`, Sections 9-10).
 
-This applies regardless of whether the dataset's actual 2021-2022 `populacao` values turn out
-(on later provenance confirmation) to have been real-time-available "Estimativas da População"
-figures — the extrapolation rule is adopted now, conservatively, precisely because that
-confirmation does not exist (`PROVENANCE_REQUIRED`, Section 2). If the collaborator later
-supplies documented provenance showing the 2021-2022 figures were genuinely available in real
-time and are not census-calibrated retrospective revisions, this rule may be revisited as a new,
-separately logged decision — never assumed permissible by default.
+This conservative train-only extrapolation rule remains unchanged after provenance resolution.
+The calibration-period source is now verified (`PROVENANCE_RESOLVED`; see `DATA_PROVENANCE.md`),
+but the supplied workbook's 2021-2022 population values are still not needed or consumed by the
+model. Retaining the existing rule therefore preserves the original leakage-control contract and
+does not constitute a scientific or numerical change.
 
 No other exogenous information dated after 2020-12 (revised life-expectancy figures, revised TB
 treatment-outcome statistics, revised WHO regional estimates, etc.) may be used to set any fixed
@@ -139,7 +145,9 @@ EXOGENOUS N(t):
   Validation  (2021-01..2022-12): N(t) = forward extrapolation of a log-linear trend fit to
                                           `populacao` restricted to 2001-01..2020-12.
                                           Do NOT use the dataset's own 2021-2022 `populacao`
-                                          values (PROVENANCE_REQUIRED, Sec. 2/3).
+                                          values.
+  Provenance status: PROVENANCE_RESOLVED (was PROVENANCE_REQUIRED); canonical record:
+                     DATA_PROVENANCE.md; resolved in ffaadc1; documentation_only.
 
 ESTIMATED PARAMETERS (fractional model): beta, sigma, gamma, d, alpha
   bounds:
@@ -162,10 +170,12 @@ protocol, RMSE/MAE/bias definitions) are unchanged from docs/MODEL_CONTRACT.md, 
 Only genuine blockers/open loose ends, none of which stop implementation given the fallbacks
 above:
 
-- **N(t) provenance for 2021-2022** (`PROVENANCE_REQUIRED`): unresolved as a factual matter, but
-  not blocking — the Section 3 extrapolation rule is a complete, conservative substitute. Should
-  be revisited with the collaborator (Amaury de Souza) as a documentation task, not a modeling
-  task.
+- **Population provenance status**: `PROVENANCE_REQUIRED` is retained as the historical audit
+  state and is now **RESOLVED** for the 2001-2020 denominator series actually used by the model
+  (`PROVENANCE_RESOLVED`; canonical evidence and rationale in `DATA_PROVENANCE.md`, resolution
+  commit `ffaadc1`). The supplied workbook's 2021-2022 population values remain independently
+  undocumented, but they are not used by the validation or rolling-origin model inputs and are
+  therefore a non-blocking documentary loose end rather than an unresolved model-input source.
 - **Precise annual mu series (2001-2020)**: the ~74-year constant used here is interpolated from
   two verified anchor points (2000, 2019) plus knowledge that 2020-2022 were COVID-distorted
   outliers deliberately excluded; the full IBGE SIDRA Tabela 3825 / annual Tábua Completa de
@@ -179,14 +189,9 @@ above:
 ## 6. KILL/STOP CONDITION
 
 No finding in this review produces a dimensional incompatibility or an undocumented-provenance
-situation without a conservative substitute — implementation is **not** blocked. The one
-condition that would newly justify stopping before implementation: if, during actual data
-inspection at implementation time, the `populacao` column for 2021-2022 is found to be
-**identical, to the last digit, to the post-2022-Census-calibrated retrospective series**
-(rather than plausibly matching the real-time "Estimativas da População" series), that would be
-strong evidence the entire historical `populacao` series (not just 2021-2022) was
-retrospectively reconstructed by the collaborator using post-hoc-revised inputs, which could also
-affect the 2001-2020 calibration-period N(t) in ways not yet audited. In that specific case,
-implementation should pause and the full `populacao` series' provenance should be clarified with
-the collaborator before calibration, rather than only patching the validation window as in
-Section 3.
+situation without a conservative substitute — implementation is **not** blocked. Population
+provenance for the 2001-2020 denominator used by the model is now resolved and recorded
+canonically in `DATA_PROVENANCE.md`. The unused 2021-2022 workbook population values remain
+outside the model-input contract under the train-only extrapolation rule. No provenance finding
+therefore justifies reopening calibration, forecasts, figures, tables, or other frozen scientific
+results.
