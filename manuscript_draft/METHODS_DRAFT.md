@@ -16,7 +16,7 @@ The dataset is partitioned into two distinct periods:
 * **Calibration window**: January 2001 to December 2020 ($N_{\text{cal}} = 240$ months).
 * **Validation window**: January 2021 to December 2022 ($N_{\text{val}} = 24$ months).
 
-The total population series $N(t)$ serves as the denominator in the standard incidence force-of-infection term. For the calibration window (2001–2020), $N(t)$ is obtained directly from the surveillance dataset. For out-of-sample simulation, population values beyond each training endpoint were generated using a log-linear trend fitted exclusively to population observations available within the corresponding training window:
+Population denominators for 2001–2020 were taken from the 2013 revision of the Brazilian national population projection (IBGE 2013). The annual projected total was held constant across the twelve months of each year to form the monthly input grid, which the solver then interpolates linearly to obtain a continuous $N(t)$. The 2013 revision was retained rather than the 2018 revision because the latter begins in 2010 and would require truncating the calibration window. For out-of-sample simulation, population values beyond each training endpoint were generated using a log-linear trend fitted exclusively to population observations available within the corresponding training window:
 $$\ln N(t) = a_0 + a_1 t, \quad t \le t_{\text{train}}$$
 No population observations beyond the relevant training endpoint were used.
 
