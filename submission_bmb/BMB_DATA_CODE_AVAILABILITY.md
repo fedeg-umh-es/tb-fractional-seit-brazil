@@ -9,7 +9,10 @@ This document provides formal, transparent statements regarding the provenance, 
 ### Formal Statement for Manuscript
 The empirical dataset analyzed in this study comprises aggregate monthly tuberculosis notification counts for Brazil covering January 2001 through December 2022 ($N = 264$ consecutive monthly observations). The canonical observational file used directly by the computational pipeline is `data/raw/tb_mes.xlsx`, preserved unchanged in the project repository exactly as supplied by Amaury de Souza for this collaboration. Repository provenance records the original filename, file hash, structure, and ingestion history in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
 
-The 2001–2020 population denominator has been traced to the 2013 revision of the IBGE national population projection. The original acquisition route for the monthly `casos` observations remains unverified. Accordingly, the manuscript and submission package must not present a specific public-source URL or agency acquisition route for `casos` as verified provenance unless the authors subsequently provide and verify that information. During peer review, the canonical observational file and its provenance records can be supplied together with the reproducible repository bundle or through private repository access, subject to author confirmation of the access arrangement. Processed numerical evidence used by the manuscript is stored under `results_canonical/`.
+The 2001–2020 population denominator has been traced to the 2013 revision of the IBGE national population projection. For `casos`, four prespecified national DATASUS/SINAN TabNet configurations were audited against all 264 supplied monthly counts. None matched exactly; the closest, C1, differed in 99 months. Thus the exact original extraction configuration was not recovered. The supplied series remains unchanged and no audited TabNet query is represented as its verified acquisition route. The source file, audit record, and processed numerical evidence are held in the private repository. [AUTHOR CONFIRMATION REQUIRED BEFORE SUBMISSION: specify how the canonical observational file and reproducibility bundle can be accessed, and any conditions for reuse.]
+
+### Access decision before submission
+The [BMB submission guidelines](https://link.springer.com/journal/11538/submission-guidelines) require a Data Availability Statement explaining how supporting data can be accessed and any conditions for reuse. The authors must confirm a concrete access arrangement for the supplied file and bundle before removing the placeholder above. Public deposition is encouraged, not established here as mandatory for this aggregate series.
 
 ### Provenance Details
 * **Repository source file**: `data/raw/tb_mes.xlsx`
@@ -20,7 +23,8 @@ The 2001–2020 population denominator has been traced to the 2013 revision of t
 * **Data Nature**: Aggregate monthly series; no individual-level or identifiable patient fields are present in the canonical observational file
 * **Completeness**: 264 consecutive monthly rows; repository integrity audit reports 0 missing months and 0 duplicate dates
 * **Population source (2001–2020)**: IBGE 2013 national population projection; see `DATA_PROVENANCE.md`
-* **Original `casos` acquisition URL**: Not independently verified in the supplied repository materials
+* **`casos` audit**: C1–C4 all `NO_EXACT_MATCH`; C1 closest (99/264 discrepant months); see `provenance/datasus/DATASUS_QUERY.md` and access logs
+* **Original `casos` extraction settings/URL**: Not recovered or independently verified
 
 ---
 
@@ -41,8 +45,11 @@ REPOSITORY_CURRENT_STATUS = PRIVATE_VERSION_CONTROLLED_REPOSITORY
 CANONICAL_COMPUTATIONAL_COMMIT = 13015847a6f364505391d4f6e24d9c4c994669ff
 CANONICAL_DATA_FILE = data/raw/tb_mes.xlsx
 CANONICAL_DATA_SHA256 = 93e75138827704af22389c38eddc04eda5efd44389f10cffbabfd0a4e1ea662b
+POPULACAO_PROVENANCE = RESOLVED
+CASOS_PROVENANCE = NO_EXACT_MATCH
+CANDIDATE_SET_EXHAUSTED = YES
 ORIGINAL_EXTERNAL_DATA_URL_VERIFIED = NO
 PUBLIC_ARCHIVAL_DOI_EXISTS_NOW = NO
-PEER_REVIEW_ACCESS = PRIVATE_REPOSITORY_OR_REPRODUCIBLE_BUNDLE
+PEER_REVIEW_ACCESS = PENDING_AUTHOR_CONFIRMATION_OF_ROUTE_AND_REUSE_CONDITIONS
 PUBLIC_RELEASE = REQUIRES_EXPLICIT_AUTHOR_DECISION
 ```

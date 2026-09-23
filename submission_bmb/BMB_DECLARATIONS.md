@@ -32,7 +32,7 @@ Not applicable unless the final manuscript includes identifiable individual mate
 ## 6. Data Availability
 The canonical observational dataset analyzed in this study is the aggregate monthly Brazil tuberculosis series stored as `data/raw/tb_mes.xlsx`, covering January 2001 through December 2022 ($N=264$). The file is preserved unchanged as supplied by Amaury de Souza for this collaboration and is used directly by the computational pipeline. Repository provenance, including the source-file hash and structural audit, is recorded in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
 
-The supplied repository materials do not independently record the original governmental download URL or acquisition path; these must not be represented as independently verified unless the authors subsequently document them. During peer review, the canonical observational file and reproducible repository bundle or private repository access can be provided to editors and reviewers.
+The 2001–2020 population denominator is traced to the IBGE 2013 projection. A four-configuration DATASUS/SINAN TabNet audit did not exactly reconstruct the supplied case series; the closest configuration differed in 99 of 264 months. The original case-extraction settings therefore remain unrecovered. [AUTHOR CONFIRMATION REQUIRED BEFORE SUBMISSION: state the permitted access route for the canonical file and bundle, with any reuse conditions.]
 
 See `submission_bmb/BMB_DATA_CODE_AVAILABILITY.md` for full provenance and release planning.
 

@@ -10,12 +10,14 @@ The project canon records an external collaboration between **Amaury de Souza** 
 
 ```text
 SCIENTIFIC_EVIDENCE = FROZEN
-DOCUMENTARY_TRUTH_REPAIR = COMPLETE
+DOCUMENTARY_TRUTH_REPAIR = COMPLETE_WITH_CASES_PROVENANCE_LIMITATION
 STRUCTURAL_REPAIR = COMPLETE
 CLAIM_PRECISION_AUDIT = PASS
 CONTROLLED_PROSE_PASS = COMPLETE
 CANONICAL_MANUSCRIPT_SYNC = COMPLETE
-BMB_REQUIREMENTS_VERIFIED = 2026-09-05
+BMB_REQUIREMENTS_VERIFIED = 2026-09-23
+CASOS_PROVENANCE = NO_EXACT_MATCH
+CANDIDATE_SET_EXHAUSTED = YES
 READY_FOR_AUTHOR_SCIENTIFIC_REVIEW = YES
 READY_FOR_SUBMISSION = NO
 ```
@@ -24,7 +26,16 @@ No new experiment is required or authorized by the remaining items below.
 
 ---
 
-## 2. Required Human Decisions
+## 2. Final scientific review requested from Amaury
+
+Review the consolidated `submission_bmb/BMB_MANUSCRIPT.md` for the research question and
+rationale, interpretation of the central within-family versus external-baseline finding,
+limitations, Data Availability and the cases-provenance qualification, conclusion, and whether
+the text reflects both researchers' scientific interpretation. Record requested changes or
+explicit approval before final production. The four-candidate audit is closed; this review does
+not itself authorize new filters, microdata, or model recalibration.
+
+## 3. Required Human Decisions
 
 ### AUTHORSHIP AND ORDER
 * **STATUS**: `BLOCKED_HUMAN_DECISION`
@@ -71,21 +82,21 @@ No new experiment is required or authorized by the remaining items below.
   - 264 monthly observations, January 2001–December 2022;
   - supplied by Amaury de Souza for this collaboration;
   - hash/provenance recorded;
-  - original governmental acquisition URL/path is not independently recorded in the supplied repository materials;
+  - 2001–2020 population provenance is resolved to the IBGE 2013 projection;
+  - the closed C1–C4 DATASUS/SINAN audit did not exactly reconstruct the supplied `casos` series (C1 closest: 99/264 discrepant months);
+  - original case-extraction settings were not recovered;
   - project repository is private.
-* **REQUIRED INPUT**: choose and confirm the truthful submission route:
-  1. provide a verified original public source/acquisition record and confirm redistribution/access conditions; or
-  2. retain controlled peer-review access through the private reproducible repository/bundle, stating reuse/access conditions accurately.
-* **RULE**: do not restore a SINAN/DATASUS acquisition claim without a verified source record.
+* **REQUIRED INPUT**: confirm how editors and reviewers can access the canonical file and reproducibility bundle, whether public release is permitted, and any conditions for reuse. An original acquisition record may be documented if the authors already possess one; it does not reopen the closed candidate search.
+* **RULE**: do not attribute the canonical case series to an audited SINAN/DATASUS extraction configuration without evidence of an exact match or an independently verified original record.
 
 ---
 
-## 3. Items Already Closed
+## 4. Items Already Closed
 
 ### CODE AVAILABILITY
 * **STATUS**: `DRAFT_COMPLETE`
 * Frozen computational commit: `13015847a6f364505391d4f6e24d9c4c994669ff`.
-* Repository private; reviewer bundle/private access is the current route.
+* Repository private; reviewer bundle/private access is a proposed route pending author confirmation.
 * No public archival DOI currently exists.
 * Use `profile-objective`, not `profile-likelihood`.
 
@@ -107,7 +118,7 @@ No new experiment is required or authorized by the remaining items below.
 
 ---
 
-## 4. Minimal Human Input Block
+## 5. Minimal Human Input Block
 
 To unlock final production, the authors need to return one consolidated block containing:
 
@@ -127,7 +138,7 @@ FINAL_SCIENTIFIC_REVIEW = APPROVE / CHANGES_REQUIRED
 
 ---
 
-## 5. Gate After Human Input
+## 6. Gate After Human Input
 
 Once the block above is confirmed, the remaining workflow is production-only:
 

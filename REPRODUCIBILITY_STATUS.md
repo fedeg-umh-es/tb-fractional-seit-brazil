@@ -6,6 +6,9 @@ VERIFIED without a corresponding, checkable artifact in this repository.
 | Item                                   | Status       |
 |-----------------------------------------|--------------|
 | Dataset integrity                       | VERIFIED     |
+| Population denominator provenance (2001–2020) | RESOLVED — IBGE 2013 revision |
+| Case-count provenance audit             | CLOSED — NO_EXACT_MATCH across C1–C4 |
+| Cases candidate set                     | EXHAUSTED — no new candidates without methodological amendment |
 | Original source preservation            | COMPLETE     |
 | Original code recovered                 | NO           |
 | Exact reproduction                      | NOT_POSSIBLE |
@@ -34,10 +37,11 @@ VERIFIED without a corresponding, checkable artifact in this repository.
 | Optimal control                         | DEFERRED_OUTSIDE_CURRENT_PAPER |
 | Historical 48% claim                    | NOT_VERIFIED_AND_NOT_USED |
 | Canonical result set                    | FROZEN_WITH_DOCUMENTED_LIMITATIONS |
-| Manuscript revision                     | IN_PROGRESS — controlled pre-submission repair only |
+| Manuscript revision                     | CONSOLIDATED_FOR_AUTHOR_REVIEW — controlled pre-submission repair only |
+| Data Availability access arrangement    | PENDING_AUTHOR_CONFIRMATION |
 | BMB production / LaTeX                  | BLOCKED_UNTIL_MANUSCRIPT_AND_HUMAN_METADATA_GATES_PASS |
 
-## Current gate (2026-09-05)
+## Current gate (2026-09-23)
 
 The scientific evidence and result set are frozen. The project is now in controlled pre-submission repair. No new experiment is authorized merely to improve narrative strength, journal fit, or cosmetic completeness. Reopening is restricted to the conditions recorded in `results_canonical/RESULT_SET_FREEZE.md`.
 
@@ -51,7 +55,7 @@ MISSING_MONTHS = 0, MISSING_VALUES = 0. Re-run on 2026-08-15 against canonical c
 output unchanged (`git diff` empty). No missing observations exist in the canonical dataset;
 this status must not be described otherwise absent a new reproducible audit that disagrees.
 
-The canonical observational file used by the pipeline is `data/raw/tb_mes.xlsx`. Its SHA-256 and acquisition record are documented in `DATA_PROVENANCE.md`. The repository does not independently record the original governmental download URL or acquisition path, so no specific external provenance route should be represented as repository-verified unless later documented by the authors.
+The canonical observational file used by the pipeline is `data/raw/tb_mes.xlsx`. Its SHA-256 and acquisition record are documented in `DATA_PROVENANCE.md`. The 2001–2020 population denominator is traced to the IBGE 2013 projection. The case-count provenance audit is closed: none of four pre-specified DATASUS/SINAN TabNet configurations exactly reconstructed the 264 supplied monthly counts; C1 was closest, differing in 99 months. The exact original extraction route remains unrecovered. See `DATA_PROVENANCE.md` and `provenance/datasus/DATASUS_QUERY.md`. This documentary limitation does not change the canonical observational file or frozen model results.
 
 ## Historical progression and evidence record
 
@@ -97,9 +101,16 @@ Canonical tables, figures, and the claim-support audit were built deterministica
 
 ```text
 SCIENCE = FROZEN
+EXPERIMENTS = CLOSED
 NEW_EXPERIMENTS = NO_UNLESS_GENUINE_BLOCKER
-DOCUMENTARY_REPAIR = ACTIVE
-MANUSCRIPT_STRUCTURAL_REPAIR = ACTIVE
-BMB_PRODUCTION = PENDING
+NEW_CANDIDATES = PROHIBITED without explicit methodological amendment
+MODEL_RESULTS = UNCHANGED / FROZEN
+DOCUMENTARY_REPAIR = CONSOLIDATED_FOR_AUTHOR_REVIEW
+MANUSCRIPT_STRUCTURAL_REPAIR = COMPLETE
+POPULACAO_PROVENANCE = RESOLVED
+CASOS_PROVENANCE = NO_EXACT_MATCH
+CANDIDATE_SET_EXHAUSTED = YES
+AUTHOR_REVIEW = NEXT
+BMB_PRODUCTION = PENDING_AFTER_AUTHOR_REVIEW
 READY_FOR_SUBMISSION = NO
 ```

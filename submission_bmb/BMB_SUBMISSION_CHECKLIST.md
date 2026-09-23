@@ -16,7 +16,7 @@ This checklist is the current pre-submission status for the BMB package after do
 | Identifiability hierarchy | VERIFIED | Explicitly secondary interpretive axis; not a co-equal novelty claim. |
 | Methods forecasting protocol | VERIFIED | 13 expanding-window origins x 12 horizons; persistence, seasonal naive, SARIMA. |
 | Methods prespecification terminology | REPAIRED | Uses `prespecified/documented before execution`, not external-preregistration language. |
-| Data provenance wording | REPAIRED / HUMAN CONFIRMATION PENDING | Canonical file is `data/raw/tb_mes.xlsx`; 2001–2020 population denominators trace to IBGE's 2013 projection, but the original acquisition route for `casos` remains unverified. |
+| Data provenance wording | REPAIRED / AUTHOR REVIEW PENDING | Population 2001–2020 traces to IBGE 2013. Cases audit C1–C4 is closed with no exact reconstruction; C1 is closest (99/264 discrepant months). The supplied series remains unchanged. |
 | Gate 2 / novelty language | VERIFIED | No first/never/unprecedented claim; adjacent precedents acknowledged. |
 | Results architecture | VERIFIED | Finding-first; within-family result precedes external-baseline turning point; identifiability secondary. |
 | Discussion architecture | VERIFIED | Turning point leads; literature positioning separated; mechanistic axis bounded; methodological implication closes section. |
@@ -26,11 +26,11 @@ This checklist is the current pre-submission status for the BMB package after do
 | Controlled prose pass | COMPLETE | Prose revised selectively; Methods/Results not stylistically rewritten where no scientific communication gain justified it. |
 | References | VERIFIED_CONTENT | 20 cited / 20 listed, including the IBGE population source; DOI audit passed. Final BMB style conversion remains a production task. |
 | Figure/table package | CLAIM_AUDITED | Captions distinguish within-family/external, descriptive/inferential, envelope/CI, and profile-objective terminology. |
-| Data availability text | DRAFT_COMPLETE / BLOCKED_FOR_AUTHOR_ACCESS_CONFIRMATION | Must state a verified access/provenance route before submission. |
+| Data availability text | LIMITATION_DRAFTED / BLOCKED_FOR_AUTHOR_ACCESS_CONFIRMATION | BMB requires a statement explaining how supporting data can be accessed and any reuse conditions. Confirm an actual sharing route; do not imply that an audited TabNet query produced the canonical case series. |
 | Code availability text | DRAFT_COMPLETE | Frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`; private repository; no archival DOI currently exists. |
 | AI/LLM disclosure | VERIFIED_AS_DRAFT | Methods §2.13 satisfies current BMB instruction to document generative LLM use; human accountability retained. |
 | Cover letter framing | CLAIM_AUDITED | Contribution bounded to case-study evidence; no universal fractional-model claim. |
-| Current BMB scope/requirements | VERIFIED_2026-09-05 | Official Springer aims/scope and submission guidelines rechecked. |
+| Current BMB scope/requirements | VERIFIED_2026-09-23 | Official [BMB submission guidelines](https://link.springer.com/journal/11538/submission-guidelines) rechecked, including Data Availability and editable-source requirements. |
 | Authorship and order | BLOCKED | Final human author list/order required before submission. |
 | Affiliations | BLOCKED | Final affiliations required. |
 | Corresponding author/email | BLOCKED | Active corresponding-author email required. |
@@ -39,7 +39,7 @@ This checklist is the current pre-submission status for the BMB package after do
 | Funding | BLOCKED | Final funding/no-funding statement required. |
 | Competing interests | BLOCKED | Financial and non-financial interests confirmation required. |
 | Ethics applicability statement | BLOCKED_FOR_CONFIRMATION | Human/institutional confirmation required for aggregate/non-identifiable data and applicable wording. |
-| Data provenance/access | BLOCKED_FOR_CONFIRMATION | Confirm an access and redistribution arrangement for the supplied `casos` series; the original extraction route remains unverified. |
+| Data provenance/access | BLOCKED_FOR_CONFIRMATION | Four prespecified cases queries are exhausted with no exact match. Confirm permitted access/redistribution for the supplied series and state conditions accurately; no new candidate search is planned. |
 | Cover letter sign-off | BLOCKED_BY_METADATA | Corresponding-author metadata pending. |
 | Editable LaTeX/Word source | FINAL_PRODUCTION_STEP | BMB requires complete editable source files; LaTeX recommended. |
 | Compiled PDF | FINAL_PRODUCTION_STEP | Required with LaTeX source. |
@@ -74,12 +74,14 @@ CANONICAL_MANUSCRIPT = submission_bmb/BMB_MANUSCRIPT.md
 CANONICAL_REFERENCE_AUDIT = manuscript_package/REFERENCE_AUDIT.md
 COMPUTATIONAL_FREEZE_COMMIT = 13015847a6f364505391d4f6e24d9c4c994669ff
 NEW_EXPERIMENT_REQUIRED = NO
-DOCUMENTARY_TRUTH_REPAIR = COMPLETE
+DOCUMENTARY_TRUTH_REPAIR = COMPLETE_WITH_CASES_PROVENANCE_LIMITATION
 STRUCTURAL_REPAIR = COMPLETE
 CLAIM_PRECISION_AUDIT = PASS
 CONTROLLED_PROSE_PASS = COMPLETE
 CANONICAL_MANUSCRIPT_SYNC = COMPLETE
-CURRENT_BMB_REQUIREMENTS_VERIFIED = 2026-09-05
+CURRENT_BMB_REQUIREMENTS_VERIFIED = 2026-09-23
+CASOS_PROVENANCE = NO_EXACT_MATCH
+CANDIDATE_SET_EXHAUSTED = YES
 READY_FOR_AUTHOR_SCIENTIFIC_REVIEW = YES
 FORMAL_HUMAN_BLOCKERS_REMAIN = YES
 FINAL_PRODUCTION_QA = PENDING

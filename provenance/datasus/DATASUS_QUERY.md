@@ -52,18 +52,24 @@ ACCEPTED_OUTCOMES = EXACT_MATCH | NO_EXACT_MATCH
 NO_EXACT_MATCH does not authorise any change to the dataset, the model,
 or any frozen result. It is documented as a provenance limitation.
 
-ACCESS_DATE =
-SOURCE_URL =
+ACCESS_DATE = 2026-09-23 (Europe/Madrid)
+SOURCE_URL = https://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/tubercbr.def
+SOURCE_URL_ROLE = audited national TabNet interface; not a verified record of the original workbook extraction
 
 POST_ACCESS_OUTCOME (recorded 2026-09-23; definitions above remain preregistered)
     C1 = NO_EXACT_MATCH
     C2 = NO_EXACT_MATCH
     C3 = NO_EXACT_MATCH
     C4 = NO_EXACT_MATCH
+    CLOSEST_CANDIDATE = C1
+    C1_MISMATCH_MONTHS = 99 / 264
     CASOS_PROVENANCE = NO_EXACT_MATCH
     CANDIDATE_SET_EXHAUSTED = YES
+    NEW_CANDIDATES = PROHIBITED without explicit methodological amendment
     POPULACAO_PROVENANCE = RESOLVED
     SCIENCE = FROZEN
+    MODEL_RESULTS = UNCHANGED / FROZEN
     STOP_AFTER_C4 = YES
     DETAILS = C4_ACCESS_LOG.md and the four candidate access logs
-    DATA_AVAILABILITY_GATE = OPEN pending explicit provenance-limitation wording
+    PROVENANCE_LIMITATION_WORDING = DOCUMENTED
+    DATA_AVAILABILITY_GATE = OPEN pending final author confirmation of data access and reuse conditions

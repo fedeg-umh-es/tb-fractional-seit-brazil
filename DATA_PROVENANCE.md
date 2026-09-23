@@ -19,6 +19,22 @@ The original external acquisition route for the complete workbook is not documen
 supplied file. Provenance is therefore recorded separately for the variables for which an
 independent source has been verified.
 
+## Monthly case-count provenance audit
+
+The monthly `casos` series was supplied for this study and remains unchanged. On 2026-09-23,
+four closed, pre-specified national DATASUS/SINAN TabNet configurations were compared with its
+264 monthly values using integer equality without tolerance. None reproduced the canonical
+series exactly. C1, the closest candidate, differed in 99 of 264 months; C2, C3, and C4 each
+differed in all 264 months. The exact original extraction configuration could therefore not be
+recovered from this audit. This finding does not establish that the supplied counts are false and
+does not authorize alteration of the dataset or recalibration of the frozen model.
+
+The closed candidate definitions and final status are in
+`provenance/datasus/DATASUS_QUERY.md`. Individual access logs, UI captures, captured TabNet
+outputs, SHA-256 values, comparison scripts, and monthly discrepancy tables are under
+`provenance/datasus/`. No fifth candidate or alternative filter search is authorized without an
+explicit methodological amendment. The manuscript presents this as a provenance limitation.
+
 ## Population denominator provenance
 
 The `populacao` column used during the 2001-2020 calibration window matches the annual total
