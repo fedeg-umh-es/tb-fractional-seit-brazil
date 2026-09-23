@@ -1,0 +1,545 @@
+{
+  "dimensions": {
+    "A": [
+      "2022",
+      "2021",
+      "2020",
+      "2019",
+      "2018",
+      "2017",
+      "2016",
+      "2015",
+      "2014",
+      "2013",
+      "2012",
+      "2011",
+      "2010",
+      "2009",
+      "2008",
+      "2007",
+      "2006",
+      "2005",
+      "2004",
+      "2003",
+      "2002",
+      "2001"
+    ],
+    "C": [
+      "Mês In. Tratamento"
+    ],
+    "I": [
+      "Casos confirmados"
+    ],
+    "L": [
+      "Ano In. Tratamento"
+    ]
+  },
+  "filters": [
+    {
+      "id": "S1",
+      "label": "Ano Diagnóstico",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S2",
+      "label": "Mês Diagnóstico",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S3",
+      "label": "Ano Notificação",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S4",
+      "label": "Mês Notificação",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S5",
+      "label": "Ano In. Tratamento",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S6",
+      "label": "Mês In. Tratamento",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S7",
+      "label": "Região de notificação",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S8",
+      "label": "UF de notificação",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S9",
+      "label": "Município de notificação",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S10",
+      "label": "Capital de notificação",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S11",
+      "label": "Região de Saúde (CIR) de notif",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S12",
+      "label": "Macrorreg.de Saúde de notific",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S13",
+      "label": "Microrregião IBGE de notific",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S14",
+      "label": "Reg.Metropolit/RIDE de notific",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S15",
+      "label": "Territ da Cidadania de notific",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S16",
+      "label": "Mesorregião PNDR de notific",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S17",
+      "label": "Amazônia Legal (notificação)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S18",
+      "label": "Semiárido (notificação)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S19",
+      "label": "Faixa de Fronteira (notific)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S20",
+      "label": "Zona de Fronteira (notific)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S21",
+      "label": "Munic extrem pobreza (notific)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S22",
+      "label": "Região de residência",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S23",
+      "label": "UF de residência",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S24",
+      "label": "Município de residência",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S25",
+      "label": "Capital de residência",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S26",
+      "label": "Região de Saúde (CIR) de resid",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S27",
+      "label": "Macrorreg.de Saúde de residênc",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S28",
+      "label": "Microrregião IBGE de residênc",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S29",
+      "label": "Reg.Metropolit/RIDE de resid",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S30",
+      "label": "Territ da Cidadania de resid",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S31",
+      "label": "Mesorregião PNDR de residênc",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S32",
+      "label": "Amazônia Legal (residência)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S33",
+      "label": "Semiárido (residência)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S34",
+      "label": "Faixa de Fronteira (residênc)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S35",
+      "label": "Zona de Fronteira (residênc)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S36",
+      "label": "Munic extrem pobreza (resid)",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S37",
+      "label": "Zona Residência",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S38",
+      "label": "Fx Etária",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S39",
+      "label": "Fx Etária 7",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S40",
+      "label": "Fx Etária 13",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S41",
+      "label": "Raça",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S42",
+      "label": "Sexo",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S43",
+      "label": "Tipo de entrada",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S44",
+      "label": "Institucionalizado",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S45",
+      "label": "PPL",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S46",
+      "label": "Pop. Sit. Rua",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S47",
+      "label": "Prof. saúde",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S48",
+      "label": "Imigrante",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S49",
+      "label": "Benefic. governo",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S50",
+      "label": "Forma",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S51",
+      "label": "Se Extrapulm.1",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S52",
+      "label": "Se Extrapulm.2",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S53",
+      "label": "Aids",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S54",
+      "label": "Alcoolismo",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S55",
+      "label": "Diabetes",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S56",
+      "label": "Doença mental",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S57",
+      "label": "Drogas ilícitas",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S58",
+      "label": "Tabagismo",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S59",
+      "label": "Outra doença",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S60",
+      "label": "Confirmação laboratorial",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S61",
+      "label": "1ªBac Escarro",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S62",
+      "label": "2ªBac. Escarro",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S63",
+      "label": "Cultura Escarro",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S64",
+      "label": "Teste rápido TB",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S65",
+      "label": "Teste sensibilidade",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S66",
+      "label": "HIV",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S67",
+      "label": "Antirretroviral",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S68",
+      "label": "TDO realizado",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S69",
+      "label": "Bacilosc 2º mês",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S70",
+      "label": "Bacilosc 6º mês",
+      "selected": [
+        "Todas as categorias"
+      ]
+    },
+    {
+      "id": "S71",
+      "label": "Situação Encerra.",
+      "selected": [
+        "Todas as categorias"
+      ]
+    }
+  ],
+  "format": "prn",
+  "heading": [
+    "TUBERCULOSE - CASOS CONFIRMADOS NOTIFICADOS NO SISTEMA DE INFORMAÇÃO DE AGRAVOS DE NOTIFICAÇÃO - BRASIL",
+    "PERÍODOS DISPONÍVEIS",
+    "SELEÇÕES DISPONÍVEIS"
+  ],
+  "orderByColumn": false,
+  "showZeroRows": false,
+  "url": "https://tabnet.datasus.gov.br/cgi/tabcgi.exe?sinannet/cnv/tubercbr.def"
+}
