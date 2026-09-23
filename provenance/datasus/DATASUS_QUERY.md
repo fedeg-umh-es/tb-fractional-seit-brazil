@@ -54,3 +54,16 @@ or any frozen result. It is documented as a provenance limitation.
 
 ACCESS_DATE =
 SOURCE_URL =
+
+POST_ACCESS_OUTCOME (recorded 2026-09-23; definitions above remain preregistered)
+    C1 = NO_EXACT_MATCH
+    C2 = NO_EXACT_MATCH
+    C3 = NO_EXACT_MATCH
+    C4 = NO_EXACT_MATCH
+    CASOS_PROVENANCE = NO_EXACT_MATCH
+    CANDIDATE_SET_EXHAUSTED = YES
+    POPULACAO_PROVENANCE = RESOLVED
+    SCIENCE = FROZEN
+    STOP_AFTER_C4 = YES
+    DETAILS = C4_ACCESS_LOG.md and the four candidate access logs
+    DATA_AVAILABILITY_GATE = OPEN pending explicit provenance-limitation wording
