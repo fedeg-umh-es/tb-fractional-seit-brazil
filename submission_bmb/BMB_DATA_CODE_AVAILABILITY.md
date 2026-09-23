@@ -9,7 +9,7 @@ This document provides formal, transparent statements regarding the provenance, 
 ### Formal Statement for Manuscript
 The empirical dataset analyzed in this study comprises aggregate monthly tuberculosis notification counts for Brazil covering January 2001 through December 2022 ($N = 264$ consecutive monthly observations). The canonical observational file used directly by the computational pipeline is `data/raw/tb_mes.xlsx`, preserved unchanged in the project repository exactly as supplied by Amaury de Souza for this collaboration. Repository provenance records the original filename, file hash, structure, and ingestion history in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
 
-The supplied source materials do not independently document the original governmental download URL or acquisition path for this file. Accordingly, the manuscript and submission package must not present a specific public-source URL or agency acquisition route as independently verified repository provenance unless the authors subsequently provide and verify that information. During peer review, the canonical observational file and its provenance records can be supplied together with the reproducible repository bundle or through private repository access. Processed numerical evidence used by the manuscript is stored under `results_canonical/`.
+The 2001–2020 population denominator has been traced to the 2013 revision of the IBGE national population projection. The original acquisition route for the monthly `casos` observations remains unverified. Accordingly, the manuscript and submission package must not present a specific public-source URL or agency acquisition route for `casos` as verified provenance unless the authors subsequently provide and verify that information. During peer review, the canonical observational file and its provenance records can be supplied together with the reproducible repository bundle or through private repository access, subject to author confirmation of the access arrangement. Processed numerical evidence used by the manuscript is stored under `results_canonical/`.
 
 ### Provenance Details
 * **Repository source file**: `data/raw/tb_mes.xlsx`
@@ -19,7 +19,8 @@ The supplied source materials do not independently document the original governm
 * **Temporal Resolution**: Monthly ($2001\text{-}01$ to $2022\text{-}12$, $N = 264$)
 * **Data Nature**: Aggregate monthly series; no individual-level or identifiable patient fields are present in the canonical observational file
 * **Completeness**: 264 consecutive monthly rows; repository integrity audit reports 0 missing months and 0 duplicate dates
-* **Original external acquisition URL**: Not independently recorded in the supplied repository materials
+* **Population source (2001–2020)**: IBGE 2013 national population projection; see `DATA_PROVENANCE.md`
+* **Original `casos` acquisition URL**: Not independently verified in the supplied repository materials
 
 ---
 

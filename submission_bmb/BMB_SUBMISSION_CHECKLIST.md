@@ -16,7 +16,7 @@ This checklist is the current pre-submission status for the BMB package after do
 | Identifiability hierarchy | VERIFIED | Explicitly secondary interpretive axis; not a co-equal novelty claim. |
 | Methods forecasting protocol | VERIFIED | 13 expanding-window origins x 12 horizons; persistence, seasonal naive, SARIMA. |
 | Methods prespecification terminology | REPAIRED | Uses `prespecified/documented before execution`, not external-preregistration language. |
-| Data provenance wording | REPAIRED / HUMAN CONFIRMATION PENDING | Canonical file is `data/raw/tb_mes.xlsx`; repository does not independently document the original external acquisition URL/path. |
+| Data provenance wording | REPAIRED / HUMAN CONFIRMATION PENDING | Canonical file is `data/raw/tb_mes.xlsx`; 2001–2020 population denominators trace to IBGE's 2013 projection, but the original acquisition route for `casos` remains unverified. |
 | Gate 2 / novelty language | VERIFIED | No first/never/unprecedented claim; adjacent precedents acknowledged. |
 | Results architecture | VERIFIED | Finding-first; within-family result precedes external-baseline turning point; identifiability secondary. |
 | Discussion architecture | VERIFIED | Turning point leads; literature positioning separated; mechanistic axis bounded; methodological implication closes section. |
@@ -24,7 +24,7 @@ This checklist is the current pre-submission status for the BMB package after do
 | Canonical manuscript sync | COMPLETE | `submission_bmb/BMB_MANUSCRIPT.md` is synchronized with the repaired source sections. |
 | Claim-precision audit | PASS | C01–C11 and M01–M04 audited in `submission_bmb/PRE_SUBMISSION_CLAIM_AUDIT.md`. |
 | Controlled prose pass | COMPLETE | Prose revised selectively; Methods/Results not stylistically rewritten where no scientific communication gain justified it. |
-| References | VERIFIED_CONTENT | 19 cited / 19 listed; DOI audit passed. Final BMB style conversion remains a production task. |
+| References | VERIFIED_CONTENT | 20 cited / 20 listed, including the IBGE population source; DOI audit passed. Final BMB style conversion remains a production task. |
 | Figure/table package | CLAIM_AUDITED | Captions distinguish within-family/external, descriptive/inferential, envelope/CI, and profile-objective terminology. |
 | Data availability text | DRAFT_COMPLETE / BLOCKED_FOR_AUTHOR_ACCESS_CONFIRMATION | Must state a verified access/provenance route before submission. |
 | Code availability text | DRAFT_COMPLETE | Frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`; private repository; no archival DOI currently exists. |
@@ -39,7 +39,7 @@ This checklist is the current pre-submission status for the BMB package after do
 | Funding | BLOCKED | Final funding/no-funding statement required. |
 | Competing interests | BLOCKED | Financial and non-financial interests confirmation required. |
 | Ethics applicability statement | BLOCKED_FOR_CONFIRMATION | Human/institutional confirmation required for aggregate/non-identifiable data and applicable wording. |
-| Data provenance/access | BLOCKED_FOR_CONFIRMATION | Verify original acquisition route/redistribution if available, or confirm controlled reviewer-access statement. |
+| Data provenance/access | BLOCKED_FOR_CONFIRMATION | Confirm an access and redistribution arrangement for the supplied `casos` series; the original extraction route remains unverified. |
 | Cover letter sign-off | BLOCKED_BY_METADATA | Corresponding-author metadata pending. |
 | Editable LaTeX/Word source | FINAL_PRODUCTION_STEP | BMB requires complete editable source files; LaTeX recommended. |
 | Compiled PDF | FINAL_PRODUCTION_STEP | Required with LaTeX source. |
