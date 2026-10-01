@@ -147,6 +147,34 @@ Ninguna de las correcciones exige recalcular resultados. Todas son de redacción
 
 ---
 
+## 6. Aplicación de las redacciones (2026-10-01)
+
+Autorizada por el autor en la sesión. Ficheros modificados: `submission_bmb/BMB_MANUSCRIPT.md`, `submission_bmb/BMB_ABSTRACT.md` y `submission_bmb/BMB_COVER_LETTER.md` (una frase). No se ha modificado nada en `results_canonical/`, `outputs/`, `src/` ni `data/`.
+
+| Hallazgo | Aplicado en |
+|---|---|
+| A (σ en cota) | §2.3 (viñeta de σ), §3.3, Discusión, Abstract, Conclusión, carta |
+| B (n=5 frente a 25) | §3.3 (primer párrafo) |
+| C (cotas, calibración del entero, brazo de γ, atribución) | §2.3 (viñeta de γ), §3.1, Abstract, Discusión (primer párrafo y limitaciones) |
+| D (margen en h=7, semilla única) | Abstract, §3.2, Discusión |
+| E (caída de 2020 y sesgo negativo) | §3.2, Discusión (limitaciones) |
+| F (DFE se sigue de R0>1) | §2.7, §3.3, Discusión, Abstract, Conclusión |
+| G (L06, L07, L09) | Discusión (limitaciones) |
+| H (h=12) | §3.2 |
+| I (dos resúmenes) | `BMB_ABSTRACT.md` alineado; texto idéntico al del manuscrito (228 palabras, recuento simple) |
+
+**No aplicado, por requerir decisión o fuera de alcance:**
+
+- Referencias a figuras y tablas en el manuscrito (producción pendiente).
+- Referencia de Angstmann et al. (2016) en `REFERENCE_AUDIT.md` y `references.bib`.
+- Verificación de las citas de la Discusión contra los textos originales.
+- Redacción de la declaración de disponibilidad de código («tree at commit …»).
+- Nota de erratas para L02 y L10 de `results_canonical/KNOWN_LIMITATIONS.md` y para C09 de `claim_support_table.csv`, que son evidencia congelada y no se editan.
+- Los borradores `manuscript_draft/*.md` no se han actualizado: la fuente canónica es `submission_bmb/BMB_MANUSCRIPT.md`, y los borradores han quedado desfasados respecto de ella.
+- El brazo de sensibilidad de γ no se ejecuta; se declara como no ejecutado.
+
+---
+
 ## Anexo — baseline sha256 de `results_canonical/` en HEAD `c8cd5df`
 
 Este baseline permite detectar cambios futuros en la evidencia congelada. No sustituye al «digest de digests» de otra máquina, cuyo método desconozco.
