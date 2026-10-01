@@ -165,13 +165,17 @@ Autorizada por el autor en la sesión. Ficheros modificados: `submission_bmb/BMB
 
 **No aplicado, por requerir decisión o fuera de alcance:**
 
-- Referencias a figuras y tablas en el manuscrito (producción pendiente).
+- ~~Referencias a figuras y tablas en el manuscrito~~: preparadas el 2026-10-01 (ver más abajo).
 - Referencia de Angstmann et al. (2016) en `REFERENCE_AUDIT.md` y `references.bib`.
 - Verificación de las citas de la Discusión contra los textos originales.
 - Redacción de la declaración de disponibilidad de código («tree at commit …»).
 - Nota de erratas para L02 y L10 de `results_canonical/KNOWN_LIMITATIONS.md` y para C09 de `claim_support_table.csv`, que son evidencia congelada y no se editan.
 - Los borradores `manuscript_draft/*.md` no se han actualizado: la fuente canónica es `submission_bmb/BMB_MANUSCRIPT.md`, y los borradores han quedado desfasados respecto de ella.
 - El brazo de sensibilidad de γ no se ejecuta; se declara como no ejecutado.
+
+### Figuras, tablas y material suplementario (2026-10-01)
+
+Se insertaron en `BMB_MANUSCRIPT.md` las llamadas y los bloques de Figuras 1–3 y Tablas 1–2, y se generó `BMB_SUPPLEMENTARY_INFORMATION.md` (Figura S1, Tablas S1A–S5). El detalle, las correcciones al paquete anterior y las comprobaciones están en `submission_bmb/BMB_FIGURE_TABLE_PACKAGE.md`. Hallazgos que motivaron regenerar las figuras: resolución de 120 ppp, línea gris sin leyenda en F3 que sugería una envolvente más ancha, y una leyenda que tapaba el título del eje. Además, las leyendas de la Tabla 1 y de la Tabla S3 del paquete anterior no coincidían con el contenido real de los CSV congelados. Las figuras y tablas se regeneran con `scripts/build_bmb_figures.py` y `scripts/build_bmb_tables.py`, que abortan si un valor difiere de los resúmenes congelados.
 
 ---
 

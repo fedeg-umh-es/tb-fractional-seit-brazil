@@ -25,7 +25,7 @@ This checklist is the current pre-submission status for the BMB package after do
 | Claim-precision audit | PASS | C01–C11 and M01–M04 audited in `submission_bmb/PRE_SUBMISSION_CLAIM_AUDIT.md`. |
 | Controlled prose pass | COMPLETE | Prose revised selectively; Methods/Results not stylistically rewritten where no scientific communication gain justified it. |
 | References | VERIFIED_CONTENT | 20 cited / 20 listed, including the IBGE population source; DOI audit passed. Final BMB style conversion remains a production task. |
-| Figure/table package | CLAIM_AUDITED | Captions distinguish within-family/external, descriptive/inferential, envelope/CI, and profile-objective terminology. |
+| Figure/table package | PREPARED_2026-10-01 | Submission figures (vector PDF + 600-dpi PNG) and tables rebuilt from frozen files and embedded in the manuscript; data checked against frozen summaries; captions distinguish within-family/external, descriptive/inferential, envelope/CI, and profile-objective terminology. See `BMB_FIGURE_TABLE_PACKAGE.md` §3–§5. |
 | Data availability text | LIMITATION_DRAFTED / BLOCKED_FOR_AUTHOR_ACCESS_CONFIRMATION | BMB requires a statement explaining how supporting data can be accessed and any reuse conditions. Confirm an actual sharing route; do not imply that an audited TabNet query produced the canonical case series. |
 | Code availability text | DRAFT_COMPLETE | Frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`; private repository; no archival DOI currently exists. |
 | AI/LLM disclosure | VERIFIED_AS_DRAFT | Methods §2.13 satisfies current BMB instruction to document generative LLM use; human accountability retained. |
@@ -45,8 +45,8 @@ This checklist is the current pre-submission status for the BMB package after do
 | Compiled PDF | FINAL_PRODUCTION_STEP | Required with LaTeX source. |
 | Continuous line numbering | FINAL_PRODUCTION_STEP | Required by current BMB guidelines. |
 | Sequential page numbering | FINAL_PRODUCTION_STEP | Required by current BMB guidelines. |
-| Figure accessibility/placement | FINAL_PRODUCTION_STEP | Descriptive captions complete; final pattern/contrast/placement QA pending. |
-| Supplementary package | FINAL_PRODUCTION_STEP | Inventory complete; final file naming, citations, and packaging pending. |
+| Figure accessibility/placement | FINAL_PRODUCTION_STEP | Captions and callouts complete; colour-blind-safe palette with distinct markers used. Artwork specification against current BMB guidelines, formal contrast check and LaTeX float placement pending. |
+| Supplementary package | PREPARED_2026-10-01 | `BMB_SUPPLEMENTARY_INFORMATION.md` (Figure S1, Tables S1A–S5) generated and cited in the text. Conversion to the journal's supplementary file format pending. |
 
 ---
 
