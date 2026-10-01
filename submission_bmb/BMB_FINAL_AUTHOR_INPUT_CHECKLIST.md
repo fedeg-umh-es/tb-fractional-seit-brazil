@@ -145,7 +145,7 @@ Once the block above is confirmed, the remaining workflow is production-only:
 ```text
 insert metadata/declarations
 -> generate Springer Nature LaTeX package
--> insert figures/tables/SI
+-> convert figures/tables/SI to the LaTeX package (already prepared and cited in Markdown; see BMB_FIGURE_TABLE_PACKAGE.md)
 -> final reference-style conversion
 -> continuous line + page numbering
 -> compile PDF
