@@ -1,6 +1,6 @@
 # Project Canon — TB Fractional SEIT Brazil
 
-Last operational update: 2026-09-24
+Last operational update: 2026-10-03
 
 ## Project identity
 
@@ -130,6 +130,7 @@ AMAURY_REVIEW = DEFERRED_UNTIL_RETURN
 WORK_CONTINUES_DURING_ABSENCE = YES
 NEW_EXPERIMENTS = NO
 READY_FOR_SUBMISSION = NO
+STATE_FREEZE = submission_bmb/STATE_FREEZE_2026-10-03.md
 ```
 
 Amaury has asked that work continue while he is away, with final manuscript review after his
