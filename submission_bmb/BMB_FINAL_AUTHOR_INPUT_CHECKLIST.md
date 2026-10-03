@@ -2,7 +2,7 @@
 
 This document tracks the human decisions and metadata that cannot be inferred by the repository or AI before final submission to the *Bulletin of Mathematical Biology*.
 
-The project canon records an external collaboration between **Amaury de Souza** and **Federico García Crespo**. This is collaboration metadata only: it does **not** establish the final author list, author order, corresponding author, or contribution roles.
+The project canon records an external collaboration between **Amaury de Souza** and **Federico García Crespi**. This is collaboration metadata only: it does **not** establish the final author list, author order, corresponding author, or contribution roles.
 
 ---
 
@@ -39,7 +39,7 @@ not itself authorize new filters, microdata, or model recalibration.
 
 ### AUTHORSHIP AND ORDER
 * **STATUS**: `BLOCKED_HUMAN_DECISION`
-* **KNOWN REPOSITORY FACT**: The project collaboration is Amaury de Souza / Federico García Crespo.
+* **KNOWN REPOSITORY FACT**: The project collaboration is Amaury de Souza / Federico García Crespi.
 * **NOT ESTABLISHED**: whether both are final authors, whether additional authors exist, and final order.
 * **REQUIRED INPUT**: exact final author list and order.
 

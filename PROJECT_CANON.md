@@ -5,7 +5,7 @@ Last operational update: 2026-09-24
 ## Project identity
 
 External collaboration:
-Amaury de Souza / Federico García Crespo
+Amaury de Souza / Federico García Crespi
 
 Repository:
 `tb-fractional-seit-brazil`
