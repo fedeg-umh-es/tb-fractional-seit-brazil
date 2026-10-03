@@ -90,7 +90,9 @@ FORECAST_SIGNIFICANCE = NOT_TESTED
 - Table S3 uses **profile-objective diagnostic exploration**, not profile likelihood.
 - Long-open-loop and rolling-origin results remain visibly separate protocols.
 
-**Verdict**: PASS. No figure or table regeneration is required.
+**Verdict**: PASS. No figure or table regeneration is required for the evidence itself.
+
+**Update (submission-format regeneration)**: the figures and tables submitted to the journal were regenerated at publication quality (PNG 600 dpi and vector PDF) by `scripts/publication_figures.py`, reading only the frozen tables in `results_canonical/`; they are in `submission_bmb/figures/` and `submission_bmb/tables/`. The script asserts that the plotted $R_0$ summary statistics and the horizon descriptors equal the frozen values. The canonical figures, tables and numbers are unchanged, and the captions in `BMB_FIGURE_TABLE_PACKAGE.md` were aligned with the regenerated items.
 
 ---
 
@@ -112,7 +114,8 @@ SCIENTIFIC_BLOCKER = NO
 NEW_EXPERIMENT_REQUIRED = NO
 FROZEN_NUMBERS_CHANGED = NO
 FROZEN_EVIDENCE_CHANGED = NO
-FIGURE_REGENERATION_REQUIRED = NO
+FIGURE_REGENERATION_REQUIRED = NO_FOR_EVIDENCE
+SUBMISSION_FORMAT_FIGURES_REGENERATED = YES
 CLAIM_REGISTRY_CONSISTENCY = PASS
 CANONICAL_ASSEMBLY_SYNC = COMPLETE
 CLAIM_PRECISION_AUDIT = PASS
