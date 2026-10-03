@@ -240,6 +240,15 @@ The within-family error reduction did not translate into positive observed forec
 
 A bounded exception occurred relative to the seasonal naive baseline ($\text{lag }12$). Observed RMSE and MAE skill were positive from $h = 1$ through $h = 7$ and negative from $h = 8$ through $h = 12$, giving empirical descriptors of $H_{\text{relax}} = 7$ and $H_{\text{strict-from-h1}} = 7$ for both metrics (Figure 2; Table 1). For example, fractional RMSE was $688.858$ versus seasonal-naive RMSE $1090.638$ at $h = 1$, $1203.452$ versus $1237.408$ at $h = 7$, and $1351.227$ versus $1258.413$ at $h = 8$. This positive-skill window is specific to the seasonal-naive comparison on the evaluated series; it is not an intrinsic epidemiological predictability limit and does not extend to persistence or SARIMA. Mean forecast bias was negative for every model at every evaluated horizon (Figure S1).
 
+**Table 1.** Empirical skill-horizon descriptors of fractional SEIT against each external baseline, from the 13 expanding-window rolling origins and $h=1,\dots,12$ months. $H_{\text{relax}}$ is the last horizon with positive observed skill and $H_{\text{strict-from-h1}}$ is the length of the longest run of positive skill starting at $h=1$; a value of 0 means no positive observed skill at any horizon. Both are baseline-specific descriptive indices for this evaluation and must not be interpreted as intrinsic or biological predictability limits. Horizon-wise errors are given in Table S1.
+
+| Baseline | $H_{\text{relax}}$ (RMSE) | $H_{\text{relax}}$ (MAE) | $H_{\text{strict-from-h1}}$ (RMSE) | $H_{\text{strict-from-h1}}$ (MAE) |
+|:--|--:|--:|--:|--:|
+| Persistence | 0 | 0 | 0 | 0 |
+| Seasonal naive (lag 12) | 7 | 7 | 7 | 7 |
+| SARIMA | 0 | 0 | 0 | 0 |
+
+
 ### 3.3 Secondary mechanistic axis: practical identifiability and derived stability
 
 Practical-identifiability analysis revealed pronounced non-identifiability of the individual kinetic rate parameters $\beta$, $\gamma$, and $d$ despite near-equivalent calibration fidelity. Across multiseed optimization and one-dimensional profile-objective evaluations (Table S3), calibration RMSE varied only narrowly ($\text{CV} \approx 0.35\%$, range $605.049$ to $610.388$), whereas $\beta$ varied by a factor of $\approx 5.4$ ($\text{CV} \approx 58.0\%$), $\gamma$ by a factor of $\approx 5.3$ ($\text{CV} \approx 59.9\%$), and $d$ by more than two orders of magnitude ($\text{CV} \approx 82.2\%$). By contrast, the fractional order $\alpha$ exhibited a sharply peaked profile objective and minimal dispersion across optimization seeds ($\text{CV} \approx 0.08\%$, range $0.9620$–$0.9640$). The wide dispersion of $\beta$, $\gamma$, and $d$ among near-equivalent fits precludes interpreting their fitted values as precise epidemiological rates.
@@ -247,6 +256,21 @@ Practical-identifiability analysis revealed pronounced non-identifiability of th
 Weak individual-parameter identifiability coexisted with comparatively stable predictions and a narrow practical-identifiability envelope for the derived basic reproduction number $R_0$. Across the multiseed ensemble, model-predicted monthly incidence trajectories had mean coefficients of variation of $0.19\%$ during calibration and $0.58\%$ during out-of-sample validation. Within the predefined near-equivalent admissible set ($n = 25$, calibration RMSE degradation $\le 1.0\%$ relative to the primary optimum), $R_0 = \frac{\beta \sigma}{(\sigma + \mu)(\gamma + \mu + d)}$ ranged from $1.1542$ to $1.1892$ (median $1.1735$, interquartile range $1.1682$–$1.1770$; Figure 3, Table 2). This range is a practical-identifiability envelope over calibration-equivalent solutions, not a statistical confidence interval or Bayesian credible interval, and it does not extend to the broader 33-member diagnostic pool that includes deliberately poor-fit probes. In all 25 admissible solutions the progression rate $\sigma$ lay within about 2% of its lower search bound ($0.0100$–$0.0102\text{ month}^{-1}$), so $\sigma$ is treated as bound-constrained rather than estimated, and the envelope refers to $R_0$ conditional on that boundary value.
 
 Within the same 25-member admissible set, the Disease-Free Equilibrium was locally asymptotically unstable for all solutions under Matignon's criterion ($25/25$ unstable, $0$ stable, $0$ ambiguous; Table 2). Each calibrated solution produced at least one eigenvalue satisfying $|\arg(\lambda_i)| \le \alpha \pi / 2$, dynamically consistent with $R_0 > 1$ within that admissible set. This is a mathematical property of the fitted dynamical system rather than an empirical claim about real-world transmission in Brazil, and it does not imply operational forecasting efficacy.
+
+**Table 2.** Derived $R_0$ practical-identifiability envelope and Disease-Free Equilibrium (DFE) local-stability classification under Matignon's criterion for the predefined near-equivalent admissible set ($n=25$). The $R_0$ range is an empirical admissible-set envelope rather than a statistical uncertainty interval; the DFE classification is a property of the fitted dynamical systems in this set, not an empirical assertion about persistence of real-world tuberculosis transmission.
+
+| Quantity | Value |
+|:--|--:|
+| Admissible solutions ($n$) | 25 |
+| $R_0$ minimum | 1.1542 |
+| $R_0$ first quartile | 1.1682 |
+| $R_0$ median | 1.1735 |
+| $R_0$ third quartile | 1.1770 |
+| $R_0$ maximum | 1.1892 |
+| DFE locally unstable | 25/25 |
+| DFE locally stable | 0/25 |
+| DFE ambiguous | 0/25 |
+
 
 ---
 
