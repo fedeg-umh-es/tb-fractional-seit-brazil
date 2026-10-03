@@ -1,0 +1,11 @@
+| Quantity                        | Value   |
+|:--------------------------------|:--------|
+| Admissible solutions (n)        | 25      |
+| R0 minimum                      | 1.1542  |
+| R0 first quartile               | 1.1682  |
+| R0 median                       | 1.1735  |
+| R0 third quartile               | 1.1770  |
+| R0 maximum                      | 1.1892  |
+| DFE locally unstable (Matignon) | 25/25   |
+| DFE locally stable              | 0/25    |
+| DFE ambiguous                   | 0/25    |
