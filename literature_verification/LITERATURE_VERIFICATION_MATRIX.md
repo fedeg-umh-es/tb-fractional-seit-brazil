@@ -25,7 +25,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 #### L1-02
 * **ID**: L1-02
 * **TOPIC**: L1 — Surveillance data and SINAN notification system
-* **FULL_CITATION**: Pelissari, D. M., Rocha, M. S., Bartholomeu, P. V. O., Sanchez, M. N., Duarte, E. C., Arakaki-Sanchez, D., & Diaz-Quijano, F. A. (2020). Notifiable Diseases Information System (SINAN): main features of tuberculosis notification and data analysis. *Epidemiologia e Serviços de Saúde*, 29(1), e2019154.
+* **FULL_CITATION**: Rocha, M. S., Bartholomay, P., Cavalcante, M. V., Medeiros, F. C. de, Codenotti, S. B., Pelissari, D. M., Andrade, K. B., Silva, G. D. M. da, Arakaki-Sanchez, D., & Pinheiro, R. S. (2020). Sistema de Informação de Agravos de Notificação (Sinan): principais características da notificação e da análise de dados relacionada à tuberculose. *Epidemiologia e Serviços de Saúde*, 29(1).
 * **YEAR**: 2020
 * **DOI_OR_IDENTIFIER**: DOI: 10.5123/S1679-49742020000100009
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Surveillance Methodology
@@ -117,7 +117,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 #### L3-02
 * **ID**: L3-02
 * **TOPIC**: L3 — Caputo fractional epidemic formulations
-* **FULL_CITATION**: Area, I., Batarfi, H., Losada, J., Nieto, J. J., Shammakh, W., & Torres, Á. (2015). On a fractional order epidemic model with Caputo derivative. *Applied Mathematics Letters*, 40, 23–27.
+* **FULL_CITATION**: Area, I., Batarfi, H., Losada, J., Nieto, J. J., Shammakh, W., & Torres, Á. (2015). On a fractional order Ebola epidemic model. *Advances in Difference Equations*, 2015, 278. DOI: 10.1186/s13662-015-0613-5.
 * **YEAR**: 2015
 * **DOI_OR_IDENTIFIER**: DOI: 10.1016/j.aml.2014.09.006
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Applied Mathematics
@@ -163,7 +163,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 #### L4-02
 * **ID**: L4-02
 * **TOPIC**: L4 — Computational parameter identifiability and profile likelihood
-* **FULL_CITATION**: Roosa, S., & Chowell, G. (2019). Assessing parameter identifiability in compartmental dynamic models using a computational approach: application to infectious disease transmission. *Theoretical Biology and Medical Modelling*, 16, 1.
+* **FULL_CITATION**: Roosa, K., & Chowell, G. (2019). Assessing parameter identifiability in compartmental dynamic models using a computational approach: application to infectious disease transmission models. *Theoretical Biology and Medical Modelling*, 16, 1.
 * **YEAR**: 2019
 * **DOI_OR_IDENTIFIER**: DOI: 10.1186/s12976-018-0097-6
 * **SOURCE_TYPE**: Peer-reviewed Methodological Research
@@ -177,7 +177,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 #### L4-03
 * **ID**: L4-03
 * **TOPIC**: L4 — Identifiable parameter combinations and composite quantities
-* **FULL_CITATION**: Meshkat, N., Kuo, C. E., & Sullivant, S. (2014). On finding identifiable parameter combinations in nonlinear dynamic systems. *PLOS ONE*, 9(10), e110261.
+* **FULL_CITATION**: Meshkat, N., Kuo, C. E., & DiStefano, J. (2014). On finding and using identifiable parameter combinations in nonlinear dynamic systems biology models and COMBOS: a novel web implementation. *PLOS ONE*, 9(10), e110261.
 * **YEAR**: 2014
 * **DOI_OR_IDENTIFIER**: DOI: 10.1371/journal.pone.0110261
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Systems Biology
@@ -191,7 +191,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 #### L4-04
 * **ID**: L4-04
 * **TOPIC**: L4 — Profile likelihood and functional/prediction identifiability
-* **FULL_CITATION**: Raue, A., Kreutz, C., Maiwald, T., Bachmann, J., Schilling, M., Klingmüller, U., & Timmer, J. (2009). Structural and practical identifiability analysis of partial differential equation models in systems biology. *Bioinformatics*, 25(15), 1923–1929.
+* **FULL_CITATION**: Raue, A., Kreutz, C., Maiwald, T., Bachmann, J., Schilling, M., Klingmüller, U., & Timmer, J. (2009). Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood. *Bioinformatics*, 25(15), 1923–1929.
 * **YEAR**: 2009
 * **DOI_OR_IDENTIFIER**: DOI: 10.1093/bioinformatics/btp358
 * **SOURCE_TYPE**: Peer-reviewed Methodological Paper

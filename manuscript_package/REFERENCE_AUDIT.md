@@ -26,7 +26,7 @@ REFERENCE_AUDIT_VERDICT = SYNCHRONIZED_PENDING_FINAL_HUMAN_REVIEW
 | Ref | Citation | Text location | Reference list | Identifier |
 |---:|---|---|:---:|---|
 | 1 | Alzahrani et al. (2024) | Discussion | YES | 10.18576/amis/180101 |
-| 2 | Area et al. (2015) | Introduction | YES | 10.1016/j.aml.2014.09.006 |
+| 2 | Area et al. (2015) | Introduction | YES | 10.1186/s13662-015-0613-5 |
 | 3 | Bracher et al. (2021) | Introduction; Discussion | YES | 10.1371/journal.pcbi.1008618 |
 | 4 | Chen et al. (2021) | Discussion | YES | 10.1016/j.apm.2021.03.044 |
 | 5 | Chishtie et al. (2026) | Discussion | YES | 10.1016/j.epidem.2026.100887 |
@@ -39,8 +39,8 @@ REFERENCE_AUDIT_VERDICT = SYNCHRONIZED_PENDING_FINAL_HUMAN_REVIEW
 | 12 | Kharazmi et al. (2021) | Discussion | YES | 10.1038/s43588-021-00158-0 |
 | 13 | Meshkat et al. (2014) | Introduction; Discussion | YES | 10.1371/journal.pone.0110261 |
 | 14 | Moran et al. (2016) | Introduction; Discussion | YES | 10.1093/infdis/jiw375 |
-| 15 | Pelissari et al. (2020) | Introduction | YES | 10.5123/S1679-49742020000100009 |
-| 16 | Raue et al. (2009) | Discussion | YES | 10.1093/bioinformatics/btp358 |
+| 15 | Raue et al. (2009) | Discussion | YES | 10.1093/bioinformatics/btp358 |
+| 16 | Rocha et al. (2020) | Introduction | YES | 10.5123/S1679-49742020000100009 |
 | 17 | Roosa & Chowell (2019) | Introduction; Discussion | YES | 10.1186/s12976-018-0097-6 |
 | 18 | Simpson & Maclaren (2024) | Discussion | YES | 10.1007/s11538-024-01294-0 |
 | 19 | Tuncer & Le (2018) | Introduction; Discussion | YES | 10.1016/j.mbs.2018.02.004 |
