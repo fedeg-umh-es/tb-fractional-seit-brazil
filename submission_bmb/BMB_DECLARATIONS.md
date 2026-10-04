@@ -30,18 +30,14 @@ Not applicable unless the final manuscript includes identifiable individual mate
 ---
 
 ## 6. Data Availability
-The canonical observational dataset analyzed in this study is the aggregate monthly Brazil tuberculosis series stored as `data/raw/tb_mes.xlsx`, covering January 2001 through December 2022 ($N=264$). The file is preserved unchanged as supplied by Amaury de Souza for this collaboration and is used directly by the computational pipeline. Repository provenance, including the source-file hash and structural audit, is recorded in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
+The canonical observational dataset analyzed in this study is the aggregate monthly Brazil tuberculosis series stored as `data/raw/tb_mes.xlsx`, covering January 2001 through December 2022 ($N=264$). The file is preserved unchanged as supplied by Amaury de Souza for this collaboration and is used directly by the computational pipeline. It is distributed in the public repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. Repository provenance, including the source-file hash and structural audit, is recorded in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
 
-The 2001–2020 population denominator is traced to the IBGE 2013 projection. A four-configuration DATASUS/SINAN TabNet audit did not exactly reconstruct the supplied case series; the closest configuration differed in 99 of 264 months. The original case-extraction settings therefore remain unrecovered. [AUTHOR CONFIRMATION REQUIRED BEFORE SUBMISSION: state the permitted access route for the canonical file and bundle, with any reuse conditions.]
-
-See `submission_bmb/BMB_DATA_CODE_AVAILABILITY.md` for full provenance and release planning.
+The 2001–2020 population denominator is traced to the 2013 revision of the IBGE national population projection. During a reproducibility audit, we attempted to reconstruct the supplied monthly case series through four prespecified DATASUS/SINAN TabNet configurations. None reproduced all 264 monthly values exactly; the closest differed in 99 months. The original extraction settings could therefore not be recovered. No specific DATASUS/SINAN query is presented as the verified source of the canonical case series. [AUTHOR CONFIRMATION REQUIRED BEFORE SUBMISSION: specify how the canonical observational file and reproducibility bundle can be accessed, and any conditions for reuse.]
 
 ---
 
 ## 7. Code Availability
-The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, profile-objective practical-identifiability analysis, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`.
-
-Editorial/documentation commits after this freeze do not modify canonical numerical evidence. The repository is private; a reproducible repository bundle or private access can be supplied during peer review. No public archival DOI currently exists.
+The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, profile-objective practical-identifiability analysis, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to canonical evidence-freeze commit `5617559bb0bf43d7223a7bb2491ab1e41fa4a084`. Editorial/documentation commits after this freeze do not modify canonical numerical evidence. The code, the canonical result tables and the supplied observational file are publicly available in the GitHub repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. No archival DOI (e.g., Zenodo) currently exists for the repository.
 
 ---
 
