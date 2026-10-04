@@ -85,7 +85,7 @@ not itself authorize new filters, microdata, or model recalibration.
   - 2001–2020 population provenance is resolved to the IBGE 2013 projection;
   - the closed C1–C4 DATASUS/SINAN audit did not exactly reconstruct the supplied `casos` series (C1 closest: 99/264 discrepant months);
   - original case-extraction settings were not recovered;
-  - project repository is private.
+  - project repository is public; dataset reuse conditions remain pending author confirmation.
 * **REQUIRED INPUT**: confirm how editors and reviewers can access the canonical file and reproducibility bundle, whether public release is permitted, and any conditions for reuse. An original acquisition record may be documented if the authors already possess one; it does not reopen the closed candidate search.
 * **RULE**: do not attribute the canonical case series to an audited SINAN/DATASUS extraction configuration without evidence of an exact match or an independently verified original record.
 
@@ -95,8 +95,8 @@ not itself authorize new filters, microdata, or model recalibration.
 
 ### CODE AVAILABILITY
 * **STATUS**: `DRAFT_COMPLETE`
-* Frozen computational commit: `13015847a6f364505391d4f6e24d9c4c994669ff`.
-* Repository private; reviewer bundle/private access is a proposed route pending author confirmation.
+* Canonical evidence-freeze commit: `5617559bb0bf43d7223a7bb2491ab1e41fa4a084`.
+* Repository public; canonical file and reproducibility bundle reuse conditions remain pending author confirmation.
 * No public archival DOI currently exists.
 * Use `profile-objective`, not `profile-likelihood`.
 

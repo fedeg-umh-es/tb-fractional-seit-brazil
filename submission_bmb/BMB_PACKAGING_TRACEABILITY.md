@@ -1,6 +1,6 @@
 # Bulletin of Mathematical Biology — Packaging Traceability
 
-This document records the exact provenance, editorial decisions, section adaptations, and word count audits for adapting the frozen master manuscript (`manuscript_package/MASTER_MANUSCRIPT.md`) for submission to the *Bulletin of Mathematical Biology* (BMB).
+This document retains historical packaging decisions. The canonical manuscript is `submission_bmb/BMB_MANUSCRIPT.md`; `manuscript_package/MASTER_MANUSCRIPT.md` is a superseded text-copy pointer. The current abstract is reproduced verbatim in `submission_bmb/BMB_ABSTRACT.md` (208 whitespace tokens). Historical section counts below are not a current readiness certification.
 
 ---
 
@@ -10,13 +10,16 @@ This document records the exact provenance, editorial decisions, section adaptat
 REPOSITORY_AUTHOR = fedeg
 TARGET_JOURNAL = Bulletin of Mathematical Biology (BMB)
 PUBLISHER = Springer Nature / Society for Mathematical Biology
-CANONICAL_SOURCE_COMMIT = 13015847a6f364505391d4f6e24d9c4c994669ff
+CANONICAL_EVIDENCE_FREEZE_COMMIT = 5617559bb0bf43d7223a7bb2491ab1e41fa4a084
+FREEZE_DOCUMENTATION_CORRECTION_COMMIT = 8ba6ea2bac741ae17b05e9b397af4057585929dc
+CURRENT_ABSTRACT_SOURCE = submission_bmb/BMB_MANUSCRIPT.md
+CURRENT_ABSTRACT_WHITESPACE_TOKENS = 208
 ADAPTATION_PRINCIPLE = PACKAGING_ONLY_WITHOUT_ALTERING_SCIENCE
 ```
 
 ---
 
-## 2. Section Adaptation Decisions
+## 2. Historical Section Adaptation Decisions
 
 ### Title Adaptation
 * **Source**: `manuscript_package/MASTER_MANUSCRIPT.md` (Placeholder)
@@ -51,7 +54,7 @@ ADAPTATION_PRINCIPLE = PACKAGING_ONLY_WITHOUT_ALTERING_SCIENCE
 
 ---
 
-## 3. Word Count Audit
+## 3. Historical Word Count Audit (superseded for the current abstract)
 
 | Manuscript Section | Source Word Count | BMB Package Word Count | Change / Status |
 | :--- | :---: | :---: | :---: |

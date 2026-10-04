@@ -21,13 +21,14 @@ This checklist is the current pre-submission status for the BMB package after do
 | Results architecture | VERIFIED | Finding-first; within-family result precedes external-baseline turning point; identifiability secondary. |
 | Discussion architecture | VERIFIED | Turning point leads; literature positioning separated; mechanistic axis bounded; methodological implication closes section. |
 | Conclusion hierarchy | VERIFIED | Returns to dominant forecasting question; seasonal-naive exception retained explicitly. |
+| Documentary B-1/B-2/B-3 | CLOSED_2026-10-04 | Abstract synchronized; Table 1 caption already aligned; seven freeze references corrected. See `DOCUMENTARY_REPAIR_2026-10-04.md`. |
 | Canonical manuscript sync | COMPLETE | `submission_bmb/BMB_MANUSCRIPT.md` is synchronized with the repaired source sections. |
 | Claim-precision audit | PASS | C01–C11 and M01–M04 audited in `submission_bmb/PRE_SUBMISSION_CLAIM_AUDIT.md`. |
 | Controlled prose pass | COMPLETE | Prose revised selectively; Methods/Results not stylistically rewritten where no scientific communication gain justified it. |
 | References | VERIFIED_CONTENT | 20 cited / 20 listed, including the IBGE population source; DOI audit passed. Final BMB style conversion remains a production task. |
 | Figure/table package | CLAIM_AUDITED | Captions distinguish within-family/external, descriptive/inferential, envelope/CI, and profile-objective terminology. |
 | Data availability text | LIMITATION_DRAFTED / BLOCKED_FOR_AUTHOR_ACCESS_CONFIRMATION | BMB requires a statement explaining how supporting data can be accessed and any reuse conditions. Confirm an actual sharing route; do not imply that an audited TabNet query produced the canonical case series. |
-| Code availability text | DRAFT_COMPLETE | Frozen computational commit `13015847a6f364505391d4f6e24d9c4c994669ff`; private repository; no archival DOI currently exists. |
+| Code availability text | DRAFT_COMPLETE | Canonical evidence-freeze commit `5617559bb0bf43d7223a7bb2491ab1e41fa4a084`; public repository; reuse conditions pending author confirmation; no archival DOI currently exists. |
 | AI/LLM disclosure | VERIFIED_AS_DRAFT | Methods §2.13 satisfies current BMB instruction to document generative LLM use; human accountability retained. |
 | Cover letter framing | CLAIM_AUDITED | Contribution bounded to case-study evidence; no universal fractional-model claim. |
 | Current BMB scope/requirements | VERIFIED_2026-09-23 | Official [BMB submission guidelines](https://link.springer.com/journal/11538/submission-guidelines) rechecked, including Data Availability and editable-source requirements. |
@@ -72,7 +73,7 @@ SCIENTIFIC_EVIDENCE_STATUS = FROZEN
 GATE_2_EXTERNAL_VERIFICATION = CLOSED
 CANONICAL_MANUSCRIPT = submission_bmb/BMB_MANUSCRIPT.md
 CANONICAL_REFERENCE_AUDIT = manuscript_package/REFERENCE_AUDIT.md
-COMPUTATIONAL_FREEZE_COMMIT = 13015847a6f364505391d4f6e24d9c4c994669ff
+EVIDENCE_FREEZE_COMMIT = 5617559bb0bf43d7223a7bb2491ab1e41fa4a084
 NEW_EXPERIMENT_REQUIRED = NO
 DOCUMENTARY_TRUTH_REPAIR = COMPLETE_WITH_CASES_PROVENANCE_LIMITATION
 STRUCTURAL_REPAIR = COMPLETE
