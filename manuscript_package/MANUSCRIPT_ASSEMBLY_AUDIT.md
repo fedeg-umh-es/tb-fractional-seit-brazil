@@ -1,6 +1,6 @@
 # Manuscript Assembly Audit
 
-This document provides a comprehensive structural, textual, and claim consistency audit for `manuscript_package/MASTER_MANUSCRIPT.md`, confirming that the assembled text matches the frozen section drafts exactly without alteration of scientific prose.
+This document is a historical assembly audit for the former text-copy manuscript. `manuscript_package/MASTER_MANUSCRIPT.md` is now a superseded pointer; the canonical manuscript is `submission_bmb/BMB_MANUSCRIPT.md`. Editorial revisions to the Introduction after this audit do not modify the frozen scientific evidence.
 
 ---
 
@@ -23,7 +23,7 @@ REFERENCES_LIST_INCLUDED = YES
 | :--- | :--- | :---: | :---: | :---: |
 | **Title Placeholder** | Standardized Title | FROZEN | `6663204d` | Verified placeholder |
 | **Abstract** | `manuscript_draft/ABSTRACT_DRAFT.md` | FROZEN | `6663204d` | Exact match (268 words prose) |
-| **1. Introduction** | `manuscript_draft/INTRODUCTION_DRAFT.md` | FROZEN | `6590bf5e` | Exact match (5 paragraphs) |
+| **1. Introduction** | `manuscript_draft/INTRODUCTION_DRAFT.md` | EDITORIALLY REVISED | post-audit | Synchronized with canonical BMB Introduction (6 paragraphs); scientific claims/evidence unchanged |
 | **2. Methods** | `manuscript_draft/METHODS_DRAFT.md` | FROZEN | `b5d755d1` | Exact match (12 subsections) |
 | **3. Results** | `manuscript_draft/RESULTS_DRAFT.md` | FROZEN | `eb87b21d` | Exact match (3 subsections) |
 | **4. Discussion** | `manuscript_draft/DISCUSSION_DRAFT.md` | FROZEN | `6590bf5e` | Exact match (7 paragraphs) |
@@ -64,4 +64,4 @@ REFERENCES_LIST_INCLUDED = YES
 
 ## Assembly Conclusion
 
-The master manuscript document is fully assembled, internally consistent, and ready for figure/table integration and journal-fit assessment.
+This historical audit is retained for provenance. Current manuscript consistency must be assessed against `submission_bmb/BMB_MANUSCRIPT.md`, which is the canonical text.
