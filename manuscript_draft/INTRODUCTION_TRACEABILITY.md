@@ -26,8 +26,8 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 
 1. `[LITERATURE VERIFICATION REQUIRED: tuberculosis epidemiology and surveillance in Brazil]`
    * **STATUS**: RESOLVED
-   * **SOURCES**: REF-01 (World Health Organization, 2022), REF-02 (Pelissari et al., 2020)
-   * **CITATION_INSERTED**: `(World Health Organization, 2022; Pelissari et al., 2020)`
+   * **SOURCES**: REF-01 (World Health Organization, 2022), REF-02 (Rocha et al., 2020)
+   * **CITATION_INSERTED**: `(World Health Organization, 2022; Rocha et al., 2020)`
    * **CLAIM_SUPPORTED**: Tuberculosis is a persistent public health challenge in Brazil, monitored via standardized national surveillance notifications.
    * **WORDING_CHANGED**: NO
    * **NOVELTY_IMPLICATION**: NONE
@@ -57,6 +57,13 @@ R0_POPULATION_INFERENCE_PROMISED = NO
    * **TERMINOLOGY_BOUNDARY**: Aligned with standard literature terms ("identifiable parameter combinations" and "practical robustness of derived quantities").
    * **NOVELTY_IMPLICATION**: NONE
 
+
+5. `[GATE 2: neighboring evaluation designs and direct-precedent check]`
+   * **STATUS**: RESOLVED
+   * **SOURCES**: Chishtie et al. (2026), Alzahrani et al. (2024), Kalizhanova et al. (2024)
+   * **CLAIM_SUPPORTED**: Neighboring studies already compare fractional and integer epidemic models under out-of-sample forecasting, fractional epidemic forecasts against statistical forecasts, and TB mechanistic forecasts against SARIMA. These precedents support framing the paper around the inferential change produced by benchmark expansion rather than around a universal absence claim.
+   * **NOVELTY_IMPLICATION**: No `first`, `never evaluated`, or universal-absence claim is permitted.
+
 ---
 
 ## Paragraph-by-Paragraph Traceability Matrix
@@ -64,79 +71,89 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 ### I1 — Scientific stakes and compartmental epidemic models (Paragraph 1)
 
 * **PARAGRAPH_ID**: I1
-* **RHETORICAL_ROLE**: Funnel top: Introduce the role of mechanistic compartmental models in representing transmission and latent processes, establish the application context of tuberculosis in Brazil, and introduce the distinction between historical goodness-of-fit and out-of-sample forecast accuracy.
-* **STUDY_FACTS_USED**: Application context of Brazilian tuberculosis monthly surveillance records (2001–2022).
-* **GENERAL_SCIENTIFIC_CLAIMS**: Compartmental models represent transmission and latent dynamics; TB is a public health challenge in Brazil; calibration fit does not guarantee forward forecast accuracy.
-* **VERIFIED_CITATIONS**: (World Health Organization, 2022; Pelissari et al., 2020), (Moran et al., 2016; Bracher et al., 2021).
-* **STUDY_QUESTION_SUPPORTED**: Motivates questions 1 and 2 (forecasting evaluation).
-* **PROMISE_TO_RESULTS**: Promises a rigorous out-of-sample forecast evaluation distinguishing fit from forward projection.
-* **OVERCLAIM_RISK**: None; no claims of model superiority or performance outcomes.
-* **NOVELTY_RISK**: None; functional framing without encyclopedic generalizations.
-* **GENERALIZATION_RISK**: Kept to general mathematical epidemiological principles.
+* **RHETORICAL_ROLE**: Funnel top: establish the mathematical-epidemiology context, the Brazilian TB application, and the distinction between historical fit and forward forecasting.
+* **STUDY_FACTS_USED**: Brazilian national monthly TB surveillance context (2001–2022).
+* **GENERAL_SCIENTIFIC_CLAIMS**: Compartmental models represent transmission and latent dynamics; TB remains a public-health challenge in Brazil; calibration fit does not guarantee forward forecast accuracy.
+* **VERIFIED_CITATIONS**: (World Health Organization, 2022; Rocha et al., 2020), (Moran et al., 2016; Bracher et al., 2021).
+* **STUDY_QUESTION_SUPPORTED**: Motivates Q1 and Q2.
+* **PROMISE_TO_RESULTS**: Rigorous out-of-sample evaluation separating fit from forward predictive performance.
+* **OVERCLAIM_RISK**: None.
+* **NOVELTY_RISK**: None.
 
 ---
 
-### I2 — Fractional-order extensions and the evaluation problem (Paragraph 2)
+### I2 — Fractional-order extension and within-family evidence (Paragraph 2)
 
 * **PARAGRAPH_ID**: I2
-* **RHETORICAL_ROLE**: Funnel step 2: Introduce fractional-order operators as extensions introducing power-law temporal dependence, and identify the methodological problem of evaluating models solely against internal/nested integer-order ablations rather than external baselines.
-* **STUDY_FACTS_USED**: SEIT model family includes both fractional-order and integer-order formulations.
-* **GENERAL_SCIENTIFIC_CLAIMS**: Fractional operators introduce power-law dependence; internal ablations demonstrate within-family flexibility but do not evaluate external predictive utility.
+* **RHETORICAL_ROLE**: Introduce fractional-order flexibility and establish that fractional-versus-integer improvement is still a within-family comparison.
+* **STUDY_FACTS_USED**: Fractional and integer SEIT formulations belong to the same mechanistic family.
+* **GENERAL_SCIENTIFIC_CLAIMS**: Fractional operators introduce non-local temporal dependence; lower within-family error does not by itself establish forecasting value beyond that family.
 * **VERIFIED_CITATIONS**: (Diethelm, 2013; Area et al., 2015).
-* **STUDY_QUESTION_SUPPORTED**: Sets up Sub-question 1 (fractional vs. integer) and Sub-question 2 (external baselines).
-* **PROMISE_TO_RESULTS**: Promises comparative evaluation against both integer-order SEIT and external baselines.
-* **OVERCLAIM_RISK**: None; does not promise that fractional models are superior.
-* **NOVELTY_RISK**: Avoids asserting an unverified universal gap in the field; framed as a logical evaluation requirement.
-* **GENERALIZATION_RISK**: Bounded to the evaluation logic of mathematical models.
+* **STUDY_QUESTION_SUPPORTED**: Sets up Q1 and creates the need for Q2.
+* **PROMISE_TO_RESULTS**: Separate within-family comparison from external predictive utility.
+* **OVERCLAIM_RISK**: None.
+* **NOVELTY_RISK**: No generic fractional superiority claim.
 
 ---
 
-### I3 — The parameter identifiability problem in calibration (Paragraph 3)
+### I3 — Central evaluation friction and neighboring precedents (Paragraph 3)
 
 * **PARAGRAPH_ID**: I3
-* **RHETORICAL_ROLE**: Funnel step 3: Establish the mechanistic challenge: aggregate incidence data frequently lead to practical non-identifiability of individual kinetic rate parameters despite low calibration errors and stable trajectory fits, motivating our analytical separation of evidence levels.
-* **STUDY_FACTS_USED**: Calibration against aggregate monthly incidence series; estimation of kinetic parameters and derived $R_0$.
-* **GENERAL_SCIENTIFIC_CLAIMS**: Practical non-identifiability is common when calibrating compartmental models from single aggregate streams; trajectory stability can coexist with parameter indeterminacy.
-* **VERIFIED_CITATIONS**: (Tuncer & Le, 2018; Roosa & Chowell, 2019; Meshkat et al., 2014).
-* **STUDY_QUESTION_SUPPORTED**: Sets up Sub-question 3 (mechanistic interpretability under non-identifiability).
-* **PROMISE_TO_RESULTS**: Promises an identifiability audit distinguishing parameter, predictive, and functional stability.
-* **OVERCLAIM_RISK**: None; does not report specific parameter or $R_0$ numerical ranges.
-* **NOVELTY_RISK**: Does not claim this is the first study to document non-identifiability.
-* **GENERALIZATION_RISK**: Framed as study analytical framework.
+* **RHETORICAL_ROLE**: State the dominant forecasting question and show that the scientific issue is benchmark expansion, not an asserted absence of prior comparisons.
+* **STUDY_FACTS_USED**: External benchmarking against independently re-estimated integer SEIT plus forecasting baselines across lead horizons.
+* **GENERAL_SCIENTIFIC_CLAIMS**: A model can improve within-family while remaining uncompetitive against purpose-built predictive baselines.
+* **VERIFIED_CITATIONS**: Chishtie et al. (2026), Alzahrani et al. (2024), Kalizhanova et al. (2024).
+* **STUDY_QUESTION_SUPPORTED**: Q2 is stated as the paper-level dominant question while preserving Q1 as its prerequisite comparison.
+* **PROMISE_TO_RESULTS**: Test whether the within-family conclusion survives benchmark expansion under temporal out-of-sample assessment.
+* **OVERCLAIM_RISK**: Controlled.
+* **NOVELTY_RISK**: `FIRST_STUDY_CLAIM` and universal-absence wording remain prohibited.
 
 ---
 
-### I4 — Specific methodological framework (Paragraph 4)
+### I4 — Practical identifiability as a secondary interpretive axis (Paragraph 4)
 
 * **PARAGRAPH_ID**: I4
-* **RHETORICAL_ROLE**: Funnel narrow: Articulate the study's specific evaluation framework that explicitly separates within-family flexibility from external forecasting competitiveness, and individual parameter recovery from derived functional stability.
-* **STUDY_FACTS_USED**: Study evaluates (i) integer vs fractional comparison, (ii) external multi-horizon baselines, and (iii) parameter vs functional identifiability.
-* **GENERAL_SCIENTIFIC_CLAIMS**: Stated as study evaluation requirements.
-* **VERIFIED_CITATIONS**: None (analytical synthesis).
-* **STUDY_QUESTION_SUPPORTED**: Integrates all three study sub-questions.
-* **PROMISE_TO_RESULTS**: Establishes the exact dual-axis evaluation structure reported in Results.
+* **RHETORICAL_ROLE**: Introduce the secondary mechanistic-interpretation problem without competing with the forecasting spine.
+* **STUDY_FACTS_USED**: Calibration from aggregate monthly incidence and evaluation of parameter, predictive, and derived-functional stability.
+* **GENERAL_SCIENTIFIC_CLAIMS**: Near-equivalent fits can coexist with substantial individual-parameter dispersion.
+* **VERIFIED_CITATIONS**: (Tuncer & Le, 2018; Roosa & Chowell, 2019; Meshkat et al., 2014).
+* **STUDY_QUESTION_SUPPORTED**: Q3.
+* **PROMISE_TO_RESULTS**: Bound which mechanistic quantities remain interpretable under practical non-identifiability.
 * **OVERCLAIM_RISK**: None.
-* **NOVELTY_RISK**: None; states study objectives analytically without normative claims.
-* **GENERALIZATION_RISK**: None.
+* **NOVELTY_RISK**: Identifiability remains a secondary interpretive axis, not the novelty claim.
 
 ---
 
-### I5 — Study response, questions, and evaluation design (Paragraph 5)
+### I5 — Study response and explicit question hierarchy (Paragraph 5)
 
 * **PARAGRAPH_ID**: I5
-* **RHETORICAL_ROLE**: Study specification: Introduce the independent reimplementation of the fractional SEIT model for Brazil (2001–2022), the corrected incidence observation mapping, state the 3 explicit sub-questions, and summarize the evaluation protocols without revealing numerical results.
+* **RHETORICAL_ROLE**: Present the study before its protocol and separate the two forecasting questions explicitly.
 * **STUDY_FACTS_USED**:
-  * Independent reimplementation of fractional SEIT model for Brazil (2001–2022).
-  * Reference-time-consistent Caputo derivative formulation.
-  * Corrected observation process mapping notifications to $E \to I$ incidence flow.
-  * Three explicit study sub-questions verbatim from `INTRODUCTION_REQUIREMENTS.md`.
-  * Two forecasting protocols: 24-month long open-loop stress test and 13-origin rolling-origin cross-validation ($h=1\dots 12$).
-  * External baselines: persistence, seasonal naive ($\text{lag } 12$), SARIMA.
-  * Mechanistic audits: multiseed optimization, profile-objective identifiability, $R_0$ practical-identifiability envelope, Matignon DFE local stability analysis.
-* **GENERAL_SCIENTIFIC_CLAIMS**: None (strictly study design facts).
-* **VERIFIED_CITATIONS**: None.
-* **STUDY_QUESTION_SUPPORTED**: Directly articulates all three sub-questions.
-* **PROMISE_TO_RESULTS**: Sets up Methods (§2) and Results (§3) precisely without pre-empting numerical outcomes or announcing the turning point.
-* **OVERCLAIM_RISK**: Zero; no outcome results or performance claims mentioned.
-* **NOVELTY_RISK**: Framed strictly as an independent reimplementation and audit.
-* **GENERALIZATION_RISK**: Bounded to the evaluated dataset and protocols.
+  * Independent reimplementation and methodological audit of fractional SEIT.
+  * Brazil monthly surveillance data, 2001–2022.
+  * Independently re-estimated integer-order comparator.
+  * External baselines: persistence, seasonal naive, and SARIMA.
+  * Secondary practical-identifiability analysis.
+* **GENERAL_SCIENTIFIC_CLAIMS**: None; study-design statements only.
+* **VERIFIED_CITATIONS**: None required.
+* **STUDY_QUESTION_SUPPORTED**: Q1 is tested first; Q2 asks whether any within-family improvement translates to external observed skill; Q3 remains explicitly secondary.
+* **PROMISE_TO_RESULTS**: Preserves the result hierarchy without pre-empting the answer to Q1 or Q2.
+* **OVERCLAIM_RISK**: None.
+* **NOVELTY_RISK**: No theoretical novelty or historical-priority claim.
+
+---
+
+### I6 — Evaluation protocol and bounded contribution (Paragraph 6)
+
+* **PARAGRAPH_ID**: I6
+* **RHETORICAL_ROLE**: Summarize how the questions are evaluated and close with the bounded methodological/empirical contribution.
+* **STUDY_FACTS_USED**:
+  * 24-month single-origin long open-loop stress test.
+  * 13-origin expanding-window rolling-origin evaluation across 12 lead horizons.
+  * Parameter identifiability, predictive stability, $R_0$ practical-identifiability envelope, and Matignon DFE stability over the predefined admissible set.
+* **GENERAL_SCIENTIFIC_CLAIMS**: None beyond the stated study contribution.
+* **VERIFIED_CITATIONS**: None required.
+* **STUDY_QUESTION_SUPPORTED**: Operationalizes Q1–Q3 after the question hierarchy has been stated.
+* **PROMISE_TO_RESULTS**: Connects directly to Methods and the frozen Results sequence.
+* **OVERCLAIM_RISK**: Low; contribution is explicitly methodological and empirical rather than theoretical.
+* **NOVELTY_RISK**: Contribution rests on the common temporal protocol and the inference obtained by separating within-family improvement from external skill.
