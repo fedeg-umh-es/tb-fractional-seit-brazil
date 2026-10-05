@@ -33,8 +33,8 @@ ADAPTATION_PRINCIPLE = PACKAGING_ONLY_WITHOUT_ALTERING_SCIENCE
 * **ABSTRACT_LIMIT_VERIFIED**: YES (243 $\le 250$ words).
 
 ### Introduction Audit
-* **INTRODUCTION_BMB_CHANGE = NONE**
-* **Audit Findings**: The frozen Introduction (585 words) rigorously establishes: (1) the mathematical biology modeling context, (2) the necessity of distinguishing internal fit from out-of-sample forecast skill, (3) practical identifiability in epidemiological systems, (4) the three-level evidence framework, and (5) the explicit research questions. It contains zero hype, zero unsupported claims of novelty, and matches BMB standards.
+* **INTRODUCTION_BMB_CHANGE = LOCAL_STRUCTURAL_REVISION**
+* **Audit Findings**: The canonical Introduction now presents the study/question hierarchy before the evaluation protocol, explicitly separates Q1 (fractional vs. independently re-estimated integer SEIT) from Q2 (external forecasting skill), preserves practical identifiability as a secondary axis, and retains the verified neighboring precedents that prevent a universal-absence novelty claim. No scientific result, numerical evidence, or claim boundary was changed.
 
 ### Methods Audit
 * **METHODS_BMB_CHANGE = NONE**
@@ -60,12 +60,12 @@ ADAPTATION_PRINCIPLE = PACKAGING_ONLY_WITHOUT_ALTERING_SCIENCE
 | :--- | :---: | :---: | :---: |
 | **Title** | 13 | 18 | Selected Primary Title |
 | **Abstract** | 268 | 243 | Compressed ($\le 250$ words) |
-| **1. Introduction** | 585 | 585 | Unchanged (`NONE`) |
+| **1. Introduction** | 585 | — | Local structural revision; current text in `submission_bmb/BMB_MANUSCRIPT.md` |
 | **2. Methods** | 2431 | 2431 | Unchanged (`NONE`) |
 | **3. Results** | 1017 | 1017 | Unchanged (`NONE`) |
 | **4. Discussion** | 878 | 878 | Unchanged (`NONE`) |
 | **5. Conclusion** | 243 | 243 | Unchanged (`NONE`) |
-| **Total Main Text (1–5)** | 5154 | 5154 | Frozen scientific prose preserved |
+| **Total Main Text (1–5)** | 5154 | — | Historical count superseded after local Introduction revision; scientific evidence unchanged |
 
 ---
 
