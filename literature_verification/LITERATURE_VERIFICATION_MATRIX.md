@@ -31,8 +31,8 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Surveillance Methodology
 * **CLAIM_SUPPORTED**: The Notifiable Diseases Information System (SINAN) is the official national platform for mandatory TB notification, continuous epidemiological monitoring, and case surveillance in Brazil.
 * **CLAIM_NOT_SUPPORTED**: Mathematical model forecasting performance.
-* **INTRODUCTION_LOCATION**: Paragraph 1 (I1) / Paragraph 5 (I5)
-* **DISCUSSION_LOCATION**: Paragraph 7 (D7)
+* **INTRODUCTION_LOCATION**: Paragraph 1 (I1)
+* **DISCUSSION_LOCATION**: N/A
 * **RECOMMENDED_USE**: Cite when referring to Brazilian national surveillance records and notification data.
 * **STATUS**: KEEP
 
@@ -47,11 +47,11 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **YEAR**: 2016
 * **DOI_OR_IDENTIFIER**: DOI: 10.1093/infdis/jiw375
 * **SOURCE_TYPE**: Peer-reviewed Methodological / Perspective Paper
-* **CLAIM_SUPPORTED**: High historical goodness-of-fit in epidemic models does not imply out-of-sample forward predictive accuracy; mechanistic models face distinct operational challenges and must be evaluated on genuine forward prediction.
-* **CLAIM_NOT_SUPPORTED**: Fractional-order compartmental formulations specifically.
+* **CLAIM_SUPPORTED**: Epidemic forecasting must contend with incomplete and inaccurate data and with changes in human behavior, and is more challenging than weather forecasting (abstract level).
+* **CLAIM_NOT_SUPPORTED**: Any validation protocol or the statement that goodness-of-fit does not imply out-of-sample accuracy; fractional-order compartmental formulations specifically.
 * **INTRODUCTION_LOCATION**: Paragraph 1 (I1)
 * **DISCUSSION_LOCATION**: Paragraph 2 (D2)
-* **RECOMMENDED_USE**: Cite in Introduction I1 to support the distinction between calibration fit and out-of-sample predictive capability.
+* **RECOMMENDED_USE**: Cite only for the difficulties of epidemic forecasting (incomplete data, changing behavior); the fit-versus-forecast distinction is the authors' own framing.
 * **STATUS**: KEEP
 
 #### L2-02
@@ -61,25 +61,25 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **YEAR**: 2021
 * **DOI_OR_IDENTIFIER**: DOI: 10.1371/journal.pcbi.1008618
 * **SOURCE_TYPE**: Peer-reviewed Methodological Framework
-* **CLAIM_SUPPORTED**: Out-of-sample epidemic forecasts must be rigorously benchmarked against standard reference baselines (such as persistence/naive and statistical models) to establish meaningful forecasting skill.
-* **CLAIM_NOT_SUPPORTED**: Tuberculosis transmission specifically.
-* **INTRODUCTION_LOCATION**: Paragraph 1 (I1) / Paragraph 2 (I2)
-* **DISCUSSION_LOCATION**: Paragraph 1 (D1) / Paragraph 2 (D2)
-* **RECOMMENDED_USE**: Cite in I1/I2 and D1/D2 to support the necessity of external reference baselines in epidemic forecast evaluation.
-* **STATUS**: KEEP
+* **CLAIM_SUPPORTED**: Evaluation of quantile and interval forecasts with the weighted interval score, a proper score that generalizes the absolute error to probabilistic forecasts (abstract level).
+* **CLAIM_NOT_SUPPORTED**: The choice of baselines or the need for external benchmarking; tuberculosis transmission specifically.
+* **INTRODUCTION_LOCATION**: N/A (removed 2026-10-08)
+* **DISCUSSION_LOCATION**: N/A (removed 2026-10-08)
+* **RECOMMENDED_USE**: Not cited in the manuscript. Cite only if probabilistic interval scores are used.
+* **STATUS**: NOT CITED (removed from the manuscript 2026-10-08)
 
 #### L2-03
 * **ID**: L2-03
 * **TOPIC**: L2 — Multi-model forecasting benchmarks and baseline floor
-* **FULL_CITATION**: Cramer, E. Y., Ray, E. L., Lopez, V. K., et al. (2022). Evaluation of individual and ensemble probabilistic forecasts of COVID-19 mortality in the US. *Proceedings of the National Academy of Sciences*, 119(15), e2113561119.
+* **FULL_CITATION**: Cramer, E. Y., Ray, E. L., Lopez, V. K., et al. (2022). Evaluation of individual and ensemble probabilistic forecasts of COVID-19 mortality in the United States. *Proceedings of the National Academy of Sciences*, 119(15), e2113561119.
 * **YEAR**: 2022
 * **DOI_OR_IDENTIFIER**: DOI: 10.1073/pnas.2113561119
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Multi-model Evaluation
-* **CLAIM_SUPPORTED**: Simple baseline models provide an essential performance floor; many sophisticated models fail to consistently outperform naive/persistence baselines across all horizons.
-* **CLAIM_NOT_SUPPORTED**: Universality of all compartmental failures.
+* **CLAIM_SUPPORTED**: Of 27 models with complete forecasts of COVID-19 deaths in the United States, two thirds were more accurate than a naive baseline, with high variability in skill across time, locations and horizons (abstract level).
+* **CLAIM_NOT_SUPPORTED**: That the present study's own result (fractional SEIT vs external baselines); universality of compartmental failures.
 * **INTRODUCTION_LOCATION**: Optional
 * **DISCUSSION_LOCATION**: Paragraph 2 (D2)
-* **RECOMMENDED_USE**: Cite in Discussion D2 to support why outperforming persistence/naive models is a critical test of forecasting capability.
+* **RECOMMENDED_USE**: Cite in the Discussion only as an example of a large forecast evaluation that uses a naive baseline as reference.
 * **STATUS**: KEEP
 
 #### L2-04
@@ -119,10 +119,10 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **TOPIC**: L3 — Caputo fractional epidemic formulations
 * **FULL_CITATION**: Area, I., Batarfi, H., Losada, J., Nieto, J. J., Shammakh, W., & Torres, Á. (2015). On a fractional order Ebola epidemic model. *Advances in Difference Equations*, 2015, 278. DOI: 10.1186/s13662-015-0613-5.
 * **YEAR**: 2015
-* **DOI_OR_IDENTIFIER**: DOI: 10.1016/j.aml.2014.09.006
+* **DOI_OR_IDENTIFIER**: DOI: 10.1186/s13662-015-0613-5
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Applied Mathematics
-* **CLAIM_SUPPORTED**: Caputo-type fractional operators are standard mathematical tools for constructing fractional compartmental models with physically interpretable initial conditions.
-* **CLAIM_NOT_SUPPORTED**: Operational forecasting efficacy against external benchmarks.
+* **CLAIM_SUPPORTED**: A fractional-order SEIR model for Ebola, compared with the classical SEIR model and with WHO case counts; the fractional order is presented as an index of memory and the derivatives are non-local (full text read 2026-10-08).
+* **CLAIM_NOT_SUPPORTED**: That the model uses the Caputo derivative: the paper defines the Riemann–Liouville derivative, recalls the Caputo derivative, and writes the system with an unlabeled D^α (solved with the Adams–Bashforth–Moulton PECE scheme). Operational forecasting efficacy against external benchmarks.
 * **INTRODUCTION_LOCATION**: Paragraph 2 (I2)
 * **DISCUSSION_LOCATION**: N/A
 * **RECOMMENDED_USE**: Cite in I2 to anchor Caputo fractional derivative applications in compartmental epidemiology.
@@ -181,11 +181,11 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **YEAR**: 2014
 * **DOI_OR_IDENTIFIER**: DOI: 10.1371/journal.pone.0110261
 * **SOURCE_TYPE**: Peer-reviewed Primary Research / Systems Biology
-* **CLAIM_SUPPORTED**: In non-identifiable dynamic systems, specific algebraic combinations of unidentifiable parameters (e.g. composite ratios like $R_0$) can remain identifiable and robustly estimated.
-* **CLAIM_NOT_SUPPORTED**: Fractional-order derivatives specifically.
-* **INTRODUCTION_LOCATION**: Paragraph 3 (I3)
+* **CLAIM_SUPPORTED**: Structural identifiability: which parameters are quantifiable in principle from input-output data, and the algebraic combinations of parameters that are not individually identifiable (abstract level).
+* **CLAIM_NOT_SUPPORTED**: Practical identifiability from noisy aggregate data; robustness of $R_0$ (not stated in the abstract); fractional-order derivatives.
+* **INTRODUCTION_LOCATION**: N/A (removed 2026-10-08)
 * **DISCUSSION_LOCATION**: Paragraph 5 (D5)
-* **RECOMMENDED_USE**: Cite in I3 and D5 to support why composite derived functionals (such as $R_0$) can be robustly identified despite severe non-identifiability in individual kinetic rate parameters.
+* **RECOMMENDED_USE**: Cite in D5 only for structural identifiability and identifiable parameter combinations; the present analysis is of practical identifiability.
 * **STATUS**: KEEP
 
 #### L4-04
@@ -195,7 +195,7 @@ This matrix documents the candidate literature sources evaluated to support the 
 * **YEAR**: 2009
 * **DOI_OR_IDENTIFIER**: DOI: 10.1093/bioinformatics/btp358
 * **SOURCE_TYPE**: Peer-reviewed Methodological Paper
-* **CLAIM_SUPPORTED**: Distinguishes between parameter non-identifiability and the practical determinacy of model predictions and composite target functionals using profile-likelihood methods.
+* **CLAIM_SUPPORTED**: A profile-likelihood approach that detects structural non-identifiabilities (functionally related parameters) and practical non-identifiabilities (limited amount and quality of data) and yields confidence intervals (abstract level).
 * **CLAIM_NOT_SUPPORTED**: Fractional calculus.
 * **INTRODUCTION_LOCATION**: Optional
 * **DISCUSSION_LOCATION**: Paragraph 4 (D4) / Paragraph 5 (D5)
@@ -223,8 +223,8 @@ The conclusion of this gate is deliberately bounded: **no direct precedent was l
 * **TOPIC**: Closest direct methodological neighbor: fractional vs integer under rolling-origin OOS evaluation.
 * **FULL_CITATION**: Chishtie, F., Drozd, J., Li, X., Benterki, A., & Valluri, S. (2026). A robust compartmental modeling framework for infectious disease monitoring and analysis via fractional differential equations. *Epidemics*, 54, 100887.
 * **DOI_OR_IDENTIFIER**: DOI: 10.1016/j.epidem.2026.100887
-* **WHAT_IT_HAS**: Fractional and classical integer-order compartmental models; out-of-sample rolling-origin cross-validation; 7-, 14-, and 21-day horizons.
-* **WHAT_IT_LACKS_FOR_GATE_2**: No external statistical/naive forecasting baseline in the same benchmark protocol.
+* **WHAT_IT_HAS**: A fractional SEIQRDP model reported as more accurate than classical integer-order models when fitted to Canadian COVID-19 data (two waves) and, separately, out-of-sample rolling-origin cross-validation at 7-, 14-, and 21-day horizons (abstract only; full text not read, so it is not established that the fractional-versus-integer comparison used rolling origin).
+* **WHAT_IT_LACKS_FOR_GATE_2**: No external statistical/naive forecasting baseline is described in the abstract.
 * **NOVELTY_EFFECT**: Kills any claim that rolling-origin or multi-horizon OOS validation of fractional epidemic models is itself new. Does not answer whether within-family fractional improvement survives comparison with external baselines.
 * **STATUS**: ABSORB — high-priority direct neighbor.
 
@@ -232,7 +232,7 @@ The conclusion of this gate is deliberately bounded: **no direct precedent was l
 * **TOPIC**: Fractional epidemic model compared with ARIMA.
 * **FULL_CITATION**: Alzahrani, S. M., Saadeh, R., Abdoon, M. A., Qazza, A., El Guma, F., & Berir, M. (2024). Numerical Simulation of an Influenza Epidemic: Prediction with Fractional SEIR and the ARIMA Model. *Applied Mathematics & Information Sciences*, 18(1), 1–12.
 * **DOI_OR_IDENTIFIER**: DOI: 10.18576/amis/180101
-* **WHAT_IT_HAS**: Fractional SEIR; ARIMA comparison; empirical influenza data.
+* **WHAT_IT_HAS**: Fractional SEIR (Atangana–Baleanu–Caputo operator); comparison of fit (RMSE, MAE) with ARIMA(2,0,1) on weekly influenza data, Saudi Arabia 2017–2022; the fractional model is reported as better, and no held-out evaluation is described (full text read 2026-10-01).
 * **WHAT_IT_LACKS_FOR_GATE_2**: No common rolling-origin design, no multiple forecast origins/horizons under an equivalent protocol, and no persistence/seasonal-naive baseline.
 * **NOVELTY_EFFECT**: Kills any claim that fractional epidemic models have never been compared with ARIMA. Does not provide the same external-skill test as the present design.
 * **STATUS**: ABSORB — high-priority neighbor.
@@ -259,7 +259,7 @@ The conclusion of this gate is deliberately bounded: **no direct precedent was l
 * **TOPIC**: Tuberculosis mechanistic-vs-statistical forecasting friction.
 * **FULL_CITATION**: Kalizhanova, A., Yerdessov, S., Sakko, Y., Tursynbayeva, A., Kadyrov, S., Gaipov, A., et al. (2024). Modeling tuberculosis transmission dynamics in Kazakhstan using SARIMA and SIR models. *Scientific Reports*, 14, 24824.
 * **DOI_OR_IDENTIFIER**: DOI: 10.1038/s41598-024-76721-2
-* **WHAT_IT_HAS**: TB surveillance data; SARIMA and mechanistic SIR comparison; temporally separated training/testing; SARIMA shows superior predictive accuracy in that empirical setting.
+* **WHAT_IT_HAS**: TB surveillance data; SARIMA and mechanistic SIR comparison; SARIMA trained on 2014–2018 and tested on 2019, basic constant-parameter SIR trained on 2014–2017 and tested on 2018–2019 (different windows, single partition); SARIMA shows superior predictive accuracy in that empirical setting (full text read 2026-10-08).
 * **WHAT_IT_LACKS_FOR_GATE_2**: No fractional-order model and no fractional-vs-integer within-family contrast.
 * **NOVELTY_EFFECT**: Establishes that, in TB, mechanistic interpretation and statistical forecasting performance can diverge. Strengthens the scientific friction but is not a direct precedent for the full present design.
 * **STATUS**: ABSORB — high-priority TB neighbor.
