@@ -42,6 +42,10 @@ outputs/audits/    machine-readable audit/provenance artifacts
 docs/              supporting documentation
 ```
 
+## License and third-party materials
+
+The project's original software and documentation are offered under the MIT License (see `LICENSE`). Externally supplied datasets (including `data/raw/tb_mes.xlsx`) and historical source manuscripts are not automatically relicensed by this statement. Access to the repository does not establish the original acquisition route or any source-specific redistribution rights for the workbook.
+
 ## Immutability rule
 
 Files under `data/raw/` and `manuscript/source/` are the original, supplied source artifacts.
