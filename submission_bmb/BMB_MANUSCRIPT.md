@@ -330,13 +330,13 @@ The supporting material is collected in [BMB_SUPPLEMENTARY_INFORMATION.md](BMB_S
 This research received no external funding.
 
 ### Competing Interests
-[AUTHOR CONFIRMATION REQUIRED: Confirm that all final authors have no relevant financial or non-financial interests, or provide the required disclosures.]
+The authors declare that they have no competing financial or non-financial interests.
 
 ### Author Contributions
-[AUTHOR INPUT REQUIRED: Final contribution statement for every confirmed author. CRediT taxonomy may be used, but no contribution roles are assumed until the final author list is confirmed.]
+Amaury de Souza: Resources; Data curation; Conceptualization; Writing – review and editing. Federico García Crespi: Methodology; Software; Formal analysis; Validation; Visualization; Writing – original draft; Writing – review and editing. Both authors: review and approval of the final manuscript.
 
 ### Ethics Approval and Consent to Participate
-The analysis uses aggregate monthly national tuberculosis notification counts and no individual-level or directly identifiable patient data. No participants were recruited or contacted. The appropriate institutional ethics-approval or exemption determination remains subject to confirmation by the corresponding author before submission.
+Ethics approval and consent to participate: Not applicable. This study analyzes publicly available, aggregate tuberculosis surveillance data without individual-level or identifiable records; no human participants were recruited or contacted. The canonical monthly series was supplied by a collaborator, and its exact original extraction settings could not be independently reconstructed.
 
 ### Consent for Publication
 Not applicable unless the final manuscript includes identifiable individual material, which the present manuscript does not.
