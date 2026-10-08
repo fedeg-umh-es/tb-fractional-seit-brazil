@@ -1,9 +1,9 @@
 # Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model
 
-**Authors**: [AUTHOR INPUT REQUIRED: final human author list and order]  
-**Affiliations**: [AUTHOR INPUT REQUIRED: department, institution/university, city, country for each author]  
-*Corresponding Author*: [AUTHOR INPUT REQUIRED: name and active institutional email]  
-*ORCID*: [AUTHOR INPUT OPTIONAL: 16-digit ORCID identifier(s), if available]
+**Authors:** Amaury de Souza¹,*; Federico García Crespi²  
+**Affiliations:** ¹ Institute of Physics, Federal University of Mato Grosso do Sul, Campo Grande, Brazil; ² Department of Computer Engineering, Universidad Miguel Hernández de Elche, Elche, Spain.  
+*Corresponding author:* Amaury de Souza (amaury.souza@ufms.br).  
+*ORCID:* Amaury de Souza — https://orcid.org/0000-0001-8168-1482
 
 ---
 
@@ -327,7 +327,7 @@ The supporting material is collected in [BMB_SUPPLEMENTARY_INFORMATION.md](BMB_S
 ## Declarations
 
 ### Funding
-[AUTHOR INPUT REQUIRED: State funding sources and grant numbers, or confirm an explicit no-funding statement consistent with the journal requirements.]
+This research received no external funding.
 
 ### Competing Interests
 [AUTHOR CONFIRMATION REQUIRED: Confirm that all final authors have no relevant financial or non-financial interests, or provide the required disclosures.]
@@ -336,7 +336,7 @@ The supporting material is collected in [BMB_SUPPLEMENTARY_INFORMATION.md](BMB_S
 [AUTHOR INPUT REQUIRED: Final contribution statement for every confirmed author. CRediT taxonomy may be used, but no contribution roles are assumed until the final author list is confirmed.]
 
 ### Ethics Approval and Consent to Participate
-[AUTHOR CONFIRMATION REQUIRED: Confirm that the analysis uses only aggregate national monthly notification counts with no individual-level or identifiable patient data. If confirmed, state the applicable ethics/consent position in wording consistent with institutional and journal requirements. The repository does not independently establish the original public acquisition route for the supplied observational file.]
+The analysis uses aggregate monthly national tuberculosis notification counts and no individual-level or directly identifiable patient data. No participants were recruited or contacted. The appropriate institutional ethics-approval or exemption determination remains subject to confirmation by the corresponding author before submission.
 
 ### Consent for Publication
 Not applicable unless the final manuscript includes identifiable individual material, which the present manuscript does not.
@@ -344,7 +344,7 @@ Not applicable unless the final manuscript includes identifiable individual mate
 ### Data Availability
 The canonical observational dataset analyzed in this study is the aggregate monthly Brazil tuberculosis series stored as `data/raw/tb_mes.xlsx`, covering January 2001 through December 2022 ($N=264$). The file is preserved unchanged as supplied by Amaury de Souza for this collaboration and is used directly by the computational pipeline. It is distributed in the public repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. Repository provenance, including the source-file hash and structural audit, is recorded in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
 
-The 2001–2020 population denominator is traced to the 2013 revision of the IBGE national population projection. During a reproducibility audit, we attempted to reconstruct the supplied monthly case series through four prespecified DATASUS/SINAN TabNet configurations. None reproduced all 264 monthly values exactly; the closest differed in 99 months. The original extraction settings could therefore not be recovered. No specific DATASUS/SINAN query is presented as the verified source of the canonical case series. [AUTHOR CONFIRMATION REQUIRED BEFORE SUBMISSION: specify how the canonical observational file and reproducibility bundle can be accessed, and any conditions for reuse.]
+The 2001–2020 population denominator is traced to the 2013 revision of the IBGE national population projection. During a reproducibility audit, we attempted to reconstruct the supplied monthly case series through four prespecified DATASUS/SINAN TabNet configurations. None reproduced all 264 monthly values exactly; the closest differed in 99 months. The original extraction settings could therefore not be recovered. No specific DATASUS/SINAN query is presented as the verified source of the canonical case series. The dataset file and reproducibility bundle are accessible through the public repository linked above. The original supplier's authorization for further redistribution and the applicable reuse conditions have not been documented and require corresponding-author confirmation before submission.
 
 ### Code Availability
 The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, profile-objective practical-identifiability analysis, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to canonical evidence-freeze commit `5617559bb0bf43d7223a7bb2491ab1e41fa4a084`. Editorial/documentation commits after this freeze do not modify canonical numerical evidence. The code, the canonical result tables and the supplied observational file are publicly available in the GitHub repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. No archival DOI (e.g., Zenodo) currently exists for the repository.
