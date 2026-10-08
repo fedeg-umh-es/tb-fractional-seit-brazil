@@ -1,4 +1,4 @@
-# Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics
+# Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model
 
 **Authors**: [AUTHOR INPUT REQUIRED: final human author list and order]  
 **Affiliations**: [AUTHOR INPUT REQUIRED: department, institution/university, city, country for each author]  
