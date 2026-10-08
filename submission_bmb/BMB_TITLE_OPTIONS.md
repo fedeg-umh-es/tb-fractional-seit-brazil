@@ -8,7 +8,7 @@ This document evaluates five candidate titles across three distinct editorial fr
 
 ### Title Candidate 1 (Family A: Turning-Point Title)
 
-* **TITLE**: Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics
+* **TITLE**: Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model
 * **FRAMING_FAMILY**: Family A (Turning-Point Title)
 * **WHAT_EDITOR_SEES_IN_5_SECONDS**: An explicit mathematical-biology evaluation comparing within-family improvement against external forecasting benchmarks in compartmental epidemic models, tested on tuberculosis.
 * **OVERCLAIM_RISK**: NONE. Does not claim superiority, novelty, or operational prowess; explicitly frames the central turning point.
@@ -64,7 +64,7 @@ This document evaluates five candidate titles across three distinct editorial fr
 ## Primary Selection
 
 ```text
-BMB_PRIMARY_TITLE = "Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics"
+BMB_PRIMARY_TITLE = "Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model"
 ```
 
 ### Rationale for Primary Selection:
