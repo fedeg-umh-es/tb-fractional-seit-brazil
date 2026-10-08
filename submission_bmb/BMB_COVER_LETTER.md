@@ -8,7 +8,7 @@
 
 Dear Editor-in-Chief,
 
-Please consider our manuscript, **"Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics,"** for publication as an **Original Research** article in the *Bulletin of Mathematical Biology*.
+Please consider our manuscript, **"Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model,"** for publication as an **Original Research** article in the *Bulletin of Mathematical Biology*.
 
 The manuscript addresses a methodological evaluation question in mathematical epidemiology: when a fractional-order epidemic model reduces error relative to its integer-order counterpart, does that within-family improvement remain favorable when forecasting performance is assessed against external statistical and naive references under a temporal out-of-sample protocol?
 
