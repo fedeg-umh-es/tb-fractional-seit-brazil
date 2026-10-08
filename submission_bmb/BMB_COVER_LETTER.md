@@ -2,7 +2,7 @@
 
 **Target Journal**: *Bulletin of Mathematical Biology*  
 **Article Type**: Original Research  
-**Authors**: [AUTHOR INPUT REQUIRED: final human author list]  
+**Authors**: Amaury de Souza; Federico García Crespi  
 
 ---
 
@@ -22,7 +22,7 @@ Thank you for considering the manuscript.
 
 Sincerely,
 
-[AUTHOR INPUT REQUIRED: corresponding author name]  
-[AUTHOR INPUT REQUIRED: affiliation / department / institution]  
-[AUTHOR INPUT REQUIRED: corresponding email address]  
-[AUTHOR INPUT OPTIONAL: ORCID]
+Amaury de Souza  
+Institute of Physics, Federal University of Mato Grosso do Sul, Campo Grande, Brazil  
+amaury.souza@ufms.br  
+ORCID: https://orcid.org/0000-0001-8168-1482
