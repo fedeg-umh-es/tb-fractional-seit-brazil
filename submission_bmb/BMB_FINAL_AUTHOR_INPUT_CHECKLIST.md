@@ -1,8 +1,8 @@
 # Bulletin of Mathematical Biology — Final Author Input Checklist
 
-This document tracks the human decisions and metadata that cannot be inferred by the repository or AI before final submission to the *Bulletin of Mathematical Biology*.
+This document tracks confirmed author instructions, independently verified contact metadata, and declarations still needing explicit confirmation before submission to the *Bulletin of Mathematical Biology*.
 
-The project canon records an external collaboration between **Amaury de Souza** and **Federico García Crespi**. This is collaboration metadata only: it does **not** establish the final author list, author order, corresponding author, or contribution roles.
+The author has now instructed: **Amaury de Souza** as first and corresponding author, and **Federico García Crespi** as second author; no external funding. These editorial decisions replace the earlier unconfirmed metadata placeholders. Author contributions, conflicts, ethics determinations and dataset reuse permissions are not inferred.
 
 ---
 
@@ -38,23 +38,24 @@ not itself authorize new filters, microdata, or model recalibration.
 ## 3. Required Human Decisions
 
 ### AUTHORSHIP AND ORDER
-* **STATUS**: `BLOCKED_HUMAN_DECISION`
-* **KNOWN REPOSITORY FACT**: The project collaboration is Amaury de Souza / Federico García Crespi.
-* **NOT ESTABLISHED**: whether both are final authors, whether additional authors exist, and final order.
-* **REQUIRED INPUT**: exact final author list and order.
+* **STATUS**: `CONFIRMED_BY_USER_FOR_DRAFT`
+* **ORDER**: 1. Amaury de Souza; 2. Federico García Crespi.
 
 ### AFFILIATIONS
-* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
-* **REQUIRED INPUT**: department/unit, institution, city, and country for each final author, using the affiliation applicable to this work.
+* **STATUS**: `PUBLIC_RECORD_VERIFIED_FOR_DRAFT; VERIFY_AT_FINAL_AUTHOR_PROOF`
+* **Amaury**: Institute of Physics, Federal University of Mato Grosso do Sul, Campo Grande, Brazil.
+* **Federico**: Department of Computer Engineering, Universidad Miguel Hernández de Elche, Elche, Spain.
 * **RULE**: public-profile information may be used as a candidate for checking but must not replace author confirmation.
 
 ### CORRESPONDING AUTHOR
-* **STATUS**: `BLOCKED_HUMAN_DECISION`
-* **REQUIRED INPUT**: corresponding-author identity and active email address.
+* **STATUS**: `IDENTITY_CONFIRMED_BY_USER; EMAIL_FROM_PUBLIC_PUBLICATION`
+* **NAME**: Amaury de Souza.
+* **EMAIL**: amaury.souza@ufms.br (verify current delivery before submission).
 
 ### ORCID
-* **STATUS**: `OPTIONAL_CONFIRMATION`
-* **REQUIRED INPUT**: ORCID for each author if available, or explicit omission.
+* **STATUS**: `AMAURY_VERIFIED; FEDERICO_OPTIONAL`
+* **Amaury**: https://orcid.org/0000-0001-8168-1482.
+* **Federico**: omit until the identifier is supplied/verified.
 
 ### AUTHOR CONTRIBUTIONS
 * **STATUS**: `BLOCKED_HUMAN_DECISION`
@@ -62,8 +63,8 @@ not itself authorize new filters, microdata, or model recalibration.
 * **RULE**: AI must not infer contribution roles from repository commits or conversation history.
 
 ### FUNDING
-* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
-* **REQUIRED INPUT**: funding body/grant/recipient details or confirmation that no funding/support applies, using wording consistent with BMB requirements.
+* **STATUS**: `CONFIRMED_BY_USER`
+* **STATEMENT**: This research received no external funding.
 
 ### COMPETING INTERESTS
 * **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
@@ -123,13 +124,13 @@ not itself authorize new filters, microdata, or model recalibration.
 To unlock final production, the authors need to return one consolidated block containing:
 
 ```text
-FINAL_AUTHOR_LIST_AND_ORDER =
-AFFILIATION_EACH_AUTHOR =
-CORRESPONDING_AUTHOR =
-CORRESPONDING_EMAIL =
-ORCID_EACH_AUTHOR =
-AUTHOR_CONTRIBUTIONS =
-FUNDING =
+FINAL_AUTHOR_LIST_AND_ORDER = Amaury de Souza; Federico García Crespi
+AFFILIATION_EACH_AUTHOR = UFMS Institute of Physics; UMH Department of Computer Engineering (verify final editorial forms)
+CORRESPONDING_AUTHOR = Amaury de Souza
+CORRESPONDING_EMAIL = amaury.souza@ufms.br (verify active)
+ORCID_EACH_AUTHOR = Amaury 0000-0001-8168-1482; Federico optional/unconfirmed
+AUTHOR_CONTRIBUTIONS = pending confirmation
+FUNDING = No external funding
 COMPETING_INTERESTS =
 ETHICS_CONSENT_POSITION =
 DATA_PROVENANCE_ACCESS_DECISION =
