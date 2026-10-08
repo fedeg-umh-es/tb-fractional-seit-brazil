@@ -24,7 +24,7 @@ DFE_MODEL_PROPERTY_GUARDRAIL_RESPECTED = YES
 ## D2 — External-baseline role and literature boundary
 
 - Evidence: same R1/R2 contrast.
-- Core citations: Moran et al. (2016); Cramer et al. (2022); Chen et al. (2021); Kharazmi et al. (2021).
+- Core citations: Cramer et al. (2022; naive-baseline reference point only); Moran et al. (2016; difficulty of epidemic forecasting only); Chen et al. (2021); Kharazmi et al. (2021). Bracher et al. (2021) was removed on 2026-10-08.
 - Gate 2 delimiters added to manuscript: Chishtie et al. (2026), Alzahrani et al. (2024), Kalizhanova et al. (2024).
 - Permitted interpretation: adjacent pieces of the problem already exist in the literature; the manuscript asks whether a favorable fractional-vs-integer conclusion survives expansion to external baselines under a common temporal multi-horizon protocol.
 - Forbidden: `fractional epidemic models have never been externally benchmarked`; `first study`; universal absence.
@@ -44,12 +44,12 @@ DFE_MODEL_PROPERTY_GUARDRAIL_RESPECTED = YES
 ## D5 — R0 practical-identifiability envelope
 
 - Evidence: R0 in [1.1542, 1.1892] across the predefined 25-member admissible set.
-- Citations: Meshkat et al. (2014); Raue et al. (2009).
+- Citations: Meshkat et al. (2014; structural identifiability, identifiable parameter combinations); Raue et al. (2009; profile likelihood for structural and practical non-identifiability). The manuscript states that the present analysis concerns practical identifiability.
 - Forbidden: confidence interval / credible interval language or generalization to the broader diagnostic pool.
 
 ## D6 — Established identifiability principles
 
-- Citations: Simpson & Maclaren (2024); Gutenkunst et al. (2007); Meshkat et al. (2014); Kao & Eisenberg (2018).
+- Citations: Simpson & Maclaren (2024); Gutenkunst et al. (2007); Kao & Eisenberg (2018); Roosa & Chowell (2019).
 - Role: explicitly prevents novelty claims for prediction under parameter non-identifiability or robust composite quantities.
 
 ## D7 — DFE stability

@@ -9,7 +9,7 @@ This document provides formal, transparent statements regarding the provenance, 
 ### Formal Statement for Manuscript
 The canonical observational dataset analyzed in this study is the aggregate monthly Brazil tuberculosis series stored as `data/raw/tb_mes.xlsx`, covering January 2001 through December 2022 ($N=264$). The file is preserved unchanged as supplied by Amaury de Souza for this collaboration and is used directly by the computational pipeline. It is distributed in the public repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. Repository provenance, including the source-file hash and structural audit, is recorded in `DATA_PROVENANCE.md` and `outputs/audits/source_manifest.csv`.
 
-The 2001–2020 population denominator is traced to the 2013 revision of the IBGE national population projection. During a reproducibility audit, we attempted to reconstruct the supplied monthly case series through four prespecified DATASUS/SINAN TabNet configurations. None reproduced all 264 monthly values exactly; the closest differed in 99 months. The original extraction settings could therefore not be recovered. No specific DATASUS/SINAN query is presented as the verified source of the canonical case series. [AUTHOR CONFIRMATION REQUIRED BEFORE SUBMISSION: specify how the canonical observational file and reproducibility bundle can be accessed, and any conditions for reuse.]
+The 2001–2020 population denominator is traced to the 2013 revision of the IBGE national population projection. During a reproducibility audit, we attempted to reconstruct the supplied monthly case series through four prespecified DATASUS/SINAN TabNet configurations. None reproduced all 264 monthly values exactly; the closest differed in 99 months. The original extraction settings could therefore not be recovered. No specific DATASUS/SINAN query is presented as the verified source of the canonical case series. The workbook and reproducibility bundle are accessible through the public repository. The project software and documentation carry the MIT License; the license does not independently establish rights to redistribute the externally supplied workbook or resolve its unrecovered original extraction configuration.
 
 ### Access decision before submission
 The [BMB submission guidelines](https://link.springer.com/journal/11538/submission-guidelines) require a Data Availability Statement explaining how supporting data can be accessed and any conditions for reuse. The authors must confirm a concrete access arrangement for the supplied file and bundle before removing the placeholder above. Public deposition is encouraged, not established here as mandatory for this aggregate series.
@@ -31,7 +31,7 @@ The [BMB submission guidelines](https://link.springer.com/journal/11538/submissi
 ## 2. Code Availability Statement
 
 ### Formal Statement for Manuscript
-The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, profile-objective practical-identifiability analysis, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to canonical evidence-freeze commit `5617559bb0bf43d7223a7bb2491ab1e41fa4a084`. Editorial/documentation commits after this freeze do not modify canonical numerical evidence. The code, the canonical result tables and the supplied observational file are publicly available in the GitHub repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. No archival DOI (e.g., Zenodo) currently exists for the repository.
+The computational code implementing the numerical fractional differential equation solver, Differential Evolution calibration, profile-objective practical-identifiability analysis, equilibrium stability analysis, and rolling-origin forecasting benchmarks is tied to canonical evidence-freeze commit `5617559bb0bf43d7223a7bb2491ab1e41fa4a084`. Editorial/documentation commits after this freeze do not modify canonical numerical evidence. The code, the canonical result tables and the supplied observational file are publicly available in the GitHub repository https://github.com/fedeg-umh-es/tb-fractional-seit-brazil. No archival DOI (e.g., Zenodo) currently exists for the repository. The MIT License applies to project-developed software and documentation, not by implication to the original supplied dataset or historical manuscript.
 
 ---
 
@@ -48,6 +48,6 @@ CASOS_PROVENANCE = NO_EXACT_MATCH
 CANDIDATE_SET_EXHAUSTED = YES
 ORIGINAL_EXTERNAL_DATA_URL_VERIFIED = NO
 PUBLIC_ARCHIVAL_DOI_EXISTS_NOW = NO
-PEER_REVIEW_ACCESS = PENDING_AUTHOR_CONFIRMATION_OF_ROUTE_AND_REUSE_CONDITIONS
-REUSE_CONDITIONS = PENDING_AUTHOR_CONFIRMATION
+PEER_REVIEW_ACCESS = PUBLIC_REPOSITORY_AVAILABLE
+REUSE_CONDITIONS = MIT_FOR_PROJECT_SOFTWARE_AND_DOCUMENTATION; DATA_SOURCE_TERMS_NOT_INDEPENDENTLY_VERIFIED
 ```

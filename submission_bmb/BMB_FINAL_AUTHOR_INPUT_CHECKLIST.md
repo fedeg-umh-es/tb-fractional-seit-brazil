@@ -1,8 +1,8 @@
 # Bulletin of Mathematical Biology — Final Author Input Checklist
 
-This document tracks the human decisions and metadata that cannot be inferred by the repository or AI before final submission to the *Bulletin of Mathematical Biology*.
+This document tracks confirmed author instructions, independently verified contact metadata, and declarations still needing explicit confirmation before submission to the *Bulletin of Mathematical Biology*.
 
-The project canon records an external collaboration between **Amaury de Souza** and **Federico García Crespi**. This is collaboration metadata only: it does **not** establish the final author list, author order, corresponding author, or contribution roles.
+The author has now instructed: **Amaury de Souza** as first and corresponding author, and **Federico García Crespi** as second author; no external funding. These editorial decisions replace the earlier unconfirmed metadata placeholders. Author contributions, conflicts, ethics determinations and dataset reuse permissions are not inferred.
 
 ---
 
@@ -38,45 +38,45 @@ not itself authorize new filters, microdata, or model recalibration.
 ## 3. Required Human Decisions
 
 ### AUTHORSHIP AND ORDER
-* **STATUS**: `BLOCKED_HUMAN_DECISION`
-* **KNOWN REPOSITORY FACT**: The project collaboration is Amaury de Souza / Federico García Crespi.
-* **NOT ESTABLISHED**: whether both are final authors, whether additional authors exist, and final order.
-* **REQUIRED INPUT**: exact final author list and order.
+* **STATUS**: `CONFIRMED_BY_USER_FOR_DRAFT`
+* **ORDER**: 1. Amaury de Souza; 2. Federico García Crespi.
 
 ### AFFILIATIONS
-* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
-* **REQUIRED INPUT**: department/unit, institution, city, and country for each final author, using the affiliation applicable to this work.
+* **STATUS**: `PUBLIC_RECORD_VERIFIED_FOR_DRAFT; VERIFY_AT_FINAL_AUTHOR_PROOF`
+* **Amaury**: Institute of Physics, Federal University of Mato Grosso do Sul, Campo Grande, Brazil.
+* **Federico**: Department of Computer Engineering, Universidad Miguel Hernández de Elche, Elche, Spain.
 * **RULE**: public-profile information may be used as a candidate for checking but must not replace author confirmation.
 
 ### CORRESPONDING AUTHOR
-* **STATUS**: `BLOCKED_HUMAN_DECISION`
-* **REQUIRED INPUT**: corresponding-author identity and active email address.
+* **STATUS**: `IDENTITY_CONFIRMED_BY_USER; EMAIL_FROM_PUBLIC_PUBLICATION`
+* **NAME**: Amaury de Souza.
+* **EMAIL**: amaury.souza@ufms.br (verify current delivery before submission).
 
 ### ORCID
-* **STATUS**: `OPTIONAL_CONFIRMATION`
-* **REQUIRED INPUT**: ORCID for each author if available, or explicit omission.
+* **STATUS**: `AMAURY_VERIFIED; FEDERICO_OPTIONAL`
+* **Amaury**: https://orcid.org/0000-0001-8168-1482.
+* **Federico**: omit until the identifier is supplied/verified.
 
 ### AUTHOR CONTRIBUTIONS
-* **STATUS**: `BLOCKED_HUMAN_DECISION`
-* **REQUIRED INPUT**: contribution statement for every final author; CRediT may be used.
-* **RULE**: AI must not infer contribution roles from repository commits or conversation history.
+* **STATUS**: `APPROVED_FOR_DRAFT_BY_USER`
+* **STATEMENT**: Amaury de Souza — Resources; Data curation; Conceptualization; Writing – review and editing. Federico García Crespi — Methodology; Software; Formal analysis; Validation; Visualization; Writing – original draft; Writing – review and editing. Both authors — review and approval of the final manuscript (final submission approval to be obtained).
 
 ### FUNDING
-* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
-* **REQUIRED INPUT**: funding body/grant/recipient details or confirmation that no funding/support applies, using wording consistent with BMB requirements.
+* **STATUS**: `CONFIRMED_BY_USER`
+* **STATEMENT**: This research received no external funding.
 
 ### COMPETING INTERESTS
-* **STATUS**: `BLOCKED_HUMAN_CONFIRMATION`
-* **REQUIRED INPUT**: financial and non-financial competing-interest disclosure for all final authors, or confirmation that none apply.
+* **STATUS**: `USER_CONFIRMED_NO_COMPETING_INTERESTS`
+* **STATEMENT**: The authors declare that they have no competing financial or non-financial interests.
 
 ### ETHICS / CONSENT
-* **STATUS**: `BLOCKED_HUMAN_OR_INSTITUTIONAL_CONFIRMATION`
-* **REPOSITORY FACT**: the canonical observational file contains aggregate monthly national observations and no individual-level or directly identifiable patient fields.
-* **REQUIRED INPUT**: confirm the appropriate ethics/consent statement under the authors' institutional requirements and the journal policy.
-* **RULE**: the absence of individual-level data does not authorize AI to declare an institutional ethics exemption on the authors' behalf.
+* **STATUS**: `NOT_APPLICABLE_FOR_AGGREGATE_PUBLIC_DATA_PER_AUTHOR_INSTRUCTION`
+* **FACT**: no individual-level patient records, intervention or participant recruitment in this study.
+* **STATEMENT**: Ethics approval and consent to participate: Not applicable. Secondary analysis of publicly accessible national aggregate tuberculosis notification data.
+* **BOUNDARY**: this is an author-provided applicability statement, not a formal exemption letter from an ethics committee.
 
 ### DATA PROVENANCE AND ACCESS
-* **STATUS**: `BLOCKED_FOR_FINAL_AUTHOR_ACCESS_DECISION`
+* **STATUS**: `PUBLIC_ACCESS_DOCUMENTED; UNDERLYING_SOURCE_TERMS_NOT_VERIFIED`
 * **REPOSITORY FACTS**:
   - canonical file: `data/raw/tb_mes.xlsx`;
   - 264 monthly observations, January 2001–December 2022;
@@ -85,7 +85,7 @@ not itself authorize new filters, microdata, or model recalibration.
   - 2001–2020 population provenance is resolved to the IBGE 2013 projection;
   - the closed C1–C4 DATASUS/SINAN audit did not exactly reconstruct the supplied `casos` series (C1 closest: 99/264 discrepant months);
   - original case-extraction settings were not recovered;
-  - project repository is public; dataset reuse conditions remain pending author confirmation.
+  - project repository is public, and its project-developed software/documentation are placed under an MIT LICENSE file on this branch; underlying workbook source-specific reuse terms remain unverified.
 * **REQUIRED INPUT**: confirm how editors and reviewers can access the canonical file and reproducibility bundle, whether public release is permitted, and any conditions for reuse. An original acquisition record may be documented if the authors already possess one; it does not reopen the closed candidate search.
 * **RULE**: do not attribute the canonical case series to an audited SINAN/DATASUS extraction configuration without evidence of an exact match or an independently verified original record.
 
@@ -123,16 +123,16 @@ not itself authorize new filters, microdata, or model recalibration.
 To unlock final production, the authors need to return one consolidated block containing:
 
 ```text
-FINAL_AUTHOR_LIST_AND_ORDER =
-AFFILIATION_EACH_AUTHOR =
-CORRESPONDING_AUTHOR =
-CORRESPONDING_EMAIL =
-ORCID_EACH_AUTHOR =
-AUTHOR_CONTRIBUTIONS =
-FUNDING =
-COMPETING_INTERESTS =
-ETHICS_CONSENT_POSITION =
-DATA_PROVENANCE_ACCESS_DECISION =
+FINAL_AUTHOR_LIST_AND_ORDER = Amaury de Souza; Federico García Crespi
+AFFILIATION_EACH_AUTHOR = UFMS Institute of Physics; UMH Department of Computer Engineering (verify final editorial forms)
+CORRESPONDING_AUTHOR = Amaury de Souza
+CORRESPONDING_EMAIL = amaury.souza@ufms.br (verify active)
+ORCID_EACH_AUTHOR = Amaury 0000-0001-8168-1482; Federico optional/unconfirmed
+AUTHOR_CONTRIBUTIONS = CRediT statement approved for draft
+FUNDING = No external funding
+COMPETING_INTERESTS = None declared
+ETHICS_CONSENT_POSITION = Not applicable (aggregate public data; no participants)
+DATA_PROVENANCE_ACCESS_DECISION = Public repository; MIT for project software and documentation; original workbook terms not verified
 FINAL_SCIENTIFIC_REVIEW = APPROVE / CHANGES_REQUIRED
 ```
 

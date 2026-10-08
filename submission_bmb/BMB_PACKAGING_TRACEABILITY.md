@@ -23,7 +23,7 @@ ADAPTATION_PRINCIPLE = PACKAGING_ONLY_WITHOUT_ALTERING_SCIENCE
 
 ### Title Adaptation
 * **Source**: `manuscript_package/MASTER_MANUSCRIPT.md` (Placeholder)
-* **BMB Selected Title**: `Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics`
+* **BMB Selected Title**: `Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model`
 * **Editorial Rationale**: Eliminates any ambiguity regarding "fractional superiority" by immediately pairing within-family reduction with external forecasting benchmarking in mathematical epidemiology.
 
 ### Abstract Adaptation
@@ -58,7 +58,7 @@ ADAPTATION_PRINCIPLE = PACKAGING_ONLY_WITHOUT_ALTERING_SCIENCE
 
 | Manuscript Section | Source Word Count | BMB Package Word Count | Change / Status |
 | :--- | :---: | :---: | :---: |
-| **Title** | 13 | 18 | Selected Primary Title |
+| **Title** | 13 | 12 | Selected Primary Title |
 | **Abstract** | 268 | 243 | Compressed ($\le 250$ words) |
 | **1. Introduction** | 585 | — | Local structural revision; current text in `submission_bmb/BMB_MANUSCRIPT.md` |
 | **2. Methods** | 2431 | 2431 | Unchanged (`NONE`) |

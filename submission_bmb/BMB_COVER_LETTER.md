@@ -2,13 +2,13 @@
 
 **Target Journal**: *Bulletin of Mathematical Biology*  
 **Article Type**: Original Research  
-**Authors**: [AUTHOR INPUT REQUIRED: final human author list]  
+**Authors**: Amaury de Souza; Federico García Crespi  
 
 ---
 
 Dear Editor-in-Chief,
 
-Please consider our manuscript, **"Within-Family Error Reduction Versus External Forecasting Skill in Fractional-Order Compartmental Models: A Methodological Investigation of SEIT Tuberculosis Dynamics,"** for publication as an **Original Research** article in the *Bulletin of Mathematical Biology*.
+Please consider our manuscript, **"Within-Family Improvement Versus External Forecast Skill in a Fractional SEIT Tuberculosis Model,"** for publication as an **Original Research** article in the *Bulletin of Mathematical Biology*.
 
 The manuscript addresses a methodological evaluation question in mathematical epidemiology: when a fractional-order epidemic model reduces error relative to its integer-order counterpart, does that within-family improvement remain favorable when forecasting performance is assessed against external statistical and naive references under a temporal out-of-sample protocol?
 
@@ -22,7 +22,7 @@ Thank you for considering the manuscript.
 
 Sincerely,
 
-[AUTHOR INPUT REQUIRED: corresponding author name]  
-[AUTHOR INPUT REQUIRED: affiliation / department / institution]  
-[AUTHOR INPUT REQUIRED: corresponding email address]  
-[AUTHOR INPUT OPTIONAL: ORCID]
+Amaury de Souza  
+Institute of Physics, Federal University of Mato Grosso do Sul, Campo Grande, Brazil  
+amaury.souza@ufms.br  
+ORCID: https://orcid.org/0000-0001-8168-1482
