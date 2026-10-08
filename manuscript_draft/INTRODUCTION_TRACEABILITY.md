@@ -34,9 +34,9 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 
 2. `[LITERATURE VERIFICATION REQUIRED: external-baseline evaluation of mechanistic epidemic forecasting models]`
    * **STATUS**: RESOLVED
-   * **SOURCES**: REF-03 (Moran et al., 2016), REF-04 (Bracher et al., 2021)
-   * **CITATION_INSERTED**: `(Moran et al., 2016; Bracher et al., 2021)`
-   * **CLAIM_SUPPORTED**: Calibration fit does not guarantee forward forecast accuracy; out-of-sample evaluations against reference baselines are essential to measure predictive skill.
+   * **SOURCES**: REF-03 (Moran et al., 2016). Bracher et al. (2021) was removed on 2026-10-08: it concerns the weighted interval score for probabilistic forecasts and does not address this claim.
+   * **CITATION_INSERTED**: `(Moran et al., 2016)`
+   * **CLAIM_SUPPORTED**: Cited claim (Moran et al., 2016, abstract level): epidemic forecasting must contend with incomplete and inaccurate data and with changes in human behavior. The statement that a close fit does not ensure reliable forecasts under strict temporal evaluation is the authors' own framing and carries no citation.
    * **WORDING_CHANGED**: NO
    * **NOVELTY_IMPLICATION**: NONE
 
@@ -50,8 +50,8 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 
 4. `[LITERATURE VERIFICATION REQUIRED: parameter and functional identifiability in epidemiological compartmental models]`
    * **STATUS**: RESOLVED
-   * **SOURCES**: REF-08 (Tuncer & Le, 2018), REF-09 (Roosa & Chowell, 2019), REF-10 (Meshkat et al., 2014)
-   * **CITATION_INSERTED**: `(Tuncer & Le, 2018; Roosa & Chowell, 2019; Meshkat et al., 2014)`
+   * **SOURCES**: REF-08 (Tuncer & Le, 2018), REF-09 (Roosa & Chowell, 2019). Meshkat et al. (2014) was removed from this sentence on 2026-10-08 because it addresses structural identifiability.
+   * **CITATION_INSERTED**: `(Tuncer & Le, 2018; Roosa & Chowell, 2019)`
    * **CLAIM_SUPPORTED**: Fitting compartmental models to aggregate notifications frequently leads to practical non-identifiability, where disparate parameter combinations yield near-equivalent fits, while specific composite parameter combinations can remain identifiable.
    * **WORDING_CHANGED**: NO
    * **TERMINOLOGY_BOUNDARY**: Aligned with standard literature terms ("identifiable parameter combinations" and "practical robustness of derived quantities").
@@ -61,7 +61,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 5. `[GATE 2: neighboring evaluation designs and direct-precedent check]`
    * **STATUS**: RESOLVED
    * **SOURCES**: Chishtie et al. (2026), Alzahrani et al. (2024), Kalizhanova et al. (2024)
-   * **CLAIM_SUPPORTED**: Neighboring studies already compare fractional and integer epidemic models under out-of-sample forecasting, fractional epidemic forecasts against statistical forecasts, and TB mechanistic forecasts against SARIMA. These precedents support framing the paper around the inferential change produced by benchmark expansion rather than around a universal absence claim.
+   * **CLAIM_SUPPORTED**: Neighboring studies report a fractional-versus-integer comparison on Canadian COVID-19 data with, separately, rolling-origin validation (Chishtie et al., 2026; abstract only, full text not read); a fractional SEIR model fitting influenza data better than ARIMA, as a comparison of fit rather than held-out forecasts (Alzahrani et al., 2024); and SARIMA outperforming a basic SIR model on tuberculosis data with different training and evaluation windows and a single partition (Kalizhanova et al., 2024). These precedents support framing the paper around the inferential change produced by benchmark expansion rather than around a universal absence claim.
    * **NOVELTY_IMPLICATION**: No `first`, `never evaluated`, or universal-absence claim is permitted.
 
 ---
@@ -74,7 +74,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 * **RHETORICAL_ROLE**: Funnel top: establish the mathematical-epidemiology context, the Brazilian TB application, and the distinction between historical fit and forward forecasting.
 * **STUDY_FACTS_USED**: Brazilian national monthly TB surveillance context (2001–2022).
 * **GENERAL_SCIENTIFIC_CLAIMS**: Compartmental models represent transmission and latent dynamics; TB remains a public-health challenge in Brazil; calibration fit does not guarantee forward forecast accuracy.
-* **VERIFIED_CITATIONS**: (World Health Organization, 2022; Rocha et al., 2020), (Moran et al., 2016; Bracher et al., 2021).
+* **VERIFIED_CITATIONS**: (World Health Organization, 2022; Rocha et al., 2020), (Moran et al., 2016).
 * **STUDY_QUESTION_SUPPORTED**: Motivates Q1 and Q2.
 * **PROMISE_TO_RESULTS**: Rigorous out-of-sample evaluation separating fit from forward predictive performance.
 * **OVERCLAIM_RISK**: None.
@@ -116,7 +116,7 @@ R0_POPULATION_INFERENCE_PROMISED = NO
 * **RHETORICAL_ROLE**: Introduce the secondary mechanistic-interpretation problem without competing with the forecasting spine.
 * **STUDY_FACTS_USED**: Calibration from aggregate monthly incidence and evaluation of parameter, predictive, and derived-functional stability.
 * **GENERAL_SCIENTIFIC_CLAIMS**: Near-equivalent fits can coexist with substantial individual-parameter dispersion.
-* **VERIFIED_CITATIONS**: (Tuncer & Le, 2018; Roosa & Chowell, 2019; Meshkat et al., 2014).
+* **VERIFIED_CITATIONS**: (Tuncer & Le, 2018; Roosa & Chowell, 2019).
 * **STUDY_QUESTION_SUPPORTED**: Q3.
 * **PROMISE_TO_RESULTS**: Bound which mechanistic quantities remain interpretable under practical non-identifiability.
 * **OVERCLAIM_RISK**: None.
