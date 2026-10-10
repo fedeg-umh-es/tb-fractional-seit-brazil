@@ -1,0 +1,47 @@
+{
+  "scope": "Five editorial presentation figures from the corrected S1 evidence freeze; author approval pending",
+  "source_package": "TB_SEIT_INTEGRATED_REVIEW_2026-10-10_V2",
+  "evidence_freeze_manifest_sha256": "8e490eb465fd125bf91177da8fc385366d387a69fd7fd81fab6f9851018faaa1",
+  "figure_files": {
+    "F1_global_open_loop.pdf": "56b94cb80f7fd95386d2db1f794a0d72b51bf25a7a41e610152b2e62ee430de9",
+    "F1_global_open_loop.png": "53f2b5039f8f437eee4783cf4ab87d9324373e01125892c8431002d6a65d4417",
+    "F1_global_open_loop.svg": "5dc939962725a0e9bb2f8edb892ab3ef3223a736c6dd36d630a8c6f1e8feb78e",
+    "F2_rolling_RMSE.pdf": "5d9592b5f499a2c196af2e7d195cae80a9db4fb4c4abaf4df89ba41205cfce75",
+    "F2_rolling_RMSE.png": "a11581d769682e38f79eee06cc3f331e3f85830c8c35da8eacb5689863e26609",
+    "F2_rolling_RMSE.svg": "e99aebe8dde6946b679650d7e2b695cee2dfe63de6f8b98d98ff60e3f5c8f731",
+    "F3_fractional_skill.pdf": "902d16ed319556de746b1b35d73f29c65d1763f22edd1d99a7fa7e1d05ca183c",
+    "F3_fractional_skill.png": "27857469c86a07a2da86c2f1e1cad18dc7a776f531f63b364ac71155e1363ffe",
+    "F3_fractional_skill.svg": "000a2d1138e9ef6a96d425b0414ec57393a8f063d617ffe3c31dd891eff392ef",
+    "F4_alpha_profiles.pdf": "55b526654507ba198bc8e45a2c73eed8a75ee428efe9357c50ccf21f4244ec77",
+    "F4_alpha_profiles.png": "1bba90cd2aede4c559e0c7af171c38a2d4d14151f57bd91e5749dd6e17aca682",
+    "F4_alpha_profiles.svg": "0e3f6b88d6d76850523b8e81ce3bfe07b58995ff082addb58a60b52ba1cdbd77",
+    "F5_R0_explored_pool.pdf": "b225f84835f672b382fcc29f3a0df44580d8ee73ac8e137a2d65584e871bc0f5",
+    "F5_R0_explored_pool.png": "b3c8a8a1bab211eb96b4d7d3183c624f4712744e0619fbc8c9f24dd5a0e373d4",
+    "F5_R0_explored_pool.svg": "c4153f863f5de0b7ef3efc3bf65c71daeb164450495298dd512c0abd6714362d"
+  },
+  "source_tables": {
+    "FREEZE_SUMMARY.json": "dfc8b3468975f89a03596981ab9a32d0f584f44ae31764d46aa65a67887a5670",
+    "phase1/tb_global_refit_phase1/results_global_primary/fractional_predictions.csv": "f7e8f00bdeb539d2ac4d057383324e844913ba91dec07148e0451e136ce9e6d0",
+    "phase1/tb_global_refit_phase1/results_global_primary/integer_predictions.csv": "fe74cd81e9f01274c296d3788d29e651e06551276472d986202024d49e07c959",
+    "phase2/metrics_by_horizon.csv": "c0b4b63457a585415fb36191fffa20e206dbfa8f8c473f3e88eec698b08bb097",
+    "phase2/skill_by_horizon.csv": "eebc39e5909d87b58b56ccd5c136832caf9190f9b50ec3ff16713ef722cc2dc9",
+    "phase3/alpha_profile_comparison.csv": "b85873731515341c4dcf2e27c2627c01cb4ad4be191b1b8b1326718725573d24",
+    "phase3/solution_pool.csv": "1f5dd7066519f4c559935959df9049f06544cb204fb3542118e0edc65dded61c"
+  },
+  "frozen_original_figures": {
+    "figures/F1_global_open_loop.pdf": "6dd11bf370df176dc37a6688685b1e20ece4d28bfcd61c761f67d4533fb49cf9",
+    "figures/F1_global_open_loop.png": "c9ef5b0c429a6359b8385ddf1ba77fddb7bcbc9506d608f48049033eeb3c0ef9",
+    "figures/F2_rolling_RMSE.pdf": "ce9affd89a4c7f96cfba0c1067e7e760f516b621de27169e8e606bf62e9ae1f4",
+    "figures/F2_rolling_RMSE.png": "7c1cb1b1a04714298ddf0770626a960c89cb19a2db13f0ca03591718646d4d58",
+    "figures/F3_fractional_skill.pdf": "7544ac8f1e9f6080e8c7417c99096c8702df9dad3dfbc6812c349fcd7ffcfa10",
+    "figures/F3_fractional_skill.png": "11132d7927c2929cbaef47b09f6c04257970b674505e9ccb586c331d9ba6d765",
+    "figures/F4_alpha_profiles.pdf": "5cdd9d454de690e91fca6e10ec3ba811f06783df297b5c5e68c2a3c84e0845d8",
+    "figures/F4_alpha_profiles.png": "4c4282917390df5ace629806949513cc6d36e17538c62e64e73a93765a34d6cc",
+    "figures/F5_R0_explored_pool.pdf": "0ad8adb1aff29da0dcbbfce181da8d83af8f94a483772c548560c01bc09c38c2",
+    "figures/F5_R0_explored_pool.png": "9a7d15b8ca04d3eeb3cd26de811f112321dbb403a19092a8b65ff1562987b9ca"
+  },
+  "new_scientific_experiments": 0,
+  "new_extractions": 0,
+  "new_simulations": 0,
+  "original_frozen_assets_modified": false
+}

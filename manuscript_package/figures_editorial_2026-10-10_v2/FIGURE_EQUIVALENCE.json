@@ -1,0 +1,161 @@
+[
+  {
+    "figure": "F1_global_open_loop",
+    "source_tables": [
+      "phase1/tb_global_refit_phase1/results_global_primary/fractional_predictions.csv",
+      "phase1/tb_global_refit_phase1/results_global_primary/integer_predictions.csv"
+    ],
+    "values_exact": true,
+    "axis_scales": "linear",
+    "panels": [
+      {
+        "xlim": [
+          10922.8,
+          19727.2
+        ],
+        "ylim": [
+          5464.85,
+          9758.15
+        ],
+        "original_limits_identical": true
+      }
+    ],
+    "physical_width_mm": 174,
+    "font_size_pt": 9,
+    "PNG_dpi": 300,
+    "PDF_fonts": "TrueType embedded; checked separately",
+    "data_transformations": "None; F5 retains original rank ordering",
+    "scope": "Same 264 points per curve and calibration/validation boundary"
+  },
+  {
+    "figure": "F2_rolling_RMSE",
+    "source_tables": [
+      "phase2/metrics_by_horizon.csv"
+    ],
+    "values_exact": true,
+    "axis_scales": "linear",
+    "panels": [
+      {
+        "xlim": [
+          0.44999999999999996,
+          12.55
+        ],
+        "ylim": [
+          306.7489884295748,
+          2131.7208135112905
+        ],
+        "original_limits_identical": true
+      }
+    ],
+    "physical_width_mm": 174,
+    "font_size_pt": 9,
+    "PNG_dpi": 300,
+    "PDF_fonts": "TrueType embedded; checked separately",
+    "data_transformations": "None; F5 retains original rank ordering",
+    "scope": "All five models; 12 leads; 13 forecasts per lead"
+  },
+  {
+    "figure": "F3_fractional_skill",
+    "source_tables": [
+      "phase2/skill_by_horizon.csv"
+    ],
+    "values_exact": true,
+    "axis_scales": "linear",
+    "panels": [
+      {
+        "xlim": [
+          0.44999999999999996,
+          12.55
+        ],
+        "ylim": [
+          -1.099449611122838,
+          0.4006292014617989
+        ],
+        "original_limits_identical": true
+      },
+      {
+        "xlim": [
+          0.44999999999999996,
+          12.55
+        ],
+        "ylim": [
+          -1.1469694592127997,
+          0.443485712119708
+        ],
+        "original_limits_identical": true
+      }
+    ],
+    "physical_width_mm": 174,
+    "font_size_pt": 9,
+    "PNG_dpi": 300,
+    "PDF_fonts": "TrueType embedded; checked separately",
+    "data_transformations": "None; F5 retains original rank ordering",
+    "scope": "Panels RMSE/MAE; stored skills; unchanged zero reference"
+  },
+  {
+    "figure": "F4_alpha_profiles",
+    "source_tables": [
+      "phase3/alpha_profile_comparison.csv",
+      "FREEZE_SUMMARY.json"
+    ],
+    "values_exact": true,
+    "axis_scales": "linear",
+    "panels": [
+      {
+        "xlim": [
+          0.475,
+          1.025
+        ],
+        "ylim": [
+          446.84905316595245,
+          4229.5086775011105
+        ],
+        "original_limits_identical": true
+      },
+      {
+        "xlim": [
+          0.499,
+          0.555
+        ],
+        "ylim": [
+          615.0,
+          655.0
+        ],
+        "original_limits_identical": true
+      }
+    ],
+    "physical_width_mm": 174,
+    "font_size_pt": 9,
+    "PNG_dpi": 300,
+    "PDF_fonts": "TrueType embedded; checked separately",
+    "data_transformations": "None; F5 retains original rank ordering",
+    "scope": "Same 21 grid points per panel, saved threshold and original boundary zoom"
+  },
+  {
+    "figure": "F5_R0_explored_pool",
+    "source_tables": [
+      "phase3/solution_pool.csv"
+    ],
+    "values_exact": true,
+    "axis_scales": "linear",
+    "panels": [
+      {
+        "xlim": [
+          0.27564017628434917,
+          1.7280147476761132
+        ],
+        "ylim": [
+          -2.3000000000000003,
+          48.3
+        ],
+        "original_limits_identical": true
+      }
+    ],
+    "physical_width_mm": 174,
+    "font_size_pt": 9,
+    "PNG_dpi": 300,
+    "PDF_fonts": "TrueType embedded; checked separately",
+    "data_transformations": "None; F5 retains original rank ordering",
+    "scope": "All 47 values, original 0-based ranks, unchanged 32/15 membership and threshold"
+  }
+]
