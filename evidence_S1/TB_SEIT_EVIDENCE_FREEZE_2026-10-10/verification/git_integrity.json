@@ -1,0 +1,49 @@
+{
+  "before": {
+    "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-global-refit-phase1": {
+      "head": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+      "branch": "codex/observation-operator-global-refit-phase1-20261008",
+      "status": "?? audits/\n"
+    },
+    "/Users/fede/repos/tb-fractional-seit-brazil": {
+      "head": "c8cd5dfba4925592038d07bff1a661b8d5481e13",
+      "branch": "main",
+      "status": ""
+    },
+    "/Users/fede/repos/tb-seit-claim-audit": {
+      "head": "43f3fb92e7d3ae673e9c0dc9393298925d83bdfd",
+      "branch": "claude-science",
+      "status": ""
+    },
+    "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-observation-ablation": {
+      "head": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+      "branch": "codex/observation-operator-ablation-20261008",
+      "status": "?? audits/\n"
+    }
+  },
+  "after": {
+    "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-global-refit-phase1": {
+      "head": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+      "branch": "codex/observation-operator-global-refit-phase1-20261008",
+      "status": "?? audits/\n"
+    },
+    "/Users/fede/repos/tb-fractional-seit-brazil": {
+      "head": "c8cd5dfba4925592038d07bff1a661b8d5481e13",
+      "branch": "main",
+      "status": ""
+    },
+    "/Users/fede/repos/tb-seit-claim-audit": {
+      "head": "43f3fb92e7d3ae673e9c0dc9393298925d83bdfd",
+      "branch": "claude-science",
+      "status": ""
+    },
+    "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-observation-ablation": {
+      "head": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+      "branch": "codex/observation-operator-ablation-20261008",
+      "status": "?? audits/\n"
+    }
+  },
+  "tracked_files": 239,
+  "tracked_hashes_preserved": true,
+  "untracked_audits_preserved": true
+}

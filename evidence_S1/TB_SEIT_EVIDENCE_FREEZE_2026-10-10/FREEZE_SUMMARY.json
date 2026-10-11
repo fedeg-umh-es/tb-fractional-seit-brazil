@@ -1,0 +1,33 @@
+{
+  "verdict": "EVIDENCE_FREEZE_PASS",
+  "freeze_timestamp_utc": "2026-10-10T09:16:02.327089+00:00",
+  "source_commit": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+  "branch": "codex/observation-operator-global-refit-phase1-20261008",
+  "checks": 66,
+  "all_checks_pass": true,
+  "claims": 29,
+  "figures": 5,
+  "phase2_predictions": 780,
+  "phase2_pairs_per_model": 156,
+  "phase2_fits": 26,
+  "phase3_pool": 47,
+  "phase3_admissible": 32,
+  "phase3_alpha_grid": 21,
+  "primary_R0": 0.35776750381879896,
+  "R0_envelope": [
+    0.3416572022567021,
+    0.587925772372874
+  ],
+  "primary_rmse": 619.3187514936859,
+  "admissible_threshold": 625.5119390086228,
+  "new_optimizations": 0,
+  "new_solver_simulations": 0,
+  "new_scientific_experiments": 0,
+  "method": "Integrity checks, static inspection, arithmetic from existing tables, documentary reconciliation and plots only",
+  "original_protocol_status": "ORIGINAL_PROTOCOL_UNAVAILABLE_SEARCH_CLOSED",
+  "phase3_protocol_sha256": "58d4bed36871f9c63cd93e4c199d5c9890f006ccaf96ede85362480dee91469b",
+  "editorial_actions_executed": false,
+  "canonical_results_modified": false,
+  "commit_push_merge": false,
+  "limitations_retained": true
+}

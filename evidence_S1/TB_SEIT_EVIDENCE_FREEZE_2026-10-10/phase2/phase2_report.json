@@ -1,0 +1,67 @@
+{
+  "status": "COMPLETED_PHASE_2_PENDING_AUTHOR_REVIEW",
+  "commit": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+  "branch": "codex/observation-operator-global-refit-phase1-20261008",
+  "repository": "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-global-refit-phase1",
+  "predictions": 780,
+  "common_pairs_per_model": 156,
+  "origins": 13,
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "fits": 26,
+  "all_fits_success": true,
+  "all_fitted_origin_numeric_gates_passed": true,
+  "seed": 20260815,
+  "bounds": [
+    [
+      0.01,
+      1.0
+    ],
+    [
+      0.01,
+      0.5
+    ],
+    [
+      0.05,
+      0.3
+    ],
+    [
+      0.0001,
+      0.05
+    ],
+    [
+      0.5,
+      1.0
+    ]
+  ],
+  "h_solver": 1.0,
+  "observation": "Ordinary sigma*E corrected-grid composite trapezoids",
+  "baseline_fits_executed": 0,
+  "baseline_reuse_verification": "baseline_reuse_verification.json",
+  "leakage_checks": "leakage_checks.csv",
+  "parameters_saved": "fit_states.csv",
+  "alpha_min": 0.500021247832537,
+  "alpha_max": 0.5037728936658199,
+  "numerical_gate": "numerical_gate_report.json",
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "integrity": "All tracked and phase1 files unchanged",
+  "inference": "DESCRIPTIVE_ONLY",
+  "R0_identifiability_DFE_recomputed": false,
+  "manuscript_updated": false,
+  "PR3_updated": false,
+  "decision": "AUTHOR_REVIEW_REQUIRED; PR3_AND_COMPILATION_REMAIN_BLOCKED"
+}

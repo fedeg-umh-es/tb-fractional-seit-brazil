@@ -1,0 +1,42 @@
+2020-12-01 fractional: success=True; alpha=0.502202999; train RMSE=619.318751; iterations=36; nfev=2775; numerical_gate=PASS
+2020-12-01 integer: success=True; alpha=1.000000000; train RMSE=776.040852; iterations=52; nfev=3180; numerical_gate=PASS
+2021-01-01 fractional: success=True; alpha=0.500210998; train RMSE=617.952815; iterations=47; nfev=3600; numerical_gate=PASS
+2021-01-01 integer: success=True; alpha=1.000000000; train RMSE=787.982831; iterations=42; nfev=2580; numerical_gate=PASS
+2021-02-01 fractional: success=True; alpha=0.500688507; train RMSE=616.908721; iterations=40; nfev=3075; numerical_gate=PASS
+2021-02-01 integer: success=True; alpha=1.000000000; train RMSE=786.402783; iterations=41; nfev=2520; numerical_gate=PASS
+2021-03-01 fractional: success=True; alpha=0.500256690; train RMSE=616.544670; iterations=31; nfev=2400; numerical_gate=PASS
+2021-03-01 integer: success=True; alpha=1.000000000; train RMSE=787.333037; iterations=42; nfev=2580; numerical_gate=PASS
+2021-04-01 fractional: success=True; alpha=0.500911982; train RMSE=615.528857; iterations=32; nfev=2475; numerical_gate=PASS
+2021-04-01 integer: success=True; alpha=1.000000000; train RMSE=773.412439; iterations=51; nfev=3120; numerical_gate=PASS
+2021-05-01 fractional: success=True; alpha=0.500787158; train RMSE=614.259769; iterations=34; nfev=2625; numerical_gate=PASS
+2021-05-01 integer: success=True; alpha=1.000000000; train RMSE=769.210309; iterations=58; nfev=3540; numerical_gate=PASS
+2021-06-01 fractional: success=True; alpha=0.503772894; train RMSE=613.586133; iterations=39; nfev=3000; numerical_gate=PASS
+2021-06-01 integer: success=True; alpha=1.000000000; train RMSE=773.369388; iterations=47; nfev=2880; numerical_gate=PASS
+2021-07-01 fractional: success=True; alpha=0.503632873; train RMSE=613.502990; iterations=41; nfev=3150; numerical_gate=PASS
+2021-07-01 integer: success=True; alpha=1.000000000; train RMSE=770.912357; iterations=54; nfev=3300; numerical_gate=PASS
+2021-08-01 fractional: success=True; alpha=0.500626363; train RMSE=617.359692; iterations=41; nfev=3150; numerical_gate=PASS
+2021-08-01 integer: success=True; alpha=1.000000000; train RMSE=779.506231; iterations=56; nfev=3420; numerical_gate=PASS
+2021-09-01 fractional: success=True; alpha=0.500021248; train RMSE=621.607143; iterations=37; nfev=2850; numerical_gate=PASS
+2021-09-01 integer: success=True; alpha=1.000000000; train RMSE=784.137719; iterations=57; nfev=3480; numerical_gate=PASS
+2021-10-01 fractional: success=True; alpha=0.500218688; train RMSE=622.990672; iterations=45; nfev=3450; numerical_gate=PASS
+2021-10-01 integer: success=True; alpha=1.000000000; train RMSE=787.780530; iterations=62; nfev=3780; numerical_gate=PASS
+2021-11-01 fractional: success=True; alpha=0.501443448; train RMSE=625.974263; iterations=36; nfev=2775; numerical_gate=PASS
+2021-11-01 integer: success=True; alpha=1.000000000; train RMSE=791.428621; iterations=68; nfev=4140; numerical_gate=PASS
+2021-12-01 fractional: success=True; alpha=0.501910526; train RMSE=627.466406; iterations=38; nfev=2925; numerical_gate=PASS
+2021-12-01 integer: success=True; alpha=1.000000000; train RMSE=808.459437; iterations=48; nfev=2940; numerical_gate=PASS
+     model          baseline metric  H_relax  H_strict
+fractional            SARIMA    MAE        0         0
+fractional            SARIMA   RMSE        0         0
+fractional           integer    MAE       12        12
+fractional           integer   RMSE       12        12
+fractional       persistence    MAE        0         0
+fractional       persistence   RMSE        0         0
+fractional seasonal_naive_12    MAE        5         5
+fractional seasonal_naive_12   RMSE        5         5
+   integer            SARIMA    MAE        0         0
+   integer            SARIMA   RMSE        0         0
+   integer       persistence    MAE        0         0
+   integer       persistence   RMSE        0         0
+   integer seasonal_naive_12    MAE        0         0
+   integer seasonal_naive_12   RMSE        0         0
+PHASE_2 = COMPLETE; 780 predictions; no manuscript/PR edits, commit, push or merge

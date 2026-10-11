@@ -1,0 +1,6 @@
+{
+  "command": "python -m pytest -q -p no:cacheprovider audits/observation_operator_refit_phase1_2026-10-08/tb_global_refit_phase1/test_global_refit.py",
+  "exit_code": 0,
+  "result": "4 passed in 0.12s",
+  "scope": "Supplied ordinary observation quadrature tests; real-data preflight executed separately"
+}

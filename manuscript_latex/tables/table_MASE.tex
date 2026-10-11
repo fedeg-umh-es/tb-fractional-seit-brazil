@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Mean absolute scaled error by lead and method. The scale is the in-sample MAE of the seasonal naive ($m=12$) on each origin's training window; values are averaged over the 13 origins.}
+\label{tab:mase_h}
+\begingroup\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Lead (months) & Fractional & Integer & Persistence & Seasonal naive & SARIMA \\
+\midrule
+1 & 1.491 & 2.375 & 0.728 & 2.347 & 1.006 \\
+2 & 1.670 & 2.630 & 0.931 & 2.277 & 1.086 \\
+3 & 2.041 & 3.132 & 1.150 & 2.508 & 1.425 \\
+4 & 2.155 & 3.268 & 1.269 & 2.537 & 1.617 \\
+5 & 2.467 & 3.631 & 1.594 & 2.736 & 1.925 \\
+6 & 2.646 & 3.857 & 1.632 & 2.631 & 2.146 \\
+7 & 2.876 & 4.107 & 1.942 & 2.628 & 2.270 \\
+8 & 3.167 & 4.418 & 2.160 & 2.700 & 2.466 \\
+9 & 3.215 & 4.486 & 2.240 & 2.516 & 2.544 \\
+10 & 3.220 & 4.511 & 2.231 & 2.444 & 2.560 \\
+11 & 3.203 & 4.515 & 2.229 & 2.456 & 2.681 \\
+12 & 3.111 & 4.443 & 2.330 & 2.330 & 2.585 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}

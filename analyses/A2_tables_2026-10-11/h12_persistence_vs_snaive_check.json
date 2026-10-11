@@ -1,0 +1,7 @@
+{
+  "n_origins": 13,
+  "max_abs_difference": 0.0,
+  "identical_in_all_origins": true,
+  "rmse_h12_persistence": 1152.9582019243437,
+  "rmse_h12_seasonal_naive_12": 1152.9582019243437
+}

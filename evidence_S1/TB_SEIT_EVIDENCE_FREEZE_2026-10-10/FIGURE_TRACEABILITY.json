@@ -1,0 +1,68 @@
+[
+  {
+    "figure_id": "F1_global_open_loop",
+    "title": "Global S1 and single-origin validation",
+    "files": [
+      "figures/F1_global_open_loop.png",
+      "figures/F1_global_open_loop.pdf"
+    ],
+    "source_tables": [
+      "phase1/tb_global_refit_phase1/results_global_primary/fractional_predictions.csv",
+      "phase1/tb_global_refit_phase1/results_global_primary/integer_predictions.csv"
+    ],
+    "scope": "One 24-month validation origin; descriptive, not baseline superiority"
+  },
+  {
+    "figure_id": "F2_rolling_RMSE",
+    "title": "Rolling-origin RMSE",
+    "files": [
+      "figures/F2_rolling_RMSE.png",
+      "figures/F2_rolling_RMSE.pdf"
+    ],
+    "source_tables": [
+      "phase2/metrics_by_horizon.csv"
+    ],
+    "scope": "13 origins × 12 horizons; no cross-horizon pooling"
+  },
+  {
+    "figure_id": "F3_fractional_skill",
+    "title": "Fractional RMSE and MAE skill",
+    "files": [
+      "figures/F3_fractional_skill.png",
+      "figures/F3_fractional_skill.pdf"
+    ],
+    "source_tables": [
+      "phase2/skill_by_horizon.csv",
+      "phase2/horizon_summary.csv"
+    ],
+    "scope": "Integer advantage; persistence/SARIMA negative at all horizons; seasonal positive only 1–5"
+  },
+  {
+    "figure_id": "F4_alpha_profiles",
+    "title": "Alpha fixed and reoptimized profiles",
+    "files": [
+      "figures/F4_alpha_profiles.png",
+      "figures/F4_alpha_profiles.pdf"
+    ],
+    "source_tables": [
+      "phase3/alpha_profile_comparison.csv",
+      "phase3/alpha_fixed_section.csv",
+      "phase3/profile_objective.csv"
+    ],
+    "scope": "Finite grid; connecting lines only guide the eye; no continuous confidence interval"
+  },
+  {
+    "figure_id": "F5_R0_explored_pool",
+    "title": "Reference R0 finite explored pool",
+    "files": [
+      "figures/F5_R0_explored_pool.png",
+      "figures/F5_R0_explored_pool.pdf"
+    ],
+    "source_tables": [
+      "phase3/solution_pool.csv",
+      "phase3/R0_practical_envelopes.csv",
+      "phase3/dfe_stability.csv"
+    ],
+    "scope": "Envelope is descriptive; stable classification only autonomous reference; no eradication claim"
+  }
+]

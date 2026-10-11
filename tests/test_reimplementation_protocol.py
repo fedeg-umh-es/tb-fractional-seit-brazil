@@ -21,10 +21,14 @@ ASSUMPTION_IDS = [f"A{n:02d}" for n in range(1, 46)]
 
 
 def test_project_canon_declares_reimplementation_stage():
+    # Stage strings from the specification phase (INDEPENDENT_REIMPLEMENTATION_SPECIFICATION,
+    # INDEPENDENT_REIMPLEMENTATION = REQUIRED) are superseded: the canon now records the
+    # post-reimplementation operational state.
     text = PROJECT_CANON.read_text(encoding="utf-8")
-    assert "INDEPENDENT_REIMPLEMENTATION_SPECIFICATION" in text
-    assert "EXACT_REPRODUCTION = NOT_POSSIBLE" in text
-    assert "INDEPENDENT_REIMPLEMENTATION = REQUIRED" in text
+    assert "SCIENCE = FROZEN" in text
+    assert "PROVENANCE_AUDIT = CLOSED" in text
+    assert "READY_FOR_SUBMISSION = NO" in text
+    assert "NEW_EXPERIMENTS = NO" in text
 
 
 def test_project_canon_declares_canonical_split():
@@ -38,22 +42,26 @@ def test_project_canon_declares_canonical_split():
 
 
 def test_reproducibility_status_reflects_reimplementation_state():
+    # The tracking table now records the completed reimplementation. Status strings from the
+    # specification phase (OPTIMIZATION_CONTRACT_INCOMPLETE, NOT_STARTED, REQUIRED) are superseded.
     text = REPRODUCIBILITY_STATUS.read_text(encoding="utf-8")
     assert "VERIFIED" in text  # dataset integrity
     assert "NOT_POSSIBLE" in text  # exact reproduction
-    assert "REQUIRED" in text  # independent reimplementation
-    assert "OPTIMIZATION_CONTRACT_INCOMPLETE" in text  # base-model calibration gate (2026-08-15)
+    assert "COMPLETE_WITH_DOCUMENTED_LIMITATIONS" in text  # independent reimplementation
     for row in [
+        "Exact reproduction",
+        "Independent reimplementation",
+        "Optimization contract",
         "Fractional model reproduction",
         "Integer model reproduction",
         "Predictive validation",
         "R0",
         "Stability",
-        "Sensitivity",
+        "Additional sensitivity analysis",
         "Optimal control",
     ]:
         assert row in text
-    assert "NOT_STARTED" in text
+    assert re.search(r"Optimization contract[^\n]*COMPLETE", text)
     assert "NOT_VERIFIED" in text
     assert "BLOCKED" in text
 

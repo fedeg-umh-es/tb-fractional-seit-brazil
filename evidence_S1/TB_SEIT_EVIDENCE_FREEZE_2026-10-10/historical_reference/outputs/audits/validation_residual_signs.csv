@@ -1,0 +1,3 @@
+model,n_months,residuals_positive,residuals_negative,residuals_zero,convention_mismatches,convention
+fractional,24,4,20,0,0,residual = predicted - observed
+integer,24,0,24,0,0,residual = predicted - observed

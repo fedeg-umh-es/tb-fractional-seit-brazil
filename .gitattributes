@@ -1,0 +1,5 @@
+# Vendor files with their own line endings (Springer Nature template) and files kept exactly as received
+manuscript_latex/sn-jnl.cls -whitespace
+manuscript_latex/sn-mathphys-ay.bst -whitespace
+manuscript_latex/incoming/* -whitespace
+LICENSE-CC-BY-4.0.txt -whitespace

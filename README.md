@@ -1,5 +1,10 @@
 # tb-fractional-seit-brazil
 
+> **Current status (2026-10-11).** The evidence of record is the S1 freeze, `evidence_S1/TB_SEIT_EVIDENCE_FREEZE_2026-10-10/` (ordinary monthly observation operator; commit `53eae1091f652ec0393707f4e0ae7b2ec4b43acb`).
+> The manuscript source is in `manuscript_latex/`, the submission documents in `submission_final/`, decisions in `docs/decisions/`. `results_canonical/` and `outputs/` hold historical evidence of the retired operator.
+> The text below describes the project at its initialisation (2026-08) and is kept as history.
+> **Licences:** MIT for code, CC BY 4.0 for data, results and documents (`LICENSES.md`). **Cite:** `CITATION.cff`.
+
 ## Scientific purpose
 
 Independent reproducibility audit — and possible subsequent revision — of the manuscript

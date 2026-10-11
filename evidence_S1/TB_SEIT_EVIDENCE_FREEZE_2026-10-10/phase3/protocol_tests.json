@@ -1,0 +1,6 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 work/venv/bin/python -m pytest -q -p no:cacheprovider work/tb-global-refit-phase1/audits/observation_operator_phase3_identifiability_2026-10-08/test_phase3.py work/tb-global-refit-phase1/audits/observation_operator_refit_phase1_2026-10-08/tb_global_refit_phase1/test_global_refit.py work/tb-global-refit-phase1/audits/observation_operator_rolling_origin_phase2_2026-10-08/test_phase2.py",
+  "exit_code": 0,
+  "stdout": ".................... [100%]\n20 passed in 1.86s\n",
+  "scope": "9 phase-3 tests, 4 supplied phase-1 tests, 7 phase-2 protocol tests; rolling benchmark not executed"
+}

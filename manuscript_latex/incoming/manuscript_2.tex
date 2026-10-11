@@ -1,0 +1,492 @@
+% Springer Nature December 2024 sn-jnl class; Bulletin of Mathematical Biology
+% Manuscript for author review; final authorship and declarations remain subject to approval.
+\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{lineno}
+\raggedbottom
+\begin{document}
+\linenumbers
+\title[Within-Family Gains vs External Skill in Fractional SEIT Tuberculosis Forecasts]{Within-Family Gains vs External Skill in Fractional SEIT Tuberculosis Forecasts}
+% Author order and corresponding authorship are subject to agreement between authors.
+\author*[1]{\fnm{Amaury} \sur{de Souza}}\email{amaury.souza@ufms.br}
+\author[2]{\fnm{Francisco Federico} \sur{Garc\'ia Crespi}}\email{fedeg@umh.es}
+\affil[1]{\orgdiv{Instituto de F\'isica}, \orgname{Universidade Federal de Mato Grosso do Sul}, \orgaddress{\city{Campo Grande}, \state{Mato Grosso do Sul}, \country{Brazil}}}
+\affil[2]{\orgdiv{Department of Computer Engineering}, \orgname{Universidad Miguel Hern\'andez de Elche}, \orgaddress{\city{Elche}, \state{Alicante}, \country{Spain}}}
+% Author ORCID identifiers are included below.
+\abstract{An improvement over an integer-order epidemic model does not necessarily imply useful forecasts. We investigated this distinction by independently reimplementing a fractional-order susceptible--exposed--infectious--treated (SEIT) tuberculosis model using 264 monthly notifications from Brazil (2001--2022). Its integer-order counterpart was refitted independently under the same calibration conditions. We then compared both models with persistence, seasonal naive, and seasonal autoregressive integrated moving average (SARIMA) forecasts across 13 expanding-window origins and leads of 1--12 months. Fractional SEIT achieved lower observed root mean squared error and mean absolute error than integer SEIT at every lead. Yet persistence and SARIMA had lower errors throughout, and the fractional model improved on seasonal naive only at leads 1--5. In secondary diagnostics, transmission, removal, and excess-mortality rates varied substantially among near-equivalent fits, although their predicted trajectories were similar. The basic reproduction number and disease-free equilibrium were evaluated only for an autonomous reference, not as properties of the time-varying forecasting system. For this national series, with dependent forecast errors and no formal significance tests, the within-family improvement did not establish competitive forecasting performance against persistence or SARIMA.}
+\keywords{Mathematical epidemiology, Fractional-order differential equations, Practical identifiability, Forecast evaluation, Basic reproduction number, Tuberculosis}
+\maketitle
+\noindent\textbf{ORCID identifiers:} Amaury de Souza (\url{https://orcid.org/0000-0001-8168-1482}); Francisco Federico Garc\'ia Crespi (\url{https://orcid.org/0000-0002-7129-7791}).\par\smallskip
+\section{Introduction}
+A mechanistic model may closely reproduce tuberculosis notifications yet offer little advantage when forecasting future counts. Compartmental models describe transmission and disease progression through linked states, but their predictions also depend on how those states are mapped to reported cases. Forecasting performance therefore needs to be evaluated on observations excluded from model fitting. For example, a comparison of susceptible--infected--recovered (SIR) and seasonal autoregressive integrated moving average (SARIMA) models for tuberculosis in Kazakhstan found lower forecasting errors with SARIMA \citep{kalizhanova2024}.
+
+Fractional-order models change the temporal structure of compartmental dynamics by replacing ordinary derivatives with operators that depend on the past trajectory. Caputo formulations have been studied in epidemic models \citep{area2015}. Work on integer- and fractional-order epidemiological models has also examined identifiability and predictability using physics-informed neural networks \citep{kharazmi2021}. These studies motivate careful evaluation of fractional formulations, but neither a history-dependent mathematical operator nor improved fit is evidence, on its own, for a biological memory mechanism in tuberculosis.
+
+A lower error than integer SEIT has a different meaning from a lower error than a simple forecast. We distinguish these comparisons by refitting the integer model independently, rather than retaining parameters estimated for the fractional formulation, and then evaluating both models against methods outside the mechanistic family. A favorable within-family result need not imply competitive forecasting.
+
+We applied both comparisons to a fractional-order susceptible--exposed--infectious--treated (SEIT) tuberculosis model using monthly notification counts for Brazil. The fractional and integer formulations were independently fitted with a common observation operator, objective function, kinetic bounds, and initialization procedure. Forecast errors were assessed over expanding-window rolling origins against persistence, seasonal naive, and SARIMA on matched origin--target pairs. A separate, fixed-origin open-loop validation provided a longer-horizon comparison within the SEIT family.
+
+Mechanistic interpretation raises a related but secondary question: how much can be inferred from estimated epidemic rates? Parameter identifiability and prediction stability need not coincide, as discussed in a likelihood-based setting by \citet{simpson2024}. We examine both across a finite set of cost-based fits, while evaluating the basic reproduction number ($R_0$) and disease-free equilibrium (DFE) only for an autonomous reference. These diagnostics qualify interpretation of the model; the external forecast comparison remains the primary analysis.
+
+\section{Methods}
+
+\subsection{Study design and independent-reimplementation scope}
+
+We independently reimplemented the fractional-order SEIT model described in an unpublished working manuscript using monthly tuberculosis notifications for Brazil. The original numerical scripts and complete computational configuration were unavailable. We therefore specified the model, estimation procedure, and forecast evaluation directly, with an independently refitted integer-order SEIT as the within-family comparator. We compared the fitted models against external forecasting benchmarks and examined the stability of derived mechanistic quantities when individual rates were weakly identifiable.
+
+
+
+Optimal-control interventions were not evaluated in this study.
+
+\subsection{Data and observation mapping}
+
+The study used 264 consecutive monthly tuberculosis notification counts for Brazil, covering January 2001 to December 2022, supplied by the collaborating data provider. That provider identified DATASUS/SINAN as the general source and described geographic and temporal filtering followed by monthly aggregation. The original query settings could not be recovered. Four documented attempts to reconstruct the series from DATASUS/SINAN did not match the supplied values exactly. There were no missing observations or duplicate months.
+
+The dataset is partitioned into two distinct periods:
+
+\begin{itemize}
+\item \textbf{Calibration window}: January 2001 to December 2020 ($N_{\text{cal}} = 240$ months).
+\item \textbf{Validation window}: January 2021 to December 2022 ($N_{\text{val}} = 24$ months).
+\end{itemize}
+
+Population denominators for 2001--2020 were taken from the 2013 revision of the Brazilian national population projection \citep{ibge2013}. The annual projected total was held constant across the twelve months of each year to form the monthly input grid, which the solver then interpolates linearly to obtain a continuous $N(t)$. This population series covers the complete calibration period. For out-of-sample simulation, population values beyond each training endpoint were generated using a log-linear trend fitted exclusively to population observations available within the corresponding training window:
+
+\[
+\begin{aligned}
+\ln N(t)&=a_0+a_1t, &&t\le t_{\mathrm{train}}\quad\text{(fitting)},\\
+\widehat N(t)&=\exp(\widehat a_0+\widehat a_1t), &&t>t_{\mathrm{train}}\quad\text{(extrapolation)}.
+\end{aligned}
+\]
+
+No population observations beyond the relevant training endpoint were used.
+
+The observed monthly counts are mapped to the exposed-to-infectious transition flow, rather than to the infectious stock $I(t)$. The predicted count for month $k$ is
+
+\[
+\widehat y_k=\int_{t_k}^{t_{k+1}}\sigma E(t)\,dt,\qquad t_{k+1}-t_k=1\text{ month}.
+\]
+
+The integral is evaluated by composite ordinary trapezoidal quadrature on the corrected exposed-state values produced by the fractional solver:
+
+\[
+\widehat y_k\approx\sum_{j=0}^{m-1}\frac{\delta t}{2}\,\sigma\bigl[E(t_k+j\delta t)+E(t_k+(j+1)\delta t)\bigr],\qquad m\delta t=1\text{ month}.
+\]
+
+An auxiliary Caputo accumulator driven by $\sigma E$ does not feed back into the epidemiological states. We did not use its increments as observations: monthly predicted counts were calculated by ordinary integration of the numerical solution for $E(t)$. At $\alpha=1$, the continuous-time accumulator increment equals the corresponding ordinary integral, although discrete approximations may differ slightly.
+
+\subsection{Fractional SEIT formulation}
+
+The epidemiological states are susceptible $S$, exposed $E$, infectious $I$, and treated/removed $T$. For $0<\alpha<1$, the Caputo derivative with base point zero is
+
+\[
+{}^C D_t^\alpha X(t)=\frac{1}{\Gamma(1-\alpha)}\int_0^t(t-s)^{-\alpha}X'(s)\,ds;
+\]
+
+at $\alpha=1$ it reduces to the ordinary derivative. With per-month kinetic rates and reference timescale $\tau_0=1\text{ month}$, the dimensionally consistent equations are
+
+\[
+\begin{aligned}
+{}^C D_t^\alpha S &=\tau_0^{1-\alpha}\left[\Lambda-\frac{\beta SI}{N(t)}-\mu S\right],\\
+{}^C D_t^\alpha E &=\tau_0^{1-\alpha}\left[\frac{\beta SI}{N(t)}-(\sigma+\mu)E\right],\\
+{}^C D_t^\alpha I &=\tau_0^{1-\alpha}\left[\sigma E-(\gamma+\mu+d)I\right],\\
+{}^C D_t^\alpha T &=\tau_0^{1-\alpha}\left[\gamma I-\mu T\right].
+\end{aligned}
+\]
+
+With time measured in months, the common scaling factor is numerically one. The auxiliary state satisfies ${}^C D_t^\alpha C=\tau_0^{1-\alpha}\sigma E$, with $C(0)=0$, and is not part of the observation mapping.
+
+Here $\beta$ is the transmission coefficient, $\sigma$ the progression rate from exposed to infectious, $\gamma$ the removal rate into the treated compartment, and $d$ the tuberculosis-attributable excess mortality rate. Natural mortality is fixed at $\mu=1/(74\times12)=1/888\text{ month}^{-1}$. For the global calibration, recruitment is $\Lambda=\mu\bar N_{\mathrm{cal}}$; for each rolling origin it is recomputed from that origin's training population. The unchanged search bounds are $\beta\in[0.01,1.00]$, $\sigma\in[0.01,0.50]$, $\gamma\in[0.05,0.30]$, and $d\in[0.0001,0.05]$, in $\text{month}^{-1}$, and $\alpha\in[0.50,1.00]$. These search bounds are imposed estimation restrictions and do not imply precise identification of the individual rates.
+
+The initial states were set analytically from the first observed monthly count $y_0$, with $q_0=y_0/\tau_0$ and $\tau_0=1\text{ month}$:
+
+\[
+\begin{aligned}
+E(0)&=\frac{q_0}{\sigma}=\frac{y_0}{\sigma\tau_0}, &
+I(0)&=\frac{\sigma E(0)}{\gamma+\mu+d}=\frac{y_0}{(\gamma+\mu+d)\tau_0},\\
+T(0)&=0, & S(0)&=N(t_0)-E(0)-I(0).
+\end{aligned}
+\]
+
+This initialization is a modeling convention rather than a consequence of the monthly observation operator. Initial states were recalculated for each candidate parameter vector, with no additional free parameters. Population $N(t)$ remained an exogenous input.
+
+\subsection{Numerical solution and calibration}
+
+The Caputo initial-value problem was solved with the Diethelm--Ford--Freed predictor-corrector method \citep{diethelm2002}, using the Adams--Bashforth--Moulton predict--evaluate--correct--evaluate (PECE) scheme. The numerical time step was $\delta t=1\text{ month}$; forecasting lead $h$ is defined separately. Numerical resolution was evaluated at $\delta t=1,0.5,0.25$ months while holding fitted parameters fixed. The prespecified numerical checks required monthly relative differences and changes in root mean squared error (RMSE) and mean absolute error (MAE) no greater than 1\%, bias changes no greater than 1\% of the observed mean, and decreasing discrepancies with refinement. These checks assess empirical numerical consistency, not an analytic error bound.
+
+The fractional model estimated $\theta=(\beta,\sigma,\gamma,d,\alpha)$ on January 2001--December 2020 by differential evolution (DE), with \texttt{best1bin}, \texttt{popsize=15}, \texttt{mutation=(0.5,1.0)}, \texttt{recombination=0.7}, \texttt{tol=0.01}, \texttt{maxiter=1000}, and \texttt{polish=False}. The same configuration and kinetic bounds were used for the independent integer fit. The objective was
+
+\[
+J(\theta)=\sqrt{\frac{1}{240}\sum_{k=1}^{240}\bigl(y_k-\widehat y_k(\theta)\bigr)^2}.
+\]
+
+Both global fits used random seed \texttt{20260815}. Validation data from 2021--2022 were excluded from calibration and parameter selection. Invalid numerical candidates were assigned penalty $10^{12}$; failed optimization or an invalid final simulation rendered the fit inadmissible.
+
+The first global fit was used as the reference for subsequent diagnostics. Four additional fits used seeds \texttt{20260816}--\texttt{20260819} to examine sensitivity to optimization initialization. Optimizer convergence does not establish uniqueness or parameter identifiability.
+
+\subsection{Integer-order comparator}
+
+To evaluate the specific contribution of fractional differentiation within the SEIT family, an integer-order counterpart is defined by fixing $\alpha \equiv 1.0$.
+
+The kinetic parameters of the integer model, $\theta_{\text{int}}=(\beta,\sigma,\gamma,d)$, were re-estimated independently using the same DE settings, calibration objective, and parameter bounds. Thus, the comparison is between two fitted models; it does not simply set $\alpha=1.0$ while retaining the fractional model's kinetic parameters.
+
+\subsection{Practical-identifiability analysis}
+
+Practical-identifiability diagnostics compared the reference global fit, four additional fits, and parameter profiles, using the same calibration data, ordinary monthly observation operator, bounds, initialization, and optimization settings. Fits were not selected based on validation errors or mechanistic conclusions.
+
+Profiles for $\beta,\gamma,d$ used seven grid points each: the primary value and offsets of 10\%, 30\%, and 60\% of its distance toward each search bound. The $\alpha$ grid was the union of its corresponding seven points with $[0.50,0.505,0.51,0.52,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00]$, giving 21 distinct points within $[0.50,1.00]$. 
+
+For each $\alpha$, a fixed-parameter cost section held $\beta,\sigma,\gamma,d$ at their primary values. Separately, a reoptimized profile fixed $\alpha$ and re-estimated the other four parameters. Each point in all four reoptimized profiles used seed \texttt{20260815}, the same DE configuration, and the original bounds for its four free dimensions. Analytic initial conditions were recomputed when the relevant kinetic parameters changed. Fixed-parameter evaluations were distinguished from reoptimized profile fits.
+
+The explored set comprised the reference fit, four additional optimizations, and 42 reoptimized profile solutions. Fixed-section evaluations were not included in this pool. Its main practical-equivalence region was
+
+\[
+\Theta_{1\%}=\left\{\theta\in\Theta_{\mathrm{explored}}:\ J(\theta)\le1.01J(\theta_{\mathrm{primary}})\right\}.
+\]
+
+The threshold was defined relative to the reference global cost, not the lowest cost subsequently found. Parameter and prediction dispersion were summarized over this finite set; the resulting cost-based region is neither a confidence set nor an exhaustive bound on admissible parameters. Validation observations did not determine its membership.
+
+For the main 1\% region, monthly prediction dispersion was summarized over its 32 solutions separately for the 240 calibration months (January 2001--December 2020) and the 24 single-origin open-loop validation months (January 2021--December 2022). At each month, the coefficient of variation (CV) was the population standard deviation of the predicted monthly counts across these solutions divided by the absolute value of their mean, reported as a percentage. Reported ranges are the minimum and maximum monthly CVs within each period. They describe between-solution trajectory dispersion, not error against observations, confidence intervals, or external-baseline forecasting skill.
+
+The diagnostic protocol was documented after the forecasting results became available. Its choices should therefore not be regarded as prospectively specified for the entire study.
+
+\subsection{Basic reproduction number and local stability}
+
+The reproduction-number functional and DFE classification were evaluated under an explicitly autonomous reference, with $S^*=\Lambda/\mu$ and constant $N_{\mathrm{ref}}=S^*$. The physical disease-free state is $(S^*,0,0,0)$. For the infected subsystem $(E,I)$, the next-generation decomposition in this reference is
+
+\[
+\mathcal F=\begin{bmatrix}0&\beta\\0&0\end{bmatrix},\qquad
+\mathcal V=\begin{bmatrix}\sigma+\mu&0\\-\sigma&\gamma+\mu+d\end{bmatrix},
+\]
+
+and
+
+\[
+R_0^{\mathrm{ref}}=\rho(\mathcal F\mathcal V^{-1})=\frac{\beta\sigma}{(\sigma+\mu)(\gamma+\mu+d)},\qquad\mu=1/888.
+\]
+
+The common positive factor $\tau_0^{1-\alpha}$ cancels in the next-generation matrix. The formula has no explicit $\alpha$ term for fixed kinetic parameters; its evaluated value can nevertheless change when fitting changes those parameters.
+
+With $a=\sigma+\mu$, $b=\gamma+\mu+d$, and $q=S^*/N$, the four-state DFE Jacobian is
+
+\[
+J(q)=\begin{bmatrix}
+-\mu&0&-\beta q&0\\
+0&-a&\beta q&0\\
+0&\sigma&-b&0\\
+0&0&\gamma&-\mu
+\end{bmatrix}.
+\]
+
+In particular, the vector-field derivative $\partial F_T/\partial I=\gamma$ is retained. The auxiliary observation state is excluded because it does not feed back into the epidemiological dynamics. In the autonomous reference $q=1$, the eigenvalues are $-\mu,-\mu$ and
+
+\[
+\lambda_{\pm}=\frac{-a-b\pm\sqrt{(a-b)^2+4\beta\sigma}}{2}.
+\]
+
+The infected block has negative trace and determinant $ab(1-R_0^{\mathrm{ref}})$. Matignon's condition for the constant-matrix, common-order Caputo linearization is $|\arg\lambda_i|>\alpha\pi/2$ for every eigenvalue. If $R_0^{\mathrm{ref}}<1$, all four eigenvalues are negative and satisfy this condition for $0<\alpha\le1$; if $R_0^{\mathrm{ref}}>1$, a positive real eigenvalue violates it. The equality case is nonhyperbolic and is not automatically classified as asymptotically stable. The reported local classification is restricted to this autonomous reference.
+
+In the fitted forecasting system, $N(t)$ is exogenous and time varying, so $q(t)$ and $J(q(t))$ vary. The disease-free state still satisfies the infection-free equations, but constant-matrix Matignon arguments do not establish its stability in that nonautonomous system. Pointwise spectra alone do not prove nonautonomous stability, and neither the reproduction-number functional nor the reference equilibrium classification implies disappearance of tuberculosis in Brazil.
+
+\subsection{Long open-loop stress test}
+
+The fitted global fractional and integer models were evaluated from a single origin at December 2020. Each simulation continued from its calibration trajectory through January 2021--December 2022, without state reinitialization, data assimilation, or parameter updating. Population beyond training was extrapolated using the training-only trend. This 24-month open-loop evaluation describes long-horizon prediction from one fitted origin; it is neither a multi-origin external-baseline comparison nor a test of DFE stability.
+
+\subsection{Rolling-origin forecasting evaluation}
+
+The expanding-window evaluation used 13 monthly origins from December 2020 through December 2021 and leads $h=1,\ldots,12$ months. The common support comprised 156 origin--horizon pairs per model, with targets within 2021--2022.
+
+At each origin, training contained only observations dated at or before that origin. The population trend, $\Lambda=\mu\bar N_{\mathrm{train}}$, and analytic initialization were constructed from that training window. Fractional and integer SEIT were independently fitted with the monthly integral observation operator, the stated parameter bounds and DE configuration, and seed \texttt{20260815}: 13 fits per model, 26 in total. The fitted trajectory, including its fractional history, then continued in open loop to all 12 leads. Future target counts were retrieved for scoring after the origin's fits and forecasts were complete.
+
+Unlike the fixed 2001--2020 calibration, later rolling origins included the 2021 observations already available at those dates. Model fitting and population extrapolation used only information available at each origin.
+
+\subsection{External forecasting baselines}
+
+Three external benchmarks were evaluated on exactly the same origin--target pairs as SEIT:
+
+\begin{enumerate}
+\item \textbf{Persistence:} $\widehat y_{t+h}=y_t$.
+\item \textbf{Seasonal naive, lag 12:} $\widehat y_{t+h}=y_{t+h-12}$; for $1\le h\le12$, the referenced observation is available at the origin.
+\item \textbf{SARIMA:} $(0,1,2)(1,1,1)_{12}$, with its order selected by Akaike information criterion (AIC) from 36 candidate specifications on the 2001--2020 period. Coefficients were re-estimated on each origin's expanding training window while maintaining the selected order.
+\end{enumerate}
+
+We compared the mechanistic predictions with 468 previously recorded baseline forecasts after checking their origin--target alignment. The baseline methods were not rerun when the mechanistic observation operator was revised. Origin-specific SARIMA coefficient estimates were not retained, which limits independent reconstruction of that benchmark.
+
+\subsection{Forecast metrics, relative skill, and horizon descriptors}
+
+At each lead $h$, RMSE, MAE, and mean bias were evaluated over the 13 origins:
+
+\[
+\mathrm{RMSE}(h)=\sqrt{\frac1{13}\sum_{i=1}^{13}(\widehat y_{i,h}-y_{i,h})^2},\qquad
+\mathrm{MAE}(h)=\frac1{13}\sum_{i=1}^{13}|\widehat y_{i,h}-y_{i,h}|,
+\]
+
+\[
+\mathrm{Bias}(h)=\frac1{13}\sum_{i=1}^{13}(\widehat y_{i,h}-y_{i,h}).
+\]
+
+For error measure $L\in\{\mathrm{RMSE},\mathrm{MAE}\}$, relative skill was
+
+\[
+\mathrm{Skill}_L(M,B,h)=1-\frac{L_M(h)}{L_B(h)}.
+\]
+
+Positive skill indicates lower observed error than the specified comparator. The integer SEIT comparison is reported separately from the three external baselines.
+
+$H_{\mathrm{relax}}$ is the last lead with strictly positive skill; $H_{\mathrm{strict}}$ is the length of the consecutive positive-skill sequence beginning at $h=1$. Each is zero when its defining positive sequence is absent. Values are reported by comparator and error measure, without pooling horizons or selecting the most favorable reference. They describe this evaluation support and are not universal predictability limits.
+
+\subsection{Statistical interpretation boundary}
+
+The forecasting comparisons are descriptive sample metrics. Forecast errors across overlapping origins and horizons are dependent; no formal predictive-accuracy or significance tests were performed. Lower observed error within the SEIT family is distinguished from external baseline-relative skill and from statistical or generalizable superiority.
+
+\section{Results}
+
+\subsection{Corrected global fit and single-origin open-loop validation}
+
+Both SEIT formulations were calibrated on the same 2001--2020 observations, with their kinetic parameters estimated independently. The resulting parameter vectors appear in Table~\ref{tab:1}. For the fractional fit, $\alpha=0.502203$ lies near the imposed lower bound of 0.50; the individual kinetic rates should not be interpreted as precisely identified epidemiological quantities.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Estimated parameters for the fractional and integer SEIT formulations. Kinetic parameters are expressed in month$^{-1}$; $\alpha$ is dimensionless.}
+\label{tab:1}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Model & $\beta$ & $\sigma$ & $\gamma$ & $d$ & $\alpha$ \\
+\midrule
+fractional & 0.120038 & 0.010004 & 0.261347 & 0.039100 & 0.502203 \\
+integer & 0.061166 & 0.010173 & 0.053249 & 0.000213 & 1.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fractional model achieved a calibration RMSE of 619.319, compared with 776.041 for integer SEIT. The advantage remained in the 24-month fixed-origin validation: fractional RMSE/MAE were 1216.542/1035.207, with bias $-$983.954; integer RMSE/MAE were 1759.542/1588.653, with bias $-$1588.653 (Table~\ref{tab:2}; Fig.~\ref{fig:1}). Both models tended to underpredict in this open-loop period. The comparison involves one forecast origin and does not address performance against external benchmarks.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Global calibration and open-loop validation. Bias is predicted minus observed; errors are monthly notification counts. The calibration contains 240 months and validation 24 months.}
+\label{tab:2}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Model & Window & RMSE & MAE & Bias \\
+\midrule
+fractional & Calibration & 619.319 & 484.062 & 49.457 \\
+fractional & Open-loop validation & 1216.542 & 1035.207 & -983.954 \\
+integer & Calibration & 776.041 & 616.146 & 171.227 \\
+integer & Open-loop validation & 1759.542 & 1588.653 & -1588.653 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fractional comparison involves independently fitted parameter vectors under the retained ordinary observation operator; it does not isolate the effect of changing the operator or fractional order at a fixed parameter vector.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/F1_global_open_loop.pdf}
+\caption{Observed monthly counts and the independently fitted fractional and integer SEIT trajectories. The vertical line separates global calibration through 2020 from the fixed-origin open-loop validation. This comparison does not establish external-baseline skill.}
+\label{fig:1}
+\end{figure}
+
+\subsection{Within-family rolling-origin comparison}
+
+Across all 12 forecast leads, fractional SEIT yielded lower RMSE and MAE than integer SEIT (Table~\ref{tab:3}; Fig.~\ref{fig:2}). Each model contributed 156 forecasts on common origin--horizon pairs, within a total of 780 forecasts from the five methods. All 26 mechanistic fits met their numerical termination criteria. These are observed error differences; no formal test of predictive accuracy was conducted.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Rolling-origin RMSE under the common temporal protocol. Each cell summarizes 13 forecasts at one lead. No errors are pooled across leads.}
+\label{tab:3}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Lead (months) & Fractional & Integer & Persistence & Seasonal naive & SARIMA \\
+\midrule
+1 & 791.588 & 1185.800 & 389.702 & 1090.638 & 535.547 \\
+2 & 855.628 & 1281.075 & 494.271 & 1049.835 & 595.827 \\
+3 & 1089.172 & 1530.886 & 709.999 & 1170.540 & 725.784 \\
+4 & 1127.269 & 1574.968 & 720.287 & 1182.556 & 841.713 \\
+5 & 1233.747 & 1710.971 & 832.477 & 1278.390 & 939.654 \\
+6 & 1274.003 & 1770.702 & 845.856 & 1239.172 & 1022.421 \\
+7 & 1340.440 & 1858.590 & 964.206 & 1237.408 & 1096.024 \\
+8 & 1480.861 & 2009.191 & 1077.249 & 1258.413 & 1161.578 \\
+9 & 1499.639 & 2037.321 & 1120.357 & 1207.927 & 1213.959 \\
+10 & 1501.699 & 2041.686 & 1170.294 & 1189.946 & 1242.805 \\
+11 & 1498.888 & 2048.768 & 1175.946 & 1190.754 & 1291.796 \\
+12 & 1472.295 & 2022.497 & 1152.958 & 1152.958 & 1283.583 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/F2_rolling_RMSE.pdf}
+\caption{RMSE at each of the 12 monthly leads for fractional SEIT, integer SEIT, persistence, seasonal naive, and SARIMA, on the same 13-origin support.}
+\label{fig:2}
+\end{figure}
+
+\subsection{External baseline skill and boundary estimates}
+
+The external benchmarks changed the assessment. Persistence and SARIMA outperformed fractional SEIT in both RMSE and MAE at every lead, giving $H_{\mathrm{relax}}=H_{\mathrm{strict}}=0$ for both comparisons. Seasonal naive had higher errors than fractional SEIT at $h=1,\ldots,5$, but lower errors at $h=6,\ldots,12$; both horizon descriptors were therefore 5 (Table~\ref{tab:4}; Fig.~\ref{fig:3}). This five-month window is specific to the seasonal-naive benchmark, not a general limit on tuberculosis predictability.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Fractional skill descriptors against four comparators. Positive-lead sets and descriptors are identical for RMSE and MAE; each comparator is reported separately.}
+\label{tab:4}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Comparator & Positive leads & $H_{\mathrm{relax}}$ & $H_{\mathrm{strict}}$ \\
+\midrule
+Integer SEIT & 1--12 & 12 & 12 \\
+Persistence & None & 0 & 0 \\
+Seasonal naive & 1--5 & 5 & 5 \\
+SARIMA & None & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/F3_fractional_skill.pdf}
+\caption{Fractional relative skill for (a) RMSE and (b) MAE, separating integer SEIT from the three external benchmarks. The zero line denotes equal error. Positive skill against integer throughout and against seasonal naive only through $h=5$ coexists with negative skill against persistence and SARIMA throughout.}
+\label{fig:3}
+\end{figure}
+
+Fractional bias was negative at every rolling lead, indicating mean underprediction on this evaluation support.
+
+All 13 fractional fits placed $\alpha$ near the lower search bound, with recorded estimates from 0.500021 to 0.503773. These boundary estimates do not demonstrate epidemiological memory.
+
+\subsection{Secondary diagnostic: fixed and reoptimized alpha profiles}
+
+The reoptimized $\alpha$ profile included points in the main practical-equivalence region from 0.50 to 0.52; the next sampled point, 0.55, was outside it. Figure~\ref{fig:4} contrasts this profile with a fixed-parameter cost section at the same 21 values. Their RMSE values were 618.965 and 618.875 at $\alpha=0.50$, 625.448 and 621.860 at 0.52, and 651.185 and 627.899 at 0.55 (fixed section and reoptimized profile, respectively). The sampled points do not determine a continuous cutoff or establish a unique optimum.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/F4_alpha_profiles.pdf}
+\caption{Fixed-section and reoptimized calibration RMSE at (a) all 21 $\alpha$ values and (b) a close view of the lower boundary. The dashed line is the preserved primary RMSE multiplied by 1.01. Connecting lines guide the eye between evaluated points and do not define a continuous confidence region.}
+\label{fig:4}
+\end{figure}
+
+The 32 fits in the main 1\% practical-equivalence region had markedly different kinetic parameters despite similar calibration errors: $\beta=0.036879$--$0.208034$, $\gamma=0.052711$--$0.297678$, and $d=0.001899$--$0.048114\text{ month}^{-1}$. These ranges indicate limited practical identification within the explored set, rather than precise estimates of the individual rates.
+
+The corresponding monthly prediction coefficients of variation (CVs) were small: 0.0107\%--0.1474\% over the 2001--2020 calibration period and 0.1479\%--0.1595\% over the 2021--2022 fixed-origin validation. Thus, the explored parameter variation produced comparatively similar monthly trajectories. Similarity between predictions, however, is distinct from their errors against observed counts or their skill relative to external benchmarks.
+
+The 1\% threshold, $J\le1.01J(\theta_{\mathrm{primary}})$, was 625.511939 relative to the primary RMSE of 619.318751 (rounded here). The full pool comprised the reference global fit, four additional fits, and 42 reoptimized profiles; 32 solutions met the threshold. This finite, cost-based region was defined relative to the reference fit and is not an exhaustive set of admissible parameters.
+
+\subsection{Secondary diagnostic: reference reproduction number and DFE}
+
+Under the autonomous reference ($\mu=1/888$, $N_{\mathrm{ref}}=S^*=\Lambda/\mu$), the primary value was $R_0^{\mathrm{ref}}=0.357768$. Values for the 32 solutions in the main 1\% region ranged from 0.341657 to 0.587926, all below one. The full pool of 47 solutions spanned 0.341657--1.661998: 44 values were below one and three above (Table~\ref{tab:5}; Fig.~\ref{fig:5}). The three above-one solutions fell outside the main region because of calibration cost. These descriptive ranges are neither confidence intervals nor exhaustive bounds on alternative fits.
+
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Reference R$_0$ and autonomous DFE classification in the explored sets. The main 32-solution region is a subset of the 47-solution diagnostic pool. Counts and envelopes are descriptive and use the reference defined in Methods.}
+\label{tab:5}
+\begingroup\setlength{\tabcolsep}{1.8pt}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+Explored set & $n$ & $R_0$ min. & $R_0$ max. & $R_0<1$ & $R_0>1$ & Stable DFE & Unstable DFE \\
+\midrule
+Main 1\% region & 32 & 0.341657 & 0.587926 & 32 & 0 & 32 & 0 \\
+Complete diagnostic pool & 47 & 0.341657 & 1.661998 & 44 & 3 & 44 & 3 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/F5_R0_explored_pool.pdf}
+\caption{All 47 reference R$_0$ values, with the 32 solutions admitted by the primary-relative 1\% RMSE criterion distinguished from the remaining diagnostics. The line at one is a reference threshold, not a forecast of disease elimination.}
+\label{fig:5}
+\end{figure}
+
+Under the autonomous reference, the four-state Jacobian satisfied the common-order Matignon criterion in all 32 admitted solutions, classifying their DFE as locally asymptotically stable. In the complete pool, 44 solutions were classified stable and three unstable, consistent with their reference R$_0$ values. The classification does not establish stability of the fitted system with varying $N(t)$, global stability, or expected disappearance of tuberculosis in Brazil. Pointwise eigenvalue calculations do not constitute a nonautonomous stability proof.
+
+\subsection{Numerical and temporal checks}
+
+Numerical-resolution checks satisfied the stated thresholds for 26 rolling-origin and 115 global, profile, and diagnostic evaluations. The largest relative monthly difference in the latter group was approximately 0.119134\%, below the 1\% threshold. Refinement did not change the signs of rolling forecast skill or membership in the main practical-equivalence region. These results support numerical consistency, not formal convergence; complete refined-grid state trajectories were not retained for every diagnostic fit.
+
+\section{Discussion}
+
+The two forecast comparisons lead to different conclusions. Fractional SEIT improved on its independently refitted integer-order counterpart, both in the single-origin open-loop evaluation and across the 13 rolling origins. But persistence and SARIMA had lower RMSE and MAE at all twelve rolling leads. The within-family advantage was thus observed on this evaluation support without making the fractional formulation competitive with those external forecasting methods.
+
+Refitting the integer model is important for interpreting the within-family comparison. Both formulations used the same observation operator, training observations, kinetic bounds, initialization rule, and optimization settings; the fractional fit also estimated $\alpha$. Their error difference therefore reflects the fitted formulations as a whole, including the different kinetic parameters. It cannot be attributed solely to changing the derivative order at a fixed parameter vector. Moreover, integer SEIT was less accurate than all three external benchmarks at every lead, so outperforming it alone would have overstated the practical forecasting value of the fractional model.
+
+The conclusion also depends on which external forecast serves as reference. Fractional SEIT improved on seasonal naive through $h=5$, but not at longer leads; it never improved on persistence or SARIMA. Mean forecast bias was negative at every rolling lead. Because the 13 origins produce overlapping errors across 156 origin--horizon pairs and only 24 distinct target months, the comparison remains descriptive: no predictive-accuracy tests were performed. These results do not support preferring the fitted fractional SEIT over persistence or SARIMA for the evaluated task.
+
+Earlier work provides useful context but answers different questions. Integer- and fractional-order epidemic models have been examined for identifiability and predictability using physics-informed neural networks \citep{kharazmi2021}, while a tuberculosis study in Kazakhstan found SARIMA to forecast more accurately than SIR \citep{kalizhanova2024}. Neither comparison uses the Brazilian SEIT formulation, observation mapping, and common rolling-origin support evaluated here. Our contribution is the resulting empirical assessment of within-family improvement against methods outside that family, not a claim of historical priority for such comparisons.
+
+The identifiability results limit what can be inferred from the fitted individual rates. Among the 32 solutions whose calibration RMSE was within 1\% of the reference fit, $\beta$ ranged from 0.036879 to 0.208034, $\gamma$ from 0.052711 to 0.297678, and $d$ from 0.001899 to 0.048114 month$^{-1}$. Similar agreement with observed monthly counts thus arose from substantially different parameter vectors. This is evidence of limited practical identification in the explored set, not a structural non-identifiability result.
+
+Predictions from those same solutions varied much less than their individual parameters. Across months, the CV ranged from 0.0107\% to 0.1474\% during calibration and from 0.1479\% to 0.1595\% during fixed-origin validation. These values measure agreement among fitted trajectories, not agreement with observations. In fact, similarly shaped trajectories can share systematic errors: the primary fractional fit underpredicted in the open-loop validation, and its rolling forecasts had negative skill against persistence and SARIMA. In this evaluated set, similarity of trajectories does not by itself establish forecast accuracy.
+
+Numerical refinement addresses a separate concern: whether predictions at a fixed parameter vector change materially with solver resolution. The recorded checks support the numerical consistency of the comparisons but say nothing about unique parameter recovery. Likewise, the 1\% RMSE subset is not a likelihood-based confidence region or predictive interval. Likelihood-based approaches can connect parameter uncertainty with prediction \citep{simpson2024}, but such an interpretation is not warranted for this descriptive cost threshold. The diagnostic protocol was documented retrospectively relative to the forecasting results and is not presented as prospectively specified for the entire study.
+
+The estimated fractional order provides another constraint on interpretation. Its global value was $\alpha=0.502203$, and the rolling estimates clustered near the imposed lower bound of 0.50. The sampled reoptimized profile admitted values between 0.50 and 0.52 under the main criterion, whereas 0.55 fell outside it. This result depends on the evaluated grid and search bounds; it does not identify an interior optimum, a continuous uncertainty interval, or a biological memory mechanism.
+
+The derived reproduction number was more consistent in threshold classification than in exact value within the main explored region. For the autonomous reference $N_{\mathrm{ref}}=S^*=\Lambda/\mu$, the primary value was $R_0^{\mathrm{ref}}=0.357768$, and all 32 near-equivalent solutions were below one (0.341657--0.587926). Their DFEs satisfied the common-order local stability criterion. This agreement pertains to the specified reference and cost-based subset; it does not imply that $R_0$ is precisely identified.
+
+The larger diagnostic pool shows why the subset matters. Of 47 explored solutions, 44 had $R_0^{\mathrm{ref}}<1$ and a stable reference DFE, while three had $R_0^{\mathrm{ref}}>1$ and an unstable DFE. Those three solutions were not removed because of their stability classification; their calibration costs placed them outside the main 1\% region. The apparently uniform reference conclusion therefore depends on the chosen practical-equivalence criterion.
+
+The reference calculation cannot establish stability of the fitted forecasting system. Population $N(t)$ varies exogenously in that system, making the linearization depend on time through $S^*/N(t)$. Frozen-time eigenvalues are not a stability proof for the resulting nonautonomous equations. Accordingly, the reference DFE classification should not be interpreted as global stability, disappearance of tuberculosis in Brazil, or evidence of forecast accuracy.
+
+The findings are limited to one national series. Although DATASUS/SINAN was identified as its general source, the original extraction settings remain unknown. The two forecast evaluations also answer different questions: later rolling origins incorporate 2021 observations already available at each origin, while the fixed-origin test keeps the 2001--2020 fit unchanged. Finally, the origin-specific SARIMA coefficient estimates and some refined-grid diagnostic trajectories were not retained. These gaps restrict independent reconstruction of parts of the analysis but do not change the observed error comparisons.
+
+For this model and dataset, independent refitting showed that the fractional formulation improves on integer SEIT, while external benchmarks showed that the improvement is insufficient for competitive forecasting against persistence and SARIMA. The identifiability and reference-equilibrium diagnostics further limit mechanistic interpretation. Evaluating these questions separately makes the evidence easier to interpret without treating a favorable model-family comparison as a forecasting recommendation.
+
+\section{Conclusions}
+
+We evaluated a fractional-order SEIT tuberculosis model against an independently refitted integer-order version and three external forecasting benchmarks. In the 13-origin rolling evaluation, fractional SEIT had lower RMSE and MAE than integer SEIT at every lead from $h=1$ to $h=12$. It did not outperform persistence or SARIMA at any lead, and its advantage over seasonal naive ended at $h=5$.
+
+The gain over integer SEIT therefore did not translate into competitive forecasting against the stronger external benchmarks. This conclusion concerns the fitted formulations, calibration restrictions, and single Brazilian monthly series examined here. Forecast errors overlap across origins and horizons, so the observed differences are descriptive rather than evidence of statistical or generalizable superiority.
+
+The secondary diagnostics showed limited practical identification of individual rates despite relatively similar predicted trajectories among near-equivalent fits. This similarity did not imply forecast accuracy. Reproduction-number and DFE results were confined to an autonomous reference and cannot establish stability of the time-varying forecasting system or tuberculosis elimination in Brazil.
+
+\section{Statements and Declarations}
+
+\subsection{Funding}
+
+No funding was received for this study.
+
+\subsection{Competing Interests}
+
+The authors declare that they have no competing interests.
+
+
+\subsection{Author Contributions}
+
+Amaury de Souza provided the original SEIT tuberculosis study materials and the Brazilian surveillance dataset, described the data preparation procedures, and contributed to the epidemiological context and scientific framing of the study.
+
+Francisco Federico Garc\'ia Crespi designed and conducted the independent model reimplementation, developed and evaluated the computational methodology, performed model calibration, numerical verification, forecasting comparisons, practical-identifiability and stability analyses, and verified data provenance. He also prepared the revised manuscript.
+
+Both authors contributed to defining the scientific question and discussing the interpretation of the findings.
+
+
+\subsection{Ethics Approval and Consent to Participate}
+
+This study used exclusively secondary, aggregated monthly tuberculosis notification data for Brazil. No individual-level or personally identifiable information was accessed, and no human participants were recruited or contacted. Therefore, ethics committee approval and informed consent to participate were not required.
+
+\subsection{Consent for Publication}
+
+Not applicable unless the final manuscript includes identifiable individual material, which the present manuscript does not.
+
+\subsection{Data Availability}
+
+The Brazilian monthly tuberculosis notification series (January 2001--December 2022; 264 observations) is accessible through the public project repository at \url{https://github.com/fedeg-umh-es/tb-fractional-seit-brazil}. The data provider identified DATASUS/SINAN as its general source and described aggregation to monthly counts. The exact extraction settings could not be recovered: none of four documented DATASUS/SINAN reconstructions reproduced the supplied series exactly, and the closest differed in 99 of 264 months. Consequently, the original extraction is not independently reproducible. Population denominators were obtained from the 2013 Brazilian population projections issued by IBGE \citep{ibge2013}. The public availability of the supplied dataset should not be interpreted as a grant of unrestricted third-party reuse rights.
+
+\subsection{Code Availability}
+
+The project repository is publicly accessible at \url{https://github.com/fedeg-umh-es/tb-fractional-seit-brazil}. The corrected implementation used for the analyses reported here, including the ordinary monthly observation operator, has been preserved separately from the public repository and has not yet been deposited in a public archive. The corresponding author can be contacted regarding access to the corrected code and supporting numerical results.
+
+\subsection{AI Assistance Disclosure}
+
+The code was generated using artificial intelligence tools and reviewed by the human authors.
+
+\bibliography{references}
+\end{document}

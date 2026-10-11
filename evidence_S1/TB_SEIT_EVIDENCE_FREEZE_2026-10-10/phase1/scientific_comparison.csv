@@ -1,0 +1,13 @@
+stage,model,split,rmse,mae,bias
+original_frozen_parameters,fractional,calibration,605.04888100337359,486.50543953558594,-3.810762784396259
+ordinary_frozen_parameters,fractional,calibration,1620.1160374079657,1471.8506965448926,1466.9282653732021
+original_frozen_parameters,fractional,validation_open_loop,1117.9600278486839,953.23000909248367,-851.1498884036555
+ordinary_frozen_parameters,fractional,validation_open_loop,1178.7336660558758,1019.2489352765866,932.03240027265485
+original_frozen_parameters,integer,calibration,776.05825256330331,616.15597524954069,171.23808698508557
+ordinary_frozen_parameters,integer,calibration,776.0408518036179,616.1455725740085,171.22663324300521
+original_frozen_parameters,integer,validation_open_loop,1759.5384005453041,1588.6486144823818,-1588.6486144823818
+ordinary_frozen_parameters,integer,validation_open_loop,1759.5420918857833,1588.6526307121378,-1588.6526307121378
+ordinary_global_refit,fractional,calibration,619.31875149368591,484.06247848493621,49.456919155821652
+ordinary_global_refit,fractional,validation_open_loop,1216.5419862064475,1035.2071037599535,-983.95370245920378
+ordinary_global_refit,integer,calibration,776.04085180361835,616.14557257400952,171.22663324301126
+ordinary_global_refit,integer,validation_open_loop,1759.542091885776,1588.6526307121301,-1588.6526307121301

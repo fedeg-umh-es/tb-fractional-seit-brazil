@@ -1,5 +1,14 @@
 # Project Canon — TB Fractional SEIT Brazil
 
+> **Evidence status (2026-10-11).** The current evidence of record is the S1 freeze,
+> `evidence_S1/TB_SEIT_EVIDENCE_FREEZE_2026-10-10/` (branch `evidence/s1-freeze-2026-10-10`,
+> commit `53eae1091f652ec0393707f4e0ae7b2ec4b43acb`), computed with the ordinary monthly
+> observation operator. `results_canonical/` and `outputs/` are **historical evidence for the
+> retired Caputo-increment operator**; the numerical values in this document that come from them
+> (alpha = 0.964, R0 envelope 1.1542-1.1892, positive seasonal-naive skill up to h = 7) are not
+> current results. Decision record: `docs/decisions/S1_DECISION_2026-10-11.md` (co-author
+> sign-off pending). The rest of this document is unchanged.
+
 Last operational update: 2026-10-03
 
 ## Project identity

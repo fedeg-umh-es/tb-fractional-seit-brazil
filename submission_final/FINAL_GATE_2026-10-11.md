@@ -1,0 +1,25 @@
+# Final gate (2026-10-11)
+
+```text
+SUBMISSION_GATE = SUBMISSION_GATE_PASS_WITH_AUTHOR_ACTIONS
+READY_FOR_SUBMISSION = NO   (author actions below are required first)
+NOTHING_LEFT_FOR_CLAUDE_TO_CHANGE_IN_THE_SCIENCE = YES
+```
+
+What this status means: everything that depends on the repository is done and checked (see `SUBMISSION_CHECKLIST_2026-10-11.md`). What remains depends only on the authors, in this order.
+
+## Author actions
+
+1. **Zenodo deposit (fedeg).** Licences, the `.docx`, the local paths and the author metadata are decided and applied (`docs/decisions/ZENODO_DEPOSIT_NOTES_2026-10-11.md`); `main` contains everything. Run the procedure in `docs/decisions/ZENODO_DEPOSIT_PROCEDURE_2026-10-11.md` (Sandbox rehearsal first, then production with your written "go"). Then replace `[ZENODO_DOI]` and `[RELEASE_TAG]` in the manuscript and in the cover letter.
+2. **Reuse conditions of the supplied dataset.** Resolved: CC BY 4.0 (decided by fedeg; Amaury's written confirmation, together with the inclusion of the original working manuscript, is still pending).
+3. **Amaury (returns 13 October).** Sign `S1_DECISION_2026-10-11.md` (date and initials on the two sign-off lines); read the new text (Limitations, bound sensitivity, transient of E(t), the B1 paragraph), and confirm the cover letter. Optional: replace or add to the B1 paragraph with his own draft.
+4. **Open reference flags (fedeg).** Read the 2023 correction notice of Cramer et al. (2022); confirm or drop the IBGE clause on the 2018 revision; replace Matignon (1996) by the primary source when you have it.
+5. **Final review and submission.** Review the compiled PDF; choose the traditional subscription route in the system; confirm in the cover letter that the work is not published or under consideration elsewhere and that both authors approved it; both authors authorise the submission.
+
+## What would reopen the science (not planned)
+
+A rolling-origin evaluation with the wider bounds, an evaluation before 2020, a formal test of equal predictive accuracy, or a seasonal variant. All are declared as limitations. Any of them needs its own protocol and the authorisation of both authors.
+
+## Records
+
+Decisions: `docs/decisions/` (S1 decision, deferred analyses, agreement, availability texts, Zenodo notes). Analyses with protocols committed before execution: `analyses/A1_*` (bounds), `A2_transient_E_*`, `A2_tables_*`, `A3_*`. Reference audit and B1 sources: `literature_verification/`.

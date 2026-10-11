@@ -1,0 +1,5 @@
+model,split,scaling_factor_c,max_absolute_difference,max_relative_difference,rmse_difference
+fractional,calibration,1.0,0.0,0.0,0.0
+fractional,validation,1.0,0.0,0.0,0.0
+integer,calibration,1.0,0.0,0.0,0.0
+integer,validation,1.0,0.0,0.0,0.0
