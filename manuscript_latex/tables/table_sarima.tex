@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Origin-specific SARIMA coefficients for the 13 rolling origins.}
+\label{tab:sarima}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrccccr@{}}
+\toprule
+Origin & $n$ & MA(1) & MA(2) & SAR(12) & SMA(12) & AIC \\
+\midrule
+2020-12 & 240 & -0.841 (0.044) & 0.055 (0.061) & 0.142 (0.071) & -0.998 (2.482) & 3194.7 \\
+2021-01 & 241 & -0.843 (0.044) & 0.059 (0.061) & 0.138 (0.070) & -0.998 (2.502) & 3210.2 \\
+2021-02 & 242 & -0.846 (0.044) & 0.061 (0.061) & 0.137 (0.070) & -0.998 (2.469) & 3224.4 \\
+2021-03 & 243 & -0.846 (0.044) & 0.062 (0.061) & 0.138 (0.070) & -0.998 (2.480) & 3238.4 \\
+2021-04 & 244 & -0.846 (0.044) & 0.062 (0.060) & 0.135 (0.069) & -0.999 (2.528) & 3252.4 \\
+2021-05 & 245 & -0.845 (0.044) & 0.060 (0.060) & 0.128 (0.068) & -0.999 (2.554) & 3266.4 \\
+2021-06 & 246 & -0.841 (0.045) & 0.055 (0.060) & 0.122 (0.067) & -0.998 (2.304) & 3283.6 \\
+2021-07 & 247 & -0.831 (0.045) & 0.047 (0.061) & 0.121 (0.067) & -0.998 (2.082) & 3299.3 \\
+2021-08 & 248 & -0.820 (0.045) & 0.045 (0.062) & 0.116 (0.067) & -0.998 (2.090) & 3315.7 \\
+2021-09 & 249 & -0.807 (0.046) & 0.054 (0.065) & 0.127 (0.069) & -0.997 (1.664) & 3333.8 \\
+2021-10 & 250 & -0.806 (0.045) & 0.054 (0.064) & 0.127 (0.068) & -0.997 (1.688) & 3347.7 \\
+2021-11 & 251 & -0.806 (0.046) & 0.078 (0.063) & 0.133 (0.069) & -0.996 (1.362) & 3364.2 \\
+2021-12 & 252 & -0.794 (0.046) & 0.088 (0.064) & 0.137 (0.070) & -0.995 (1.157) & 3381.5 \\
+\bottomrule
+\end{tabular}}
+\par\smallskip\noindent\parbox{\textwidth}{\scriptsize Estimate (standard error). Order $(0,1,2)(1,1,1)_{12}$, expanding training window, fitted with \texttt{enforce\_stationarity=False} and \texttt{enforce\_invertibility=False}, as in the archived forecasts. The seasonal MA estimate lies at the invertibility boundary, and its standard error (1.2--2.6) is not informative there. Regenerated forecasts reproduce the archived ones with a maximum relative error of $9.2\times10^{-9}$.}
+\end{table}

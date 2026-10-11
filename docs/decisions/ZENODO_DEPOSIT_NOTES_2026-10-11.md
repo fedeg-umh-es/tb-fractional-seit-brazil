@@ -21,9 +21,7 @@ For fedeg. Plan A, step 9. `CITATION.cff` and `.zenodo.json` are drafts at the r
 2. **Licence.** The repository has no licence file, and I did not choose one. Zenodo requires a
    licence for open access. Choose one (code and data may need different licences) and add it to
    `CITATION.cff` (`license`) and `.zenodo.json` (`license`).
-3. **Authors.** Order, affiliations and ORCIDs are not verified in the repository (the
-   submission checklist lists them as pending). The two drafts use "García Crespi, Federico" first
-   and "de Souza, Amaury" second, only as placeholders. Affiliation and ORCID fields are omitted.
+3. **Authors.** Names, affiliations and ORCIDs now come from `manuscript_latex/manuscript.tex` (not independently verified here). The order is the manuscript's (de Souza first; García Crespi corresponding author) and is still an agreement between the two authors.
 4. **Release tag and content.** The evidence commit `53eae10` is on the branch
    `evidence/s1-freeze-2026-10-10`. The deposit should be a tagged release that also contains the
    analyses of this branch (`analyses/`, `docs/decisions/`). Create the tag yourself after the pull

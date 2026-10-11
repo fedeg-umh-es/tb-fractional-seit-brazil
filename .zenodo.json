@@ -3,8 +3,8 @@
   "upload_type": "software",
   "description": "Code, supplied monthly tuberculosis series for Brazil (2001-2022, N = 264) and frozen evidence (S1 freeze, ordinary monthly observation operator) for a methodological comparison of a fractional-order and an integer-order SEIT model against persistence, seasonal naive and SARIMA baselines in a rolling-origin evaluation (13 origins, horizons 1-12 months). Evidence of record: evidence_S1/TB_SEIT_EVIDENCE_FREEZE_2026-10-10/, commit 53eae1091f652ec0393707f4e0ae7b2ec4b43acb.",
   "creators": [
-    {"name": "García Crespi, Federico"},
-    {"name": "de Souza, Amaury"}
+    {"name": "de Souza, Amaury", "affiliation": "Instituto de Física, Universidade Federal de Mato Grosso do Sul, Campo Grande, Brazil", "orcid": "0000-0001-8168-1482"},
+    {"name": "García Crespi, Francisco Federico", "affiliation": "Department of Computer Engineering, Universidad Miguel Hernández de Elche, Elche, Spain", "orcid": "0000-0002-7129-7791"}
   ],
   "keywords": [
     "tuberculosis",
