@@ -1,0 +1,135 @@
+{
+  "analysis": "GLOBAL_REFIT_ORDINARY_OBSERVATION_PHASE_1",
+  "timestamp_utc": "2026-10-08T17:36:55.223664+00:00",
+  "repository_path": "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-global-refit-phase1",
+  "repository_head": "b3ad21bb059eb5357742693a4d5072107dc0df63",
+  "raw_data_sha256": "93e75138827704af22389c38eddc04eda5efd44389f10cffbabfd0a4e1ea662b",
+  "tracked_files_unchanged": true,
+  "tracked_file_count": 239,
+  "primary_seed": 20260815,
+  "solver_h_months": 1.0,
+  "train_months": 240,
+  "validation_months": 24,
+  "observation_operator": "sum of trapezoidal sigma*E over corrected states on each monthly interval",
+  "population_trend": {
+    "intercept": 18.992393441684538,
+    "slope": 0.0008140043364021429
+  },
+  "constants": {
+    "mu": 0.0011261261261261261,
+    "lambda": 220201.11548423424,
+    "N0": 175885229.0,
+    "flow0": 8088.0
+  },
+  "de_contract": {
+    "strategy": "best1bin",
+    "popsize": 15,
+    "mutation": [
+      0.5,
+      1.0
+    ],
+    "recombination": 0.7,
+    "tol": 0.01,
+    "maxiter": 1000,
+    "polish": false
+  },
+  "python_version": "3.12.14",
+  "numpy_version": "2.5.3",
+  "scipy_version": "1.18.1",
+  "preflight_fixed_theta": [
+    {
+      "model": "fractional",
+      "pass": true,
+      "original_calibration_rmse": 605.048881003205,
+      "original_validation_rmse": 1117.9600278443859,
+      "ordinary_calibration_rmse": 1620.1160374079604,
+      "ordinary_validation_rmse": 1178.733666055882
+    },
+    {
+      "model": "integer",
+      "pass": true,
+      "original_calibration_rmse": 776.0582525633018,
+      "original_validation_rmse": 1759.5384005452795,
+      "ordinary_calibration_rmse": 776.0408518036184,
+      "ordinary_validation_rmse": 1759.542091885776
+    }
+  ],
+  "parameters": [
+    {
+      "model": "fractional",
+      "operator": "ordinary_composite_trapezoid",
+      "seed": 20260815,
+      "beta": 0.12003782836824817,
+      "sigma": 0.010004327168969401,
+      "gamma": 0.2613467372251754,
+      "d": 0.03910000958695751,
+      "alpha": 0.5022029993981696,
+      "objective_train_rmse": 619.3187514936859,
+      "success": true,
+      "iterations": 36,
+      "function_evaluations": 2775
+    },
+    {
+      "model": "integer",
+      "operator": "ordinary_composite_trapezoid",
+      "seed": 20260815,
+      "beta": 0.06116633400868288,
+      "sigma": 0.010173423242498564,
+      "gamma": 0.053248877140024936,
+      "d": 0.0002133407178810144,
+      "alpha": 1.0,
+      "objective_train_rmse": 776.0408518036184,
+      "success": true,
+      "iterations": 52,
+      "function_evaluations": 3180
+    }
+  ],
+  "metrics": [
+    {
+      "model": "fractional",
+      "split": "calibration",
+      "n": 240,
+      "rmse": 619.3187514936859,
+      "mae": 484.0624784849362,
+      "bias": 49.45691915582165
+    },
+    {
+      "model": "fractional",
+      "split": "validation_open_loop",
+      "n": 24,
+      "rmse": 1216.5419862064475,
+      "mae": 1035.2071037599537,
+      "bias": -983.9537024592038
+    },
+    {
+      "model": "integer",
+      "split": "calibration",
+      "n": 240,
+      "rmse": 776.0408518036184,
+      "mae": 616.1455725740095,
+      "bias": 171.22663324301126
+    },
+    {
+      "model": "integer",
+      "split": "validation_open_loop",
+      "n": 24,
+      "rmse": 1759.542091885776,
+      "mae": 1588.65263071213,
+      "bias": -1588.65263071213
+    }
+  ],
+  "contrasts": {
+    "calibration": {
+      "rmse_fractional_minus_integer": -156.72210030993244,
+      "mae_fractional_minus_integer": -132.0830940890733,
+      "bias_fractional_minus_integer": -121.76971408718961
+    },
+    "validation_open_loop": {
+      "rmse_fractional_minus_integer": -543.0001056793285,
+      "mae_fractional_minus_integer": -553.4455269521764,
+      "bias_fractional_minus_integer": 604.6989282529263
+    }
+  },
+  "rolling_origin_evaluated": false,
+  "decision": "REQUIRES_AUTHOR_SCIENTIFIC_REVIEW_BEFORE_ANY_ROLLING_ORIGIN"
+}

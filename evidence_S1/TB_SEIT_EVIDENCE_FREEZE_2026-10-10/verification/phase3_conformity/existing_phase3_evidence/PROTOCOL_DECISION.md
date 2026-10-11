@@ -1,0 +1,19 @@
+# Fase 3: protocolo fijado antes de ejecutar
+
+Autorización del autor: reevaluar identificabilidad práctica, R₀ y DFE bajo el observable ordinario; Fase 2 provisional, sin congelar. No se modifica el manuscrito, PR, código versionado ni resultados históricos. No se repite rolling-origin.
+
+La estimación primaria permanece exactamente la de Fase 1 (semilla 20260815). Se conservan calibración 2001–2020, RMSE de incidencia mensual ordinaria, inicialización analítica dependiente de parámetros, N(t) observado en entrenamiento, constantes originales, PECE h=1 mes, integral trapezoidal sobre E corregido y límites β=[.01,1], σ=[.01,.5], γ=[.05,.30], d=[.0001,.05], α=[.50,1]. DE: best1bin, popsize=15, mutation=(.5,1), recombination=.7, tol=.01, maxiter=1000, polish=False. Sin tuning con validación.
+
+Se reevaluará el diagnóstico histórico con sus cuatro semillas diagnósticas preexistentes 20260816–20260819; la primaria se reutiliza, no se reemplaza por la mejor semilla. No se introducen ni seleccionan semillas. Cada perfil utiliza exclusivamente 20260815.
+
+Perfiles de β, γ y d: siete puntos deterministas alrededor del nuevo vector primario, según la regla histórica (valor primario más offsets .10, .30, .60 hacia ambos límites). Perfil de α: unión de esos siete puntos históricos actualizados con [.50,.505,.51,.52,.55,.60,.65,.70,.75,.80,.85,.90,.95,1.00] y el valor primario. Incluye las fronteras, sin ampliarlas.
+
+Para cada α se calcula primero una sección de coste con los otros cuatro parámetros fijos en sus valores primarios. Separadamente se ejecuta DE con α fijo y los otros cuatro libres; los perfiles de β, γ, d siguen la misma regla de reoptimización. Las condiciones iniciales se recalculan al variar σ, γ o d. Se conservan las soluciones DE crudas, incluso si su coste supera el de una sección fija factible: el perfil DE es una aproximación mediante optimización estocástica, no una prueba del mínimo global. No se mezclan la sección fija y el perfil reoptimizado en la envolvente.
+
+Pool para identificabilidad/R₀: primaria, cuatro semillas diagnósticas y todos los puntos DE de los cuatro perfiles. Reutilizar las bandas históricas .1%, .5%, 1%, 2%, 5% por encima del RMSE primario; banda principal 1%. No seleccionar por validación. Es una envolvente descriptiva del conjunto finito explorado, no intervalo de confianza ni rango exhaustivo de parámetros admisibles. Reportar también el pool completo, la dispersión de parámetros y predicciones globales; la validación open-loop 2021–2022 se consulta después de acabar TODOS los ajustes, exclusivamente como diagnóstico.
+
+Controles: reproducir primaria/objetivo; verificar hashes de todas las fases anteriores y archivos versionados; pruebas independientes de Jacobiano completo, next-generation matrix, Matignon y exclusión del acumulador de observación. Para cada solución y sección fija se evalúan h=1,.5,.25 sin recalibrar. Umbral de resolución heredado: diferencia mensual relativa ≤1%, cambios RMSE/MAE ≤1%, cambio de bias ≤1% de media observada y reducción del error entre refinamientos. STOP ante fallo del optimizador final, simulación final inválida, discrepancia de integridad o incumplimiento numérico. Los candidatos DE inválidos siguen recibiendo la penalización original, con recuento explícito.
+
+R₀ de referencia: βσ/[(σ+μ)(γ+μ+d)], normalización autónoma Nref=S*=Λ/μ. DFE epidemiológico (S*,0,0,0); Jacobiano 4×4 incluye ∂Tdot/∂I=γ. El observable acumulado no realimenta la dinámica y se excluye del criterio epidemiológico. Matignon se aplica al sistema con Jacobiano constante y orden común α; para la implementación con N(t) exógeno, se calcula además el factor S*/N(t) y el diagnóstico congelado en el tiempo, sin afirmar que Matignon punto a punto demuestre estabilidad no autónoma.
+
+El intervalo histórico R₀=1.1542–1.1892 queda suspendido. No se transfieren automáticamente claims históricos ni se congela Fase 2. Toda conclusión se entrega a revisión del autor.

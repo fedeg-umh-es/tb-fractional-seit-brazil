@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "phase1_hashes_verified": true,
+  "phase1_untracked_files_preserved": true,
+  "tracked_file_count": 239,
+  "tests_reverified": "....                                                                     [100%]\n4 passed in 0.39s\n",
+  "operator": "Composite trapezoids of sigma*E corrected grid, independent ordinary integral; fractional dynamics unchanged",
+  "steps": [
+    1.0,
+    0.5,
+    0.25
+  ],
+  "relative_tolerance_declared_before_execution": 0.01,
+  "rules": "Max pointwise h1 vs h.25 relative difference <=1%; RMSE/MAE changes <=1%; bias change <=1% observed mean; h.5 to h.25 max change must decrease. Empirical resolution check, not proof of exact continuum error.",
+  "frozen_parameters": [
+    {
+      "model": "fractional",
+      "operator": "ordinary_composite_trapezoid",
+      "seed": 20260815,
+      "beta": 0.1200378283682481,
+      "sigma": 0.0100043271689694,
+      "gamma": 0.2613467372251754,
+      "d": 0.0391000095869575,
+      "alpha": 0.5022029993981696,
+      "objective_train_rmse": 619.3187514936859,
+      "success": true,
+      "iterations": 36,
+      "function_evaluations": 2775
+    },
+    {
+      "model": "integer",
+      "operator": "ordinary_composite_trapezoid",
+      "seed": 20260815,
+      "beta": 0.0611663340086828,
+      "sigma": 0.0101734232424985,
+      "gamma": 0.0532488771400249,
+      "d": 0.000213340717881,
+      "alpha": 1.0,
+      "objective_train_rmse": 776.0408518036184,
+      "success": true,
+      "iterations": 52,
+      "function_evaluations": 3180
+    }
+  ],
+  "reproduction": [
+    {
+      "model": "fractional",
+      "max_prediction_delta": 2.7284841053187847e-12,
+      "status": "PASS"
+    },
+    {
+      "model": "integer",
+      "max_prediction_delta": 1.000444171950221e-11,
+      "status": "PASS"
+    }
+  ],
+  "numerical": [
+    {
+      "model": "fractional",
+      "alpha": 0.5022029993981696,
+      "split": "calibration",
+      "max_prediction_change": 9.301782984451165,
+      "max_pointwise_relative_change": 0.0011560365730113834,
+      "coarse_half_max_difference": 6.730423320945192,
+      "half_quarter_max_difference": 2.571359663505973,
+      "rmse_h1": 619.3187514936859,
+      "rmse_hquarter": 619.3134943091188,
+      "rmse_relative_change": 8.48872923873581e-06,
+      "mae_h1": 484.0624784849362,
+      "mae_hquarter": 484.0989944219533,
+      "mae_relative_change": 7.543072271964222e-05,
+      "bias_relative_to_mean_observed_change": 5.976655384231186e-06,
+      "tolerance": 0.01,
+      "status": "PASS"
+    },
+    {
+      "model": "fractional",
+      "alpha": 0.5022029993981696,
+      "split": "validation_open_loop",
+      "max_prediction_change": 0.008594340011768509,
+      "max_pointwise_relative_change": 1.2094857428681823e-06,
+      "coarse_half_max_difference": 0.0067528566578403115,
+      "half_quarter_max_difference": 0.0018414833539281972,
+      "rmse_h1": 1216.5419862064475,
+      "rmse_hquarter": 1216.540387617262,
+      "rmse_relative_change": 1.3140453056690433e-06,
+      "mae_h1": 1035.2071037599537,
+      "mae_hquarter": 1035.2053466910786,
+      "mae_relative_change": 1.697314335497144e-06,
+      "bias_relative_to_mean_observed_change": 1.5158483856750404e-07,
+      "tolerance": 0.01,
+      "status": "PASS"
+    },
+    {
+      "model": "integer",
+      "alpha": 1.0,
+      "split": "calibration",
+      "max_prediction_change": 0.09516552876903006,
+      "max_pointwise_relative_change": 1.1760923836086572e-05,
+      "coarse_half_max_difference": 0.07613484715329832,
+      "half_quarter_max_difference": 0.019030681615731737,
+      "rmse_h1": 776.0408518036179,
+      "rmse_hquarter": 776.0457183523163,
+      "rmse_relative_change": 6.270956186326516e-06,
+      "mae_h1": 616.1455725740085,
+      "mae_hquarter": 616.1468163086882,
+      "mae_relative_change": 2.018568702826525e-06,
+      "bias_relative_to_mean_observed_change": 1.0858445785708015e-06,
+      "tolerance": 0.01,
+      "status": "PASS"
+    },
+    {
+      "model": "integer",
+      "alpha": 1.0,
+      "split": "validation_open_loop",
+      "max_prediction_change": 0.019492550664836017,
+      "max_pointwise_relative_change": 3.069062805723853e-06,
+      "coarse_half_max_difference": 0.015594599206451676,
+      "half_quarter_max_difference": 0.003897951458384341,
+      "rmse_h1": 1759.542091885783,
+      "rmse_hquarter": 1759.556419580835,
+      "rmse_relative_change": 8.1427880870534e-06,
+      "mae_h1": 1588.6526307121378,
+      "mae_hquarter": 1588.6685066494408,
+      "mae_relative_change": 9.99323473497368e-06,
+      "bias_relative_to_mean_observed_change": 1.9682744019185205e-06,
+      "tolerance": 0.01,
+      "status": "PASS"
+    }
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "recalibrations_performed": 0
+}

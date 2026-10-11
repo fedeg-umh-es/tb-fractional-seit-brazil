@@ -1,0 +1,49 @@
+frozen-replay PASS 2020-12-01 fractional
+frozen-replay PASS 2020-12-01 integer
+frozen-replay PASS 2021-01-01 fractional
+frozen-replay PASS 2021-01-01 integer
+frozen-replay PASS 2021-02-01 fractional
+frozen-replay PASS 2021-02-01 integer
+frozen-replay PASS 2021-03-01 fractional
+frozen-replay PASS 2021-03-01 integer
+frozen-replay PASS 2021-04-01 fractional
+frozen-replay PASS 2021-04-01 integer
+frozen-replay PASS 2021-05-01 fractional
+frozen-replay PASS 2021-05-01 integer
+frozen-replay PASS 2021-06-01 fractional
+frozen-replay PASS 2021-06-01 integer
+frozen-replay PASS 2021-07-01 fractional
+frozen-replay PASS 2021-07-01 integer
+frozen-replay PASS 2021-08-01 fractional
+frozen-replay PASS 2021-08-01 integer
+frozen-replay PASS 2021-09-01 fractional
+frozen-replay PASS 2021-09-01 integer
+frozen-replay PASS 2021-10-01 fractional
+frozen-replay PASS 2021-10-01 integer
+frozen-replay PASS 2021-11-01 fractional
+frozen-replay PASS 2021-11-01 integer
+frozen-replay PASS 2021-12-01 fractional
+frozen-replay PASS 2021-12-01 integer
+{
+  "status": "PASS",
+  "decision": "BLOCKED_MISSING_PHASE2_ARTIFACTS_CAN_BE_LIFTED",
+  "verification_date": "2026-10-10",
+  "zip_sha256": "90ac75b21112be90ac4f9eba8658ef5203334535371b35011b519c167215818b",
+  "zip_files": 37,
+  "payload_sha256_entries": 36,
+  "predictions": 780,
+  "pairs_per_model": 156,
+  "fits_recorded": 26,
+  "new_calibrations": 0,
+  "frozen_simulations": 78,
+  "source_operator": "Ordinary monthly integral of sigma*E; composite trapezoids of corrected E, independent of fractional C",
+  "max_replay_prediction_difference": 0.0,
+  "max_relative_step_change": 0.0011891809362530518,
+  "sarima_limitation": "Per-origin fitted coefficients not saved; exact reuse and immutable code/data/order provenance checked; no refit",
+  "remaining_blocks": [
+    "Scientific review/acceptance of phase-3 identifiability including alpha boundary/profile, R0 envelope and DFE scope",
+    "Reconcile claims and author decision to freeze phase-2 evidence",
+    "PR #3 remains draft / DO NOT MERGE; manuscript and compilation not authorized until scientific closure"
+  ],
+  "manuscript_changes": 0
+}

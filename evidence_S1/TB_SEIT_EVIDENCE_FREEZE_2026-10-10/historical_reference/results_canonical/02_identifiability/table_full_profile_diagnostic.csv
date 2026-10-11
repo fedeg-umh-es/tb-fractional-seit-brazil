@@ -1,0 +1,2 @@
+label,n,R0_min,R0_max,n_R0_lt_1,n_R0_gt_1,purpose
+PROFILE_DIAGNOSTIC_ONLY,33,0.639310940867302,1.614875871536496,2,31,Prevents accidental future claims that R0 exceeded one across the entire profile pool. Includes deliberately poor-fit profile probes. Never the primary mechanistic evidence -- see table_R0_stability_summary.csv (NEAR_EQUIVALENT_ADMISSIBLE_SET) for that.

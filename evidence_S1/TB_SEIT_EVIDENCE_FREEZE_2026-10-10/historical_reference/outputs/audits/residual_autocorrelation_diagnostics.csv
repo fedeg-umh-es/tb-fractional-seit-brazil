@@ -1,0 +1,5 @@
+model,split,n,max_lag_tested,acf_lag1,acf_lag2,acf_lag3,ljung_box_Q,ljung_box_p_value,significant_at_0.05,reliability_note
+fractional,calibration,240,20,0.19487965523990408,0.30809238108016734,0.2579956344677258,235.778663732403,8.298263459205942e-39,True,adequate n for the tested lag count
+integer,calibration,240,20,0.48375470573183155,0.5579563596414374,0.5196613756503847,1060.7900022053109,4.1824214848185513e-212,True,adequate n for the tested lag count
+fractional,validation,24,6,0.6016668844554823,0.4804917064142961,0.3616077239058002,24.615633285899232,0.0004021723001345954,True,"LOW POWER: n=24 validation segment, few effective lags -- non-significance here is not strong evidence of independence"
+integer,validation,24,6,0.6283869783129162,0.5094405068679545,0.39337854011815715,27.77429864656302,0.00010361817460936066,True,"LOW POWER: n=24 validation segment, few effective lags -- non-significance here is not strong evidence of independence"

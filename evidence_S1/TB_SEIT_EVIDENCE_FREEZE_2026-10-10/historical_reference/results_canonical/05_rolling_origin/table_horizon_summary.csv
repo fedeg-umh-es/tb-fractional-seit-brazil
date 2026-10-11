@@ -1,0 +1,7 @@
+model,baseline,metric,H_relax,H_strict_from_h1,longest_positive_run_if_available,notes
+fractional,persistence,RMSE,0,0,0,"descriptor of this dataset/protocol only, not a universal predictability limit"
+fractional,persistence,MAE,0,0,0,"descriptor of this dataset/protocol only, not a universal predictability limit"
+fractional,seasonal_naive_12,RMSE,7,7,7,"descriptor of this dataset/protocol only, not a universal predictability limit"
+fractional,seasonal_naive_12,MAE,7,7,7,"descriptor of this dataset/protocol only, not a universal predictability limit"
+fractional,SARIMA,RMSE,0,0,0,"descriptor of this dataset/protocol only, not a universal predictability limit"
+fractional,SARIMA,MAE,0,0,0,"descriptor of this dataset/protocol only, not a universal predictability limit"

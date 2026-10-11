@@ -1,0 +1,12 @@
+historical_claim_id,historical_statement,historical_status,freeze_disposition,current_claim_ids,historical_table,original_not_modified
+C01,Fractional SEIT has lower forecasting error than integer SEIT.,SUPPORTED_WITHIN_MODEL_FAMILY,RECONCILED_WITH_NEW_EVIDENCE,T2,results_canonical/05_rolling_origin/table_forecasting_by_horizon.csv,True
+C02,Fractional SEIT outperforms persistence.,NOT_SUPPORTED,RECONCILED_WITH_NEW_EVIDENCE,T3,results_canonical/05_rolling_origin/table_skill_by_horizon.csv,True
+C03,Fractional SEIT outperforms SARIMA.,NOT_SUPPORTED,RECONCILED_WITH_NEW_EVIDENCE,T4,results_canonical/05_rolling_origin/table_skill_by_horizon.csv,True
+C04,Fractional SEIT has positive forecast skill through seven months.,SUPPORTED_ONLY_VS_SEASONAL_NAIVE,REPLACED_OBSOLETE,T5,results_canonical/05_rolling_origin/table_horizon_summary.csv,True
+C05,Fractional order improves operational forecasting generally.,NOT_SUPPORTED,RECONCILED_WITH_NEW_EVIDENCE,"T3,T4",results_canonical/05_rolling_origin/table_skill_by_horizon.csv,True
+C06,alpha < 1 proves epidemiological memory.,NOT_SUPPORTED,HISTORICAL_WORDING_NOT_TRANSFERABLE,"T8,I4",IDENTIFIABILITY_AUDIT_REPORT.md,True
+C07,R0 remains above one across near-equivalent admissible solutions.,SUPPORTED,REPLACED_OBSOLETE,R2,results_canonical/03_R0_stability/table_R0_stability_summary.csv,True
+C08,The disease-free equilibrium is locally unstable across near-equivalent solutions.,SUPPORTED,REPLACED_OBSOLETE,D1,results_canonical/03_R0_stability/table_R0_stability_summary.csv,True
+C09,"beta, gamma, and d are precisely identified epidemiological rates.",NOT_SUPPORTED,HISTORICAL_WORDING_NOT_TRANSFERABLE,I4,IDENTIFIABILITY_AUDIT_REPORT.md,True
+C10,The historical approximately 48% optimal-control reduction is supported.,NOT_VERIFIED,RECONCILED_WITH_NEW_EVIDENCE,Q6,PROJECT_CANON.md,True
+C11,Fractional SEIT is statistically superior or inferior to a forecasting baseline.,NOT_TESTED,RECONCILED_WITH_NEW_EVIDENCE,Q4,results_canonical/05_rolling_origin/table_skill_by_horizon.csv,True

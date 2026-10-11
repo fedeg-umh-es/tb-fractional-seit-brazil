@@ -1,0 +1,14 @@
+{
+  "mu": {
+    "value": 0.0011261261261261261,
+    "formula": "1 / (life_expectancy_years * 12)",
+    "life_expectancy_years": 74.0,
+    "source": "docs/EXTERNAL_PARAMETER_CONTRACT.md, mu row; METHOD_DECISION_LOG.md D015"
+  },
+  "lambda": {
+    "value": 220201.11548423424,
+    "formula": "mu * mean(N_dataset over 2001-01..2020-12)",
+    "mean_training_population": 195538590.55,
+    "source": "docs/EXTERNAL_PARAMETER_CONTRACT.md Section 2/4"
+  }
+}

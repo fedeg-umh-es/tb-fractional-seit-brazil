@@ -1,0 +1,342 @@
+{
+  "summary": {
+    "verdict": "PHASE3_PASS_WITH_DOCUMENTED_LIMITATIONS",
+    "primary_R0_reference": 0.35776750381879896,
+    "admissible_solutions": 32,
+    "admissible_R0_min": 0.3416572022567021,
+    "admissible_R0_max": 0.587925772372874,
+    "full_pool_solutions": 47,
+    "full_R0_min": 0.3416572022567021,
+    "full_R0_max": 1.6619977217037603,
+    "primary_RMSE_reference": 619.3187514936859,
+    "threshold_1pct": 625.5119390086228,
+    "best_explored_RMSE": 618.7881269993687,
+    "primary_minus_best": 0.5306244943171805,
+    "primary_minus_best_percent": 0.08567873862004166,
+    "alpha_admissible_sampled_range": [
+      0.5,
+      0.52
+    ],
+    "alpha_next_sampled_excluded": 0.55,
+    "admissibility_unchanged_hquarter": true,
+    "max_saved_step_relative_difference": 0.0011913372741807345,
+    "theory_scope": "Autonomous constant-N reference; no proved stability of time-varying N(t) model",
+    "protocol_decisions_recorded_before_phase3_execution": true,
+    "protocol_decisions_before_phase1_or_phase2": false,
+    "author_adoption_of_available_protocol": "2026-10-10; retrospective documentary adoption",
+    "original_protocol_search_closed": true,
+    "global_calibration_reused": true,
+    "original_protocol_equivalence_asserted": false,
+    "new_optimizations": 0,
+    "new_solver_simulations": 0,
+    "new_R0_DFE_experiments": 0,
+    "verification_method": "Static source inspection and arithmetic reconstruction of existing tables; no execution of scientific runner",
+    "raw_fine_grid_state_arrays_saved": false,
+    "limitations": [
+      "Local session chronology is not independently timestamp-certified; predates phase3 run, not prior phase1/2 results.",
+      "DE profiles approximate minima; optimizer convergence does not establish uniqueness or exhaustive identification.",
+      "Near-boundary alpha and sparse gap .52-.55 do not locate a continuous confidence or identifiability interval.",
+      "R0 envelope covers 32 finite explored solutions; not a confidence interval or exhaustive admissible-set bound.",
+      "DFE reference stability does not prove nonautonomous stability with N(t); frozen-time spectra are descriptive.",
+      "Full fine-grid state arrays are not archived; 115 controls are supported by checkpoints and reproducible source, not an independent solver rerun in this audit.",
+      "No full phase3 output manifest sealed before this audit; previous source/pool hashes and redundant tables/checkpoints are verified."
+    ]
+  },
+  "checks": [
+    {
+      "check": "adopted_protocol_hash",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "executed_script_hash",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "239_versioned_files_unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "61_previous_phase_files_unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "previous_reconciliation_hashes_preserved",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "protocol_exact_bytes_precede_execution",
+      "status": "PASS",
+      "detail": [
+        {
+          "event": "write_PROTOCOL_DECISION.md",
+          "timestamp_utc": "2026-10-08T19:36:16.660Z",
+          "session_line": 679,
+          "recovered_content_sha256": "58d4bed36871f9c63cd93e4c199d5c9890f006ccaf96ede85362480dee91469b",
+          "current_content_sha256": "58d4bed36871f9c63cd93e4c199d5c9890f006ccaf96ede85362480dee91469b",
+          "same_bytes": true
+        },
+        {
+          "event": "write_run_phase3.py",
+          "timestamp_utc": "2026-10-08T19:38:57.125Z",
+          "session_line": 693,
+          "recovered_content_sha256": "35d9bb9ce6951be1d9a4a7a5034f94a3a1385f63e7dfabc998aa76e9d6eaa5ae",
+          "current_content_sha256": "35d9bb9ce6951be1d9a4a7a5034f94a3a1385f63e7dfabc998aa76e9d6eaa5ae",
+          "same_bytes": true
+        },
+        {
+          "event": "launch_phase3",
+          "timestamp_utc": "2026-10-08T19:40:16.626Z",
+          "session_line": 716
+        }
+      ]
+    },
+    {
+      "check": "executor_exact_bytes_precede_execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "phase1_executor_integrity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "S1_ordinary_corrected_E_quadrature",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "observable_C_no_feedback_and_T_derivative",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "global_fit_no_old_x0_population",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "primary_exact_phase1_reuse",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "primary_calibration_precedes_phase3_protocol",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "47_all_solutions_no_filtering",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "primary_not_replaced",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "optimizer_seed_budget_bounds",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "four_declared_diagnostic_seeds_and_primary_profiles",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_DE_evaluation_counts_match_dimension_and_iterations",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "DE_frozen_contract",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_recorded_profile_grids_executed_exactly",
+      "status": "PASS",
+      "detail": {
+        "alpha": 21,
+        "beta": 7,
+        "gamma": 7,
+        "d": 7
+      }
+    },
+    {
+      "check": "fixed_and_profile_alpha_same_21_points",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "fixed_section_four_parameters_unchanged",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "alpha_fixed_vs_reoptimized_columns_not_mixed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "alpha1_profile_recovers_independent_phase1_integer",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "46_fit_checkpoints_complete",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_checkpoint_parameters_objectives_budgets_agree",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "train_hash_and_no_validation_objective",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "47_global_curves_complete_264_months",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all47_training_and_validation_metrics_from_saved_predictions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "mu_one_over_888",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all47_analytic_initial_states",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "1pct_membership_primary_reference",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "115_numeric_controls_all_contract_rules",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "numeric_controls_match_pool_and_fixed_section_costs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "1pct_membership_stable_on_saved_quarter_grid",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "114_numeric_checkpoints_complete",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "numeric_checkpoint_tables_agree",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "R0_saved_formula_identity_all47",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all6_R0_envelopes_primary_band_complete_pool_separated",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "fixed_sections_excluded_from_R0_envelope",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "188_eigenvalues_and47_classifications_complete",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "closed_form_J4_spectrum_matches_saved_DFE_all47",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "32_admissible_all_stable_reference_44_full_stable3_unstable",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "frozen_time_diagnostics_no_nonautonomous_proof",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all12408_frozen_time_rows_match_saved_forcing_and_analytic_identity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "parameter_dispersion_reconstructed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "prediction_dispersion_reconstructed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "execution_completion_and_report_consistent",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "check": "all_source_artifacts_unchanged_during_audit",
+      "status": "PASS",
+      "detail": null
+    }
+  ],
+  "chronology": [
+    {
+      "event": "write_PROTOCOL_DECISION.md",
+      "timestamp_utc": "2026-10-08T19:36:16.660Z",
+      "session_line": 679,
+      "recovered_content_sha256": "58d4bed36871f9c63cd93e4c199d5c9890f006ccaf96ede85362480dee91469b",
+      "current_content_sha256": "58d4bed36871f9c63cd93e4c199d5c9890f006ccaf96ede85362480dee91469b",
+      "same_bytes": true
+    },
+    {
+      "event": "write_run_phase3.py",
+      "timestamp_utc": "2026-10-08T19:38:57.125Z",
+      "session_line": 693,
+      "recovered_content_sha256": "35d9bb9ce6951be1d9a4a7a5034f94a3a1385f63e7dfabc998aa76e9d6eaa5ae",
+      "current_content_sha256": "35d9bb9ce6951be1d9a4a7a5034f94a3a1385f63e7dfabc998aa76e9d6eaa5ae",
+      "same_bytes": true
+    },
+    {
+      "event": "launch_phase3",
+      "timestamp_utc": "2026-10-08T19:40:16.626Z",
+      "session_line": 716
+    }
+  ]
+}
