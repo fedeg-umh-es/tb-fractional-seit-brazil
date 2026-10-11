@@ -78,3 +78,94 @@ Pending decisions:
 
 Steps 6 to 10 were not started: step 8 depends on this step, and the plan requires stopping when a
 result may change a central claim.
+
+---
+
+# Continuation (authorised by fedeg, 2026-10-11): F-b, F-c, I-b
+
+Authorisation and rules: `PROTOCOL_ADDENDUM_2026-10-11.md` (commit `872aadc`), script options in
+commit `962f076`, both made before the run. Outputs carry the suffix `_continuation`; the record of
+the first stop is unchanged. Controls 1 and 2 passed again (F-0 reproduces the S1 primary).
+
+**Status: STOPPED AGAIN at F-c. I-b was not run.**
+
+## Results (single DE seed, calibration 2001-01 to 2020-12)
+
+| | S1 primary (F-0) | F-b | F-c | F-a (first run) |
+|---|---|---|---|---|
+| alpha bounds / sigma bounds | [0.50,1] / [0.01,0.5] | [0.50,1] / [0.001,0.5] | [0.20,1] / [0.001,0.5] | [0.20,1] / [0.01,0.5] |
+| alpha | 0.5022 | 0.5005 | 0.2003 | 0.2024 |
+| sigma | 0.010004 | **0.006616** | 0.035936 | 0.034974 |
+| beta / gamma / d | 0.1200 / 0.2613 / 0.0391 | 0.0131 / 0.2769 / 0.0081 | 0.0120 / 0.1335 / 0.0310 | 0.0117 / 0.2490 / 0.0310 |
+| Training RMSE (change vs S1) | 619.32 | 615.82 (-0.57%) | 589.23 (-4.86%) | 589.31 (-4.85%) |
+| Validation RMSE 2021-22 (change) | 1216.54 | 1195.56 (-1.72%) | 1078.60 (-11.34%) | 1086.82 (-10.66%) |
+| Reference R0 (phase-3 function) | 0.3578 | 0.0391 | 0.0704 | 0.0405 |
+| alpha determined by boundary? | yes | yes | yes | yes |
+| sigma determined by boundary? | yes | **no** (0.0066 > 1.1 x 0.001) | no | no |
+| Numerical control (h = 1 vs 0.25) | n/a | PASS (max pointwise 0.12%) | **FAIL** (1.0064%) | FAIL (1.0095%) |
+
+## Why it stopped
+
+F-c meets the same two stop conditions as F-a: training RMSE improves by 4.86% (limit 1%) and the
+maximum pointwise relative change between h = 1 and h = 0.25 is 1.0064% (limit 1%). RMSE, MAE and
+bias changes are far below 1% (0.016%, 0.069%, 0.004%) and refinement is monotone. The pointwise
+excess appears in both fits with alpha near 0.2, which is where the protocol anticipated the
+solver might behave worse. The threshold is not relaxed and no other grid was tried.
+
+## Reading
+
+**Facts.**
+
+- **alpha** lies within 0.01 of its lower bound in all four fractional fits: 0.5005 with bound
+  0.50, 0.2003 and 0.2024 with bound 0.20. Lowering the bound moves alpha to the new bound, and the
+  training RMSE falls by about 4.9% when it does. In this dataset and with these bounds, alpha is
+  not determined by the data in the range tested.
+- **sigma** is interior when its lower bound is 0.001: 0.0066 in F-b and 0.0359 in F-c. By the
+  protocol's rule it is not boundary-determined there. The S1 value 0.010004 is therefore a
+  consequence of the 0.01 bound, not an estimate. The change in the training objective from
+  moving only the sigma bound (F-b) is -0.57%, inside the 1% band used for near-equivalence in S1
+  phase 3.
+- **Reference R0** is not stable under these bounds. In F-b, with a training RMSE only 0.57% below
+  the S1 primary, R0 is 0.039 against 0.358; in F-c and F-a it is 0.070 and 0.040. All are below
+  the S1 envelope for the full pool (minimum 0.3417). The S1 envelope (0.3417-0.5879 for the
+  admissible set) is conditional on the original bounds and does not cover solutions that are
+  equally good at the 1% level once sigma is allowed to go below 0.01.
+- **Validation ranking** against the S1 integer primary (1759.54) does not invert for F-a, F-b or
+  F-c (all between 1078.6 and 1195.6). The test against I-b, as the protocol defines it, could not
+  be completed because I-b was not run.
+- **beta** is near its lower bound (0.01) in F-b, F-c and F-a, and **gamma** is flagged near a bound
+  in F-b. Those bounds were not changed. The ordinary integer-model d, which Amaury mentioned, was
+  not examined because I-b did not run.
+
+**Inference (not tested).** The fractional fit in S1 sits at the corner of the original box
+(alpha at 0.50, sigma at 0.01) and parts of the reported structure (alpha value, sigma value, R0
+level) follow from that box. The result supports Amaury's reading of request A1, that alpha at the
+bound is a bound artefact rather than a feature of the data, and extends it to sigma. It also
+weakens any use of the S1 R0 envelope as a statement about the data: a near-equivalent fit (F-b)
+sits well outside it. A single seed mixes the effect of the bounds with search variability, but F-b
+and F-c agree on direction and the R0 gap is large (about an order of magnitude).
+
+**Not claimed.** That any of the wider-bound fits is more plausible biologically (sigma = 0.0066
+corresponds to a mean E-to-I progression time of about 12.6 years, and alpha = 0.20 is far from any
+usual range); that the fractional model forecasts better under wider bounds (no rolling-origin
+evaluation was run); anything about the integer model with sigma in [0.001, 0.5].
+
+## Consequences for the manuscript
+
+Plan A rule 3 applies: this result may force a change to a central claim. At least these elements
+of the S1 presentation need to be reworded as conditional on the original bounds: alpha = 0.502,
+sigma = 0.0100, the reference R0 envelope 0.3417-0.5879, and the statement that R0 is
+comparatively stable across near-equivalent solutions (S1 phase 3 explored only solutions inside
+the original box). What stays untouched: the fractional-versus-integer ordering in validation and
+the negative skill against persistence and SARIMA in the S1 rolling-origin evidence, which used the
+original bounds and were not recomputed.
+
+## Pending decisions (fedeg, then Amaury)
+
+1. Run I-b alone? It does not depend on the alpha bound, takes about 30 s, and would complete the
+   ranking test and the integer-d check. The stop clause covers it, so it was not run.
+2. Treat the numerical-control miss in F-a and F-c (about 1.006-1.010% against 1%) as a failure, as
+   the protocol does, or document it as a limitation of the h = 1 solver at alpha near 0.2.
+3. Whether the manuscript presents S1 as it is with these results as a sensitivity analysis, or
+   whether a rolling-origin re-evaluation with wider bounds is warranted. The latter needs separate
+   authorisation from fedeg and Amaury and is outside Plan A.
