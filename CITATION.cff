@@ -1,0 +1,30 @@
+# Draft for the Zenodo deposit (Plan A, step 9). Author order, affiliations and ORCIDs are NOT
+# VERIFIED in the repository and are pending the authors; see docs/decisions/ZENODO_DEPOSIT_NOTES_2026-10-11.md.
+cff-version: 1.2.0
+message: "If you use this repository, please cite it using the metadata below."
+type: software
+title: "TB Fractional SEIT Brazil: code, data and frozen evidence for within-family and external forecast skill in SEIT tuberculosis models"
+abstract: >-
+  Code, supplied monthly tuberculosis series for Brazil (2001-2022, N = 264), and frozen evidence
+  (S1 freeze, ordinary monthly observation operator) for a methodological comparison of a
+  fractional-order and an integer-order SEIT model against persistence, seasonal naive and SARIMA
+  baselines in a rolling-origin evaluation (13 origins, horizons 1-12 months).
+authors:
+  - family-names: "García Crespi"
+    given-names: "Federico"
+    email: "fedeg@umh.es"
+  - family-names: "Souza"
+    name-particle: "de"
+    given-names: "Amaury"
+repository-code: "https://github.com/fedeg-umh-es/tb-fractional-seit-brazil"
+keywords:
+  - tuberculosis
+  - fractional-order models
+  - SEIT model
+  - forecasting
+  - rolling-origin evaluation
+  - practical identifiability
+# Evidence of record: branch evidence/s1-freeze-2026-10-10, commit below.
+commit: "53eae1091f652ec0393707f4e0ae7b2ec4b43acb"
+date-released: "2026-10-10"
+# version, license and doi are deliberately not set: see the deposit notes (no licence file exists in the repository; the DOI is created by the Zenodo deposit).
