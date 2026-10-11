@@ -258,3 +258,23 @@ decision needs fedeg and Amaury.
    (outside Plan A; needs fedeg and Amaury).
 3. Which of steps 6-10 to start. Step 7 (limitation text) does not depend on step 5; step 8
    (manuscript) depends on both the decision above and on Amaury's sign-off on the S1 decision.
+
+---
+
+# Decision recorded (fedeg, 2026-10-11): numerical-control miss in F-a and F-c
+
+fedeg decided that the marginal miss of the numerical-resolution control in F-a (1.0095%) and F-c
+(1.0064%) against the 1% threshold is treated as a **documented limitation**, not as a failure that
+invalidates those fits.
+
+What this does and does not change:
+
+- The protocol verdict recorded at execution time stays `FAIL` for F-a and F-c
+  (`numerical_controls*.csv`, `STOP*.txt`). The threshold was not relaxed and no other grid was run.
+- The reading of the results is unchanged: F-a and F-c remain descriptive sensitivity fits. The
+  1% training-improvement stop they also met is a separate condition and is not affected.
+- The documented limitation, to be carried into the text: with alpha near 0.2 the step h = 1 month
+  gives a maximum pointwise relative change of about 1.0-1.01% against the h = 0.25 solution, while
+  RMSE, MAE and bias change by less than 0.07% and the refinement is monotone. Metrics at the
+  aggregate level are therefore insensitive to the step; individual monthly values may differ by
+  about 1% at some points.
