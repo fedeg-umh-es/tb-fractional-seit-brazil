@@ -37,7 +37,7 @@ FITS = {  # id: (integer?, overrides)
 H = 1.0
 # Optional CLI: fit ids to run (continuation after the mandatory stop, see PROTOCOL_ADDENDUM).
 IDS = sys.argv[1:] or list(FITS)
-SUFFIX = "_continuation" if sys.argv[1:] else ""
+SUFFIX = os.environ.get("A1_SUFFIX", "_continuation" if sys.argv[1:] else "")
 
 
 def ordinary_monthly_flow(e, sigma, n_months, h):
@@ -192,10 +192,12 @@ def main():
             return stop(f"{fid}: training RMSE improves {100 * row['train_rmse_rel_change_vs_S1_primary']:.3f}% (> 1%) over the S1 primary", rows)
 
     # F-a was run (and stopped) in the original run: take its recorded values
-    if "F-a" not in preds:
-        fa = pd.read_csv(OUT / "fit_parameters.csv", float_precision="round_trip").set_index("id").loc["F-a"].to_dict()
-        fa["id"] = "F-a"
-        preds["F-a"] = fa
+    recorded = {"F-a": "fit_parameters.csv", "F-b": "fit_parameters_continuation.csv", "F-c": "fit_parameters_continuation.csv"}
+    for rid, fname in recorded.items():
+        if rid not in preds:
+            rec = pd.read_csv(OUT / fname, float_precision="round_trip").set_index("id").loc[rid].to_dict()
+            rec["id"] = rid
+            preds[rid] = rec
     # ranking in validation
     ib = preds["I-b"]["val_rmse"]
     inverted = [f for f in ("F-a", "F-b", "F-c")
@@ -210,7 +212,7 @@ def main():
                      "val_rel_change_pct": 100 * r["val_rmse_rel_change_vs_S1_primary"],
                      "R0_reference": r["R0_reference"],
                      "alpha_boundary": r["alpha_determined_by_boundary"], "sigma_boundary": r["sigma_determined_by_boundary"],
-                     "note": "F-a: recorded values from the stopped run; failed numerical control and 1% stop" if fid == "F-a" else ""})
+                     "note": {"F-a": "recorded values; numerical control FAIL and 1% stop", "F-b": "recorded values; numerical control PASS", "F-c": "recorded values; numerical control FAIL and 1% stop"}.get(fid, "")})
     pd.DataFrame(comp).to_csv(OUT / f"comparison_with_S1_primary{SUFFIX}.csv", index=False, float_format="%.12g")
     if inverted:
         return stop(f"validation ranking fractional vs integer inverted for {inverted}", list(preds.values()))
