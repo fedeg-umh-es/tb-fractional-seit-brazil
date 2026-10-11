@@ -19,6 +19,7 @@ Evidence column: what was checked and where. "Authors" means the item needs the 
 | Repository tests and evidence integrity | PASS | `pytest` 133 passed; `verify_frozen_bundle.py` PASS (manifest SHA-256 `8e490eb4…faaa1`); `git diff --check` clean over the branch; protected folders unchanged |
 | Claims discipline (no priority language, no general fractional superiority, no biological memory from alpha < 1, R0 envelope not a CI) | PASS | reviewed in `manuscript.tex`; sensitivity analysis states that alpha, sigma and the R0 envelope are conditional on the original bounds |
 | Cover letter | READY, authors confirm | `submission_final/COVER_LETTER.md`; one bracketed confirmation (originality and approval by both authors) and `[ZENODO_DOI]` |
+| Licences (code MIT, data CC BY 4.0) and reuse of the supplied dataset | PASS | `LICENSE`, `LICENSE-CC-BY-4.0.txt`, `LICENSES.md`; Data and Code Availability updated; decided by fedeg 2026-10-11 (Amaury's written confirmation not in the repository) |
 | Route | AUTHORS | Bulletin of Mathematical Biology, traditional subscription route, no paid open access: choose it in the submission system |
 | Suggested reviewers | AUTHORS | none proposed here; add if the system asks |
 | Decision S1 signed | **OPEN** | `docs/decisions/S1_DECISION_2026-10-11.md`: both sign-off lines blank; agreement reported by fedeg (`AUTHOR_AGREEMENT_2026-10-11.md`) |

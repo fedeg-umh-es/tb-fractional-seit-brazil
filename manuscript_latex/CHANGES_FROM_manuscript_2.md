@@ -37,3 +37,11 @@ Not done: A5-A8 analyses (declared as limitations); update of the population sou
 | Matignon (1996) added, provisional | cited for the stability condition already used |
 | WHO 2024 and Ministry of Health 2024 added | B1 |
 | IBGE entry: URL changed to the IBGE library copy of the 2013 methodological note | previous URL not checkable |
+
+## Licences and deposit decisions (2026-10-11)
+
+| Change | Reason |
+|---|---|
+| Methods 2.1: "...are not publicly available" replaced by "(a copy of the working manuscript is archived with the code)" | the original working manuscript stays in the archive (option C) |
+| Data Availability: the reuse caveat replaced by "released under CC BY 4.0 ... code under MIT" | licences decided by the authors |
+| Code Availability: licences stated | same |

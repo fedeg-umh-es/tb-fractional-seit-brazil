@@ -37,7 +37,6 @@ version, see deposit notes).
 ## Notes
 
 - The repository is public (HTTP 200 without authentication on 2026-10-11).
-- The Data Availability statement keeps the author-confirmation marker already present in the
-  repository: the access route and reuse conditions of the supplied file are an author decision.
+- Licences decided by the authors on 2026-10-11: CC BY 4.0 for the data and MIT for the code (`LICENSES.md`).
 - The sentence about the second author refers to the current repository wording ("supplied by
   Amaury de Souza for this collaboration"); confirm it with him.

@@ -32,4 +32,8 @@ keywords:
 # Evidence of record: branch evidence/s1-freeze-2026-10-10, commit below.
 commit: "53eae1091f652ec0393707f4e0ae7b2ec4b43acb"
 date-released: "2026-10-10"
-# version, license and doi are deliberately not set: see the deposit notes (no licence file exists in the repository; the DOI is created by the Zenodo deposit).
+version: "1.0.0"
+license:
+  - MIT
+  - CC-BY-4.0
+# doi is added after the Zenodo deposit; date-released is updated to the release date.

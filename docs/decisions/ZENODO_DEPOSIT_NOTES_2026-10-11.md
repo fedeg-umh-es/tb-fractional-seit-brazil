@@ -1,38 +1,22 @@
-# Notes for the Zenodo deposit (2026-10-11)
+# Zenodo deposit: decisions and state (2026-10-11)
 
-For fedeg. Plan A, step 9. `CITATION.cff` and `.zenodo.json` are drafts at the repository root.
-**No deposit was created.**
+For fedeg. `CITATION.cff` and `.zenodo.json` are ready; **the deposit itself has not been created.**
 
-## Decisions that are yours
+## Decisions (reported by fedeg on 2026-10-11)
 
-1. **Local paths in the frozen evidence.** 21 files under `evidence_S1/` contain absolute local
-   paths (`/Users/fede/...`), 296 occurrences in total. They are provenance records (execution
-   logs, JSON provenance, phase reports, verification scripts) and are covered by the manifest
-   SHA-256 values, so cleaning them would break `verify_frozen_bundle.py`. Decide whether they
-   remain in the public deposit. The files are:
-   `phase1/{control_worktrees_before.json, verification.json, SCIENTIFIC_SUMMARY.md,
-   package_provenance.json, comparison_sources.json, execution_result.json, execution.log,
-   tb_global_refit_phase1/results_global_primary/phase1_report.json}`;
-   `phase2/{execution_provenance.json, phase2_report.json, baseline_reuse_verification.json,
-   phase1_tests_reverified.json, AUDIT_REPORT.md}`; `phase3/execution_provenance.json`;
-   `SOURCE_PROVENANCE.json`; and under `verification/`: `phase2_zip/verify_phase2_zip_20261010.py`,
-   `freeze_evidence_20261010.py`, `git_integrity.json`, `phase3_conformity/{existing_phase3_evidence/execution_provenance.json,
-   chronology_fragments.jsonl, audit_phase3_conformity_20261010.py}`.
-2. **Licence.** The repository has no licence file, and I did not choose one. Zenodo requires a
-   licence for open access. Choose one (code and data may need different licences) and add it to
-   `CITATION.cff` (`license`) and `.zenodo.json` (`license`).
-3. **Authors.** Names, affiliations and ORCIDs now come from `manuscript_latex/manuscript.tex` (not independently verified here). The order is the manuscript's (de Souza first; García Crespi corresponding author) and is still an agreement between the two authors.
-4. **Release tag and content.** The evidence commit `53eae10` is on the branch
-   `evidence/s1-freeze-2026-10-10`. The deposit should be a tagged release that also contains the
-   analyses of this branch (`analyses/`, `docs/decisions/`). Create the tag yourself after the pull
-   request is reviewed, for example from the merge commit, and put it in `[RELEASE_TAG]`. If you use
-   the Zenodo-GitHub integration, it reads `.zenodo.json`.
-5. **Upload type.** `.zenodo.json` uses `software`, since the deposit is mainly code. If you prefer
-   `dataset` or a mixed record, change that field.
-6. **Version and DOI.** `version` and `doi` are not set in either file; the DOI is issued by the
-   deposit. Update `CITATION.cff` after that, and fill `[ZENODO_DOI]` in the availability texts.
+| # | Decision | Where it is applied |
+|---|---|---|
+| 1 | Data (including the supplied series) under **CC BY 4.0**; code under **MIT** | `LICENSE`, `LICENSE-CC-BY-4.0.txt`, `LICENSES.md`; `.zenodo.json` (`license: cc-by-4.0`, record level); `CITATION.cff` (`MIT`, `CC-BY-4.0`); manuscript Data and Code Availability |
+| 2 | **Option C**: `manuscript/source/BIOMATEMATICA_UNICAMP.docx` stays in the archive | no `export-ignore`; `LICENSES.md` carves it out ("rights remain with its authors unless they state otherwise"); the manuscript no longer says the original materials are "not publicly available" and says a copy of the working manuscript is archived with the code |
+| 3 | The 21 files of `evidence_S1/` with local paths (`/Users/fede/...`) **stay unchanged** (decided by Claude at fedeg's request) | cleaning them breaks the SHA-256 verification of the frozen bundle; the paths are provenance records, not credentials. They show the local user name `fede` |
+| 4 | Authors, order, affiliations and ORCID accepted as in the manuscript (de Souza first, García Crespi corresponding) | `.zenodo.json`, `CITATION.cff` |
+| 5 | PR #4 merged into `main` | the release tag should point to the merge commit on `main` |
 
-## What the drafts contain
+## Points that remain
 
-Title, abstract, repository URL, keywords, the S1 evidence commit and date, and the placeholders
-above. The abstract describes the study neutrally and makes no claim about results.
+- The dataset licence and the `.docx` inclusion were decided by fedeg; Amaury's own written confirmation of both is not in the repository.
+- `.zenodo.json` accepts one record-level licence; MIT for the code is stated in `LICENSE` and in the record notes. Check in the Sandbox that the `license` value `cc-by-4.0` validates.
+- The archived manuscript source contains `[ZENODO_DOI]` and `[RELEASE_TAG]`; it cannot contain its own DOI.
+- After the deposit: fill the placeholders (manuscript, cover letter, `CITATION.cff` `doi`/`date-released`) and rebuild the Overleaf package.
+
+Procedure (rehearsal in the Sandbox first, then the production release): `ZENODO_DEPOSIT_PROCEDURE_2026-10-11.md`.

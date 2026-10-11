@@ -1,10 +1,18 @@
 {
   "title": "TB Fractional SEIT Brazil: code, data and frozen evidence for within-family and external forecast skill in SEIT tuberculosis models",
   "upload_type": "software",
-  "description": "Code, supplied monthly tuberculosis series for Brazil (2001-2022, N = 264) and frozen evidence (S1 freeze, ordinary monthly observation operator) for a methodological comparison of a fractional-order and an integer-order SEIT model against persistence, seasonal naive and SARIMA baselines in a rolling-origin evaluation (13 origins, horizons 1-12 months). Evidence of record: evidence_S1/TB_SEIT_EVIDENCE_FREEZE_2026-10-10/, commit 53eae1091f652ec0393707f4e0ae7b2ec4b43acb.",
+  "description": "Code, supplied monthly tuberculosis series for Brazil (2001-2022, N = 264) and frozen evidence (S1 freeze, ordinary monthly observation operator) for a methodological comparison of a fractional-order and an integer-order SEIT model against persistence, seasonal naive and SARIMA baselines in a rolling-origin evaluation (13 origins, horizons 1-12 months). Evidence of record: evidence_S1/TB_SEIT_EVIDENCE_FREEZE_2026-10-10/, commit 53eae1091f652ec0393707f4e0ae7b2ec4b43acb. Licences: MIT for code, CC BY 4.0 for data, results and documents.",
   "creators": [
-    {"name": "de Souza, Amaury", "affiliation": "Instituto de Física, Universidade Federal de Mato Grosso do Sul, Campo Grande, Brazil", "orcid": "0000-0001-8168-1482"},
-    {"name": "García Crespi, Francisco Federico", "affiliation": "Department of Computer Engineering, Universidad Miguel Hernández de Elche, Elche, Spain", "orcid": "0000-0002-7129-7791"}
+    {
+      "name": "de Souza, Amaury",
+      "affiliation": "Instituto de Física, Universidade Federal de Mato Grosso do Sul, Campo Grande, Brazil",
+      "orcid": "0000-0001-8168-1482"
+    },
+    {
+      "name": "García Crespi, Francisco Federico",
+      "affiliation": "Department of Computer Engineering, Universidad Miguel Hernández de Elche, Elche, Spain",
+      "orcid": "0000-0002-7129-7791"
+    }
   ],
   "keywords": [
     "tuberculosis",
@@ -21,5 +29,8 @@
       "relation": "isSupplementTo",
       "scheme": "url"
     }
-  ]
+  ],
+  "license": "cc-by-4.0",
+  "version": "1.0.0",
+  "notes": "Code under the MIT licence (see LICENSE); data, results and documents under CC BY 4.0 (see LICENSES.md for the exceptions). The archived manuscript source contains the placeholders [ZENODO_DOI] and [RELEASE_TAG], which cannot contain the DOI of this record."
 }
