@@ -169,3 +169,92 @@ original bounds and were not recomputed.
 3. Whether the manuscript presents S1 as it is with these results as a sensitivity analysis, or
    whether a rolling-origin re-evaluation with wider bounds is warranted. The latter needs separate
    authorisation from fedeg and Amaury and is outside Plan A.
+
+---
+
+# I-b (authorised by fedeg, 2026-10-11, addendum 2: `PROTOCOL_ADDENDUM_2_2026-10-11.md`, commit `950b486`)
+
+Controls 1 and 2 passed again. Outputs: `*_I-b.*`. Run order and rules as in the protocol.
+
+**Status: STOPPED (third time, mandatory stop on training RMSE). The step 5 fits are now complete
+for the authorised set; no further fit is pending.** The script stopped before building its
+comparison table, so the comparisons below were computed afterwards from the recorded outputs.
+
+## Result
+
+| | S1 integer primary | I-b (sigma in [0.001, 0.5]) |
+|---|---|---|
+| beta / sigma / gamma / d | 0.0612 / 0.010173 / 0.0532 / 0.000213 | 0.3931 / **0.001002** / 0.2182 / 0.00933 |
+| Training RMSE (change) | 776.04 | 689.07 (**-11.21%**) |
+| Validation RMSE 2021-22, open loop (change) | 1759.54 | 1375.28 (-21.84%) |
+| Reference R0 | not reported in S1 | 0.809 |
+| sigma determined by boundary? | n/a | **yes** (0.001002 < 1.1 x 0.001) |
+| Numerical control (h = 1 vs 0.25) | n/a | PASS (max pointwise change 1.6e-6) |
+
+Stop condition met: training RMSE improves by 11.2% (limit 1%).
+
+## Facts
+
+- The integer model also improves when sigma is allowed to go lower, and it moves to the new bound
+  (sigma = 0.001002). For the integer model, sigma at the bound is a bound effect as it was at
+  0.01: the objective keeps decreasing as sigma goes down.
+- The integer d in I-b is 0.00933, well inside its range [0.0001, 0.05]; the S1 integer d
+  (0.000213) was close to its lower bound, as Amaury noted, and moves away from it when sigma is
+  free. The d bound was not widened.
+- **Validation ranking: not inverted.** All fractional fits stay below I-b in validation (F-a
+  1086.8, F-b 1195.6, F-c 1078.6 against I-b 1375.3) and in training (589.3, 615.8, 589.2 against
+  689.1). It is also not inverted against the S1 integer primary.
+- **The within-family advantage shrinks a lot.** Fractional-to-integer RMSE ratio:
+
+  | Comparison | Training | Validation |
+  |---|---|---|
+  | S1 primary fractional / S1 primary integer | 0.798 | 0.691 |
+  | F-b / I-b (same sigma bound 0.001, alpha bound 0.50 for the fractional) | 0.894 | 0.869 |
+  | F-c / I-b (alpha bound 0.20 for the fractional) | 0.855 | 0.784 |
+
+  With a matched sigma bound, the fractional model's lower validation RMSE falls from 31% to 13%
+  (F-b against I-b). The ordering holds in this single-seed set, but its size depends on the
+  bounds.
+
+## Reading
+
+**Inference (not tested).** In S1, part of the apparent gain of the fractional model over the
+integer one came from the 0.01 lower bound of sigma binding the integer model harder than the
+fractional one. Letting both models use sigma down to 0.001 removes about half of the validation
+gap. This is a single DE seed per fit and a single dataset; the size of the reduction should not be
+quoted as a general quantity.
+
+**Not claimed.** That the wider-bound integer model is a better or more plausible description
+(sigma = 0.001 implies a mean E-to-I progression time of about 83 years, which is the proposed
+bound and nothing the data supports on its own); that the within-family ordering would persist in
+rolling-origin (not evaluated); that the integer model forecasts better than persistence or SARIMA
+(not evaluated).
+
+## Overall conclusion of step 5
+
+1. alpha lies at the lower bound in every fractional fit (0.50 or 0.20): it is bound-determined.
+2. sigma lies at its lower bound for the integer model (0.01 in S1, 0.001 in I-b) and is
+   interior for the fractional model once the bound is 0.001 (0.0066, 0.0359).
+3. The reference R0 of the fractional model changes by about an order of magnitude (0.04-0.07
+   against 0.36) among fits whose training RMSE differs by 0.6% (F-b) to 4.9%; the S1 envelope is
+   conditional on the original bounds.
+4. The fractional-over-integer ordering in training and validation holds in all comparisons, but
+   its magnitude drops from 20-31% to 10-13% (training/validation, F-b against I-b) when sigma is
+   bounded identically.
+
+None of these runs evaluated rolling-origin forecasts. The S1 skill statements against
+persistence, seasonal naive and SARIMA were computed with the original bounds and are neither
+confirmed nor contradicted here. Passing from this step to the manuscript (B2, B5, Abstract,
+Results, Discussion) means deciding how to present S1 as conditional on the original bounds; that
+decision needs fedeg and Amaury.
+
+## Pending decisions
+
+1. The marginal numerical-control miss for F-a and F-c (1.010% and 1.006% against 1%): failure, as
+   in the protocol, or documented limitation of h = 1 at alpha near 0.2. I-b and F-b pass.
+2. Whether the wider-bound results are reported as a sensitivity analysis alongside S1 (my
+   recommendation: yes, in Methods/Results with the caveats above and without claiming the
+   wider-bound fits as primary) or whether a rolling-origin re-evaluation is warranted
+   (outside Plan A; needs fedeg and Amaury).
+3. Which of steps 6-10 to start. Step 7 (limitation text) does not depend on step 5; step 8
+   (manuscript) depends on both the decision above and on Amaury's sign-off on the S1 decision.
