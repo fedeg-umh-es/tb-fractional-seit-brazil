@@ -141,7 +141,7 @@ The kinetic parameters of the integer model, $\theta_{\text{int}}=(\beta,\sigma,
 
 Practical-identifiability diagnostics compared the reference global fit, four additional fits, and parameter profiles, using the same calibration data, ordinary monthly observation operator, bounds, initialization, and optimization settings. Fits were not selected based on validation errors or mechanistic conclusions.
 
-Profiles for $\beta,\gamma,d$ used seven grid points each: the primary value and offsets of 10\%, 30\%, and 60\% of its distance toward each search bound. The $\alpha$ grid was the union of its corresponding seven points with $[0.50,0.505,0.51,0.52,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00]$, giving 21 distinct points within $[0.50,1.00]$. 
+Profiles for $\beta,\gamma,d$ used seven grid points each: the primary value and offsets of 10\%, 30\%, and 60\% of its distance toward each search bound. The $\alpha$ grid was the union of its corresponding seven points with $[0.50,0.505,0.51,0.52,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90,0.95,1.00]$, giving 21 distinct points within $[0.50,1.00]$.
 
 For each $\alpha$, a fixed-parameter cost section held $\beta,\sigma,\gamma,d$ at their primary values. Separately, a reoptimized profile fixed $\alpha$ and re-estimated the other four parameters. Each point in all four reoptimized profiles used seed \texttt{20260815}, the same DE configuration, and the original bounds for its four free dimensions. Analytic initial conditions were recomputed when the relevant kinetic parameters changed. Fixed-parameter evaluations were distinguished from reoptimized profile fits.
 
