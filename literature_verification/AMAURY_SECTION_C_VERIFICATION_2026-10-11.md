@@ -38,3 +38,8 @@ vouch for what they say; whatever a sentence attributes to them must be checked 
   and is not in Amaury's list; Amaury's list includes the 2004 error analysis.
 - Alphabetical order (B10): Kalizhanova precedes Kharazmi. The `.bib` file to reorder is not in
   the repository yet (`manuscript_draft/references.bib` is the older draft); this is done at step 8.
+
+## Update (2026-10-11, later)
+
+A full audit of the cited references (bibliographic data, DOI, and claim-to-source correspondence) is in `REFERENCE_AUDIT_2026-10-11.md`. Changes with respect to the table above:
+Matignon (1996) is now kept as a **provisional** entry (details from secondary sources); the WHO and Ministry of Health documents for B1 were located and read (`B1_SOURCE_EXTRACTS_2026-10-11.md`).

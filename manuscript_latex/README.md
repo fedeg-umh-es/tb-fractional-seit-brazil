@@ -23,17 +23,15 @@ layout warnings.
 
 ## What the authors must still decide or supply
 
-1. **B1 (COVID-19 paragraph).** The paragraph in the Discussion is drafted from the data only. Replace or merge it with Amaury's draft; the
-   WHO Global Tuberculosis Report and the Ministry of Health bulletin are `NOT_VERIFIED` (edition and bulletin to be fixed) and are not cited.
-2. **B5 (plausibility of d).** The text states the numbers (0.0391 month^-1 = 0.47 per year; 180 times the integer value) and that plausibility was not
-   assessed. If "high for TB-attributable mortality" is to be stated, a reference is needed.
-3. **B8.** The IBGE 2013 choice is justified from `DATA_PROVENANCE.md`. The claim "N(t) has little influence on the fit" is **not** written because it
-   has not been tested. Updating the denominator to a newer revision or to Census 2022 was not done (it would change the model input).
-4. **Matignon (1996)** is mentioned in Methods without a reference: it could not be verified in Crossref (`NOT_VERIFIED`).
-5. **Cramer et al. (2022)** has a 2023 correction notice in Crossref; read it before final.
-6. **Literature attributions.** The existence and citation data of the 13 new references were verified in Crossref. I did not read the papers: check each sentence that
-   cites them (Introduction, Methods, Limitations).
-7. `[ZENODO_DOI]` and `[RELEASE_TAG]` in Code and Data Availability; reuse conditions of the supplied dataset.
-8. Wording of the three new subsections (bound sensitivity, transient of E(t), Limitations) and of the sentence in the Abstract on bounds.
-9. Author order and corresponding author (the file now marks García Crespi as corresponding author, as requested by Amaury).
-10. Metadata outside the manuscript: Bulletin of Mathematical Biology, traditional subscription route, no paid open access (state it in the cover letter).
+Decided on 2026-10-11 (fedeg): B5 keeps the current text on d (numbers, plausibility not assessed, no claim that the value is epidemiologically excessive); Matignon (1996) is kept as a **provisional** entry; B1 is built from official WHO and Ministry of Health sources, with observed changes kept apart from the attribution made by the sources (`literature_verification/B1_SOURCE_EXTRACTS_2026-10-11.md`).
+
+Still open:
+
+1. **Reference audit follow-ups** (`literature_verification/REFERENCE_AUDIT_2026-10-11.md`): the Area et al. entry was wrong and has been corrected (the wrong DOI persists in older repository documents); read the 2023 correction notice of Cramer et al. (2022); confirm the IBGE 2018-revision clause or drop it; replace Matignon by the primary source when available; six references are supported only by title (abstract not obtainable).
+2. **Amaury's own B1 draft**, if he wants to add or replace the paragraph (it is optional now).
+3. **B8.** "N(t) has little influence on the fit" is not written because it has not been tested. Updating the denominator to a newer revision or to Census 2022 was not done (it would change the model input).
+4. `[ZENODO_DOI]` and `[RELEASE_TAG]` in Code and Data Availability; reuse conditions of the supplied dataset; licence.
+5. Wording of the three new subsections (bound sensitivity, transient of E(t), Limitations) and of the sentence in the Abstract on bounds.
+6. Author order and corresponding author (the file marks García Crespi as corresponding author, as requested by Amaury).
+7. Metadata outside the manuscript: Bulletin of Mathematical Biology, traditional subscription route, no paid open access (state it in the cover letter).
+8. Compile in Overleaf and review the PDF (this package was never compiled by Claude).

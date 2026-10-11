@@ -260,18 +260,31 @@ add("Methods 2.2", "IBGE 2013 revision retained because it reproduces the suppli
 add("Declarations", "Code Availability: evidence commit 53eae1091f652ec0393707f4e0ae7b2ec4b43acb on branch evidence/s1-freeze-2026-10-10", "git", "53eae10...", ["53eae1091f652ec0393707f4e0ae7b2ec4b43acb"], ok=True,
     note="NOT_VERIFIED: commit hash taken from the S1 decision record; verified earlier in this work with git rev-parse")
 add("Discussion / Limitations", "No formal predictive-accuracy or significance tests were performed", "repository", "no inferential outputs in analyses/ or evidence_S1/", [], ok=True, note="NOT_VERIFIED: absence claim, by construction of the study")
-# literature statements (existence verified, content not re-read)
-for txt, sec in (("Kalizhanova et al. 2024 compared SIR and SARIMA for TB in Kazakhstan and found lower errors with SARIMA", "Introduction / Discussion"),
-                 ("Kharazmi et al. 2021 examined identifiability and predictability of integer- and fractional-order epidemic models with PINNs", "Introduction / Discussion"),
-                 ("Area et al. 2015: Caputo formulations studied in epidemic models", "Introduction"),
-                 ("Simpson and Maclaren 2024: identifiability and prediction stability need not coincide (likelihood-based setting)", "Introduction / Discussion"),
-                 ("Out-of-sample evaluation against simple benchmarks is standard (Tashman 2000; Hyndman and Koehler 2006; Petropoulos et al. 2022) and used for epidemic forecasts (Funk 2019; Reich 2019; Cramer 2022)", "Introduction"),
-                 ("Practical identifiability commonly examined with profile-based approaches (Raue 2009; Wieland 2021); Chowell 2017 primer", "Introduction"),
-                 ("Diebold-Mariano test with the HLN correction has little power with few origins (Diebold and Mariano 1995; Harvey et al. 1997)", "Limitations")):
-    add(sec, txt, "literature_verification/AMAURY_SECTION_C_VERIFICATION_2026-10-11.csv", "reference existence and citation data verified in Crossref; content not read", [], ok=True,
-        note="NOT_VERIFIED: attribution not checked against the paper's text")
-add("Discussion", "COVID-19 as the cause of the 2020 decline and the 2021-2022 rebound; advantage of persistence and SARIMA specific to the window", "-", "-", [], ok=True,
-    note="NOT_VERIFIED: interpretive; no external evidence provided (WHO report and MoH bulletin NOT_VERIFIED); paragraph to be replaced or merged with the first author's draft (B1)")
+# literature statements: status comes from the reference audit (evidence actually read)
+aud = pd.read_csv(REPO / "literature_verification/REFERENCE_AUDIT_2026-10-11.csv")
+for _, r in aud.iterrows():
+    v = r["verdict"]
+    ok = v.startswith("SUPPORTED_ABSTRACT") or v.startswith("SUPPORTED_FULL_TEXT") or v == "CORRECTED_AND_REWORDED"
+    add("Reference audit", f"[{r['key']}] {r['claim_in_manuscript']}", "literature_verification/REFERENCE_AUDIT_2026-10-11.csv", f"{v}; evidence: {r['evidence_read']}", [],
+        ok=True, note="" if ok else f"NOT_VERIFIED: {v} ({r['evidence_read']})")
+
+# B1: official sources (numbers read in the sources, see B1_SOURCE_EXTRACTS_2026-10-11.md)
+moh = {2019: 78487, 2020: 69422, 2021: 73121, 2022: 81604, 2023: 80012}
+ours = data.groupby(data.data.dt.year).casos.mean()
+chg = lambda a, b: 100 * (b / a - 1)
+b1src = "literature_verification/B1_SOURCE_EXTRACTS_2026-10-11.md"
+add("Discussion (B1)", "MoH new cases: 78,487 (2019), 69,422 (2020), 73,121 (2021), 81,604 (2022), 80,012 (2023, preliminary)", b1src, moh, ["78,487", "69,422", "73,121", "81,604", "80,012"], ok=True)
+add("Discussion (B1)", "MoH changes: -11.5% (2020), +5.3% (2021), +11.6% (2022)", b1src,
+    f"{chg(moh[2019], moh[2020]):.2f}, {chg(moh[2020], moh[2021]):.2f}, {chg(moh[2021], moh[2022]):.2f}", ["$-11.5\\%$", "$+5.3\\%$", "$+11.6\\%$"],
+    ok=[round(chg(moh[2019], moh[2020]), 1), round(chg(moh[2020], moh[2021]), 1), round(chg(moh[2021], moh[2022]), 1)] == [-11.5, 5.3, 11.6])
+add("Discussion (B1)", "Supplied series, annual-mean changes: -10.2% (2020), +6.2% (2021), +10.9% (2022)", "data/raw/tb_mes.xlsx",
+    f"{chg(ours[2019], ours[2020]):.2f}, {chg(ours[2020], ours[2021]):.2f}, {chg(ours[2021], ours[2022]):.2f}", ["$-10.2\\%$", "$+6.2\\%$", "$+10.9\\%$"],
+    ok=[round(chg(ours[2019], ours[2020]), 1), round(chg(ours[2020], ours[2021]), 1), round(chg(ours[2021], ours[2022]), 1)] == [-10.2, 6.2, 10.9])
+add("Discussion (B1)", "WHO: 7.1 million (2019), reduction of 18% to 5.8 million (2020), 6.4 million (2021), 7.5 and 8.2 million (2022, 2023)", b1src, "sentences found verbatim in the WHO page", ["7.1 million", "18\\%", "5.8 million", "6.4 million", "7.5 and 8.2 million"], ok=True)
+add("Discussion (B1)", "Both sources attribute the fall to COVID-related disruptions of health services; the Ministry describes the 2022 recovery as following two years of pandemic-related interruptions", b1src,
+    "quotes in the extracts file", [], ok=True)
+add("Discussion (B1)", "Level of the supplied series differs from official new cases; extraction not recovered", "DATA_PROVENANCE.md", "supplied annual mean 2019 = 8,015 per month (96,180 per year) vs 78,487 new cases", ["its level differs"], ok=bool(ours[2019] * 12 > moh[2019]))
+add("Discussion (B1)", "Advantage of persistence and SARIMA may be specific to the post-disruption window", "-", "-", [], ok=True, note="NOT_VERIFIED: interpretive; flagged as untested in the text (no origin before 2020)")
 add("Discussion", "Reference R0 < 1 / DFE describe asymptotics of the linearized autonomous system, not the mechanism generating the fitted trajectory", "analyses/A2_transient_E_2026-10-11/REPORT.md", "interpretation of rho and E(t) results", [], ok=True,
     note="NOT_VERIFIED: interpretive statement based on rows of the transient analysis (B2); agreed wording with the first author pending")
 
