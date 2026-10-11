@@ -10,7 +10,7 @@ What this status means: everything that depends on the repository is done and ch
 
 ## Author actions
 
-1. **Zenodo deposit (fedeg).** Licences, the `.docx`, the local paths and the author metadata are decided and applied (`docs/decisions/ZENODO_DEPOSIT_NOTES_2026-10-11.md`); `main` contains everything. Run the procedure in `docs/decisions/ZENODO_DEPOSIT_PROCEDURE_2026-10-11.md` (Sandbox rehearsal first, then production with your written "go"). Then replace `[ZENODO_DOI]` and `[RELEASE_TAG]` in the manuscript and in the cover letter.
+1. **Zenodo deposit (fedeg).** Licences, the `.docx`, the local paths and the author metadata are decided and applied (`docs/decisions/ZENODO_DEPOSIT_NOTES_2026-10-11.md`); `main` contains everything. **Done on 2026-10-11:** version DOI 10.5281/zenodo.23298329, release v1.0.0 (`docs/decisions/ZENODO_DEPOSIT_RECORD_2026-10-11.md`); the DOI is filled in the manuscript and the cover letter.
 2. **Reuse conditions of the supplied dataset.** Resolved: CC BY 4.0 (decided by fedeg; Amaury's written confirmation, together with the inclusion of the original working manuscript, is still pending).
 3. **Amaury (returns 13 October).** Sign `S1_DECISION_2026-10-11.md` (date and initials on the two sign-off lines); read the new text (Limitations, bound sensitivity, transient of E(t), the B1 paragraph), and confirm the cover letter. Optional: replace or add to the B1 paragraph with his own draft.
 4. **Open reference flags (fedeg).** Read the 2023 correction notice of Cramer et al. (2022); confirm or drop the IBGE clause on the 2018 revision; replace Matignon (1996) by the primary source when you have it.

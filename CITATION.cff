@@ -31,9 +31,10 @@ keywords:
   - practical identifiability
 # Evidence of record: branch evidence/s1-freeze-2026-10-10, commit below.
 commit: "53eae1091f652ec0393707f4e0ae7b2ec4b43acb"
-date-released: "2026-10-10"
+date-released: "2026-10-11"
 version: "1.0.0"
+doi: "10.5281/zenodo.23298329"
 license:
   - MIT
   - CC-BY-4.0
-# doi is added after the Zenodo deposit; date-released is updated to the release date.
+# doi: version DOI of the Zenodo record for v1.0.0 (concept DOI: 10.5281/zenodo.23298328).
