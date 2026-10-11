@@ -164,7 +164,7 @@ add("Methods 2.5", "Pool: reference fit, four additional fits and 42 reoptimized
 add("Results 3.4", "1% threshold 625.511939 relative to primary RMSE 619.318751", "phase1 objective", f"{1.01 * 619.31875149368591:.6f}", ["625.511939", "619.318751"], ok=f(1.01 * 619.31875149368591, 6) == "625.511939")
 rng = {k: (adm[k].min(), adm[k].max()) for k in ("beta", "gamma", "d")}
 add("Results 3.4", "Ranges among the 32 solutions: beta 0.036879-0.208034, gamma 0.052711-0.297678, d 0.001899-0.048114", "phase3/solution_pool.csv",
-    {k: (round(v[0], 6), round(v[1], 6)) for k, v in rng.items()}, ["0.036879", "0.208034", "0.052711", "0.297678", "0.001899", "0.048114"],
+    {k: (round(float(v[0]), 6), round(float(v[1]), 6)) for k, v in rng.items()}, ["0.036879", "0.208034", "0.052711", "0.297678", "0.001899", "0.048114"],
     ok=[f(rng["beta"][0], 6), f(rng["beta"][1], 6), f(rng["gamma"][0], 6), f(rng["gamma"][1], 6), f(rng["d"][0], 6), f(rng["d"][1], 6)] == ["0.036879", "0.208034", "0.052711", "0.297678", "0.001899", "0.048114"])
 pd_ = pd.read_csv(S1 / "phase3/prediction_dispersion.csv"); ne = pd_[pd_.set == "NEAR_EQUIVALENT_1_PCT"]
 cvc, cvv = ne[ne.split == "calibration"].cv * 100, ne[ne.split == "validation_open_loop"].cv * 100
@@ -204,7 +204,7 @@ for k, r in fits.items():
     add("Results 3.7 Table 6", f"{k}: alpha, sigma, d, training RMSE, validation RMSE, reference R0", src, " / ".join(vals), [v for v in vals if v not in ("1.0000",)] if k != "I-b" else vals[1:], ok=True)
 r0i = r0.r0_diagnostic(par.loc["integer", "beta"], par.loc["integer", "sigma"], par.loc["integer", "gamma"], par.loc["integer", "d"], 1 / 888)
 add("Results 3.7 / Discussion", "Reference R0 of the primary integer fit is 1.009 (not in S1 diagnostics)", "tb_seit.r0.r0_diagnostic on phase 1 integer vector", f"{r0i:.6f}", ["1.009"], ok=f(r0i, 3) == "1.009")
-add("Results 3.7", "alpha determined by its bound in all four fractional fits (F-0, F-a, F-b, F-c)", src, f"{[abs(x - lb) < 0.01 for x, lb in [(sb.loc['F-0', 'alpha'], .5), (sa.loc['F-a', 'alpha'], .2), (sb.loc['F-b', 'alpha'], .5), (sb.loc['F-c', 'alpha'], .2)]]}", [],
+add("Results 3.7", "alpha determined by its bound in all four fractional fits (F-0, F-a, F-b, F-c)", src, f"{[bool(abs(x - lb) < 0.01) for x, lb in [(sb.loc['F-0', 'alpha'], .5), (sa.loc['F-a', 'alpha'], .2), (sb.loc['F-b', 'alpha'], .5), (sb.loc['F-c', 'alpha'], .2)]]}", [],
     ok=all(abs(x - lb) < 0.01 for x, lb in [(sb.loc["F-0", "alpha"], .5), (sa.loc["F-a", "alpha"], .2), (sb.loc["F-b", "alpha"], .5), (sb.loc["F-c", "alpha"], .2)]))
 add("Results 3.7", "Training RMSE fell 4.8-4.9% in F-a and F-c; -0.6% in F-b; -11.2% in I-b", src,
     f"{100 * sa.loc['F-a', 'train_rmse_rel_change_vs_S1_primary']:.2f}, {100 * sb.loc['F-c', 'train_rmse_rel_change_vs_S1_primary']:.2f}, {100 * sb.loc['F-b', 'train_rmse_rel_change_vs_S1_primary']:.2f}, {100 * si.loc['I-b', 'train_rmse_rel_change_vs_S1_primary']:.2f}",
@@ -276,7 +276,7 @@ add("Discussion", "Reference R0 < 1 / DFE describe asymptotics of the linearized
     note="NOT_VERIFIED: interpretive statement based on rows of the transient analysis (B2); agreed wording with the first author pending")
 
 with open(REPO / "manuscript_latex/CLAIM_EVIDENCE_MATRIX.csv", "w", newline="", encoding="utf8") as fh:
-    w = csv.DictWriter(fh, fieldnames=["id", "section", "text", "source_file", "value", "status", "note"])
+    w = csv.DictWriter(fh, fieldnames=["id", "section", "text", "source_file", "value", "status", "note"], lineterminator="\n")
     w.writeheader(); w.writerows(rows)
 n_ok = sum(r["status"] == "VERIFIED" for r in rows)
 print(f"{len(rows)} rows: {n_ok} VERIFIED, {len(rows) - n_ok} NOT_VERIFIED")
