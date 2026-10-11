@@ -35,6 +35,9 @@ FITS = {  # id: (integer?, overrides)
     "I-b": (True, {"sigma": (0.001, 0.5)}),
 }
 H = 1.0
+# Optional CLI: fit ids to run (continuation after the mandatory stop, see PROTOCOL_ADDENDUM).
+IDS = sys.argv[1:] or list(FITS)
+SUFFIX = "_continuation" if sys.argv[1:] else ""
 
 
 def ordinary_monthly_flow(e, sigma, n_months, h):
@@ -95,8 +98,8 @@ def near_bound(name, value, lo, hi, is_primary_rule):
 
 
 def stop(msg, rows, code=2):
-    pd.DataFrame(rows).to_csv(OUT / "fit_parameters.csv", index=False, float_format="%.12g")
-    (OUT / "STOP.txt").write_text(msg + "\n")
+    pd.DataFrame(rows).to_csv(OUT / f"fit_parameters{SUFFIX}.csv", index=False, float_format="%.12g")
+    (OUT / f"STOP{SUFFIX}.txt").write_text(msg + "\n")
     print("STOP:", msg, file=sys.stderr)
     return code
 
@@ -122,7 +125,8 @@ def main():
     print("control 1 (objective at S1 primary) passed:", c1, flush=True)
 
     rows, ncs, preds = [], [], {}
-    for fid, (integer, over) in FITS.items():
+    for fid in IDS:
+        integer, over = FITS[fid]
         bounds = {**BASE, **over}
         free = NAMES[:4] if integer else NAMES
 
@@ -168,9 +172,9 @@ def main():
         rows.append(row)
         pd.DataFrame({"date": ctx.dates.astype(str), "split": ["calibration"] * n_tr + ["validation_open_loop"] * (n_all - n_tr),
                       "observed": np.concatenate([ctx.obs_train, ctx.obs_val]), "predicted": pred_all}
-                     ).to_csv(OUT / f"predictions_{fid}.csv", index=False, float_format="%.12g")
+                     ).to_csv(OUT / f"predictions_{fid}{SUFFIX}.csv", index=False, float_format="%.12g")
         preds[fid] = row
-        pd.DataFrame(rows).to_csv(OUT / "fit_parameters.csv", index=False, float_format="%.12g")
+        pd.DataFrame(rows).to_csv(OUT / f"fit_parameters{SUFFIX}.csv", index=False, float_format="%.12g")
 
         if fid == "F-0":  # control 2: script reproduces the S1 fractional primary
             dif = max(abs(vals[k] - float(s1.loc["fractional", k])) / abs(float(s1.loc["fractional", k])) for k in NAMES)
@@ -181,12 +185,17 @@ def main():
 
         nc = {"id": fid, **numerical_check(vals, ctx)}
         ncs.append(nc)
-        pd.DataFrame(ncs).to_csv(OUT / "numerical_controls.csv", index=False, float_format="%.12g")
+        pd.DataFrame(ncs).to_csv(OUT / f"numerical_controls{SUFFIX}.csv", index=False, float_format="%.12g")
         if nc["status"] != "PASS":
             return stop(f"{fid}: numerical resolution control failed: {nc}", rows)
         if row["train_rmse_rel_change_vs_S1_primary"] < -0.01:
             return stop(f"{fid}: training RMSE improves {100 * row['train_rmse_rel_change_vs_S1_primary']:.3f}% (> 1%) over the S1 primary", rows)
 
+    # F-a was run (and stopped) in the original run: take its recorded values
+    if "F-a" not in preds:
+        fa = pd.read_csv(OUT / "fit_parameters.csv", float_precision="round_trip").set_index("id").loc["F-a"].to_dict()
+        fa["id"] = "F-a"
+        preds["F-a"] = fa
     # ranking in validation
     ib = preds["I-b"]["val_rmse"]
     inverted = [f for f in ("F-a", "F-b", "F-c")
@@ -200,8 +209,9 @@ def main():
                      "val_rmse": r["val_rmse"], "val_rmse_S1_primary": prim[m]["val"],
                      "val_rel_change_pct": 100 * r["val_rmse_rel_change_vs_S1_primary"],
                      "R0_reference": r["R0_reference"],
-                     "alpha_boundary": r["alpha_determined_by_boundary"], "sigma_boundary": r["sigma_determined_by_boundary"]})
-    pd.DataFrame(comp).to_csv(OUT / "comparison_with_S1_primary.csv", index=False, float_format="%.12g")
+                     "alpha_boundary": r["alpha_determined_by_boundary"], "sigma_boundary": r["sigma_determined_by_boundary"],
+                     "note": "F-a: recorded values from the stopped run; failed numerical control and 1% stop" if fid == "F-a" else ""})
+    pd.DataFrame(comp).to_csv(OUT / f"comparison_with_S1_primary{SUFFIX}.csv", index=False, float_format="%.12g")
     if inverted:
         return stop(f"validation ranking fractional vs integer inverted for {inverted}", list(preds.values()))
     print(json.dumps({"status": "completed_no_stop", "validation_ranking_inverted": inverted}, indent=2))
