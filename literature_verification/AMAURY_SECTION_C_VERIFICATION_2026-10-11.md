@@ -25,8 +25,11 @@ vouch for what they say; whatever a sentence attributes to them must be checked 
 - Hyndman & Khandakar (2008) describes the R `forecast` package. The plan's optional ETS baseline,
   if activated, would use the Python `statsmodels` implementation, so this reference fits only if
   the text discusses automatic ETS/ARIMA selection in general.
-- Nothing from the e-mail's list was found retracted in Crossref. The check covers Crossref
-  update records only (`update-to`/`updated-by`); it is not an exhaustive retraction search.
+- Crossref update records (`update-to`/`updated-by`, and retraction relations) were checked for the
+  21 references that have a DOI. The only record found is the correction notice of Cramer et al.
+  (2022); Funk et al. (2019) shows a `new_version` link that points to itself (preprint to journal
+  version). No retraction record was found. This covers Crossref data only and is not an
+  exhaustive retraction search.
 - Matignon (1996) is the usual citation for the stability sector condition |arg(lambda)| > alpha*pi/2.
   If the manuscript cites it, its volume, pages and venue should be copied from the proceedings or
   a trustworthy bibliographic database, not from Crossref.
