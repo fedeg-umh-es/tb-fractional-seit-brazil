@@ -68,7 +68,7 @@ def sensitivity():
            "No rolling-origin evaluation was run with the wider bounds. "
            "$^\\dagger$ The maximum pointwise relative change between steps of 1 and 0.25 months was 1.01\\% (above the 1\\% threshold); changes in RMSE, MAE and bias were below 0.07\\%. "
            "$^\\ddagger$ Computed for this table with the same function as for the fractional fits; not part of the main diagnostics.")
-    (OUT / "table_sensitivity.tex").write_text(tex_table(cap, "tab:sens", hdr, rows, "@{}lllrrrrrrr@{}", tabcolsep="2.5pt"))
+    (OUT / "table_sensitivity.tex").write_text(tex_table(cap, "tab:sens", hdr, rows, "@{}lllrrrrrrr@{}", tabcolsep="2pt"))
 
 
 def sarima():
