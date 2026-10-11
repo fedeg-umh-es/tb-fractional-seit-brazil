@@ -61,6 +61,10 @@ for m in re.finditer(r"\\(?:ref|eqref)\{([^}]+)\}", full):
         problems.append(f"undefined reference {m.group(1)}")
 dup = [l for l in labels if len(re.findall(r"\\label\{" + re.escape(l) + r"\}", full)) > 1]
 problems += [f"duplicate label {l}" for l in dup]
+# constructs that break inside the sn-jnl table environment (seen in Overleaf, 2026-10-11)
+for bad in (r"\resizebox", r"\parbox", r"\begin{threeparttable}"):
+    if bad in full:
+        problems.append(f"{bad} found: breaks inside sn-jnl tables")
 # figures
 for m in re.finditer(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", full):
     if not (root / m.group(1)).exists():

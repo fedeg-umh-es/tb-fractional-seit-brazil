@@ -21,7 +21,7 @@ readme = """TB-SEIT manuscript for Overleaf (author-review draft, not submission
 4. Placeholders left on purpose: [ZENODO_DOI] and [RELEASE_TAG] (Code and Data Availability).
 5. LaTeX comments starting with "AUTHOR-ACTION" mark text that depends on a decision of the authors.
 6. This package was assembled without compiling it. Please check the compile log for warnings,
-   especially: overfull boxes in the wide tables (they use \\resizebox), the appendix tables, and the reference order.
+   especially: overfull boxes in the tables, the appendix tables, and the reference order.
 """
 with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
     for f in files:
