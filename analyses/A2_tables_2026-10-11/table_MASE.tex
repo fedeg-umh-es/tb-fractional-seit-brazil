@@ -1,0 +1,17 @@
+\begin{table}[ht]
+\centering
+\small
+\caption{Mean absolute scaled error by method and horizon. Scale: in-sample MAE of the seasonal naive ($m=12$) on each origin's training window.}
+\label{tab:mase_h}
+\begin{tabular}{lrrrrrrrrrrrr}
+\hline
+Method & $h=1$ & $h=2$ & $h=3$ & $h=4$ & $h=5$ & $h=6$ & $h=7$ & $h=8$ & $h=9$ & $h=10$ & $h=11$ & $h=12$ \\
+\hline
+Fractional SEIT & 1.491 & 1.670 & 2.041 & 2.155 & 2.467 & 2.646 & 2.876 & 3.167 & 3.215 & 3.220 & 3.203 & 3.111 \\
+Integer SEIT & 2.375 & 2.630 & 3.132 & 3.268 & 3.631 & 3.857 & 4.107 & 4.418 & 4.486 & 4.511 & 4.515 & 4.443 \\
+Persistence & 0.728 & 0.931 & 1.150 & 1.269 & 1.594 & 1.632 & 1.942 & 2.160 & 2.240 & 2.231 & 2.229 & 2.330 \\
+Seasonal naive (12) & 2.347 & 2.277 & 2.508 & 2.537 & 2.736 & 2.631 & 2.628 & 2.700 & 2.516 & 2.444 & 2.456 & 2.330 \\
+SARIMA & 1.006 & 1.086 & 1.425 & 1.617 & 1.925 & 2.146 & 2.270 & 2.466 & 2.544 & 2.560 & 2.681 & 2.585 \\
+\hline
+\end{tabular}
+\end{table}

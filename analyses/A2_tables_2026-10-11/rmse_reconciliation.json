@@ -1,0 +1,10 @@
+{
+  "max_abs_difference": {
+    "RMSE": 4.547473508864641e-13,
+    "MAE": 6.821210263296962e-13,
+    "bias": 6.821210263296962e-13
+  },
+  "tolerance_RMSE": 1e-09,
+  "n_rows": 60,
+  "pass": true
+}
