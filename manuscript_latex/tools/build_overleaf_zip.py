@@ -18,7 +18,7 @@ readme = """TB-SEIT manuscript for Overleaf (author-review draft, not submission
    pdflatex, bibtex, pdflatex, pdflatex; Overleaf does this automatically).
 3. sn-mathphys-ay.bst is the Springer style with ONE local change (see the comment at the top of the file):
    it makes the reference list sort by surname (the stock file listed Kharazmi before Kalizhanova).
-4. Placeholders left on purpose: [ZENODO_DOI] and [RELEASE_TAG] (Code and Data Availability).
+4. Zenodo DOI (10.5281/zenodo.23298329) and release tag (v1.0.0) are already filled in (Code and Data Availability).
 5. LaTeX comments starting with "AUTHOR-ACTION" mark text that depends on a decision of the authors.
 6. This package was assembled without compiling it. Please check the compile log for warnings,
    especially: overfull boxes in the tables, the appendix tables, and the reference order.
