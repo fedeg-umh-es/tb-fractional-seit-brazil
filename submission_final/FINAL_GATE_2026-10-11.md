@@ -2,8 +2,7 @@
 
 ```text
 SUBMISSION_GATE = SUBMISSION_GATE_PASS
-READY_FOR_SUBMISSION = YES   (upload in the journal system remains; it needs fedeg's login)
-NOTHING_LEFT_FOR_CLAUDE_TO_CHANGE_IN_THE_SCIENCE = YES
+STATUS = SUBMITTED 2026-10-12, Bulletin of Mathematical Biology, ID BMAB-D-26-01213
 ```
 
 What this status means: everything that depends on the repository is done and checked (see `SUBMISSION_CHECKLIST_2026-10-11.md`). What remains depends only on the authors, in this order.
