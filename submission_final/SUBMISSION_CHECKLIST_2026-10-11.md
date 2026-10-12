@@ -24,4 +24,4 @@ Evidence column: what was checked and where. "Authors" means the item needs the 
 | Suggested reviewers | AUTHORS | none proposed here; add if the system asks |
 | Decision S1 signed | CONFIRMED (as reported) | agreement of both authors reported by fedeg; the sign-off lines in `S1_DECISION_2026-10-11.md` stay blank (`AUTHOR_CONFIRMATIONS_2026-10-12.md`) |
 | Approval of the final text by both authors | CONFIRMED (as reported) | reported by fedeg 2026-10-12 |
-| Authorisation to submit | AUTHORS | performed by fedeg in the submission system after the last look at the PDF |
+| Authorisation to submit | GIVEN (2026-10-12) | Amaury's reply after reviewing the final version, reported by fedeg; submission performed by fedeg in the journal system |

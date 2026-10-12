@@ -14,7 +14,8 @@ What this status means: everything that depends on the repository is done and ch
 2. Dataset reuse, S1 decision, approval of the final text and the originality statement: confirmed by both authors as reported by fedeg (`AUTHOR_CONFIRMATIONS_2026-10-12.md`). The sign-off lines in the S1 decision file are blank because Amaury's written confirmation is not in the repository.
 3. Reference flags: Cramer correction read (Fig. 4 legend only); IBGE 2018 clause dropped after reading the IBGE report; Matignon (1996) stays provisional by decision of the authors (secondary sources give Lille, 1996, vol. 2, pp. 963-968).
 4. Compilation: the package compiled in Overleaf without diagnostics (LuaLaTeX; reported by fedeg). After the edits of 2026-10-12 (IBGE sentence, Cramer entry) it must be compiled once more and the PDF saved for upload.
-5. Remaining, only in the journal system: choose the traditional subscription route (no paid open access), upload the files in `UPLOAD_MANIFEST_2026-10-11.md` and press submit.
+5. Authorisation to submit: Amaury replied on 2026-10-12, after reviewing the final version, that the paper should be submitted (reported by fedeg; `AUTHOR_CONFIRMATIONS_2026-10-12.md`).
+6. Remaining, only in the journal system: choose the traditional subscription route (no paid open access), upload the files in `UPLOAD_MANIFEST_2026-10-11.md` and press submit. Form fields ready to paste: `SUBMISSION_FORM_FIELDS_2026-10-12.md`.
 
 ## What would reopen the science (not planned)
 
