@@ -1,20 +1,20 @@
 # Final gate (2026-10-11)
 
 ```text
-SUBMISSION_GATE = SUBMISSION_GATE_PASS_WITH_AUTHOR_ACTIONS
-READY_FOR_SUBMISSION = NO   (author actions below are required first)
+SUBMISSION_GATE = SUBMISSION_GATE_PASS
+READY_FOR_SUBMISSION = YES   (upload in the journal system remains; it needs fedeg's login)
 NOTHING_LEFT_FOR_CLAUDE_TO_CHANGE_IN_THE_SCIENCE = YES
 ```
 
 What this status means: everything that depends on the repository is done and checked (see `SUBMISSION_CHECKLIST_2026-10-11.md`). What remains depends only on the authors, in this order.
 
-## Author actions
+## Status of the former author actions (updated 2026-10-12)
 
-1. **Zenodo deposit (fedeg).** Licences, the `.docx`, the local paths and the author metadata are decided and applied (`docs/decisions/ZENODO_DEPOSIT_NOTES_2026-10-11.md`); `main` contains everything. **Done on 2026-10-11:** version DOI 10.5281/zenodo.23298329, release v1.0.0 (`docs/decisions/ZENODO_DEPOSIT_RECORD_2026-10-11.md`); the DOI is filled in the manuscript and the cover letter.
-2. **Reuse conditions of the supplied dataset.** Resolved: CC BY 4.0 (decided by fedeg; Amaury's written confirmation, together with the inclusion of the original working manuscript, is still pending).
-3. **Amaury (returns 13 October).** Sign `S1_DECISION_2026-10-11.md` (date and initials on the two sign-off lines); read the new text (Limitations, bound sensitivity, transient of E(t), the B1 paragraph), and confirm the cover letter. Optional: replace or add to the B1 paragraph with his own draft.
-4. **Open reference flags (fedeg).** Read the 2023 correction notice of Cramer et al. (2022); confirm or drop the IBGE clause on the 2018 revision; replace Matignon (1996) by the primary source when you have it.
-5. **Final review and submission.** Review the compiled PDF; choose the traditional subscription route in the system; confirm in the cover letter that the work is not published or under consideration elsewhere and that both authors approved it; both authors authorise the submission.
+1. Zenodo deposit: done (10.5281/zenodo.23298329, v1.0.0; `ZENODO_DEPOSIT_RECORD_2026-10-11.md`).
+2. Dataset reuse, S1 decision, approval of the final text and the originality statement: confirmed by both authors as reported by fedeg (`AUTHOR_CONFIRMATIONS_2026-10-12.md`). The sign-off lines in the S1 decision file are blank because Amaury's written confirmation is not in the repository.
+3. Reference flags: Cramer correction read (Fig. 4 legend only); IBGE 2018 clause dropped after reading the IBGE report; Matignon (1996) stays provisional by decision of the authors (secondary sources give Lille, 1996, vol. 2, pp. 963-968).
+4. Compilation: the package compiled in Overleaf without diagnostics (LuaLaTeX; reported by fedeg). After the edits of 2026-10-12 (IBGE sentence, Cramer entry) it must be compiled once more and the PDF saved for upload.
+5. Remaining, only in the journal system: choose the traditional subscription route (no paid open access), upload the files in `UPLOAD_MANIFEST_2026-10-11.md` and press submit.
 
 ## What would reopen the science (not planned)
 

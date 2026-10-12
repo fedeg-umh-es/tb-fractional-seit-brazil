@@ -13,15 +13,15 @@ Evidence column: what was checked and where. "Authors" means the item needs the 
 | Line numbers | PASS | `\linenumbers` in the source |
 | Figures | PASS | 5 vector PDFs from the frozen S1 package, unchanged (`manuscript_latex/figures/`); captions revised in the text, not in the figures |
 | Tables | PASS | 6 in the text, 4 in the appendix; compile without errors |
-| References | PASS with flags | 22 entries audited (`literature_verification/REFERENCE_AUDIT_2026-10-11.md`); one wrong entry corrected; flags: Cramer 2023 correction notice not read, IBGE clause on the 2018 revision, Matignon provisional, six entries supported by title only |
+| References | PASS with flags | 22 entries audited (`literature_verification/REFERENCE_AUDIT_2026-10-11.md`); one wrong entry corrected; Cramer correction notice read (Fig. 4 legend only, claim unaffected); IBGE 2018 clause dropped; Matignon provisional by decision; six entries supported by title only |
 | Every reported number traceable | PASS with flags | `manuscript_latex/CLAIM_EVIDENCE_MATRIX.csv`: 119 rows, 104 VERIFIED, 15 NOT_VERIFIED (each with its reason) |
 | No number from the retired operator presented as current | PASS | text search for 1.1542, 1.1892, 0.964, 688.8, "h = 7": no match in `manuscript.tex` |
 | Repository tests and evidence integrity | PASS | `pytest` 133 passed; `verify_frozen_bundle.py` PASS (manifest SHA-256 `8e490eb4…faaa1`); `git diff --check` clean over the branch; protected folders unchanged |
 | Claims discipline (no priority language, no general fractional superiority, no biological memory from alpha < 1, R0 envelope not a CI) | PASS | reviewed in `manuscript.tex`; sensitivity analysis states that alpha, sigma and the R0 envelope are conditional on the original bounds |
-| Cover letter | READY, authors confirm | `submission_final/COVER_LETTER.md`; one bracketed confirmation (originality and approval by both authors) |
+| Cover letter | READY | `submission_final/COVER_LETTER.md`; originality and approval statement confirmed by the authors (reported by fedeg 2026-10-12, `docs/decisions/AUTHOR_CONFIRMATIONS_2026-10-12.md`) |
 | Licences (code MIT, data CC BY 4.0) and reuse of the supplied dataset | PASS | `LICENSE`, `LICENSE-CC-BY-4.0.txt`, `LICENSES.md`; Data and Code Availability updated; decided by fedeg 2026-10-11 (Amaury's written confirmation not in the repository) |
 | Route | AUTHORS | Bulletin of Mathematical Biology, traditional subscription route, no paid open access: choose it in the submission system |
 | Suggested reviewers | AUTHORS | none proposed here; add if the system asks |
-| Decision S1 signed | **OPEN** | `docs/decisions/S1_DECISION_2026-10-11.md`: both sign-off lines blank; agreement reported by fedeg (`AUTHOR_AGREEMENT_2026-10-11.md`) |
-| Approval of the final text by both authors | **OPEN** | Amaury is away until 13 October |
-| Authorisation to submit | **OPEN** | both authors |
+| Decision S1 signed | CONFIRMED (as reported) | agreement of both authors reported by fedeg; the sign-off lines in `S1_DECISION_2026-10-11.md` stay blank (`AUTHOR_CONFIRMATIONS_2026-10-12.md`) |
+| Approval of the final text by both authors | CONFIRMED (as reported) | reported by fedeg 2026-10-12 |
+| Authorisation to submit | AUTHORS | performed by fedeg in the submission system after the last look at the PDF |

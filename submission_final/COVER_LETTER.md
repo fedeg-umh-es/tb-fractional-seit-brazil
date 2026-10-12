@@ -21,7 +21,7 @@ We submit to the *Bulletin* because the question sits at the interface of mathem
 
 Transparency. The code, the numerical results and the frozen evidence on which every reported number rests are archived at Zenodo (DOI: https://doi.org/10.5281/zenodo.23298329), and the repository is public. The monthly series was supplied by the first author; its original extraction settings could not be recovered, and a pre-specified audit of four DATASUS/SINAN reconstructions did not reproduce it exactly (the closest differed in 99 of 264 months). The manuscript states this in Methods, Limitations and Data Availability. The code was generated with the help of artificial intelligence tools and reviewed by the authors, as declared in the manuscript.
 
-The authors declare no competing interests and received no funding. The study used only secondary, aggregated notification data. [AUTHORS CONFIRM BEFORE SENDING: the manuscript has not been published and is not under consideration elsewhere; both authors have approved the final version.]
+The authors declare no competing interests and received no funding. The study used only secondary, aggregated notification data. The manuscript has not been published and is not under consideration elsewhere, and both authors have approved the final version.
 
 Thank you for considering the manuscript.
 

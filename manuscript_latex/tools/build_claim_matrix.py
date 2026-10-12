@@ -255,8 +255,8 @@ add("Discussion", "d in wider-bound fits: 0.031 (F-a, F-c) and 0.0081 (F-b)", sr
 # ------------------------------------------------------------ provenance statements
 dp = (REPO / "DATA_PROVENANCE.md").read_text()
 add("Methods 2.2 / Limitations", "Four reconstruction attempts did not match; closest differed in 99 of 264 months", "DATA_PROVENANCE.md", "C1 differs in 99 of 264 months", ["99"], ok="differed in 99 of 264 months" in dp)
-add("Methods 2.2", "IBGE 2013 revision retained because it reproduces the supplied denominators and covers 2001-2020; the 2018 revision starts in 2010", "DATA_PROVENANCE.md", "see section 'Population denominator provenance'", ["starts in 2010"],
-    ok="The later 2018 revision starts in 2010" in dp)
+add("Methods 2.2", "IBGE 2013 revision retained because it reproduces the supplied denominators and covers 2001-2020", "DATA_PROVENANCE.md", "see section 'Population denominator provenance'", ["reproduces the denominator series", "covers the whole calibration interval"],
+    ok="reproduces the denominator series" in dp)
 add("Declarations", "Code Availability: evidence commit 53eae1091f652ec0393707f4e0ae7b2ec4b43acb on branch evidence/s1-freeze-2026-10-10", "git", "53eae10...", ["53eae1091f652ec03937", "07f4e0ae7b2ec4b43acb"], ok=True,
     note="NOT_VERIFIED: commit hash taken from the S1 decision record; verified earlier in this work with git rev-parse")
 add("Discussion / Limitations", "No formal predictive-accuracy or significance tests were performed", "repository", "no inferential outputs in analyses/ or evidence_S1/", [], ok=True, note="NOT_VERIFIED: absence claim, by construction of the study")

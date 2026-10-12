@@ -27,7 +27,7 @@ Decided on 2026-10-11 (fedeg): B5 keeps the current text on d (numbers, plausibi
 
 Still open:
 
-1. **Reference audit follow-ups** (`literature_verification/REFERENCE_AUDIT_2026-10-11.md`): the Area et al. entry was wrong and has been corrected (the wrong DOI persists in older repository documents); read the 2023 correction notice of Cramer et al. (2022); confirm the IBGE 2018-revision clause or drop it; replace Matignon by the primary source when available; six references are supported only by title (abstract not obtainable).
+1. **Reference audit follow-ups** (`literature_verification/REFERENCE_AUDIT_2026-10-11.md`): the Area et al. entry was wrong and has been corrected (the wrong DOI persists in older repository documents); confirm the IBGE 2018-revision clause or drop it; replace Matignon by the primary source when available; six references are supported only by title (abstract not obtainable).
 2. **Amaury's own B1 draft**, if he wants to add or replace the paragraph (it is optional now).
 3. **B8.** "N(t) has little influence on the fit" is not written because it has not been tested. Updating the denominator to a newer revision or to Census 2022 was not done (it would change the model input).
 4. ~~`[ZENODO_DOI]` and `[RELEASE_TAG]`~~ filled in on 2026-10-11 (10.5281/zenodo.23298329, v1.0.0). Still open in this item: Amaury's written confirmation of the reuse conditions of the supplied dataset and of the licence.
