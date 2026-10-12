@@ -2,9 +2,9 @@
 
 | # | File | Where it comes from | State |
 |---|---|---|---|
-| 1 | Manuscript PDF | compile the final project in Overleaf (DOI and tag already filled in) | ready once the authors approve the PDF |
-| 2 | Editable source (all style files and figures) | export the Overleaf project as a zip, or use `manuscript_latex/TB_SEIT_BMB_overleaf_2026-10-11.zip` if nothing was edited in Overleaf (SHA-256 of the repository version: see below) | after step 1 |
-| 3 | Cover letter | `submission_final/COVER_LETTER.md` (paste the text, or export to PDF) | ready once the authors confirm the bracketed sentence |
+| 1 | Manuscript PDF | `manuscript_latex/TB_SEIT_BMB_submission_flat_2026-10-12.pdf` (compiled with pdfLaTeX from the flat package, 27 pages, 0 errors) | ready |
+| 2 | Editable source | `manuscript_latex/TB_SEIT_BMB_submission_flat_2026-10-12.zip`: one `manuscript.tex` (tables inlined, bibliography embedded), `sn-jnl.cls`, F1-F5 at the root; built by `python manuscript_latex/tools/build_submission_flat.py`. The first package (subfolders, `\input`, modified `.bst`, extra packages) was reported as "LaTeX unsupported" by the submission system on 2026-10-12 | ready |
+| 3 | Cover letter | `submission_final/COVER_LETTER.pdf`, compiled with pdfLaTeX from `COVER_LETTER.tex` (article class, 2 pages) | ready |
 | 4 | Figures F1-F5 (separate files, if the system asks) | `manuscript_latex/figures/*.pdf` | ready |
 | 5 | Supplementary material | none required: the evidence is archived at Zenodo | n/a |
 

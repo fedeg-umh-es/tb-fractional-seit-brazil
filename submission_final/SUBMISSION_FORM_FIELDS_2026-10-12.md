@@ -35,8 +35,8 @@ An improvement over an integer-order epidemic model does not necessarily imply u
 
 | Item | File |
 |---|---|
-| Manuscript (PDF) | PDF compiled in Overleaf from `manuscript_latex/TB_SEIT_BMB_overleaf_2026-10-11.zip` (current `main`) |
-| LaTeX source | the same ZIP (manuscript.tex, references.bib, sn-jnl.cls, sn-mathphys-ay.bst, figures/, tables/) |
-| Cover letter | PDF compiled from `submission_final/COVER_LETTER.tex` |
+| Manuscript (PDF) | `manuscript_latex/TB_SEIT_BMB_submission_flat_2026-10-12.pdf` |
+| LaTeX source | `manuscript_latex/TB_SEIT_BMB_submission_flat_2026-10-12.zip` (manuscript.tex, sn-jnl.cls, F1-F5; no subfolders) |
+| Cover letter | `submission_final/COVER_LETTER.pdf` (compiled from `COVER_LETTER.tex`, article class) |
 
 **Suggested reviewers:** none proposed (add only if the system requires them).
