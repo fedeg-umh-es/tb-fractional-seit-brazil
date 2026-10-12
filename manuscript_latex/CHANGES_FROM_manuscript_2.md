@@ -56,3 +56,14 @@ Local edits only; no number, table, figure or claim changed. The claim matrix re
 | Results, external baselines: opens with the finding ("Fractional SEIT did not outperform persistence or SARIMA at any lead") instead of "The external benchmarks changed the assessment" | point first, then evidence |
 | Results, numerical checks: "These results support numerical consistency, not formal convergence" removed | the same caveat is stated in Methods (solver) and in the Discussion |
 | Discussion, 2020 paragraph split in two: official figures and attribution by the sources; then the comparability of our series and the statement that the cause is not tested | one claim per paragraph; separates context from the comparability caveat |
+
+## Submission-system fixes, 2026-10-12
+
+The submission system reported the first LaTeX package as unsupported. A flat package is now built by `tools/build_submission_flat.py` (same text, tables, figures and references; compiled here with pdfLaTeX: 0 errors, 0 undefined citations). Reference-list fixes found while checking the compiled PDF (they apply to both packages):
+
+| Change | Reason |
+|---|---|
+| Matignon (1996): note "Provisional entry: details from secondary sources; primary source not yet verified" removed from the printed reference | it is an internal verification note and was printed in the reference list; the provisional status stays recorded in `literature_verification/REFERENCE_AUDIT_2026-10-11.md` and in the claim matrix |
+| van den Driessche and Watmough (2002): surname braced | the style dropped "van den" and printed "Driessche, P." |
+| Kalizhanova et al. (2024): title braced | the style printed "kazakhstan using sarima and sir" in lower case |
+| IBGE (2013): note "Agosto de 2013" removed | printed as "Agosto de 2013 (2013)" |
