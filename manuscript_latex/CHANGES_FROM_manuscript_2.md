@@ -6,7 +6,7 @@ Full diff: `diff incoming/manuscript_2.tex manuscript.tex`. Order of integration
 |---|---|
 | Metadata | corresponding author marked on García Crespi (`fedeg@umh.es`) |
 | B7, Methods 2.1 | "an unpublished working manuscript" replaced by "the materials of the original study, which were provided by the collaborating author and are not publicly available" (no preprint cited) |
-| B8, Methods 2.2 | IBGE 2013 revision justified from `DATA_PROVENANCE.md` (reproduces the supplied denominators; the 2018 revision starts in 2010) |
+| B8, Methods 2.2 | IBGE 2013 revision justified from `DATA_PROVENANCE.md` (reproduces the supplied denominators; covers 2001-2020; the earlier statement on the 2018 revision was dropped on 2026-10-12) |
 | 8.4, Methods 2.2 | explicit statement that there is no separate detection or notification process; E(0) = y0/sigma is an approximation |
 | Methods | DE, MASE and next-generation matrix cited; SARIMA coefficients now regenerated (max relative error 9.2e-9) and reported in the appendix; MASE defined |
 | Methods (new) | subsections "Sensitivity to the lower bounds of alpha and sigma" and "Transient of the exposed compartment", with the rules fixed before running |
