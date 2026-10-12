@@ -45,3 +45,14 @@ Not done: A5-A8 analyses (declared as limitations); update of the population sou
 | Methods 2.1: "...are not publicly available" replaced by "(a copy of the working manuscript is archived with the code)" | the original working manuscript stays in the archive (option C) |
 | Data Availability: the reuse caveat replaced by "released under CC BY 4.0 ... code under MIT" | licences decided by the authors |
 | Code Availability: licences stated | same |
+
+## Structural pass (PIER / C-C-C), 2026-10-12
+
+Local edits only; no number, table, figure or claim changed. The claim matrix rebuilt by its script is byte-identical (119 rows, 104 VERIFIED).
+
+| Change | Reason |
+|---|---|
+| Introduction, 4th paragraph: closing sentence stating what the study tests and that it does not propose a new model | the paragraph had context and content but no conclusion; makes the contribution explicit for the BMB reader |
+| Results, external baselines: opens with the finding ("Fractional SEIT did not outperform persistence or SARIMA at any lead") instead of "The external benchmarks changed the assessment" | point first, then evidence |
+| Results, numerical checks: "These results support numerical consistency, not formal convergence" removed | the same caveat is stated in Methods (solver) and in the Discussion |
+| Discussion, 2020 paragraph split in two: official figures and attribution by the sources; then the comparability of our series and the statement that the cause is not tested | one claim per paragraph; separates context from the comparability caveat |
