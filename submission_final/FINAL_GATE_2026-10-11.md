@@ -3,6 +3,7 @@
 ```text
 SUBMISSION_GATE = SUBMISSION_GATE_PASS
 STATUS = SUBMITTED 2026-10-12, Bulletin of Mathematical Biology, ID BMAB-D-26-01213
+DECISION = DESK_REJECT 2026-10-13 (Editor-in-Chief; insufficient biological impact for readership; see SUBMISSION_RECORD_2026-10-12.md)
 ```
 
 What this status means: everything that depends on the repository is done and checked (see `SUBMISSION_CHECKLIST_2026-10-11.md`). What remains depends only on the authors, in this order.
