@@ -7,7 +7,7 @@ Etiquetas: **[H]** hecho verificado · **[I]** inferencia · **[P]** pendiente.
 ## 1. Conclusión
 
 - **Applied Mathematics and Computation: descartada para este manuscrito.** Con la regla fijada antes de leer, D = 0: ninguno de los 16 artículos epidemiológicos ni de los 12 de la sonda general evalúa modelos existentes sin aportar un método. Lo corrobora el alcance oficial, que dice que la revista «emphasizes papers of a computational nature focusing on new algorithms, their analysis and numerical results».
-- **Nonlinear Dynamics: admisible, con un riesgo concreto.** Fuera de la epidemiología publica artículos de tipo D: al menos tres confirmados por su resumen y otros por el título. Dentro de la epidemiología, los 51 artículos son de construcción de modelos (A, B o C) y ninguno evalúa modelos existentes. El tipo de contribución está aceptado en la revista, pero no se ha visto aplicado a modelos epidémicos.
+- **Nonlinear Dynamics: descartada por motivo económico (véase la §5b).** Desde el punto de vista del tipo de contribución, el veredicto era: admisible, con un riesgo concreto. Fuera de la epidemiología publica artículos de tipo D: al menos tres confirmados por su resumen y otros por el título. Dentro de la epidemiología, los 51 artículos son de construcción de modelos (A, B o C) y ninguno evalúa modelos existentes. El tipo de contribución está aceptado en la revista, pero no se ha visto aplicado a modelos epidémicos.
 
 Esto no es una probabilidad de aceptación. Es un filtro sobre si el tipo de artículo aparece en el corpus reciente.
 
@@ -69,6 +69,14 @@ Ninguno de los 12 títulos es de tipo D. Los que tenían resumen proponen un mé
 - **[I] En Nonlinear Dynamics el riesgo cambia de naturaleza.** La revista publica evaluaciones de los límites de validez de modelos existentes, que es el mismo tipo de pregunta que la del manuscrito: ¿la mejora del orden fraccionario sobrevive a una comparación más amplia? Pero su corpus epidemiológico reciente es de construcción de modelos. Un editor del área podría esperar un modelo o análisis nuevo.
 - **[I] Si se elige Nonlinear Dynamics**, el ajuste de énfasis (título, resumen y carta) tendría que presentar el artículo como una evaluación de los límites de validez de una extensión fraccionaria, en la línea de los artículos de la §4.1, sin cambiar la pregunta ni las afirmaciones.
 - **[P]** Antes de enviar: verificar el alcance oficial de Nonlinear Dynamics y la vía sin APC, y ver si el Transfer Desk de Springer Nature la propone (permitiría transferir sin reformatear).
+
+## 5b. Adenda (2026-10-13): Nonlinear Dynamics pasa a acceso abierto completo en 2027
+
+- **[H]** Nonlinear Dynamics (eISSN 1573-269X) figura en la lista oficial «Springer Nature Fully OA Journals List 2027» («APCs correct as of October 2026»), con un APC de 3590 EUR, 4290 USD o 3090 GBP. En la «Springer Nature Hybrid Journals List 2026» figuraba como híbrida, con un APC de 4090 EUR para el acceso abierto opcional, y no aparece en la lista híbrida de 2027. Las cuatro listas se descargan desde https://www.springernature.com/gp/open-science/journals-books/journals.
+- **[I]** Un envío ahora tendría su publicación en 2027, con APC obligatorio. Eso incumple la condición de publicar sin APC obligatorio, así que **Nonlinear Dynamics queda descartada por motivo económico**, con independencia del veredicto de la §1.
+- **[H]** Una auditoría paralela del autor (12 artículos de AMC y 5 de Nonlinear Dynamics) incluye varios artículos epidemiológicos que esta muestra no recogió, como «A nonstandard numerical scheme for a novel SECIR integro-differential equation-based model» (AMC) o un modelo estocástico de pandemias de abril de 2026 (Nonlinear Dynamics). Esto confirma que la muestra de Crossref no es exhaustiva. Ninguno de esos artículos es de tipo D, y la conclusión sobre AMC no cambia.
+- **[I]** Las dos auditorías coinciden en el hecho de fondo: no hay ningún artículo de tipo D sobre modelos epidémicos en ninguna de las dos revistas. Solo difieren en cómo aplicar la regla a Nonlinear Dynamics: aquí se contaron los artículos de tipo D de otros dominios; la auditoría paralela solo los epidemiológicos. Tras la adenda económica, la diferencia ya no afecta a la decisión.
+- **Decisión resultante:** no enviar a AMC ni a Nonlinear Dynamics. Aplicar el mismo filtro a las propuestas del Transfer Desk, añadiendo para cualquier revista de Springer Nature la comprobación en las listas de 2027 (híbrida o de acceso abierto completo).
 
 ## 6. Tablas completas del corpus epidemiológico
 
