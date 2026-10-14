@@ -1,4 +1,0 @@
-fractional: train RMSE=619.318751, open-loop validation RMSE=1216.541986, optimizer_success=True
-integer: train RMSE=776.040852, open-loop validation RMSE=1759.542092, optimizer_success=True
-Saved phase 1 in /Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-global-refit-phase1/audits/observation_operator_refit_phase1_2026-10-08/tb_global_refit_phase1/results_global_primary
-STOP: no rolling-origin, no manuscript edits, no commit or push

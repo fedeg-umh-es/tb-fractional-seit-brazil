@@ -1,5 +1,0 @@
-{
-  "original_and_fixed_theta_metrics_source": "/Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-observation-ablation/audits/observation_operator_ablation_2026-10-08/metrics_before_after.csv",
-  "sha256": "69ededf9aa2f7414a262444e17b90cd0b78e86ba7d740c03b5d2c4fe187ea4a8",
-  "use": "Read only after fitting, for descriptive comparison; never used in objective or decisions"
-}

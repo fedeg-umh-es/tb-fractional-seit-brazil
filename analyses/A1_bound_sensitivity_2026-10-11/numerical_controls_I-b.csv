@@ -1,2 +1,0 @@
-id,max_pointwise_relative_change,rmse_relative_change,mae_relative_change,bias_change_relative_observed_mean,half_difference,quarter_difference,status
-I-b,1.64067947965e-06,9.25221850844e-07,5.6002967566e-07,2.12198072308e-07,0.0105534317781,0.00264300615709,PASS

@@ -1,8 +1,0 @@
-{
-  "command": "python audits/observation_operator_refit_phase1_2026-10-08/tb_global_refit_phase1/run_global_refit.py --repo /Users/fede/Documents/Codex/2026-10-08/files-pasted-by-the-user-diagn/work/tb-global-refit-phase1",
-  "exit_code": 0,
-  "log": "execution.log",
-  "full_optimizations_executed": 2,
-  "seed": 20260815,
-  "phase2_started": false
-}

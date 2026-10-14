@@ -1,1 +1,0 @@
-I-b: training RMSE improves -11.206% (> 1%) over the S1 primary
