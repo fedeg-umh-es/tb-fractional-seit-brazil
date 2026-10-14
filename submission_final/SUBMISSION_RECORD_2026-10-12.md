@@ -1,5 +1,7 @@
 # Submission record — Bulletin of Mathematical Biology
 
+> This is the historical BMB record. The current submission is **MATCOM-D-26-04655**, received on 2026-10-14; see [the MATCOM record](../submission_matcom/SUBMISSION_RECORD_2026-10-14.md).
+
 | Item | Value | Source |
 |---|---|---|
 | Journal | Bulletin of Mathematical Biology (Springer Nature) | — |

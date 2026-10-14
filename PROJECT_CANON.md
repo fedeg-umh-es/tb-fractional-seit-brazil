@@ -1,5 +1,7 @@
 # Project Canon — TB Fractional SEIT Brazil
 
+> **Current editorial route (2026-10-14):** MATCOM submission received, **MATCOM-D-26-04655**. BMB is a closed, rejected submission. [Submission record](submission_matcom/SUBMISSION_RECORD_2026-10-14.md). This documentary update does not change the S1 evidence or choose a new scientific protocol.
+
 > **Evidence status (2026-10-11).** The current evidence of record is the S1 freeze,
 > `evidence_S1/TB_SEIT_EVIDENCE_FREEZE_2026-10-10/` (branch `evidence/s1-freeze-2026-10-10`,
 > commit `53eae1091f652ec0393707f4e0ae7b2ec4b43acb`), computed with the ordinary monthly

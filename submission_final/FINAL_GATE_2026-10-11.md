@@ -1,5 +1,7 @@
 # Final gate (2026-10-11)
 
+> Historical gate for the BMB package. BMB rejected the submission on 2026-10-13; the current route is MATCOM, received on 2026-10-14 as **MATCOM-D-26-04655**. See [the current submission record](../submission_matcom/SUBMISSION_RECORD_2026-10-14.md). The former author actions below are retained as history, not a fresh instruction to submit to BMB.
+
 ```text
 SUBMISSION_GATE = SUBMISSION_GATE_PASS
 STATUS = SUBMITTED 2026-10-12, Bulletin of Mathematical Biology, ID BMAB-D-26-01213
